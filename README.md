@@ -45,13 +45,7 @@ You must have the following installed:
    $ git clone https://github.com/videosdk-live/videosdk-rtc-android-java-sdk-example.git
    ```
 
-3. Create a `local.properties` file in the root directory of your android project with the api server url that points to the authentication server.
-
-   ```
-   api_server_url='http://192.168.0.101:9000'
-   ```
-
-4. Run the android app with `Shift+F10` or the `Run` button from toolbar
+3. Run the project.
 
 For more information, visit [official documentation](https://docs.videosdk.live/docs/realtime-communication/sdk-reference/android-sdk/setup)
 
