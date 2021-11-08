@@ -17,7 +17,7 @@ This code sample demonstrates a one-to-one and group video call application buil
 - [ ] Chat support with rich media.
 - [ ] Screen sharing with HD and Full HD.
 - [ ] Play realtime video in meeting
-- [ ] Connect it with social media such as Facebook, Youtube etc (RTMP out support).
+- [x] Connect it with social media such as Facebook, Youtube etc (RTMP out support).
 - [x] Intelligent speaker switch
 - [x] Record your meetings on cloud
 - [x] Customise UI and build other rich features with our new data streams such as whiteboard, poll, Q & A etc.
