@@ -42,7 +42,7 @@ You must have the following installed:
 2. Clone the repo
 
    ```sh
-   $ git clone https://github.com/videosdk-live/videosdk-rtc-android-java-sdk-example.git
+   $ git clone https://github.com/videosdk-live/videosdk-rtc-ios-sdk-example.git
    ```
 
 3. Run the project.
