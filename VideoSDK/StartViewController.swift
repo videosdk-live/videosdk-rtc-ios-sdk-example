@@ -2,15 +2,11 @@
 //  StartViewController.swift
 //  VideoSDK_Example
 //
-//  Created by VideoSDK Team Team on 13/09/21.
+//  Created by VideoSDK Team on 13/09/21.
 //  Copyright © 2021 Zujo Tech Pvt Ltd. All rights reserved.
 //
 
 import UIKit
-import SwiftyJSON
-
-/// Server Token URL
-fileprivate let getTokenUrl = "<URL to retrieve token>"
 
 class StartViewController: UIViewController {
 
@@ -29,20 +25,13 @@ class StartViewController: UIViewController {
         super.viewDidLoad()
 
         startMeetingButton.layer.cornerRadius = 6
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        /**
-         Retrieve token from your server
-         */
-        URLSession.shared.dataTask(with: URL(string: getTokenUrl)!) { data, response, error in
-            if let data = data, let json = try? JSON(data: data) {
-                self.serverToken = json["token"].stringValue
+        // get token
+        APIService.getToken { result in
+            if case .success(let token) = result {
+                self.serverToken = token
             }
         }
-        .resume()
     }
     
     // MARK: - Actions

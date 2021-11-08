@@ -2,12 +2,12 @@
 //  ParticipantViewCell.swift
 //  VideoSDK_Example
 //
-//  Created by VideoSDK Team Team on 13/09/21.
+//  Created by VideoSDK Team on 13/09/21.
 //  Copyright © 2021 Zujo Tech Pvt Ltd. All rights reserved.
 //
 
 import UIKit
-import VideoSDK
+import VideoSDKRTC
 import WebRTC
 
 class ParticipantViewCell: UICollectionViewCell {
@@ -24,6 +24,7 @@ class ParticipantViewCell: UICollectionViewCell {
     @IBOutlet weak var nameInitialsLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     
+    @IBOutlet weak var livestreamIndicator: UIImageView!
     @IBOutlet weak var mutedMicButton: UIButton!
     
     
@@ -39,6 +40,9 @@ class ParticipantViewCell: UICollectionViewCell {
         setupVideoView()
         setupNameView()
         setupMicView()
+        
+        // border
+        contentView.layer.borderWidth = 4.0
     }
     
     override func prepareForReuse() {
@@ -92,8 +96,14 @@ class ParticipantViewCell: UICollectionViewCell {
         }
     }
     
+    func showActiveSpeakerIndicator(_ show: Bool) {
+        contentView.layer.borderColor = show ? UIColor.blue.cgColor : UIColor.clear.cgColor
+    }
+    
     func reset() {
         participant = nil
+        livestreamIndicator.isHidden = true
+        contentView.layer.borderColor = UIColor.clear.cgColor
         
         [nameLabel, nameInitialsLabel].forEach {
             $0?.text = ""
