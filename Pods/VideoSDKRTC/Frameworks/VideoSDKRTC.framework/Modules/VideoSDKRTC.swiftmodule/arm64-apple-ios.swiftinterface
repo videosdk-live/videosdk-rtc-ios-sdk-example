@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
+// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
 // swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name VideoSDKRTC
 import AVFoundation
 import Foundation
@@ -117,6 +117,8 @@ public protocol MeetingEventListener : AnyObject {
   func onLivestreamStarted()
   func onLivestreamStopped()
   func onSpeakerChanged(participantId: Swift.String?)
+  func onMicRequested(participantId: Swift.String?, accept: @escaping () -> Swift.Void, reject: @escaping () -> Swift.Void)
+  func onWebcamRequested(participantId: Swift.String?, accept: @escaping () -> Swift.Void, reject: @escaping () -> Swift.Void)
 }
 extension VideoSDKRTC.MeetingEventListener {
   public func onMeetingJoined()
@@ -128,6 +130,8 @@ extension VideoSDKRTC.MeetingEventListener {
   public func onLivestreamStarted()
   public func onLivestreamStopped()
   public func onSpeakerChanged(participantId: Swift.String?)
+  public func onMicRequested(participantId: Swift.String?, accept: @escaping () -> Swift.Void, reject: @escaping () -> Swift.Void)
+  public func onWebcamRequested(participantId: Swift.String?, accept: @escaping () -> Swift.Void, reject: @escaping () -> Swift.Void)
 }
 @_hasMissingDesignatedInitializers public class Participant : Swift.Equatable {
   public var id: Swift.String {
@@ -146,6 +150,12 @@ extension VideoSDKRTC.MeetingEventListener {
     get
   }
   @objc deinit
+}
+extension VideoSDKRTC.Participant {
+  public func enableMic()
+  public func disableMic()
+  public func enableWebcam()
+  public func disableWebcam()
 }
 extension VideoSDKRTC.Participant {
   public func addStream(_ stream: VideoSDKRTC.MediaStream)

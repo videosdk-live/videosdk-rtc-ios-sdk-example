@@ -2,7 +2,6 @@
 
 Official iOS SDK of [videosdk.live](https://videosdk.live/)
 
-![Alt text](https://docs.videosdk.live/assets/images/Zujonow-whitelabel-min-7e7fcd47dedd07f03f4355427a764caf.jpg "Banner")
 
 ## Features
 
@@ -87,6 +86,8 @@ meeting?.join()
 7. `onLivestreamStarted` Called when livestream starts.
 8. `onLivestreamStopped` Called after livestream stops.
 9. `onSpeakerChanged(participantId: String?)` Called when active speaker changes.
+10. `onMicRequested(participantId: String?, accept: @escaping () -> Void, reject: @escaping () -> Void)` Called when someone requests to enable mic.
+11. `onWebcamRequested(participantId: String?, accept: @escaping () -> Void, reject: @escaping () -> Void)` Called when someone requests to enable camera.
 
 ### ParticipantEventListener
 
