@@ -125,7 +125,6 @@ public:
 
     std::future<void> OnConnect(mediasoupclient::Transport* nativeTransport, const nlohmann::json& dtlsParameters) override {
         const std::string dtlsParametersString = dtlsParameters.dump();
-
         const std::string nativeId = nativeTransport->GetId();
         NSString* transportId = [NSString stringWithUTF8String:nativeId.c_str()];
 

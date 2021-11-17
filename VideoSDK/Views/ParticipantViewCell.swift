@@ -25,12 +25,27 @@ class ParticipantViewCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var livestreamIndicator: UIImageView!
-    @IBOutlet weak var mutedMicButton: UIButton!
+    @IBOutlet weak var micButton: UIButton!
+    @IBOutlet weak var videoButton: UIButton!
     
     
     // MARK: - Properties
     
     private var participant: Participant?
+    
+    // handling for mic
+    private var micEnabled = false {
+        didSet {
+            updateMicButton()
+        }
+    }
+    
+    // handling for video
+    private var videoEnabled = false {
+        didSet {
+            updateVideoButton()
+        }
+    }
     
     // MARK: - Life Cycle
     
@@ -39,10 +54,12 @@ class ParticipantViewCell: UICollectionViewCell {
     
         setupVideoView()
         setupNameView()
-        setupMicView()
+        updateMicButton()
         
         // border
         contentView.layer.borderWidth = 4.0
+        micButton.makeRounded()
+        videoButton.makeRounded()
     }
     
     override func prepareForReuse() {
@@ -83,13 +100,7 @@ class ParticipantViewCell: UICollectionViewCell {
                 }
             }
         case .audio:
-            if enabled {
-                // hide muted mic
-                hideMutedMic(true)
-            } else {
-                // show muted mic
-                hideMutedMic(false)
-            }
+            updateMic(enabled)
             
         default:
             break
@@ -113,6 +124,24 @@ class ParticipantViewCell: UICollectionViewCell {
             videoTrack.remove(videoView)
         }
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func micButtonTapped(_ sender: Any) {
+        if micEnabled {
+            participant?.disableMic()
+        } else {
+            participant?.enableMic()
+        }
+    }
+    
+    @IBAction func videoButtonTapped(_ sender: Any) {
+        if videoEnabled {
+            participant?.disableWebcam()
+        } else {
+            participant?.enableWebcam()
+        }
+    }
 }
 
 // MARK: - Show/Hide
@@ -120,6 +149,7 @@ class ParticipantViewCell: UICollectionViewCell {
 extension ParticipantViewCell {
     
     func showVideoView(_ show: Bool) {
+        videoEnabled = show
         videoView.isHidden = !show
         nameContainerView.isHidden = show
         
@@ -130,8 +160,8 @@ extension ParticipantViewCell {
         }
     }
     
-    func hideMutedMic(_ hide: Bool) {
-        mutedMicButton.isHidden = hide
+    func updateMic(_ enabled: Bool) {
+        micEnabled = enabled
     }
 }
 
@@ -154,10 +184,17 @@ extension ParticipantViewCell {
         nameContainerView.layer.cornerRadius = 5
     }
     
-    func setupMicView() {
-        mutedMicButton.setImage(UIImage(systemName: "mic.slash"), for: .normal)
-        mutedMicButton.backgroundColor = UIColor.red.withAlphaComponent(0.8)
-        mutedMicButton.isUserInteractionEnabled = false
-        mutedMicButton.makeRounded()
+    func updateMicButton() {
+        let imageName = micEnabled ? "mic" : "mic.slash"
+        let backgroundColor = micEnabled ? UIColor.gray.withAlphaComponent(0.8) : UIColor.red.withAlphaComponent(0.8)
+        micButton.setImage(UIImage(systemName: imageName), for: .normal)
+        micButton.backgroundColor = backgroundColor
+    }
+    
+    func updateVideoButton() {
+        let imageName = videoEnabled ? "video" : "video.slash"
+        let backgroundColor = videoEnabled ? UIColor.gray.withAlphaComponent(0.8) : UIColor.red.withAlphaComponent(0.8)
+        videoButton.setImage(UIImage(systemName: imageName), for: .normal)
+        videoButton.backgroundColor = backgroundColor
     }
 }
