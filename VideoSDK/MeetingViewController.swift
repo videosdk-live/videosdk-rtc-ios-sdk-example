@@ -273,6 +273,38 @@ extension MeetingViewController: MeetingEventListener {
             }
         }
     }
+    
+    /// Called when host requests to turn on the mic/audio
+    func onMicRequested(participantId: String?, accept: @escaping () -> Void, reject: @escaping () -> Void) {
+        let requesterName = participants.first(where: { $0.id == participantId })?.displayName ?? "Meeting host"
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            reject()
+        }
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { _ in
+            accept()
+        }
+        showAlert(
+            title: "Turn On Mic?",
+            message: "\(requesterName) has requested to turn on the mic.",
+            actions: [cancelAction, confirmAction])
+    }
+    
+    func onWebcamRequested(participantId: String?, accept: @escaping () -> Void, reject: @escaping () -> Void) {
+        let requesterName = participants.first(where: { $0.id == participantId })?.displayName ?? "Meeting host"
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            reject()
+        }
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { _ in
+            accept()
+        }
+        
+        showAlert(
+            title: "Turn On Camera?",
+            message: "\(requesterName) has requested to turn on the camera.",
+            actions: [cancelAction, confirmAction])
+    }
 }
 
 // MARK: - ParticipantEventListener
