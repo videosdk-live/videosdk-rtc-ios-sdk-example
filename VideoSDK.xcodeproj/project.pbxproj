@@ -230,9 +230,9 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VideoSDK_Example/Pods-VideoSDK_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
-				"${PODS_ROOT}/VideoSDKRTC/Frameworks/VideoSDKRTC.framework",
-				"${PODS_ROOT}/VideoSDKRTC/Frameworks/vl_mediasoup_client_ios.framework",
-				"${PODS_ROOT}/VideoSDKRTC/Frameworks/WebRTC.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/VideoSDKRTC.framework/VideoSDKRTC",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/vl_mediasoup_client_ios.framework/vl_mediasoup_client_ios",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/WebRTC.framework/WebRTC",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (

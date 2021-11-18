@@ -9,11 +9,12 @@
 /* Begin PBXAggregateTarget section */
 		B6E2C457741647223A51766707CCB8CA /* VideoSDKRTC */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 69E740912F2D95DF054D32CD9C2170EE /* Build configuration list for PBXAggregateTarget "VideoSDKRTC" */;
+			buildConfigurationList = 2A91A3A557C8645CFB88C4D37A189015 /* Build configuration list for PBXAggregateTarget "VideoSDKRTC" */;
 			buildPhases = (
+				1F8859E7B94AE66DF30D2719D8C20FD3 /* [CP] Copy XCFrameworks */,
 			);
 			dependencies = (
-				870B23756D38733CD538B9F820FC2008 /* PBXTargetDependency */,
+				A59864E3E87D1632C256E241F49F7C18 /* PBXTargetDependency */,
 			);
 			name = VideoSDKRTC;
 		};
@@ -49,6 +50,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4DCF4A5FEBDF3816D7C2ED42AB8AEFB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9B78EE4AF6AE03E79D88886319853FF7;
+			remoteInfo = Starscream;
+		};
 		64BF92D2DC4275C2CC782784BC4F8301 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -57,13 +65,6 @@
 			remoteInfo = VideoSDKRTC;
 		};
 		B0BB337EC621EB1943E9A0E1066156DE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9B78EE4AF6AE03E79D88886319853FF7;
-			remoteInfo = Starscream;
-		};
-		F2671D59A6AD899BA1B29372DE8E7092 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -92,31 +93,32 @@
 		5D405AC0DDF56997EA8968C5EC8A26BF /* FoundationHTTPHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FoundationHTTPHandler.swift; path = Sources/Framer/FoundationHTTPHandler.swift; sourceTree = "<group>"; };
 		5FB1B5D11101042C7F3EF607EDC62D3D /* Server.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Server.swift; path = Sources/Server/Server.swift; sourceTree = "<group>"; };
 		63750FE3ED1886A9DF3F804DFC1664A1 /* FoundationHTTPServerHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FoundationHTTPServerHandler.swift; path = Sources/Framer/FoundationHTTPServerHandler.swift; sourceTree = "<group>"; };
-		677B5C81C355D210CC75FBC7A0AC924C /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebRTC.framework; path = Frameworks/WebRTC.framework; sourceTree = "<group>"; };
-		72CD4695760DFD9E72ED5066CA62CDD2 /* VideoSDKRTC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VideoSDKRTC.release.xcconfig; sourceTree = "<group>"; };
+		6F0E934F6F5B9AD2CD1EF713D20C6CE4 /* VideoSDKRTC-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "VideoSDKRTC-xcframeworks.sh"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		7763C27A451D35B45C009E25862CE9D5 /* Starscream-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Starscream-Info.plist"; sourceTree = "<group>"; };
 		81A2251F1CF6C1BC9DBC57C18271350B /* HTTPHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPHandler.swift; path = Sources/Framer/HTTPHandler.swift; sourceTree = "<group>"; };
 		8421AAEF6E1134F6A0476EC9077421BB /* Pods-VideoSDK_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VideoSDK_Example-frameworks.sh"; sourceTree = "<group>"; };
 		891B2270823847ED23F2ECFC28F935EC /* Starscream */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Starscream; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E422A0EADA553D30EA2E80A73A34C3 /* Starscream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Starscream.release.xcconfig; sourceTree = "<group>"; };
-		9C195B51585412BCA5B895A9F874F02B /* VideoSDKRTC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VideoSDKRTC.debug.xcconfig; sourceTree = "<group>"; };
+		9AA3571F1D9BC3D1A0AB29AA9EB804C1 /* VideoSDKRTC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VideoSDKRTC.release.xcconfig; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A1A2C2F64E15A8EE7AE0722DA351EE47 /* WebSocketServer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebSocketServer.swift; path = Sources/Server/WebSocketServer.swift; sourceTree = "<group>"; };
 		A7BEAF8D0BC417929E3BF30D43B1FF6F /* Security.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Security.swift; path = Sources/Security/Security.swift; sourceTree = "<group>"; };
 		B45FFB341B118912CB87B36A476B4968 /* Data+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Data+Extensions.swift"; path = "Sources/DataBytes/Data+Extensions.swift"; sourceTree = "<group>"; };
+		B5D6ED21B2B191D5C1F5BEABA9E7CABA /* VideoSDKRTC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VideoSDKRTC.debug.xcconfig; sourceTree = "<group>"; };
 		B86973CAD55DFA2F43D64216941CE04E /* Pods-VideoSDK_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VideoSDK_Example-dummy.m"; sourceTree = "<group>"; };
-		B9C47DAA94FB385FBC3D8FFFB174DD8D /* vl_mediasoup_client_ios.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = vl_mediasoup_client_ios.framework; path = Frameworks/vl_mediasoup_client_ios.framework; sourceTree = "<group>"; };
 		C6C8743C5BB5A348FB4E8091E7003F0D /* Compression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Compression.swift; path = Sources/Compression/Compression.swift; sourceTree = "<group>"; };
 		C9411F36C064736983624EDF97049791 /* NativeEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NativeEngine.swift; path = Sources/Engine/NativeEngine.swift; sourceTree = "<group>"; };
-		CE657C163293D93F4627FB2A020D2ECF /* VideoSDKRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoSDKRTC.framework; path = Frameworks/VideoSDKRTC.framework; sourceTree = "<group>"; };
+		CD5ABB543E50B9525919AD2D76923114 /* VideoSDKRTC.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = VideoSDKRTC.xcframework; path = Frameworks/VideoSDKRTC.xcframework; sourceTree = "<group>"; };
 		CFE0A1FC4DEBF6AB6E354DF1FE6C00CF /* Framer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Framer.swift; path = Sources/Framer/Framer.swift; sourceTree = "<group>"; };
 		D4B6F202ED9D86710097988B1B7E721D /* Pods-VideoSDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VideoSDK_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D72318A40565DFD8BEABC3B6B56ACAB1 /* Pods-VideoSDK_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VideoSDK_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		E2FBAF904ED704E015EDB17B1F3EF2E0 /* Pods-VideoSDK_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-VideoSDK_Example.modulemap"; sourceTree = "<group>"; };
+		E52418C48CDE0D8FCDA6C274EE99A674 /* WebRTC.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = WebRTC.xcframework; path = Frameworks/WebRTC.xcframework; sourceTree = "<group>"; };
 		E7EE7C9D6D96EA4E221A5F8A80B6888F /* Transport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Transport.swift; path = Sources/Transport/Transport.swift; sourceTree = "<group>"; };
 		F08C044044432B9EA960C0A70FCC73EC /* Pods-VideoSDK_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VideoSDK_Example-umbrella.h"; sourceTree = "<group>"; };
 		F8A9BAA5DD2EB44850BC5C098A69803C /* WSEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WSEngine.swift; path = Sources/Engine/WSEngine.swift; sourceTree = "<group>"; };
+		F97B0A84101AD84011F81D87C839E491 /* vl_mediasoup_client_ios.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = vl_mediasoup_client_ios.xcframework; path = Frameworks/vl_mediasoup_client_ios.xcframework; sourceTree = "<group>"; };
 		FD108BAC3CAFFC31FE31BD7B5837AD51 /* Pods-VideoSDK_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-VideoSDK_Example"; path = Pods_VideoSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -140,6 +142,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0AFB54092B7770098923ABC77060F4DA /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6F0E934F6F5B9AD2CD1EF713D20C6CE4 /* VideoSDKRTC-xcframeworks.sh */,
+				B5D6ED21B2B191D5C1F5BEABA9E7CABA /* VideoSDKRTC.debug.xcconfig */,
+				9AA3571F1D9BC3D1A0AB29AA9EB804C1 /* VideoSDKRTC.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/VideoSDKRTC";
+			sourceTree = "<group>";
+		};
 		1D53F0EEC48953507B7D3DD45CA3543B /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,16 +194,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3719E2A4F2BC8F117EDCC8B8140F107D /* VideoSDKRTC */ = {
-			isa = PBXGroup;
-			children = (
-				B053A11D442CF9BD37F4735198709A6A /* Frameworks */,
-				8F8DBFF541F3570FBF76AFA72F768E45 /* Support Files */,
-			);
-			name = VideoSDKRTC;
-			path = VideoSDKRTC;
-			sourceTree = "<group>";
-		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,7 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				8D5F579DD30D61A604252DEC8C5F3860 /* Starscream */,
-				3719E2A4F2BC8F117EDCC8B8140F107D /* VideoSDKRTC */,
+				B8B6C516100503A27F45B1E5AA910D56 /* VideoSDKRTC */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -237,24 +240,24 @@
 			path = Starscream;
 			sourceTree = "<group>";
 		};
-		8F8DBFF541F3570FBF76AFA72F768E45 /* Support Files */ = {
+		B38B8C15A44F5C62B8814891EBEB0907 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9C195B51585412BCA5B895A9F874F02B /* VideoSDKRTC.debug.xcconfig */,
-				72CD4695760DFD9E72ED5066CA62CDD2 /* VideoSDKRTC.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/VideoSDKRTC";
-			sourceTree = "<group>";
-		};
-		B053A11D442CF9BD37F4735198709A6A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				CE657C163293D93F4627FB2A020D2ECF /* VideoSDKRTC.framework */,
-				B9C47DAA94FB385FBC3D8FFFB174DD8D /* vl_mediasoup_client_ios.framework */,
-				677B5C81C355D210CC75FBC7A0AC924C /* WebRTC.framework */,
+				CD5ABB543E50B9525919AD2D76923114 /* VideoSDKRTC.xcframework */,
+				F97B0A84101AD84011F81D87C839E491 /* vl_mediasoup_client_ios.xcframework */,
+				E52418C48CDE0D8FCDA6C274EE99A674 /* WebRTC.xcframework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B8B6C516100503A27F45B1E5AA910D56 /* VideoSDKRTC */ = {
+			isa = PBXGroup;
+			children = (
+				B38B8C15A44F5C62B8814891EBEB0907 /* Frameworks */,
+				0AFB54092B7770098923ABC77060F4DA /* Support Files */,
+			);
+			name = VideoSDKRTC;
+			path = VideoSDKRTC;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -390,6 +393,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1F8859E7B94AE66DF30D2719D8C20FD3 /* [CP] Copy XCFrameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/VideoSDKRTC/VideoSDKRTC-xcframeworks.sh",
+				"${PODS_ROOT}/VideoSDKRTC/Frameworks/VideoSDKRTC.xcframework",
+				"${PODS_ROOT}/VideoSDKRTC/Frameworks/vl_mediasoup_client_ios.xcframework",
+				"${PODS_ROOT}/VideoSDKRTC/Frameworks/WebRTC.xcframework",
+			);
+			name = "[CP] Copy XCFrameworks";
+			outputPaths = (
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/VideoSDKRTC.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/vl_mediasoup_client_ios.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/WebRTC.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/VideoSDKRTC/VideoSDKRTC-xcframeworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		37BB6AD416B2FC8B9D0B5EDF01CDA634 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -436,17 +464,17 @@
 			target = 9B78EE4AF6AE03E79D88886319853FF7 /* Starscream */;
 			targetProxy = B0BB337EC621EB1943E9A0E1066156DE /* PBXContainerItemProxy */;
 		};
-		870B23756D38733CD538B9F820FC2008 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Starscream;
-			target = 9B78EE4AF6AE03E79D88886319853FF7 /* Starscream */;
-			targetProxy = F2671D59A6AD899BA1B29372DE8E7092 /* PBXContainerItemProxy */;
-		};
 		97E8BB29CD64A5A8E18816E1BC0E757D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = VideoSDKRTC;
 			target = B6E2C457741647223A51766707CCB8CA /* VideoSDKRTC */;
 			targetProxy = 64BF92D2DC4275C2CC782784BC4F8301 /* PBXContainerItemProxy */;
+		};
+		A59864E3E87D1632C256E241F49F7C18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Starscream;
+			target = 9B78EE4AF6AE03E79D88886319853FF7 /* Starscream */;
+			targetProxy = 4DCF4A5FEBDF3816D7C2ED42AB8AEFB5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -486,21 +514,6 @@
 			};
 			name = Release;
 		};
-		785CCDFAEBA6CA8DFC6861557722DB59 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C195B51585412BCA5B895A9F874F02B /* VideoSDKRTC.debug.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
 		80353CD044352EB25177A464B1165673 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 90E422A0EADA553D30EA2E80A73A34C3 /* Starscream.release.xcconfig */;
@@ -530,6 +543,22 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		885A6B4266CAD7975F6259D896C97131 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9AA3571F1D9BC3D1A0AB29AA9EB804C1 /* VideoSDKRTC.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -726,25 +755,33 @@
 			};
 			name = Debug;
 		};
-		C932BE97778F9B73AF05F692DF1277C2 /* Release */ = {
+		C5480309BDA446B8AFF8CC8F030412D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 72CD4695760DFD9E72ED5066CA62CDD2 /* VideoSDKRTC.release.xcconfig */;
+			baseConfigurationReference = B5D6ED21B2B191D5C1F5BEABA9E7CABA /* VideoSDKRTC.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2A91A3A557C8645CFB88C4D37A189015 /* Build configuration list for PBXAggregateTarget "VideoSDKRTC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5480309BDA446B8AFF8CC8F030412D6 /* Debug */,
+				885A6B4266CAD7975F6259D896C97131 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3EA01B44A9085F30CFC67B83ED170499 /* Build configuration list for PBXNativeTarget "Pods-VideoSDK_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -768,15 +805,6 @@
 			buildConfigurations = (
 				97CFD2EBB8E28F03BDCBFEBEC8ECF3B0 /* Debug */,
 				80353CD044352EB25177A464B1165673 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		69E740912F2D95DF054D32CD9C2170EE /* Build configuration list for PBXAggregateTarget "VideoSDKRTC" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				785CCDFAEBA6CA8DFC6861557722DB59 /* Debug */,
-				C932BE97778F9B73AF05F692DF1277C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
