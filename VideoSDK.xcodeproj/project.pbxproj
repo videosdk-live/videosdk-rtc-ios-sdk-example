@@ -230,9 +230,9 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VideoSDK_Example/Pods-VideoSDK_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
-				"${PODS_ROOT}/VideoSDKRTC/Frameworks/VideoSDKRTC.framework",
-				"${PODS_ROOT}/VideoSDKRTC/Frameworks/vl_mediasoup_client_ios.framework",
-				"${PODS_ROOT}/VideoSDKRTC/Frameworks/WebRTC.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/VideoSDKRTC.framework/VideoSDKRTC",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/vl_mediasoup_client_ios.framework/vl_mediasoup_client_ios",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/WebRTC.framework/WebRTC",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -421,12 +421,12 @@
 			baseConfigurationReference = 856B94476BC9BC2182A719B5 /* Pods-VideoSDK_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8GZ776NSU2;
 				INFOPLIST_FILE = VideoSDK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zujo.videosdk.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -441,12 +441,12 @@
 			baseConfigurationReference = AF584C9C67779E0C3308AD9A /* Pods-VideoSDK_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8GZ776NSU2;
 				INFOPLIST_FILE = VideoSDK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zujo.videosdk.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
