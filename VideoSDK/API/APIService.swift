@@ -8,7 +8,7 @@
 
 import Foundation
 
-let LOCAL_SERVER_URL = "<-----SERVER URL------->"
+let LOCAL_SERVER_URL = "https://dev-ios-api.zujonow.com"
 
 enum EndPoint {
     case getToken

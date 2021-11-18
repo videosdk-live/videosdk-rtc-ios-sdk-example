@@ -1,10 +1,10 @@
 PODS:
   - Starscream (4.0.4)
-  - VideoSDKRTC (1.1.2):
-    - Starscream
+  - VideoSDKRTC (1.2.0):
+    - Starscream (~> 4.0.4)
 
 DEPENDENCIES:
-  - VideoSDKRTC (from `https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git`)
+  - VideoSDKRTC (from `./`)
 
 SPEC REPOS:
   trunk:
@@ -12,17 +12,12 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   VideoSDKRTC:
-    :git: https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git
-
-CHECKOUT OPTIONS:
-  VideoSDKRTC:
-    :commit: 6a603fd4a1cce818587bb65d7becb7f643a837ec
-    :git: https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git
+    :path: "./"
 
 SPEC CHECKSUMS:
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
-  VideoSDKRTC: a1a58c5821fd51b5bc770a1b7938a6ffc7e8d12f
+  VideoSDKRTC: 6a1a0f61631bfc3317c04c718b1ad0e3c5eb93a3
 
-PODFILE CHECKSUM: d25ef281720df713704de71c990d41e2aaa6e678
+PODFILE CHECKSUM: d158055db525b7150cde94e4216a7c45f0678c9a
 
 COCOAPODS: 1.11.2

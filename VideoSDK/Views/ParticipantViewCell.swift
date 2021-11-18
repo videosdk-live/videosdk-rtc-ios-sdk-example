@@ -52,14 +52,16 @@ class ParticipantViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     
-        setupVideoView()
-        setupNameView()
-        updateMicButton()
-        
         // border
         contentView.layer.borderWidth = 4.0
-        micButton.makeRounded()
-        videoButton.makeRounded()
+        
+        setupVideoView()
+        setupNameView()
+        setupButtons()
+        
+        // update buttons
+        updateMicButton()
+        updateVideoButton()
     }
     
     override func prepareForReuse() {
@@ -182,6 +184,11 @@ extension ParticipantViewCell {
     func setupNameView() {
         nameView.makeRounded()
         nameContainerView.layer.cornerRadius = 5
+    }
+    
+    func setupButtons() {
+        micButton.makeRounded()
+        videoButton.makeRounded()
     }
     
     func updateMicButton() {
