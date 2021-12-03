@@ -2,7 +2,7 @@
 
 ## What is it?
 
-This code sample demonstrates a one-to-one and group video call application built with [Video SDK RTC IOS SDK](https://docs.videosdk.live/docs/realtime-communication/sdk-reference/ios-sdk/setup)
+This code sample demonstrates a one-to-one and group video call application built with [Video SDK RTC IOS SDK](https://docs.videosdk.live/docs/guide/video-and-audio-calling-api-sdk/ios-sdk)
 
 - Built for serverless video calling experience in IOS.
 - Scale it upto 5,000 participants with low code.
@@ -23,7 +23,7 @@ This code sample demonstrates a one-to-one and group video call application buil
 
 ## Device support
 
-Visit our official [documentation](https://docs.videosdk.live/docs/realtime-communication/sdk-reference/ios-sdk/setup) for more information
+Visit our official [documentation](https://docs.videosdk.live/docs/guide/video-and-audio-calling-api-sdk/ios-sdk) for more information
 
 ## Prerequisites
 
@@ -41,12 +41,12 @@ You must have the following installed:
 2. Clone the repo
 
    ```sh
-   $ git clone https://github.com/videosdk-live/videosdk-rtc-ios-sdk-example.git
+   git clone https://github.com/videosdk-live/videosdk-rtc-ios-sdk-example.git
    ```
 
 3. Run the project.
 
-For more information, visit [official documentation](https://docs.videosdk.live/docs/realtime-communication/sdk-reference/android-sdk/setup)
+For more information, visit [official documentation](https://docs.videosdk.live/docs/guide/video-and-audio-calling-api-sdk/getting-started)
 
 Related
 
