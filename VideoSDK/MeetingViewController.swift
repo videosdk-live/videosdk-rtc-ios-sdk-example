@@ -23,13 +23,18 @@ enum MenuOption: String {
     case stopRecording = "Stop Recording"
     case startLivestream = "Start Livestream"
     case stopLivestream = "Stop Livestream"
+    case toggleMic = "Toggle Mic"
+    case toggleWebcam = "Toggle Webcam"
+    case remove = "Remove"
+    case leaveMeeting = "Leave"
+    case endMeeting = "End Meeting"
     
     var style: UIAlertAction.Style {
         switch self {
-        case .startRecording, .startLivestream:
-            return .default
-        case .stopRecording, .stopLivestream:
+        case .stopRecording, .stopLivestream, .remove, .endMeeting:
             return .destructive
+        default:
+            return .default
         }
     }
 }
@@ -44,6 +49,7 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var screenSharingView: ScreenSharingView!
+    @IBOutlet weak var buttonsView: UIView!
     
     /// View for handling meeting controls consists of Mic, Video, and End buttons
     lazy var buttonControlsView: ButtonControlsView! = {
@@ -158,6 +164,11 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource {
         
         // set
         cell.setParticipant(participant)
+        
+        // on menu tap
+        cell.onMenuTapped = { peer in
+            self.showParticipantControlOptions(peer)
+        }
         
         return cell
     }
@@ -290,6 +301,7 @@ extension MeetingViewController: MeetingEventListener {
             actions: [cancelAction, confirmAction])
     }
     
+    /// Called when host requests to turn on the camera/video
     func onWebcamRequested(participantId: String?, accept: @escaping () -> Void, reject: @escaping () -> Void) {
         let requesterName = participants.first(where: { $0.id == participantId })?.displayName ?? "Meeting host"
         
@@ -386,7 +398,18 @@ private extension MeetingViewController {
         
         // onEndMeetingTapped
         buttonControlsView.onEndMeetingTapped = {
-            self.meeting?.leave()
+            let menuOptions: [MenuOption] = [.leaveMeeting, .endMeeting]
+            
+            self.showActionsheet(options: menuOptions, fromView: self.buttonControlsView.leaveMeetingButton) { option in
+                switch option {
+                case .leaveMeeting:
+                    self.meeting?.leave()
+                case .endMeeting:
+                    self.meeting?.end()
+                default:
+                    break
+                }
+            }
         }
         
         // onCameraTapped
@@ -413,6 +436,9 @@ private extension MeetingViewController {
                     self.performSegue(withIdentifier: addStreamOutputSegueIdentifier, sender: nil)
                 case .stopLivestream:
                     self.stopLivestream()
+                
+                default:
+                    break
                 }
             }
         }
@@ -424,6 +450,35 @@ private extension MeetingViewController {
     
     func stopLivestream() {
         meeting?.stopLivestream()
+    }
+    
+    func showParticipantControlOptions(_ participant: Participant) {
+        guard let cell = cellForParticipant(participant) else { return }
+        
+        let menuOptions: [MenuOption] = [.toggleMic, .toggleWebcam, .remove]
+        self.showActionsheet(options: menuOptions, fromView: cell.menuButton) { option in
+            switch option {
+            case .toggleMic:
+                if !cell.micEnabled {
+                    participant.enableMic()
+                } else {
+                    participant.disableMic()
+                }
+                
+            case .toggleWebcam:
+                if !cell.videoEnabled {
+                    participant.enableWebcam()
+                } else {
+                    participant.disableWebcam()
+                }
+                
+            case .remove:
+                participant.remove()
+                
+            default:
+                break
+            }
+        }
     }
 }
 
@@ -541,15 +596,8 @@ private extension MeetingViewController {
         // initially hide screensharing view
         screenSharingView.isHidden = true
         
-        view.addSubview(buttonControlsView)
-        
-        buttonControlsView.translatesAutoresizingMaskIntoConstraints = false
-        buttonControlsView.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        buttonControlsView.widthAnchor.constraint(equalToConstant: 320).isActive = true
-        buttonControlsView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        buttonControlsView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
-        
-        view.bringSubviewToFront(buttonControlsView)
+        buttonsView.addSubview(buttonControlsView)
+        buttonControlsView.frame = buttonsView.bounds
     }
     
     func updateMenuButton() {

@@ -16,36 +16,30 @@ class ParticipantViewCell: UICollectionViewCell {
     
     @IBOutlet weak var videoContainerView: UIView!
     @IBOutlet weak var videoView: RTCMTLVideoView!
-    @IBOutlet weak var videoNameBackgroundView: UIView!
-    @IBOutlet weak var videoViewNameLabel: UILabel!
     
     @IBOutlet weak var nameContainerView: UIView!
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var nameInitialsLabel: UILabel!
+    
+    @IBOutlet weak var nameBackgroundView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var livestreamIndicator: UIImageView!
     @IBOutlet weak var micButton: UIButton!
-    @IBOutlet weak var videoButton: UIButton!
+    @IBOutlet weak var menuButton: UIButton!
     
+    // menu button tap handler
+    public var onMenuTapped: ((Participant) -> Void)?
     
     // MARK: - Properties
     
     private var participant: Participant?
     
     // handling for mic
-    private var micEnabled = false {
-        didSet {
-            updateMicButton()
-        }
-    }
+    private(set) var micEnabled = false
     
     // handling for video
-    private var videoEnabled = false {
-        didSet {
-            updateVideoButton()
-        }
-    }
+    private(set) var videoEnabled = false
     
     // MARK: - Life Cycle
     
@@ -57,11 +51,8 @@ class ParticipantViewCell: UICollectionViewCell {
         
         setupVideoView()
         setupNameView()
+        setupNameBackgroundView()
         setupButtons()
-        
-        // update buttons
-        updateMicButton()
-        updateVideoButton()
     }
     
     override func prepareForReuse() {
@@ -76,7 +67,6 @@ class ParticipantViewCell: UICollectionViewCell {
         self.participant = participant
         
         let nameComponents = participant.displayName.components(separatedBy: " ")
-        videoViewNameLabel.text = participant.displayName
         nameLabel.text = nameComponents.first
         
         nameInitialsLabel.text = nameComponents
@@ -129,20 +119,9 @@ class ParticipantViewCell: UICollectionViewCell {
     
     // MARK: - Actions
     
-    @IBAction func micButtonTapped(_ sender: Any) {
-        if micEnabled {
-            participant?.disableMic()
-        } else {
-            participant?.enableMic()
-        }
-    }
-    
-    @IBAction func videoButtonTapped(_ sender: Any) {
-        if videoEnabled {
-            participant?.disableWebcam()
-        } else {
-            participant?.enableWebcam()
-        }
+    @IBAction func menuButtonTapped(_ sender: Any) {
+        guard let peer = participant else { return }
+        onMenuTapped?(peer)
     }
 }
 
@@ -164,6 +143,7 @@ extension ParticipantViewCell {
     
     func updateMic(_ enabled: Bool) {
         micEnabled = enabled
+        updateMicButton()
     }
 }
 
@@ -175,10 +155,9 @@ extension ParticipantViewCell {
     func setupVideoView() {
         videoView.videoContentMode = .scaleAspectFill
         
-        [videoView, videoContainerView, videoNameBackgroundView].forEach {
+        [videoView, videoContainerView].forEach {
             $0?.layer.cornerRadius = 5
         }
-        videoNameBackgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
     }
     
     func setupNameView() {
@@ -186,22 +165,25 @@ extension ParticipantViewCell {
         nameContainerView.layer.cornerRadius = 5
     }
     
+    func setupNameBackgroundView() {
+        nameBackgroundView.layer.cornerRadius = 5
+        nameBackgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        nameLabel.textColor = UIColor.white
+    }
+    
     func setupButtons() {
         micButton.makeRounded()
-        videoButton.makeRounded()
+        micButton.setImage(UIImage(named: "mic_off"), for: .normal)
+        micButton.backgroundColor = UIColor.systemRed
+        micButton.isUserInteractionEnabled = false
+        updateMicButton()
+        
+        menuButton.setImage(UIImage(named: "more"), for: .normal)
+        menuButton.layer.cornerRadius = 5
+        menuButton.backgroundColor = UIColor.black.withAlphaComponent(0.4)
     }
     
     func updateMicButton() {
-        let imageName = micEnabled ? "mic" : "mic.slash"
-        let backgroundColor = micEnabled ? UIColor.gray.withAlphaComponent(0.8) : UIColor.red.withAlphaComponent(0.8)
-        micButton.setImage(UIImage(systemName: imageName), for: .normal)
-        micButton.backgroundColor = backgroundColor
-    }
-    
-    func updateVideoButton() {
-        let imageName = videoEnabled ? "video" : "video.slash"
-        let backgroundColor = videoEnabled ? UIColor.gray.withAlphaComponent(0.8) : UIColor.red.withAlphaComponent(0.8)
-        videoButton.setImage(UIImage(systemName: imageName), for: .normal)
-        videoButton.backgroundColor = backgroundColor
+        micButton.alpha = micEnabled ? 0.0 : 1.0
     }
 }

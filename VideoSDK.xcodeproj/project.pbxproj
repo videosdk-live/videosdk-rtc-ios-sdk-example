@@ -22,6 +22,7 @@
 		A2B4D919273941FC008AF38C /* ScreenSharingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B4D917273941FC008AF38C /* ScreenSharingView.swift */; };
 		A2B4D91B2739420C008AF38C /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B4D91A2739420C008AF38C /* UIViewController+Extension.swift */; };
 		A2B4D91E2739427D008AF38C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B4D91D2739427D008AF38C /* APIService.swift */; };
+		A2FC43522772E7C9003DFF20 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FC43512772E7C9003DFF20 /* UIColor+Extension.swift */; };
 		F9716B6E06BC87FC0FAB89C3 /* Pods_VideoSDK_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97C50A93B796B4F9C09B5D6D /* Pods_VideoSDK_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		A2B4D917273941FC008AF38C /* ScreenSharingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenSharingView.swift; sourceTree = "<group>"; };
 		A2B4D91A2739420C008AF38C /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		A2B4D91D2739427D008AF38C /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		A2FC43512772E7C9003DFF20 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		AF584C9C67779E0C3308AD9A /* Pods-VideoSDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoSDK_Example.release.xcconfig"; path = "Target Support Files/Pods-VideoSDK_Example/Pods-VideoSDK_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,6 +138,7 @@
 		A2573BEE26F120960087AB36 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A2FC43512772E7C9003DFF20 /* UIColor+Extension.swift */,
 				A2573BEF26F120960087AB36 /* View+Extension.swift */,
 				A2B4D91A2739420C008AF38C /* UIViewController+Extension.swift */,
 			);
@@ -278,6 +281,7 @@
 				A2573BF226F120960087AB36 /* ButtonControlsView.swift in Sources */,
 				A2573BE826F1204E0087AB36 /* MeetingViewController.swift in Sources */,
 				A2573BE926F1204E0087AB36 /* StartViewController.swift in Sources */,
+				A2FC43522772E7C9003DFF20 /* UIColor+Extension.swift in Sources */,
 				A2B4D915273941ED008AF38C /* AddStreamOutputiewController.swift in Sources */,
 				A2B4D91E2739427D008AF38C /* APIService.swift in Sources */,
 				A2573BF126F120960087AB36 /* ParticipantViewCell.swift in Sources */,
