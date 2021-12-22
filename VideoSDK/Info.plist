@@ -26,6 +26,10 @@
 	<string>Allow camera access to start video.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Allow microphone access to start audio.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>voip</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

@@ -110,42 +110,42 @@ extension ButtonControlsView {
         updateCameraButton()
         
         [micButton, videoButton, leaveMeetingButton, menuButton, cameraButton].forEach {
-            $0?.makeRounded()
+            $0?.layer.cornerRadius = 8
             $0?.tintColor = .white
             $0?.heightAnchor.constraint(equalTo: $0!.widthAnchor, multiplier: 1.0).isActive = true
         }
     }
     
     func updateMicButton() {
-        let imageName = micEnabled ? "mic" : "mic.slash"
-        let backgroundColor = micEnabled ? UIColor.gray.withAlphaComponent(0.8) : UIColor.red.withAlphaComponent(0.8)
-        micButton.setImage(UIImage(systemName: imageName), for: .normal)
+        let imageName = micEnabled ? "mic_on" : "mic_off"
+        let backgroundColor = micEnabled ? UIColor.systemGray : UIColor.systemRed
+        micButton.setImage(UIImage(named: imageName), for: .normal)
         micButton.backgroundColor = backgroundColor
     }
     
     func updateVideoButton() {
-        let imageName = videoEnabled ? "video" : "video.slash"
-        let backgroundColor = videoEnabled ? UIColor.gray.withAlphaComponent(0.8) : UIColor.red.withAlphaComponent(0.8)
-        videoButton.setImage(UIImage(systemName: imageName), for: .normal)
+        let imageName = videoEnabled ? "camera_on" : "camera_off"
+        let backgroundColor = videoEnabled ? UIColor.systemGray : UIColor.systemRed
+        videoButton.setImage(UIImage(named: imageName), for: .normal)
         videoButton.backgroundColor = backgroundColor
     }
     
     func updateLeaveMeetingButton() {
-        leaveMeetingButton.setImage(UIImage(systemName: "phone.fill"), for: .normal)
-        leaveMeetingButton.backgroundColor = UIColor.red.withAlphaComponent(0.8)
+        leaveMeetingButton.setImage(UIImage(named: "call_end"), for: .normal)
+        leaveMeetingButton.backgroundColor = UIColor.systemRed
     }
     
     func updateMenuButton() {
-        let imageName = "ellipsis"
-        let backgroundColor = !menuButtonEnabled ? UIColor.gray.withAlphaComponent(0.8) : UIColor.red.withAlphaComponent(0.8)
-        menuButton.setImage(UIImage(systemName: imageName), for: .normal)
+        let imageName = "more"
+        let backgroundColor = !menuButtonEnabled ? UIColor.systemGray : UIColor.systemRed
+        menuButton.setImage(UIImage(named: imageName), for: .normal)
         menuButton.backgroundColor = backgroundColor
     }
     
     func updateCameraButton() {
-        let imageName = cameraPosition == .front ? "arrow.triangle.2.circlepath.camera" : "arrow.triangle.2.circlepath.camera.fill"
-        let backgroundColor = UIColor.gray.withAlphaComponent(0.8)
-        cameraButton.setImage(UIImage(systemName: imageName), for: .normal)
+        let imageName = "change_camera"
+        let backgroundColor = UIColor.systemGray
+        cameraButton.setImage(UIImage(named: imageName), for: .normal)
         cameraButton.backgroundColor = backgroundColor
     }
 }

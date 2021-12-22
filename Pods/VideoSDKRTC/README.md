@@ -28,7 +28,6 @@ pod 'VideoSDKRTC', :git => 'https://github.com/videosdk-live/videosdk-rtc-ios-sd
 
 ## Important
 
-- Currently this only supports iOS device (arm64). Running on simulator is not supported.
 - You will need to set 'Enable Bitcode' to false.
 
 ## Usage

@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
 // swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name VideoSDKRTC
 import AVFoundation
 import Foundation
@@ -90,6 +90,7 @@ extension VideoSDKRTC.MediaStream {
 extension VideoSDKRTC.Meeting {
   public func join()
   public func leave()
+  public func end()
   public func enableWebcam()
   public func disableWebcam()
   public func switchWebcam(position: VideoSDKRTC.CameraPosition = .front)
@@ -156,6 +157,7 @@ extension VideoSDKRTC.Participant {
   public func disableMic()
   public func enableWebcam()
   public func disableWebcam()
+  public func remove()
 }
 extension VideoSDKRTC.Participant {
   public func addStream(_ stream: VideoSDKRTC.MediaStream)
