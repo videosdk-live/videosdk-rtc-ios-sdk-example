@@ -1,6 +1,6 @@
 {
   "name": "VideoSDKRTC",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "summary": "Interactive Video API Experiences for Develoeprs.",
   "description": "Video sdk enables opportunity to integrate immersive video experiences into your application.",
   "homepage": "https://github.com/videosdk-live/videosdk-rtc-ios-sdk",
@@ -13,11 +13,11 @@
   },
   "source": {
     "git": "https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git",
-    "tag": "v1.2.1"
+    "tag": "v1.2.2"
   },
   "swift_versions": "5.0",
   "platforms": {
-    "ios": "13.0"
+    "ios": "11.0"
   },
   "dependencies": {
     "Starscream": [
