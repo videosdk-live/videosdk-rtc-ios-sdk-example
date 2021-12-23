@@ -1,6 +1,6 @@
 use_frameworks!
 
-platform :ios, '13.0'
+platform :ios, '11.0'
 
 target 'VideoSDK_Example' do
   
