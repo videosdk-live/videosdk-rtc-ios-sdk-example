@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Zujo Now-->
+        <!--Video SDK-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="StartViewController" customModule="VideoSDK_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -111,7 +111,7 @@
                             <constraint firstItem="I1m-uL-Dp4" firstAttribute="centerX" secondItem="dwu-cN-bvq" secondAttribute="centerX" id="zPF-Go-KXd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Zujo Now" id="jsl-Xe-hfc"/>
+                    <navigationItem key="navigationItem" title="Video SDK" id="jsl-Xe-hfc"/>
                     <connections>
                         <outlet property="copyMeetingIdButton" destination="EUO-Jn-iQ6" id="Wy7-xP-e4x"/>
                         <outlet property="meetingIdTextField" destination="rda-l2-hhC" id="P3Y-Ke-JXc"/>
