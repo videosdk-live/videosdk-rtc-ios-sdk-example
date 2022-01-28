@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Video SDK-->
+        <!--Zujo Now-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="StartViewController" customModule="VideoSDK_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -102,7 +102,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.1294117719" green="0.12549020350000001" blue="0.19215688110000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.12941176470588234" green="0.12549019607843137" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="dwu-cN-bvq" secondAttribute="trailing" constant="30" id="3gC-Hm-7AN"/>
                             <constraint firstItem="I1m-uL-Dp4" firstAttribute="top" secondItem="dwu-cN-bvq" secondAttribute="bottom" constant="30" id="6hI-CF-XSA"/>
@@ -111,14 +111,14 @@
                             <constraint firstItem="I1m-uL-Dp4" firstAttribute="centerX" secondItem="dwu-cN-bvq" secondAttribute="centerX" id="zPF-Go-KXd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Video SDK" id="jsl-Xe-hfc"/>
+                    <navigationItem key="navigationItem" title="Zujo Now" id="jsl-Xe-hfc"/>
                     <connections>
                         <outlet property="copyMeetingIdButton" destination="EUO-Jn-iQ6" id="Wy7-xP-e4x"/>
                         <outlet property="meetingIdTextField" destination="rda-l2-hhC" id="P3Y-Ke-JXc"/>
                         <outlet property="nameDescriptionLabel" destination="KMi-n1-ouy" id="X3I-wT-cXn"/>
                         <outlet property="nameTextField" destination="3Vb-gE-Ec4" id="YyU-Hx-UGs"/>
                         <outlet property="startMeetingButton" destination="I1m-uL-Dp4" id="wHz-sS-tZl"/>
-                        <segue destination="c23-rP-2jo" kind="presentation" identifier="StartMeeting" modalPresentationStyle="fullScreen" id="HFG-Xa-3cA"/>
+                        <segue destination="4hO-lx-3x2" kind="presentation" identifier="StartMeeting" modalPresentationStyle="fullScreen" id="HFG-Xa-3cA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -138,7 +138,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xbq-Hk-3SH">
-                                <rect key="frame" x="0.0" y="44" width="390" height="766"/>
+                                <rect key="frame" x="0.0" y="88" width="390" height="722"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GDF-7P-ZrO" customClass="ScreenSharingView" customModule="VideoSDK_Example" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="422"/>
@@ -173,7 +173,7 @@
                                         </connections>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VPH-tS-jwU">
-                                        <rect key="frame" x="0.0" y="432" width="390" height="274"/>
+                                        <rect key="frame" x="0.0" y="432" width="390" height="230"/>
                                         <color key="backgroundColor" red="0.12941176470588234" green="0.12549019607843137" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="P1x-WC-9V1">
                                             <size key="itemSize" width="128" height="128"/>
@@ -324,7 +324,7 @@
                                         </connections>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Qr-zo-EFu">
-                                        <rect key="frame" x="0.0" y="716" width="390" height="50"/>
+                                        <rect key="frame" x="0.0" y="672" width="390" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uxe-Ty-vUs">
                                                 <rect key="frame" x="50" y="0.0" width="290" height="50"/>
@@ -343,7 +343,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.1294117719" green="0.12549020350000001" blue="0.19215688110000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.12941176470588234" green="0.12549019607843137" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="21B-kf-iu7" firstAttribute="top" secondItem="xbq-Hk-3SH" secondAttribute="bottom" id="8eM-XA-jlb"/>
                             <constraint firstItem="xbq-Hk-3SH" firstAttribute="leading" secondItem="XnP-e9-YIK" secondAttribute="leading" id="OMO-9Y-gUv"/>
@@ -383,6 +383,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="OFm-kA-gcW"/>
                     <connections>
                         <outlet property="buttonsView" destination="uxe-Ty-vUs" id="2hH-8F-GG9"/>
                         <outlet property="collectionView" destination="VPH-tS-jwU" id="PfI-TO-ken"/>
@@ -392,7 +393,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jql-AL-uf0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1946" y="134"/>
+            <point key="canvasLocation" x="2873.8461538461538" y="133.64928909952607"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8n2-0y-6xg">
@@ -433,7 +434,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7y5-NJ-nHe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2784.8000000000002" y="133.5832083958021"/>
+            <point key="canvasLocation" x="3713.8461538461538" y="132.93838862559241"/>
         </scene>
         <!--Add Streams-->
         <scene sceneID="ES3-Q9-maE">
@@ -553,7 +554,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8oh-DM-fhF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3682" y="134"/>
+            <point key="canvasLocation" x="4610.7692307692305" y="133.64928909952607"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JIo-0e-qWG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4hO-lx-3x2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pmf-Zd-DAO">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="c23-rP-2jo" kind="relationship" relationship="rootViewController" id="FxN-0o-Zxn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nlg-xB-rAK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1944.6153846153845" y="133.64928909952607"/>
         </scene>
     </scenes>
     <resources>
