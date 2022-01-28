@@ -557,7 +557,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="doc.on.doc" catalog="system" width="32" height="32"/>
+        <image name="doc.on.doc" catalog="system" width="116" height="128"/>
         <image name="livestream" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

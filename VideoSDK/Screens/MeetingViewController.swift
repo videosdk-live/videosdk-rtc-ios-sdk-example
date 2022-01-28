@@ -10,15 +10,8 @@ import UIKit
 import VideoSDKRTC
 import AVFoundation
 
-struct MeetingData {
-    let token: String
-    let name: String
-    let meetingId: String
-    let micEnabled: Bool
-    let cameraEnabled: Bool
-}
-
 enum MenuOption: String {
+    case switchCamera = "Switch Camera"
     case startRecording = "Start Recording"
     case stopRecording = "Stop Recording"
     case startLivestream = "Start Livestream"
@@ -42,6 +35,7 @@ enum MenuOption: String {
 private let reuseIdentifier = "ParticipantViewCell"
 private let addStreamOutputSegueIdentifier = "Add Livestream Outputs"
 private let recordingWebhookUrl = "https://www.google.com"
+private let CHAT_TOPIC = "CHAT"
 
 class MeetingViewController: UIViewController, UICollectionViewDataSource {
     
@@ -77,6 +71,9 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource {
     /// keep track of livestream
     private var liveStreamStarted = false
     
+    /// Camera position
+    private var cameraPosition = CameraPosition.front
+    
     
     // MARK: - Life Cycle
     
@@ -92,19 +89,19 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource {
         
         // config
         VideoSDK.config(token: meetingData.token)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
         // init meeting
         initializeMeeting()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        meeting = nil
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -192,6 +189,9 @@ extension MeetingViewController: MeetingEventListener {
         
         // show in ui
         addParticipantToGridView()
+        
+        // listen/subscribe for chat topic
+        meeting?.pubsub.subscribe(topic: CHAT_TOPIC, forListener: self)
     }
     
     /// Meeting ended
@@ -372,6 +372,29 @@ extension MeetingViewController: ParticipantEventListener {
     }
 }
 
+// MARK: - Chat
+
+extension MeetingViewController {
+    
+    func openChat() {
+        let chatViewController = ChatViewController(meeting: meeting!, topic: CHAT_TOPIC)
+        navigationController?.pushViewController(chatViewController, animated: true)
+    }
+}
+
+// MARK: - PubSubMessageListener
+
+extension MeetingViewController: PubSubMessageListener {
+    
+    func onMessageReceived(_ message: PubSubMessage) {
+        print("Message Received:= " + message.message)
+        
+        if let chatViewController = navigationController?.topViewController as? ChatViewController {
+            chatViewController.showNewMessage(message)
+        }
+    }
+}
+
 // MARK: - Actions
 
 private extension MeetingViewController {
@@ -389,6 +412,8 @@ private extension MeetingViewController {
         
         // onVideoTapped
         buttonControlsView.onVideoTapped = { on in
+            self.meeting?.pubsub.publish(topic: "CHAT", message: "How are you?", options: [:])
+            
             if !on {
                 self.meeting?.enableWebcam()
             } else {
@@ -412,19 +437,23 @@ private extension MeetingViewController {
             }
         }
         
-        // onCameraTapped
-        buttonControlsView.onCameraTapped = { position in
-            self.meeting?.switchWebcam(position: position)
+        /// Chat Button Tap
+        buttonControlsView.onChatButtonTapped = {
+            self.openChat()
         }
         
         /// Menu tap
         buttonControlsView.onMenuButtonTapped = {
             var menuOptions: [MenuOption] = []
+            menuOptions.append(.switchCamera)
             menuOptions.append(!self.recordingStarted ? .startRecording : .stopRecording)
             menuOptions.append(!self.liveStreamStarted ? .startLivestream : .stopLivestream)
             
             self.showActionsheet(options: menuOptions, fromView: self.buttonControlsView.menuButton) { option in
                 switch option {
+                case .switchCamera:
+                    self.meeting?.switchWebcam()
+            
                 case .startRecording:
                     self.showAlertWithTextField(title: "Enter Webhook Url", value: recordingWebhookUrl) { url in
                         self.meeting?.startRecording(webhookUrl: url!)

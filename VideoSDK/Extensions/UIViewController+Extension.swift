@@ -60,3 +60,44 @@ extension UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 }
+
+// MARK: - NavigationBar Appearance
+
+extension UIViewController {
+        
+    func setNavigationBarAppearance(_ navigationBar: UINavigationBar = UINavigationBar.appearance()) {
+        if #available(iOS 15.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor.systemDarkBackground
+            appearance.titleTextAttributes = [
+                .foregroundColor: UIColor.white,
+                .font: UIFont.boldSystemFont(ofSize: 18)
+            ]
+            appearance.shadowColor = .clear
+            appearance.shadowImage = UIImage()
+            
+            navigationBar.tintColor = UIColor.white
+            navigationBar.standardAppearance = appearance
+            navigationBar.scrollEdgeAppearance = appearance
+            
+        } else {
+            navigationBar.isTranslucent = false
+            navigationBar.barStyle = .black
+            navigationBar.barTintColor = UIColor.systemDarkBackground
+            navigationBar.tintColor = UIColor.white
+            
+            // Disable shadow image to get rid of hideous white line
+            navigationBar.shadowImage = UIImage()
+            
+            navigationBar.titleTextAttributes = [
+                .foregroundColor: UIColor.white,
+                .font: UIFont.boldSystemFont(ofSize: 18)
+            ]
+            
+            // UIBarButtonItem
+            let barButtonItem = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self])
+            barButtonItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
+        }
+    }
+}

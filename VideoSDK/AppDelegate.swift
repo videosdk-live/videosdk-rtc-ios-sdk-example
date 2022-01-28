@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  VideoSDK
+//  VideoSDK_Example
 //
-//  Created by VideoSDK Team Team on 13/09/21.
+//  Created by VideoSDK Team on 13/09/21.
 //  Copyright © 2021 Zujo Tech Pvt Ltd. All rights reserved.
 //
 

@@ -17,7 +17,7 @@ class ButtonControlsView: UIView {
     @IBOutlet weak var videoButton: UIButton!
     @IBOutlet weak var leaveMeetingButton: UIButton!
     @IBOutlet weak var menuButton: UIButton!
-    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var chatButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,7 +31,7 @@ class ButtonControlsView: UIView {
     var onVideoTapped: ((Bool) -> Void)?
     var onEndMeetingTapped: (() -> Void)?
     var onMenuButtonTapped: (() -> Void)?
-    var onCameraTapped: ((CameraPosition) -> Void)?
+    var onChatButtonTapped: (() -> Void)?
     
     // handling for mic
     var micEnabled = true {
@@ -44,13 +44,6 @@ class ButtonControlsView: UIView {
     var videoEnabled = true {
         didSet {
             updateVideoButton()
-        }
-    }
-    
-    // handling camera position
-    var cameraPosition = CameraPosition.front {
-        didSet {
-            updateCameraButton()
         }
     }
     
@@ -91,9 +84,8 @@ class ButtonControlsView: UIView {
         onMenuButtonTapped?()
     }
     
-    @IBAction func cameraButtonTapped(_ sender: Any) {
-        cameraPosition.toggle()
-        onCameraTapped?(cameraPosition)
+    @IBAction func chatButtonTapped(_ sender: Any) {
+        onChatButtonTapped?()
     }
     
 }
@@ -107,9 +99,9 @@ extension ButtonControlsView {
         updateVideoButton()
         updateLeaveMeetingButton()
         updateMenuButton()
-        updateCameraButton()
+        updateChatButton()
         
-        [micButton, videoButton, leaveMeetingButton, menuButton, cameraButton].forEach {
+        [micButton, videoButton, leaveMeetingButton, menuButton, chatButton].forEach {
             $0?.layer.cornerRadius = 8
             $0?.tintColor = .white
             $0?.heightAnchor.constraint(equalTo: $0!.widthAnchor, multiplier: 1.0).isActive = true
@@ -118,14 +110,14 @@ extension ButtonControlsView {
     
     func updateMicButton() {
         let imageName = micEnabled ? "mic_on" : "mic_off"
-        let backgroundColor = micEnabled ? UIColor.systemGray : UIColor.systemRed
+        let backgroundColor = micEnabled ? UIColor.systemLightBackground : UIColor.systemRed
         micButton.setImage(UIImage(named: imageName), for: .normal)
         micButton.backgroundColor = backgroundColor
     }
     
     func updateVideoButton() {
         let imageName = videoEnabled ? "camera_on" : "camera_off"
-        let backgroundColor = videoEnabled ? UIColor.systemGray : UIColor.systemRed
+        let backgroundColor = videoEnabled ? UIColor.systemLightBackground : UIColor.systemRed
         videoButton.setImage(UIImage(named: imageName), for: .normal)
         videoButton.backgroundColor = backgroundColor
     }
@@ -137,15 +129,15 @@ extension ButtonControlsView {
     
     func updateMenuButton() {
         let imageName = "more"
-        let backgroundColor = !menuButtonEnabled ? UIColor.systemGray : UIColor.systemRed
+        let backgroundColor = !menuButtonEnabled ? UIColor.systemLightBackground : UIColor.systemRed
         menuButton.setImage(UIImage(named: imageName), for: .normal)
         menuButton.backgroundColor = backgroundColor
     }
     
-    func updateCameraButton() {
-        let imageName = "change_camera"
-        let backgroundColor = UIColor.systemGray
-        cameraButton.setImage(UIImage(named: imageName), for: .normal)
-        cameraButton.backgroundColor = backgroundColor
+    func updateChatButton() {
+        let imageName = "chat"
+        let backgroundColor = UIColor.systemLightBackground
+        chatButton.setImage(UIImage(named: imageName), for: .normal)
+        chatButton.backgroundColor = backgroundColor
     }
 }

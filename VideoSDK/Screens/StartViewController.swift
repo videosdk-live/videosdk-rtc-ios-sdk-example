@@ -26,6 +26,8 @@ class StartViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
+        
+        self.serverToken = AUTH_TOKEN
     }
     
     // MARK: - Actions
@@ -33,21 +35,28 @@ class StartViewController: UIViewController {
     @IBAction func startMeetingButtonTapped(_ sender: Any) {
         nameTextField.resignFirstResponder()
         
-        // get token and start meeting
-        APIService.getToken { result in
-            if case .success(let token) = result {
-                self.serverToken = token
-                
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "StartMeeting", sender: nil)
+        if !serverToken.isEmpty {
+            // use provided token for the meeting
+            self.startMeeting()
+        }
+        else if !AUTH_URL.isEmpty {
+            // get auth token from server
+            APIService.getToken { result in
+                if case .success(let token) = result {
+                    self.serverToken = token
+                    self.startMeeting()
                 }
             }
+        }
+        else {
+            // show error popup
+            self.showAlert(title: "Auth Token Required", message: "Please provide auth token to start the meeting.")
         }
     }
     
     @IBAction func copyMeetingIdButtonTapped(_ sender: Any) {
         guard let meetingId = meetingIdTextField.text, !meetingId.isEmpty else { return }
-        let meetingLink = "https://call.videosdk.live/meeting/\(meetingId)"
+        let meetingLink = "https://call.zujonow.com/meeting/\(meetingId)"
         
         UIPasteboard.general.string = meetingLink
         self.showAlert(title: "Link Copied", message: nil, autoDismiss: true)
@@ -55,8 +64,15 @@ class StartViewController: UIViewController {
     
     // MARK: - Navigation
 
+    func startMeeting() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "StartMeeting", sender: nil)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let meetingViewController = segue.destination as? MeetingViewController else {
+        guard let navigation = segue.destination as? UINavigationController,
+            let meetingViewController = navigation.topViewController as? MeetingViewController else {
             return
         }
         

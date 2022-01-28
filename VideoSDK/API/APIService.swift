@@ -8,15 +8,13 @@
 
 import Foundation
 
-let LOCAL_SERVER_URL = "<-----SERVER URL------->"
-
 enum EndPoint {
     case getToken
     case createMeeting(String)
     case validateMeeting(String, String)
     
     var baseURL: URL {
-        URL(string: LOCAL_SERVER_URL)!
+        URL(string: AUTH_URL)!
     }
     
     var value: String {
