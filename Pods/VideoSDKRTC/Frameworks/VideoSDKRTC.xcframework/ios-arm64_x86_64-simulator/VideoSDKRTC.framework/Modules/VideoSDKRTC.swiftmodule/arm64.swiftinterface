@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
-// swift-module-flags: -target arm64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name VideoSDKRTC
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name VideoSDKRTC
 import AVFoundation
 import Foundation
 import Starscream
@@ -85,6 +85,9 @@ extension VideoSDKRTC.MediaStream {
   public var participants: [Swift.String : VideoSDKRTC.Participant] {
     get
   }
+  public var pubsub: VideoSDKRTC.PubSub {
+    get
+  }
   @objc deinit
 }
 extension VideoSDKRTC.Meeting {
@@ -93,7 +96,7 @@ extension VideoSDKRTC.Meeting {
   public func end()
   public func enableWebcam()
   public func disableWebcam()
-  public func switchWebcam(position: VideoSDKRTC.CameraPosition = .front)
+  public func switchWebcam()
   public func muteMic()
   public func unmuteMic()
   public func startRecording(webhookUrl: Swift.String)
@@ -133,6 +136,9 @@ extension VideoSDKRTC.MeetingEventListener {
   public func onSpeakerChanged(participantId: Swift.String?)
   public func onMicRequested(participantId: Swift.String?, accept: @escaping () -> Swift.Void, reject: @escaping () -> Swift.Void)
   public func onWebcamRequested(participantId: Swift.String?, accept: @escaping () -> Swift.Void, reject: @escaping () -> Swift.Void)
+}
+public protocol PubSubMessageListener {
+  func onMessageReceived(_ message: VideoSDKRTC.PubSubMessage)
 }
 @_hasMissingDesignatedInitializers public class Participant : Swift.Equatable {
   public var id: Swift.String {
@@ -179,6 +185,24 @@ public protocol ParticipantEventListener {
 extension VideoSDKRTC.ParticipantEventListener {
   public func onStreamEnabled(_ stream: VideoSDKRTC.MediaStream, forParticipant participant: VideoSDKRTC.Participant)
   public func onStreamDisabled(_ stream: VideoSDKRTC.MediaStream, forParticipant participant: VideoSDKRTC.Participant)
+}
+@_hasMissingDesignatedInitializers public class PubSub {
+  @objc deinit
+}
+extension VideoSDKRTC.PubSub {
+  public func publish(topic: Swift.String, message: Swift.String, options: [Swift.String : Any] = [:])
+  public func subscribe(topic: Swift.String, forListener listener: VideoSDKRTC.PubSubMessageListener)
+  public func unsubscribe(topic: Swift.String, forListener listener: VideoSDKRTC.PubSubMessageListener)
+  public func getMessagesForTopic(_ topic: Swift.String) -> [VideoSDKRTC.PubSubMessage]
+}
+@objc @_hasMissingDesignatedInitializers public class PubSubMessage : ObjectiveC.NSObject {
+  public var id: Swift.String
+  public var topic: Swift.String
+  public var message: Swift.String
+  public var senderId: Swift.String
+  public var senderName: Swift.String
+  public var timestamp: Swift.String
+  @objc deinit
 }
 public enum VideoQuality : Swift.String, Swift.CaseIterable {
   case high, medium, low
