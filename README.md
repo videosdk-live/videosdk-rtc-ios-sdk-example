@@ -43,7 +43,15 @@ You must have the following installed:
    git clone https://github.com/videosdk-live/videosdk-rtc-ios-sdk-example.git
    ```
 
-3. Run the project.
+3. Update the Token value from the videosdk.live dashboard or provide authentication server base url in the `Constants.swift` file.
+
+   ```
+   AUTH_TOKEN = ""
+   #OR
+   AUTH_URL = ""
+   ```
+
+4. Run the project.
 
 For more information, visit [official documentation](https://docs.videosdk.live/docs/guide/video-and-audio-calling-api-sdk/getting-started)
 
