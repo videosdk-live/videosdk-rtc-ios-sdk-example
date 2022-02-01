@@ -11,9 +11,9 @@ You must have the following installed:
 
 ## Getting started
 
-1. There are 2 options
-   Option 1: Get Auth Token from [VideoSDK Dashboard](https://app.videosdk.live/dashboard)
-   Option 2: Setting up Auth Server [Instructions](https://github.com/videosdk-live/videosdk-rtc-nodejs-sdk-example)
+1. There are two options:
+   1. Option 1: Get Auth Token from [VideoSDK Dashboard](https://app.videosdk.live/dashboard)
+   2. Option 2: Setting up Auth Server [Instructions](https://github.com/videosdk-live/videosdk-rtc-nodejs-sdk-example)
 
 2. Clone the repo
 
