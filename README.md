@@ -26,13 +26,13 @@ You must have the following installed:
 4. Either update `AUTH_TOKEN` or `AUTH_URL` in the `Constants.swift` file.
 
    ```
-   public let AUTH_TOKEN =#YOUR_GENERATED_TOKEN
+   public let AUTH_TOKEN ="#YOUR_GENERATED_TOKEN"
    ```
 
    OR
 
    ```
-   public let AUTH_URL=#YOUR_AUTH_SERVER_URL
+   public let AUTH_URL="#YOUR_AUTH_SERVER_URL"
    ```
    
 5. Run the project.
