@@ -23,7 +23,7 @@ You must have the following installed:
 
 3. run `pod install` in terminal from the Example project directory.
 
-4. Either update `AUTH_TOKEN` or `AUTH_URL` in the `.env` file.
+4. Either update `AUTH_TOKEN` or `AUTH_URL` in the `Constants.swift` file.
 
    ```
    AUTH_TOKEN=#YOUR_GENERATED_TOKEN
