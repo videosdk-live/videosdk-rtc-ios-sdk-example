@@ -43,7 +43,7 @@ You must have the following installed:
    git clone https://github.com/videosdk-live/videosdk-rtc-ios-sdk-example.git
    ```
 
-3. Update the Token value from the videosdk.live dashboard or provide authentication server base url in the `Constants.swift` file.
+3. Update **AUTH_TOKEN** or **AUTH_URL** in the `Constants.swift` file.
 
    ```
    AUTH_TOKEN = ""
