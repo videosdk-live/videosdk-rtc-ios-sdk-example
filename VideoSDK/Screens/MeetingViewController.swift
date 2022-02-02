@@ -411,9 +411,7 @@ private extension MeetingViewController {
         }
         
         // onVideoTapped
-        buttonControlsView.onVideoTapped = { on in
-            self.meeting?.pubsub.publish(topic: "CHAT", message: "How are you?", options: [:])
-            
+        buttonControlsView.onVideoTapped = { on in  
             if !on {
                 self.meeting?.enableWebcam()
             } else {
