@@ -21,6 +21,11 @@ enum MenuOption: String {
     case remove = "Remove"
     case leaveMeeting = "Leave"
     case endMeeting = "End Meeting"
+    case switchAudioOutput = "Switch Audio Output"
+    case toggleQuality = "Change Video Quality"
+    case high = "High"
+    case low = "Low"
+    case medium = "Medium"
     
     var style: UIAlertAction.Style {
         switch self {
@@ -37,7 +42,7 @@ private let addStreamOutputSegueIdentifier = "Add Livestream Outputs"
 private let recordingWebhookUrl = "https://www.google.com"
 private let CHAT_TOPIC = "CHAT"
 
-class MeetingViewController: UIViewController, UICollectionViewDataSource {
+class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScrollViewDelegate {
     
     // MARK: - View
     
@@ -169,12 +174,31 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource {
         
         return cell
     }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let indexPaths = collectionView.indexPathsForVisibleItems
+        let visibleParticipants: [Participant] = indexPaths.map { participants[$0.row] }
+        let nonVisibleParticipants: [Participant] = participants.filter { !visibleParticipants.contains($0) }
+        
+        // resume streams for visible participants
+        visibleParticipants.forEach { participant in
+            if let videoStream = participant.streams.first(where: { $1.kind == .video })?.value {
+                videoStream.resume()
+            }
+        }
+        // pause streams for non visible participants
+        nonVisibleParticipants.forEach { participant in
+            if let videoStream = participant.streams.first(where: { $1.kind == .video })?.value {
+                videoStream.pause()
+            }
+        }
+    }
 }
 
 // MARK: - MeetingEventListener
 
 extension MeetingViewController: MeetingEventListener {
-    
+
     /// Meeting started
     func onMeetingJoined() {
         
@@ -317,6 +341,7 @@ extension MeetingViewController: MeetingEventListener {
             message: "\(requesterName) has requested to turn on the camera.",
             actions: [cancelAction, confirmAction])
     }
+    
 }
 
 // MARK: - ParticipantEventListener
@@ -446,6 +471,7 @@ private extension MeetingViewController {
         buttonControlsView.onMenuButtonTapped = {
             var menuOptions: [MenuOption] = []
             menuOptions.append(.switchCamera)
+            menuOptions.append(.switchAudioOutput)
             menuOptions.append(!self.recordingStarted ? .startRecording : .stopRecording)
             menuOptions.append(!self.liveStreamStarted ? .startLivestream : .stopLivestream)
             
@@ -463,8 +489,12 @@ private extension MeetingViewController {
                     
                 case .startLivestream:
                     self.performSegue(withIdentifier: addStreamOutputSegueIdentifier, sender: nil)
+                
                 case .stopLivestream:
                     self.stopLivestream()
+                    
+                case .switchAudioOutput:
+                    AVAudioSession.sharedInstance().changeAudioOutput(presenterViewController: self)
                 
                 default:
                     break
@@ -483,8 +513,18 @@ private extension MeetingViewController {
     
     func showParticipantControlOptions(_ participant: Participant) {
         guard let cell = cellForParticipant(participant) else { return }
+
+        // toggle mic, toggle cam
+        var menuOptions: [MenuOption] = [.toggleMic, .toggleWebcam]
         
-        let menuOptions: [MenuOption] = [.toggleMic, .toggleWebcam, .remove]
+        // toggle video quality
+        if participant.streams.contains(where: { $1.kind == .video }) && !participant.isLocal {
+            menuOptions.append(.toggleQuality)
+        }
+        
+        // remove
+        menuOptions.append(.remove)
+
         self.showActionsheet(options: menuOptions, fromView: cell.menuButton) { option in
             switch option {
             case .toggleMic:
@@ -503,6 +543,13 @@ private extension MeetingViewController {
                 
             case .remove:
                 participant.remove()
+             
+            case .toggleQuality:
+                self.showQualitySelectionsheet(options: [.high, .medium, .low], fromView: cell.menuButton, currentQuality: participant.videoQuality) { quality in
+                    
+                    // set quality
+                    participant.setQuality(quality)
+                }
                 
             default:
                 break

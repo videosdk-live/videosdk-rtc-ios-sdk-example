@@ -105,7 +105,7 @@ install_xcframework() {
   echo "Copied $source to $destination"
 }
 
-install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/VideoSDKRTC.xcframework" "VideoSDKRTC" "framework" "ios-arm64_x86_64-simulator" "ios-arm64"
+install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/VideoSDKRTC.xcframework" "VideoSDKRTC" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
 install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/vl_mediasoup_client_ios.xcframework" "VideoSDKRTC" "framework" "ios-arm64_x86_64-simulator" "ios-arm64"
 install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/WebRTC.xcframework" "VideoSDKRTC" "framework" "ios-arm64_x86_64-simulator" "ios-arm64"
 

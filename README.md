@@ -1,28 +1,6 @@
-# Video SDK IOS Code Sample
+# Video SDK IOS Example
 
-## What is it?
-
-This code sample demonstrates a one-to-one and group video call application built with [Video SDK RTC IOS SDK](https://docs.videosdk.live/docs/guide/video-and-audio-calling-api-sdk/ios-sdk)
-
-- Built for serverless video calling experience in IOS.
-- Scale it upto 5,000 participants with low code.
-- 10,000 minutes free on monthly basis
-
-
-## Features
-
-- [x] Video API with real-time audio, video and data streams
-- [x] 5,000+ participants support
-- [x] Chat support with rich media.
-- [ ] Screen sharing with HD and Full HD.
-- [x] Connect it with social media such as Facebook, Youtube etc (RTMP out support).
-- [x] Intelligent speaker switch
-- [x] Record your meetings on cloud
-- [x] Customise UI and build other rich features with our new data streams such as whiteboard, poll, Q & A etc.
-
-## Device support
-
-Visit our official [documentation](https://docs.videosdk.live/docs/guide/video-and-audio-calling-api-sdk/ios-sdk) for more information
+This is VideoSDK RTC example code for iOS.
 
 ## Prerequisites
 
@@ -33,25 +11,31 @@ You must have the following installed:
 
 ## Getting started
 
-1. Run the authentication server
-
-   Follow instructions from [videosdk-rtc-nodejs-sdk-example](https://github.com/videosdk-live/videosdk-rtc-nodejs-sdk-example) to run the authentication server.
+1. There are two options:
+   1. Option 1: Get Auth Token from [VideoSDK Dashboard](https://app.videosdk.live/dashboard)
+   2. Option 2: Setting up Auth Server [Instructions](https://github.com/videosdk-live/videosdk-rtc-nodejs-sdk-example)
 
 2. Clone the repo
 
    ```sh
-   git clone https://github.com/videosdk-live/videosdk-rtc-ios-sdk-example.git
+   $ git clone https://github.com/videosdk-live/videosdk-rtc-ios-sdk-example.git
    ```
 
-3. Update **AUTH_TOKEN** or **AUTH_URL** in the `Constants.swift` file.
+3. run `pod install` in terminal from the Example project directory.
+
+4. Either update `AUTH_TOKEN` or `AUTH_URL` in the `Constants.swift` file.
 
    ```
-   AUTH_TOKEN = ""
-   #OR
-   AUTH_URL = ""
+   public let AUTH_TOKEN = "#YOUR_GENERATED_TOKEN"
    ```
 
-4. Run the project.
+   OR
+
+   ```
+   public let AUTH_URL = "#YOUR_AUTH_SERVER_URL"
+   ```
+   
+5. Run the project.
 
 For more information, visit [official documentation](https://docs.videosdk.live/docs/guide/video-and-audio-calling-api-sdk/getting-started)
 

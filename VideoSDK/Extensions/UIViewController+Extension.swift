@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import VideoSDKRTC
  
 extension UIViewController {
     
@@ -22,6 +23,38 @@ extension UIViewController {
                 let option = MenuOption(rawValue: action.title!)!
                 completion(option)
             }
+            alertController.addAction(action)
+        }
+        
+        alertController.addAction(.init(title: "Cancel", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func showQualitySelectionsheet(options: [MenuOption], fromView view: UIView, currentQuality: VideoQuality, completion: @escaping(VideoQuality) -> Void) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        if let popover = alertController.popoverPresentationController {
+            popover.sourceView = view
+        }
+        
+        options.forEach {
+            let action = UIAlertAction(title: $0.rawValue, style: $0.style) { action in
+                let option = MenuOption(rawValue: action.title!)!
+                switch option {
+                case .high:
+                    completion(.high)
+                case .low:
+                    completion(.low)
+                case .medium:
+                    completion(.medium)
+                default:
+                    completion(.high)
+                }
+            }
+            
+            if currentQuality.rawValue == action.title?.lowercased() {
+                action.setValue(true, forKey: "checked")
+            }
+            
             alertController.addAction(action)
         }
         
