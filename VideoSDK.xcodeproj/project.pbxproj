@@ -10,56 +10,63 @@
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
+		900CFC63365C16AC382AE1D4 /* Pods_VideoSDK_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2538F3BD0A079B17BE501311 /* Pods_VideoSDK_Example.framework */; };
+		A23250C9271F2F4F00A23CCB /* AddStreamOutputiewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23250C8271F2F4F00A23CCB /* AddStreamOutputiewController.swift */; };
+		A23250CB271F2FAE00A23CCB /* AddStreamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23250CA271F2FAE00A23CCB /* AddStreamTableViewCell.swift */; };
+		A23250CD271F37A900A23CCB /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23250CC271F37A900A23CCB /* UIViewController+Extension.swift */; };
+		A23250D32722D42100A23CCB /* ScreenSharingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23250D22722D42100A23CCB /* ScreenSharingView.swift */; };
+		A2573BE826F1204E0087AB36 /* MeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2573BE626F1204E0087AB36 /* MeetingViewController.swift */; };
+		A2573BE926F1204E0087AB36 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2573BE726F1204E0087AB36 /* StartViewController.swift */; };
 		A2573BF026F120960087AB36 /* ButtonControlsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2573BEB26F120960087AB36 /* ButtonControlsView.xib */; };
 		A2573BF126F120960087AB36 /* ParticipantViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2573BEC26F120960087AB36 /* ParticipantViewCell.swift */; };
 		A2573BF226F120960087AB36 /* ButtonControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2573BED26F120960087AB36 /* ButtonControlsView.swift */; };
 		A2573BF326F120960087AB36 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2573BEF26F120960087AB36 /* View+Extension.swift */; };
 		A2573BF626F121270087AB36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2573BF426F121270087AB36 /* Main.storyboard */; };
-		A2B4D918273941FC008AF38C /* AddStreamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B4D916273941FC008AF38C /* AddStreamTableViewCell.swift */; };
-		A2B4D919273941FC008AF38C /* ScreenSharingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B4D917273941FC008AF38C /* ScreenSharingView.swift */; };
-		A2B4D91B2739420C008AF38C /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B4D91A2739420C008AF38C /* UIViewController+Extension.swift */; };
-		A2B4D91E2739427D008AF38C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B4D91D2739427D008AF38C /* APIService.swift */; };
-		A2BF00B927A3E66700772DEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF00B827A3E66700772DEA /* Constants.swift */; };
-		A2BF00BE27A3E69D00772DEA /* MeetingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF00BB27A3E69D00772DEA /* MeetingData.swift */; };
-		A2BF00BF27A3E69D00772DEA /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF00BC27A3E69D00772DEA /* Message.swift */; };
-		A2BF00C027A3E69D00772DEA /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF00BD27A3E69D00772DEA /* ChatUser.swift */; };
-		A2BF00C227A3E72900772DEA /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF00C127A3E72900772DEA /* Date+Extension.swift */; };
-		A2BF00C927A3E7D400772DEA /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF00C527A3E7D400772DEA /* ChatViewController.swift */; };
-		A2BF00CA27A3E7D400772DEA /* MeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF00C627A3E7D400772DEA /* MeetingViewController.swift */; };
-		A2BF00CB27A3E7D400772DEA /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF00C727A3E7D400772DEA /* StartViewController.swift */; };
-		A2BF00CC27A3E7D400772DEA /* AddStreamOutputiewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF00C827A3E7D400772DEA /* AddStreamOutputiewController.swift */; };
-		A2FC43542772E956003DFF20 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FC43532772E956003DFF20 /* UIColor+Extension.swift */; };
-		F9716B6E06BC87FC0FAB89C3 /* Pods_VideoSDK_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97C50A93B796B4F9C09B5D6D /* Pods_VideoSDK_Example.framework */; };
+		A2A1D38A27266BAB00082CD8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A1D38927266BAB00082CD8 /* APIService.swift */; };
+		A2BF00AB27A1A1DB00772DEA /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF00AA27A1A1DB00772DEA /* ChatViewController.swift */; };
+		A2BF00AF27A1A2B100772DEA /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF00AE27A1A2B100772DEA /* Message.swift */; };
+		A2BF00B127A1A2CC00772DEA /* MeetingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF00B027A1A2CC00772DEA /* MeetingData.swift */; };
+		A2BF00B327A28C8100772DEA /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF00B227A28C8100772DEA /* Date+Extension.swift */; };
+		A2BF00B527A2E1EE00772DEA /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF00B427A2E1EE00772DEA /* ChatUser.swift */; };
+		A2BF00B727A3DC7C00772DEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF00B627A3DC7C00772DEA /* Constants.swift */; };
+		A2D244AE276E14FA002FD101 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D244AD276E14FA002FD101 /* UIColor+Extension.swift */; };
+		B2EDCFE427B7AADC00E61E33 /* AVAudioSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EDCFE327B7AADC00E61E33 /* AVAudioSession+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06C2C886064125CDBD21A786 /* Pods-VideoSDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoSDK_Example.release.xcconfig"; path = "Target Support Files/Pods-VideoSDK_Example/Pods-VideoSDK_Example.release.xcconfig"; sourceTree = "<group>"; };
+		194EEB231FC28C6F0E52641E /* Pods-VideoSDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoSDK_Example.debug.xcconfig"; path = "Target Support Files/Pods-VideoSDK_Example/Pods-VideoSDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		2538F3BD0A079B17BE501311 /* Pods_VideoSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B053DF9617A76F7AC7FDD23 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		35E8F95E03057F8ED8A6D1C0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* VideoSDK_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoSDK_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		856B94476BC9BC2182A719B5 /* Pods-VideoSDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoSDK_Example.debug.xcconfig"; path = "Target Support Files/Pods-VideoSDK_Example/Pods-VideoSDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		97C50A93B796B4F9C09B5D6D /* Pods_VideoSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		A23250C8271F2F4F00A23CCB /* AddStreamOutputiewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStreamOutputiewController.swift; sourceTree = "<group>"; };
+		A23250CA271F2FAE00A23CCB /* AddStreamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStreamTableViewCell.swift; sourceTree = "<group>"; };
+		A23250CC271F37A900A23CCB /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		A23250D22722D42100A23CCB /* ScreenSharingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSharingView.swift; sourceTree = "<group>"; };
+		A2573BE626F1204E0087AB36 /* MeetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingViewController.swift; sourceTree = "<group>"; };
+		A2573BE726F1204E0087AB36 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		A2573BEB26F120960087AB36 /* ButtonControlsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonControlsView.xib; sourceTree = "<group>"; };
 		A2573BEC26F120960087AB36 /* ParticipantViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantViewCell.swift; sourceTree = "<group>"; };
 		A2573BED26F120960087AB36 /* ButtonControlsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonControlsView.swift; sourceTree = "<group>"; };
 		A2573BEF26F120960087AB36 /* View+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		A2573BF526F121270087AB36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A2B4D916273941FC008AF38C /* AddStreamTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStreamTableViewCell.swift; sourceTree = "<group>"; };
-		A2B4D917273941FC008AF38C /* ScreenSharingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenSharingView.swift; sourceTree = "<group>"; };
-		A2B4D91A2739420C008AF38C /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		A2B4D91D2739427D008AF38C /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		A2BF00B827A3E66700772DEA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		A2BF00BB27A3E69D00772DEA /* MeetingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingData.swift; sourceTree = "<group>"; };
-		A2BF00BC27A3E69D00772DEA /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		A2BF00BD27A3E69D00772DEA /* ChatUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
-		A2BF00C127A3E72900772DEA /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
-		A2BF00C527A3E7D400772DEA /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		A2BF00C627A3E7D400772DEA /* MeetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingViewController.swift; sourceTree = "<group>"; };
-		A2BF00C727A3E7D400772DEA /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		A2BF00C827A3E7D400772DEA /* AddStreamOutputiewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStreamOutputiewController.swift; sourceTree = "<group>"; };
-		A2FC43532772E956003DFF20 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		AF584C9C67779E0C3308AD9A /* Pods-VideoSDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoSDK_Example.release.xcconfig"; path = "Target Support Files/Pods-VideoSDK_Example/Pods-VideoSDK_Example.release.xcconfig"; sourceTree = "<group>"; };
+		A2A1D38927266BAB00082CD8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		A2BF00AA27A1A1DB00772DEA /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		A2BF00AE27A1A2B100772DEA /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		A2BF00B027A1A2CC00772DEA /* MeetingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingData.swift; sourceTree = "<group>"; };
+		A2BF00B227A28C8100772DEA /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		A2BF00B427A2E1EE00772DEA /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
+		A2BF00B627A3DC7C00772DEA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A2D244AD276E14FA002FD101 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		B2EDCFE327B7AADC00E61E33 /* AVAudioSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAudioSession+Extension.swift"; sourceTree = "<group>"; };
+		E8F3A7E1ECAD2B8AD6EF59B7 /* VideoSDKRTC.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = VideoSDKRTC.podspec; path = ../VideoSDKRTC.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,26 +74,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9716B6E06BC87FC0FAB89C3 /* Pods_VideoSDK_Example.framework in Frameworks */,
+				900CFC63365C16AC382AE1D4 /* Pods_VideoSDK_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		05EA4CDE2F8D990E56A0AFA0 /* Pods */ = {
+		45B29623A1997510A06D2ADF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				856B94476BC9BC2182A719B5 /* Pods-VideoSDK_Example.debug.xcconfig */,
-				AF584C9C67779E0C3308AD9A /* Pods-VideoSDK_Example.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		571AF03B53E9FA01DE7B37DD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				97C50A93B796B4F9C09B5D6D /* Pods_VideoSDK_Example.framework */,
+				2538F3BD0A079B17BE501311 /* Pods_VideoSDK_Example.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -94,10 +92,12 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				607FACD21AFB9204008FA782 /* VideoSDK */,
+				607FACF51AFB993E008FA782 /* Podspec Metadata */,
+				607FACD21AFB9204008FA782 /* Example for VideoSDK */,
+				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				05EA4CDE2F8D990E56A0AFA0 /* Pods */,
-				571AF03B53E9FA01DE7B37DD /* Frameworks */,
+				E2240E987A1E435062F3F097 /* Pods */,
+				45B29623A1997510A06D2ADF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,13 +109,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		607FACD21AFB9204008FA782 /* VideoSDK */ = {
+		607FACD21AFB9204008FA782 /* Example for VideoSDK */ = {
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				A2B4D91C2739427D008AF38C /* API */,
-				A2BF00BA27A3E69D00772DEA /* Models */,
-				A2BF00C427A3E7D400772DEA /* Screens */,
+				A2A1D38827266BA100082CD8 /* API */,
+				A2BF00AD27A1A2A700772DEA /* Models */,
+				A2BF00AC27A1A29900772DEA /* Screens */,
 				A2573BEA26F120960087AB36 /* Views */,
 				A2573BEE26F120960087AB36 /* Extensions */,
 				A2573BF426F121270087AB36 /* Main.storyboard */,
@@ -123,6 +123,7 @@
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
+			name = "Example for VideoSDK";
 			path = VideoSDK;
 			sourceTree = "<group>";
 		};
@@ -134,14 +135,41 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		607FACE81AFB9204008FA782 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				607FACE91AFB9204008FA782 /* Supporting Files */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		607FACE91AFB9204008FA782 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				607FACEA1AFB9204008FA782 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				E8F3A7E1ECAD2B8AD6EF59B7 /* VideoSDKRTC.podspec */,
+				2B053DF9617A76F7AC7FDD23 /* README.md */,
+				35E8F95E03057F8ED8A6D1C0 /* LICENSE */,
+			);
+			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
 		A2573BEA26F120960087AB36 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				A2573BEC26F120960087AB36 /* ParticipantViewCell.swift */,
 				A2573BED26F120960087AB36 /* ButtonControlsView.swift */,
 				A2573BEB26F120960087AB36 /* ButtonControlsView.xib */,
-				A2B4D916273941FC008AF38C /* AddStreamTableViewCell.swift */,
-				A2B4D917273941FC008AF38C /* ScreenSharingView.swift */,
+				A23250CA271F2FAE00A23CCB /* AddStreamTableViewCell.swift */,
+				A23250D22722D42100A23CCB /* ScreenSharingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -149,42 +177,52 @@
 		A2573BEE26F120960087AB36 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A2BF00C127A3E72900772DEA /* Date+Extension.swift */,
-				A2FC43532772E956003DFF20 /* UIColor+Extension.swift */,
 				A2573BEF26F120960087AB36 /* View+Extension.swift */,
-				A2B4D91A2739420C008AF38C /* UIViewController+Extension.swift */,
+				A23250CC271F37A900A23CCB /* UIViewController+Extension.swift */,
+				A2D244AD276E14FA002FD101 /* UIColor+Extension.swift */,
+				A2BF00B227A28C8100772DEA /* Date+Extension.swift */,
+				B2EDCFE327B7AADC00E61E33 /* AVAudioSession+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		A2B4D91C2739427D008AF38C /* API */ = {
+		A2A1D38827266BA100082CD8 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				A2B4D91D2739427D008AF38C /* APIService.swift */,
-				A2BF00B827A3E66700772DEA /* Constants.swift */,
+				A2A1D38927266BAB00082CD8 /* APIService.swift */,
+				A2BF00B627A3DC7C00772DEA /* Constants.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
 		};
-		A2BF00BA27A3E69D00772DEA /* Models */ = {
+		A2BF00AC27A1A29900772DEA /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				A2BF00BB27A3E69D00772DEA /* MeetingData.swift */,
-				A2BF00BC27A3E69D00772DEA /* Message.swift */,
-				A2BF00BD27A3E69D00772DEA /* ChatUser.swift */,
+				A2573BE726F1204E0087AB36 /* StartViewController.swift */,
+				A2573BE626F1204E0087AB36 /* MeetingViewController.swift */,
+				A2BF00AA27A1A1DB00772DEA /* ChatViewController.swift */,
+				A23250C8271F2F4F00A23CCB /* AddStreamOutputiewController.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		A2BF00AD27A1A2A700772DEA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A2BF00B027A1A2CC00772DEA /* MeetingData.swift */,
+				A2BF00AE27A1A2B100772DEA /* Message.swift */,
+				A2BF00B427A2E1EE00772DEA /* ChatUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		A2BF00C427A3E7D400772DEA /* Screens */ = {
+		E2240E987A1E435062F3F097 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A2BF00C527A3E7D400772DEA /* ChatViewController.swift */,
-				A2BF00C627A3E7D400772DEA /* MeetingViewController.swift */,
-				A2BF00C727A3E7D400772DEA /* StartViewController.swift */,
-				A2BF00C827A3E7D400772DEA /* AddStreamOutputiewController.swift */,
+				194EEB231FC28C6F0E52641E /* Pods-VideoSDK_Example.debug.xcconfig */,
+				06C2C886064125CDBD21A786 /* Pods-VideoSDK_Example.release.xcconfig */,
 			);
-			path = Screens;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,11 +232,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "VideoSDK_Example" */;
 			buildPhases = (
-				60F37913CE8A06E77D49132B /* [CP] Check Pods Manifest.lock */,
+				0DE92C81800FB1A7F9A22F24 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				45B142D55F7E25EE5910BB50 /* [CP] Embed Pods Frameworks */,
+				D8F43506BCA22B05635659CE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -259,7 +297,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		45B142D55F7E25EE5910BB50 /* [CP] Embed Pods Frameworks */ = {
+		0DE92C81800FB1A7F9A22F24 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VideoSDK_Example-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8F43506BCA22B05635659CE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -287,28 +347,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VideoSDK_Example/Pods-VideoSDK_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		60F37913CE8A06E77D49132B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VideoSDK_Example-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -316,24 +354,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A23250CD271F37A900A23CCB /* UIViewController+Extension.swift in Sources */,
 				A2573BF226F120960087AB36 /* ButtonControlsView.swift in Sources */,
-				A2BF00BE27A3E69D00772DEA /* MeetingData.swift in Sources */,
-				A2FC43542772E956003DFF20 /* UIColor+Extension.swift in Sources */,
-				A2B4D91E2739427D008AF38C /* APIService.swift in Sources */,
-				A2BF00CC27A3E7D400772DEA /* AddStreamOutputiewController.swift in Sources */,
+				A2573BE826F1204E0087AB36 /* MeetingViewController.swift in Sources */,
+				A2BF00B127A1A2CC00772DEA /* MeetingData.swift in Sources */,
+				A2BF00B527A2E1EE00772DEA /* ChatUser.swift in Sources */,
+				A2D244AE276E14FA002FD101 /* UIColor+Extension.swift in Sources */,
+				A2BF00B327A28C8100772DEA /* Date+Extension.swift in Sources */,
+				A23250D32722D42100A23CCB /* ScreenSharingView.swift in Sources */,
+				A2A1D38A27266BAB00082CD8 /* APIService.swift in Sources */,
+				A2573BE926F1204E0087AB36 /* StartViewController.swift in Sources */,
 				A2573BF126F120960087AB36 /* ParticipantViewCell.swift in Sources */,
-				A2BF00C027A3E69D00772DEA /* ChatUser.swift in Sources */,
-				A2BF00C227A3E72900772DEA /* Date+Extension.swift in Sources */,
-				A2BF00B927A3E66700772DEA /* Constants.swift in Sources */,
+				B2EDCFE427B7AADC00E61E33 /* AVAudioSession+Extension.swift in Sources */,
 				A2573BF326F120960087AB36 /* View+Extension.swift in Sources */,
-				A2B4D919273941FC008AF38C /* ScreenSharingView.swift in Sources */,
-				A2BF00CB27A3E7D400772DEA /* StartViewController.swift in Sources */,
+				A2BF00AB27A1A1DB00772DEA /* ChatViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				A2BF00BF27A3E69D00772DEA /* Message.swift in Sources */,
-				A2B4D91B2739420C008AF38C /* UIViewController+Extension.swift in Sources */,
-				A2BF00C927A3E7D400772DEA /* ChatViewController.swift in Sources */,
-				A2BF00CA27A3E7D400772DEA /* MeetingViewController.swift in Sources */,
-				A2B4D918273941FC008AF38C /* AddStreamTableViewCell.swift in Sources */,
+				A23250C9271F2F4F00A23CCB /* AddStreamOutputiewController.swift in Sources */,
+				A23250CB271F2FAE00A23CCB /* AddStreamTableViewCell.swift in Sources */,
+				A2BF00AF27A1A2B100772DEA /* Message.swift in Sources */,
+				A2BF00B727A3DC7C00772DEA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,7 +505,7 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 856B94476BC9BC2182A719B5 /* Pods-VideoSDK_Example.debug.xcconfig */;
+			baseConfigurationReference = 194EEB231FC28C6F0E52641E /* Pods-VideoSDK_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -474,10 +513,11 @@
 				INFOPLIST_FILE = VideoSDK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.5;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zujo.videosdk.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -486,7 +526,7 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF584C9C67779E0C3308AD9A /* Pods-VideoSDK_Example.release.xcconfig */;
+			baseConfigurationReference = 06C2C886064125CDBD21A786 /* Pods-VideoSDK_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -494,10 +534,11 @@
 				INFOPLIST_FILE = VideoSDK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.5;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zujo.videosdk.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
