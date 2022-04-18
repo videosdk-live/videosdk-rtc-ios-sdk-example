@@ -5,7 +5,7 @@ PODS:
   - MessageKit (3.3.0):
     - InputBarAccessoryView (~> 5.1.0)
   - Starscream (4.0.4)
-  - VideoSDKRTC (1.2.5):
+  - VideoSDKRTC (1.2.7):
     - Starscream
 
 DEPENDENCIES:
@@ -24,14 +24,14 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   VideoSDKRTC:
-    :commit: fb15b554f55b06879886db8e9f8f06dc5d0bb6a7
+    :commit: 9383d66e4503cb20cfef185a96d4341aad650ae0
     :git: https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git
 
 SPEC CHECKSUMS:
   InputBarAccessoryView: 19953f486a23e846e9487099f92bbe3456e46ce5
   MessageKit: 1f07618183be6d92b648ba7a384aafa097362a00
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
-  VideoSDKRTC: b69affa4098b7f3be79399ff3a4960da6c7fcb1c
+  VideoSDKRTC: 9c37f09b6f30a41ebf87a0389897611531101554
 
 PODFILE CHECKSUM: 76f69f0bf39af13cd037a33a983b52a7de678631
 
