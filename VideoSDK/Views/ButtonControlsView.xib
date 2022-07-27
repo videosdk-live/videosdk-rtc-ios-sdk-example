@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +19,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+<<<<<<< HEAD
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ButtonControlsView" customModule="VideoSDK_Example" customModuleProvider="target">
+=======
+        <view contentMode="scaleToFill" ambiguous="YES" id="iN0-l3-epB" customClass="ButtonControlsView" customModule="VideoSDK_Example" customModuleProvider="target">
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
             <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -57,7 +69,11 @@
                                 <imageReference key="image" image="arrow.triangle.2.circlepath.camera.fill" catalog="system" symbolScale="large"/>
                             </state>
                             <connections>
+<<<<<<< HEAD
                                 <action selector="chatButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="pqb-Wm-i74"/>
+=======
+                                <action selector="cameraButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="IVc-H7-dGm"/>
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="D6q-s7-bGe">
@@ -93,7 +109,11 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+<<<<<<< HEAD
                 <outlet property="chatButton" destination="1Ny-g4-hRr" id="gqn-Ye-PYy"/>
+=======
+                <outlet property="cameraButton" destination="1Ny-g4-hRr" id="9of-B4-jOc"/>
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
                 <outlet property="leaveMeetingButton" destination="dMu-ZA-6Dc" id="hNM-Ku-Aq3"/>
                 <outlet property="menuButton" destination="D6q-s7-bGe" id="ysb-Lb-ruV"/>
                 <outlet property="micButton" destination="xYL-Cr-nz0" id="9V6-l2-NJc"/>
@@ -103,10 +123,18 @@
         </view>
     </objects>
     <resources>
+<<<<<<< HEAD
         <image name="arrow.triangle.2.circlepath.camera.fill" catalog="system" width="128" height="94"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="mic.fill" catalog="system" width="108" height="128"/>
         <image name="phone.fill" catalog="system" width="128" height="114"/>
         <image name="video.fill" catalog="system" width="128" height="82"/>
+=======
+        <image name="arrow.triangle.2.circlepath.camera.fill" catalog="system" width="32" height="32"/>
+        <image name="ellipsis" catalog="system" width="32" height="32"/>
+        <image name="mic.fill" catalog="system" width="32" height="32"/>
+        <image name="phone.fill" catalog="system" width="32" height="32"/>
+        <image name="video.fill" catalog="system" width="32" height="32"/>
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
     </resources>
 </document>

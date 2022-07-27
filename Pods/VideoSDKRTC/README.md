@@ -10,7 +10,11 @@ Official iOS SDK of [videosdk.live](https://videosdk.live/)
 
 ## Requirements
 
+<<<<<<< HEAD
 - iOS 11.0+
+=======
+- iOS 13.0+
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 - Xcode 12.0+
 - Swift 5.0+
 
@@ -28,6 +32,10 @@ pod 'VideoSDKRTC', :git => 'https://github.com/videosdk-live/videosdk-rtc-ios-sd
 
 ## Important
 
+<<<<<<< HEAD
+=======
+- Currently this only supports iOS device (arm64). Running on simulator is not supported.
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 - You will need to set 'Enable Bitcode' to false.
 
 ## Usage

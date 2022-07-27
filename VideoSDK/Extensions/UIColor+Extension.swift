@@ -10,7 +10,12 @@ import Foundation
 import UIKit
 
 extension UIColor {
+<<<<<<< HEAD
     static let systemRed = UIColor(named: "systemRed")!
     static let systemLightBackground = UIColor(named: "systemLightBackground")!
     static let systemDarkBackground = UIColor(named: "systemDarkBackground")!
+=======
+    static let systemRed = UIColor(named: "systemRed")
+    static let systemGray = UIColor(named: "systemGray")
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 }

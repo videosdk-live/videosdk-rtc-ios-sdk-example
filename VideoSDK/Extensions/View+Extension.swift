@@ -15,6 +15,7 @@ extension UIView {
         self.layer.cornerRadius = self.frame.width / 2.0
         self.clipsToBounds = true
     }
+<<<<<<< HEAD
     
     func roundCorners(corners: UIRectCorner, radius: CGFloat) {
          let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
@@ -22,4 +23,6 @@ extension UIView {
          mask.path = path.cgPath
         layer.mask = mask
      }
+=======
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 }

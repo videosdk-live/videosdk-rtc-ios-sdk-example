@@ -11,16 +11,27 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 2A91A3A557C8645CFB88C4D37A189015 /* Build configuration list for PBXAggregateTarget "VideoSDKRTC" */;
 			buildPhases = (
+<<<<<<< HEAD
 				1F8859E7B94AE66DF30D2719D8C20FD3 /* [CP] Copy XCFrameworks */,
 			);
 			dependencies = (
 				95A6DAA521A5EC6E95D21F156371DB77 /* PBXTargetDependency */,
 			);
 			name = VideoSDKRTC;
+=======
+				B057D013BED5819710565D3413D512BC /* [CP] Copy XCFrameworks */,
+			);
+			dependencies = (
+				358340E5F79BB1010440AB103546FA7C /* PBXTargetDependency */,
+			);
+			name = VideoSDKRTC;
+			productName = VideoSDKRTC;
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD
 		00C9C2E54995B3BEA1C999016833A58B /* Starscream-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 14FA15887D65735B9BBB020A883B7069 /* Starscream-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0150BEE0E308862F44F065F970682256 /* InputBarAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7BDF3A09605EC563D3DB54182CE4CA /* InputBarAccessoryView.swift */; };
 		03AAC3A76C94D05991C51A007B49A8CF /* MediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B210D6330BA0AFDEE81E4A147C3DE6 /* MediaItem.swift */; };
@@ -184,12 +195,45 @@
 			remoteInfo = MessageKit;
 		};
 		A6999881582537299D4512D59A066FA9 /* PBXContainerItemProxy */ = {
+=======
+		00C9C2E54995B3BEA1C999016833A58B /* Starscream-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ECFB158E08A6502A38761C96CB68975B /* Starscream-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		046AC7AA224C78A31C0A8FACB11D2D28 /* StringHTTPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D70531198624C7D8B14FF91C62FF6B /* StringHTTPHandler.swift */; };
+		33C71989B6C635864EC5E4862AFAAE8A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		3A655D6817E99F062266BB601B0EEEDF /* Starscream-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B65F09370A4D9877255EC1C47060A2 /* Starscream-dummy.m */; };
+		3F3E9C6FF4BCB6F4FF18D9121CC3E42F /* WebSocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62AC07A9271D8996F97CC35856BA647 /* WebSocketServer.swift */; };
+		489EF4A7D4992C47CF590AEF9AA418FC /* FoundationTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7E34251E9353A38AC748BB94EDC575 /* FoundationTransport.swift */; };
+		4A3B1BE129FDA231AC217E1C6DB2B8C8 /* Transport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C8BC22AA74FEDA9CF44852D28F68A4 /* Transport.swift */; };
+		4AB6FCF35B998F60ED9EB100542EEA31 /* FoundationHTTPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF39A541BA78B8472A0F9D4E3504B90 /* FoundationHTTPHandler.swift */; };
+		5006DD4B60A05AF56EA0706A680BABF6 /* FoundationHTTPServerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F95157FC4CC8593A1B1E4607562122 /* FoundationHTTPServerHandler.swift */; };
+		5281197FE8CC6E6954315F11B8F553D0 /* FoundationSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5831A57C2E79638C447411ED69EB6C42 /* FoundationSecurity.swift */; };
+		631654C419F62FE0270E1DF79CCF6F8B /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7175E21DED4337E7BBD3EF7424F315F6 /* Data+Extensions.swift */; };
+		69A591F2BDE4941B391C102F4C26B115 /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC292255BA6A323D7D1C01215CC6591 /* Security.swift */; };
+		6C0DACBE00A34619DEDB9A65CB959BA5 /* TCPTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CCA8582A00BBFBC2E9AFFC1C1D53A9 /* TCPTransport.swift */; };
+		6D6AB66AEB03A2F61FC0CE88597E10EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		6E5220F4969159EA2A00DC350BEBEE1C /* Pods-VideoSDK_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F08C044044432B9EA960C0A70FCC73EC /* Pods-VideoSDK_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7DDEA2F73F2A02D88D5164B46BA2C7E8 /* HTTPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ED0E33A6DD024AC0E71FEF3EA74D7C /* HTTPHandler.swift */; };
+		B44349C69B2C0AF407B678B20DC9CB80 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2727BA14E02E7210DD6B547EA7D394 /* WebSocket.swift */; };
+		BB056B9351B1BE41C2703393F69623DD /* WSEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9AF7BDFE0F03CE129D72D85FCA460 /* WSEngine.swift */; };
+		C28A0006DD1C9AB062763C8FA2B3F93D /* NativeEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ADCC3B462E7AE2D80872C7A66CA4A7 /* NativeEngine.swift */; };
+		CC235941F0CF9FA8C0FA3323A0D18203 /* Framer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1454E39E11FD28A611495E03B2015FD4 /* Framer.swift */; };
+		DF9BE4B3E95B007977780C9EFDA3EFBE /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD212064ED1CC47B2560F6E20526B3B /* Server.swift */; };
+		DFA2736CE4B16FD4D82450863EC58507 /* Compression.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EAFCD04DEECC2AC6B8727048A80617 /* Compression.swift */; };
+		EB5C3537AD21658D3EC873A4A4AFDE30 /* FrameCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C291A02C054326B5C6022EACD814E4 /* FrameCollector.swift */; };
+		F1D24F7FBDD64601FD1FFFDBB66381F4 /* Pods-VideoSDK_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B86973CAD55DFA2F43D64216941CE04E /* Pods-VideoSDK_Example-dummy.m */; };
+		FA2A3CCAE01CF0108D2FDB7C8108B988 /* WSCompression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1918C09D193EF7F62A7C2611F12AC44B /* WSCompression.swift */; };
+		FAFD54F649DC5D69DD05D517A0131968 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0925310BE76B051E1B51E7FBB37F35 /* Engine.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		33F2DD00D511C3383877E976C16FC7F8 /* PBXContainerItemProxy */ = {
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 9B78EE4AF6AE03E79D88886319853FF7;
 			remoteInfo = Starscream;
 		};
+<<<<<<< HEAD
 		D75AA14A8DD1DBC2167759B7323608D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -198,6 +242,16 @@
 			remoteInfo = InputBarAccessoryView;
 		};
 		FFCF783F50C02A78637EF38D78A47218 /* PBXContainerItemProxy */ = {
+=======
+		387B5DA5DBD3EBAC2BF832E39BA406CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B6E2C457741647223A51766707CCB8CA;
+			remoteInfo = VideoSDKRTC;
+		};
+		8DDB87744E90A64E3FF407BA5093604E /* PBXContainerItemProxy */ = {
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -207,6 +261,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD
 		00170232AF24240DABD984A681AC1449 /* AvatarPosition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AvatarPosition.swift; path = Sources/Models/AvatarPosition.swift; sourceTree = "<group>"; };
 		0288679BB31DEC2D08AD2692D30FF646 /* AutocompleteManagerDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AutocompleteManagerDelegate.swift; path = Sources/Plugins/AutocompleteManager/Protocols/AutocompleteManagerDelegate.swift; sourceTree = "<group>"; };
 		0667A57E6C0119F2667A12ED155B51B9 /* AutocompleteManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AutocompleteManager.swift; path = Sources/Plugins/AutocompleteManager/AutocompleteManager.swift; sourceTree = "<group>"; };
@@ -375,6 +430,56 @@
 		FD108BAC3CAFFC31FE31BD7B5837AD51 /* Pods-VideoSDK_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-VideoSDK_Example"; path = Pods_VideoSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDFBE47DC5433D2742A39FDA39CFB55B /* NSAttributedString+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSAttributedString+Extensions.swift"; path = "Sources/Extensions/NSAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		FE1DB146DBCD91A2AD47788184CACDC5 /* InputStackView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InputStackView.swift; path = Sources/Views/InputStackView.swift; sourceTree = "<group>"; };
+=======
+		010F5C43A348BC3C417C21FA354444E2 /* Starscream-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Starscream-prefix.pch"; sourceTree = "<group>"; };
+		05D0FFD809D8B5D6C58AF53548D43231 /* VideoSDKRTC.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = VideoSDKRTC.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		07A7B375B459F7EFF7C0DFEC8E075EAA /* Pods-VideoSDK_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VideoSDK_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1454E39E11FD28A611495E03B2015FD4 /* Framer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Framer.swift; path = Sources/Framer/Framer.swift; sourceTree = "<group>"; };
+		16BFA68DB3CD4A2716D4703BCCE11326 /* Pods-VideoSDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VideoSDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		16D70531198624C7D8B14FF91C62FF6B /* StringHTTPHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StringHTTPHandler.swift; path = Sources/Framer/StringHTTPHandler.swift; sourceTree = "<group>"; };
+		1918C09D193EF7F62A7C2611F12AC44B /* WSCompression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WSCompression.swift; path = Sources/Compression/WSCompression.swift; sourceTree = "<group>"; };
+		21B65F09370A4D9877255EC1C47060A2 /* Starscream-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Starscream-dummy.m"; sourceTree = "<group>"; };
+		2A03144752ECE1E195D99147E49A17D5 /* vl_mediasoup_client_ios.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = vl_mediasoup_client_ios.xcframework; path = Frameworks/vl_mediasoup_client_ios.xcframework; sourceTree = "<group>"; };
+		2C1CF04602B9D61F89BCC51DEA7939B0 /* Starscream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Starscream.debug.xcconfig; sourceTree = "<group>"; };
+		2EE98B20ED921D9C45CB15A71F17DD72 /* VideoSDKRTC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VideoSDKRTC.release.xcconfig; sourceTree = "<group>"; };
+		3586989ED3B201C73AFF259DD3EF7F82 /* WebRTC.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = WebRTC.xcframework; path = Frameworks/WebRTC.xcframework; sourceTree = "<group>"; };
+		35ED0E33A6DD024AC0E71FEF3EA74D7C /* HTTPHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPHandler.swift; path = Sources/Framer/HTTPHandler.swift; sourceTree = "<group>"; };
+		37C291A02C054326B5C6022EACD814E4 /* FrameCollector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FrameCollector.swift; path = Sources/Framer/FrameCollector.swift; sourceTree = "<group>"; };
+		3AF39A541BA78B8472A0F9D4E3504B90 /* FoundationHTTPHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FoundationHTTPHandler.swift; path = Sources/Framer/FoundationHTTPHandler.swift; sourceTree = "<group>"; };
+		3D7E34251E9353A38AC748BB94EDC575 /* FoundationTransport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FoundationTransport.swift; path = Sources/Transport/FoundationTransport.swift; sourceTree = "<group>"; };
+		3D9B79E3AAAE9D3A4F0FBCE1472FB56D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4A0925310BE76B051E1B51E7FBB37F35 /* Engine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Engine.swift; path = Sources/Engine/Engine.swift; sourceTree = "<group>"; };
+		4D2727BA14E02E7210DD6B547EA7D394 /* WebSocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebSocket.swift; path = Sources/Starscream/WebSocket.swift; sourceTree = "<group>"; };
+		4FC292255BA6A323D7D1C01215CC6591 /* Security.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Security.swift; path = Sources/Security/Security.swift; sourceTree = "<group>"; };
+		56ADCC3B462E7AE2D80872C7A66CA4A7 /* NativeEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NativeEngine.swift; path = Sources/Engine/NativeEngine.swift; sourceTree = "<group>"; };
+		56CCA8582A00BBFBC2E9AFFC1C1D53A9 /* TCPTransport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TCPTransport.swift; path = Sources/Transport/TCPTransport.swift; sourceTree = "<group>"; };
+		5831A57C2E79638C447411ED69EB6C42 /* FoundationSecurity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FoundationSecurity.swift; path = Sources/Security/FoundationSecurity.swift; sourceTree = "<group>"; };
+		5A816E352E1E571A0B18A6A07F432BE3 /* Pods-VideoSDK_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VideoSDK_Example-Info.plist"; sourceTree = "<group>"; };
+		7175E21DED4337E7BBD3EF7424F315F6 /* Data+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Data+Extensions.swift"; path = "Sources/DataBytes/Data+Extensions.swift"; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		81F95157FC4CC8593A1B1E4607562122 /* FoundationHTTPServerHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FoundationHTTPServerHandler.swift; path = Sources/Framer/FoundationHTTPServerHandler.swift; sourceTree = "<group>"; };
+		8421AAEF6E1134F6A0476EC9077421BB /* Pods-VideoSDK_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VideoSDK_Example-frameworks.sh"; sourceTree = "<group>"; };
+		85C44A9AB6F12498BFC8233B9D599206 /* Starscream-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Starscream-Info.plist"; sourceTree = "<group>"; };
+		891B2270823847ED23F2ECFC28F935EC /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		89B2607DD1678875AB07A7B1A23A4F78 /* VideoSDKRTC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VideoSDKRTC.debug.xcconfig; sourceTree = "<group>"; };
+		8ED9AF7BDFE0F03CE129D72D85FCA460 /* WSEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WSEngine.swift; path = Sources/Engine/WSEngine.swift; sourceTree = "<group>"; };
+		9357D61506695B4EDB5014C06BE56A43 /* Starscream.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Starscream.modulemap; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A2EAFCD04DEECC2AC6B8727048A80617 /* Compression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Compression.swift; path = Sources/Compression/Compression.swift; sourceTree = "<group>"; };
+		A62AC07A9271D8996F97CC35856BA647 /* WebSocketServer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebSocketServer.swift; path = Sources/Server/WebSocketServer.swift; sourceTree = "<group>"; };
+		B2AC31AF4F9020D9C75F2781FF22D496 /* VideoSDKRTC-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "VideoSDKRTC-xcframeworks.sh"; sourceTree = "<group>"; };
+		B86973CAD55DFA2F43D64216941CE04E /* Pods-VideoSDK_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VideoSDK_Example-dummy.m"; sourceTree = "<group>"; };
+		C9C8BC22AA74FEDA9CF44852D28F68A4 /* Transport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Transport.swift; path = Sources/Transport/Transport.swift; sourceTree = "<group>"; };
+		D4B6F202ED9D86710097988B1B7E721D /* Pods-VideoSDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VideoSDK_Example.release.xcconfig"; sourceTree = "<group>"; };
+		D72318A40565DFD8BEABC3B6B56ACAB1 /* Pods-VideoSDK_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VideoSDK_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		DFD212064ED1CC47B2560F6E20526B3B /* Server.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Server.swift; path = Sources/Server/Server.swift; sourceTree = "<group>"; };
+		E2FBAF904ED704E015EDB17B1F3EF2E0 /* Pods-VideoSDK_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-VideoSDK_Example.modulemap"; sourceTree = "<group>"; };
+		E6B8353DB672E6C84ABAF6B044BC47F3 /* Starscream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Starscream.release.xcconfig; sourceTree = "<group>"; };
+		ECFB158E08A6502A38761C96CB68975B /* Starscream-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Starscream-umbrella.h"; sourceTree = "<group>"; };
+		F08C044044432B9EA960C0A70FCC73EC /* Pods-VideoSDK_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VideoSDK_Example-umbrella.h"; sourceTree = "<group>"; };
+		FABB93CCD350C719F258D26EB8D88586 /* VideoSDKRTC.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = VideoSDKRTC.xcframework; path = Frameworks/VideoSDKRTC.xcframework; sourceTree = "<group>"; };
+		FD108BAC3CAFFC31FE31BD7B5837AD51 /* Pods_VideoSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,6 +491,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		A9C5BD047B22519C17F85969BED5B2A1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -408,12 +514,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				0690B837D8E5C74603905BF7092BE63D /* Foundation.framework in Frameworks */,
+=======
+		393AF8FA708C824B92D6DBF66781E7ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D6AB66AEB03A2F61FC0CE88597E10EC /* Foundation.framework in Frameworks */,
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+<<<<<<< HEAD
 		0155464C6881B5E96FA478B0DCFE9669 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,10 +546,17 @@
 				B35909C17405F8CB47A643CDFA43989A /* MessageKit */,
 				E8359E5FE96F80F148B03958A95932FD /* Starscream */,
 				D45EFB0E12F2AA9FCC9C4FC93BAE188E /* VideoSDKRTC */,
+=======
+		00B2FEDCAC8A8BACE0F9A4E951E14F8C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7629874EBAAE6E64DF87ACB68FB5A08E /* Starscream */,
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -457,6 +578,17 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/InputBarAccessoryView";
+=======
+		2840DB24DAE23EEE463E5AB80E3E6F51 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B2AC31AF4F9020D9C75F2781FF22D496 /* VideoSDKRTC-xcframeworks.sh */,
+				89B2607DD1678875AB07A7B1A23A4F78 /* VideoSDKRTC.debug.xcconfig */,
+				2EE98B20ED921D9C45CB15A71F17DD72 /* VideoSDKRTC.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Pods/Target Support Files/VideoSDKRTC";
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			sourceTree = "<group>";
 		};
 		2ACE47472BB20B1E6726762A111CEE26 /* Pods-VideoSDK_Example */ = {
@@ -476,6 +608,7 @@
 			path = "Target Support Files/Pods-VideoSDK_Example";
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		59DA5C1F72E1D5BABC43EACBA672C3BA /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -507,10 +640,18 @@
 				15A68A8F33BD9EB9AFD02465B0418BCF /* MessageKit */,
 				FD108BAC3CAFFC31FE31BD7B5837AD51 /* Pods-VideoSDK_Example */,
 				891B2270823847ED23F2ECFC28F935EC /* Starscream */,
+=======
+		35B1C99CED9C79F4E63CA2CA58899EF7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD108BAC3CAFFC31FE31BD7B5837AD51 /* Pods_VideoSDK_Example.framework */,
+				891B2270823847ED23F2ECFC28F935EC /* Starscream.framework */,
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		B35909C17405F8CB47A643CDFA43989A /* MessageKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -731,11 +872,129 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/MessageKit";
+=======
+		3A77903EFD23761D73DA478E39EFA57F /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				3D9B79E3AAAE9D3A4F0FBCE1472FB56D /* README.md */,
+				05D0FFD809D8B5D6C58AF53548D43231 /* VideoSDKRTC.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		63337B7498F4678A605018197A682D8F /* VideoSDKRTC */ = {
+			isa = PBXGroup;
+			children = (
+				785B192AD28526A2E33F5CADBACE3E7A /* Frameworks */,
+				3A77903EFD23761D73DA478E39EFA57F /* Pod */,
+				2840DB24DAE23EEE463E5AB80E3E6F51 /* Support Files */,
+			);
+			name = VideoSDKRTC;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		7629874EBAAE6E64DF87ACB68FB5A08E /* Starscream */ = {
+			isa = PBXGroup;
+			children = (
+				A2EAFCD04DEECC2AC6B8727048A80617 /* Compression.swift */,
+				7175E21DED4337E7BBD3EF7424F315F6 /* Data+Extensions.swift */,
+				4A0925310BE76B051E1B51E7FBB37F35 /* Engine.swift */,
+				3AF39A541BA78B8472A0F9D4E3504B90 /* FoundationHTTPHandler.swift */,
+				81F95157FC4CC8593A1B1E4607562122 /* FoundationHTTPServerHandler.swift */,
+				5831A57C2E79638C447411ED69EB6C42 /* FoundationSecurity.swift */,
+				3D7E34251E9353A38AC748BB94EDC575 /* FoundationTransport.swift */,
+				37C291A02C054326B5C6022EACD814E4 /* FrameCollector.swift */,
+				1454E39E11FD28A611495E03B2015FD4 /* Framer.swift */,
+				35ED0E33A6DD024AC0E71FEF3EA74D7C /* HTTPHandler.swift */,
+				56ADCC3B462E7AE2D80872C7A66CA4A7 /* NativeEngine.swift */,
+				4FC292255BA6A323D7D1C01215CC6591 /* Security.swift */,
+				DFD212064ED1CC47B2560F6E20526B3B /* Server.swift */,
+				16D70531198624C7D8B14FF91C62FF6B /* StringHTTPHandler.swift */,
+				56CCA8582A00BBFBC2E9AFFC1C1D53A9 /* TCPTransport.swift */,
+				C9C8BC22AA74FEDA9CF44852D28F68A4 /* Transport.swift */,
+				4D2727BA14E02E7210DD6B547EA7D394 /* WebSocket.swift */,
+				A62AC07A9271D8996F97CC35856BA647 /* WebSocketServer.swift */,
+				1918C09D193EF7F62A7C2611F12AC44B /* WSCompression.swift */,
+				8ED9AF7BDFE0F03CE129D72D85FCA460 /* WSEngine.swift */,
+				C34F19E6E210C87A192216575C48E771 /* Support Files */,
+			);
+			path = Starscream;
+			sourceTree = "<group>";
+		};
+		785B192AD28526A2E33F5CADBACE3E7A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FABB93CCD350C719F258D26EB8D88586 /* VideoSDKRTC.xcframework */,
+				2A03144752ECE1E195D99147E49A17D5 /* vl_mediasoup_client_ios.xcframework */,
+				3586989ED3B201C73AFF259DD3EF7F82 /* WebRTC.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C035367E51E5490C69C62C0A97922B3B /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				63337B7498F4678A605018197A682D8F /* VideoSDKRTC */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		C34F19E6E210C87A192216575C48E771 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9357D61506695B4EDB5014C06BE56A43 /* Starscream.modulemap */,
+				21B65F09370A4D9877255EC1C47060A2 /* Starscream-dummy.m */,
+				85C44A9AB6F12498BFC8233B9D599206 /* Starscream-Info.plist */,
+				010F5C43A348BC3C417C21FA354444E2 /* Starscream-prefix.pch */,
+				ECFB158E08A6502A38761C96CB68975B /* Starscream-umbrella.h */,
+				2C1CF04602B9D61F89BCC51DEA7939B0 /* Starscream.debug.xcconfig */,
+				E6B8353DB672E6C84ABAF6B044BC47F3 /* Starscream.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Starscream";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				C035367E51E5490C69C62C0A97922B3B /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				00B2FEDCAC8A8BACE0F9A4E951E14F8C /* Pods */,
+				35B1C99CED9C79F4E63CA2CA58899EF7 /* Products */,
+				D1124E1254FB2AB4DBB3B42A4A48663C /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D1124E1254FB2AB4DBB3B42A4A48663C /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2ACE47472BB20B1E6726762A111CEE26 /* Pods-VideoSDK_Example */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+<<<<<<< HEAD
 		28E97D980CEDEE44334DF90033631F69 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -744,6 +1003,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+=======
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 		3CBD0F9C48772E87C2F80436B70E099E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -752,6 +1013,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		79ECF3B7C9988939F23BC51D398AA695 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -765,6 +1027,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC93876296988B428E1324C236E54437 /* Pods-VideoSDK_Example-umbrella.h in Headers */,
+=======
+		4272798A35FE9BA8A5628711DB5E9186 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E5220F4969159EA2A00DC350BEBEE1C /* Pods-VideoSDK_Example-umbrella.h in Headers */,
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -773,16 +1042,26 @@
 /* Begin PBXNativeTarget section */
 		207BB035DC5AC1C4F1AFC7FA98B31134 /* Pods-VideoSDK_Example */ = {
 			isa = PBXNativeTarget;
+<<<<<<< HEAD
 			buildConfigurationList = 14691BFD7BD746D185C01FCB1ACE7681 /* Build configuration list for PBXNativeTarget "Pods-VideoSDK_Example" */;
 			buildPhases = (
 				833F2F544DAD7535079BA8E268385DAE /* Headers */,
 				C3E397F7C9D265F8359D95974C58A99E /* Sources */,
 				F13FBFE75D96BF5F91CC60425CE6D3FF /* Frameworks */,
 				9AA42F8A3E29C830BF5A8AAD4B4D5849 /* Resources */,
+=======
+			buildConfigurationList = 3EA01B44A9085F30CFC67B83ED170499 /* Build configuration list for PBXNativeTarget "Pods-VideoSDK_Example" */;
+			buildPhases = (
+				4272798A35FE9BA8A5628711DB5E9186 /* Headers */,
+				37BB6AD416B2FC8B9D0B5EDF01CDA634 /* Sources */,
+				393AF8FA708C824B92D6DBF66781E7ED /* Frameworks */,
+				35A65106468F41044FA646EC25E421ED /* Resources */,
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			);
 			buildRules = (
 			);
 			dependencies = (
+<<<<<<< HEAD
 				DF6BA0B5DC6ED154169C00472CA0B159 /* PBXTargetDependency */,
 				293CD6021937BD13B4E99DEB41ED5736 /* PBXTargetDependency */,
 				FDEEDE9648633C8C10141493692A4FFC /* PBXTargetDependency */,
@@ -810,6 +1089,14 @@
 			name = MessageKit;
 			productName = MessageKit;
 			productReference = 15A68A8F33BD9EB9AFD02465B0418BCF /* MessageKit */;
+=======
+				BFFDCD0E4C3EF39D658450DEF5F744E4 /* PBXTargetDependency */,
+				43D16B26BA3D79D893FEB02DBD02D0A9 /* PBXTargetDependency */,
+			);
+			name = "Pods-VideoSDK_Example";
+			productName = Pods_VideoSDK_Example;
+			productReference = FD108BAC3CAFFC31FE31BD7B5837AD51 /* Pods_VideoSDK_Example.framework */;
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			productType = "com.apple.product-type.framework";
 		};
 		9B78EE4AF6AE03E79D88886319853FF7 /* Starscream */ = {
@@ -827,6 +1114,7 @@
 			);
 			name = Starscream;
 			productName = Starscream;
+<<<<<<< HEAD
 			productReference = 891B2270823847ED23F2ECFC28F935EC /* Starscream */;
 			productType = "com.apple.product-type.framework";
 		};
@@ -846,6 +1134,9 @@
 			name = InputBarAccessoryView;
 			productName = InputBarAccessoryView;
 			productReference = B81513B0B3333500DFFB1B1B179FB571 /* InputBarAccessoryView */;
+=======
+			productReference = 891B2270823847ED23F2ECFC28F935EC /* Starscream.framework */;
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -855,7 +1146,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
+<<<<<<< HEAD
 				LastUpgradeCheck = 1240;
+=======
+				LastUpgradeCheck = 1310;
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -866,12 +1161,19 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+<<<<<<< HEAD
 			productRefGroup = 9C55E365335A3BE1918FAC83D68F5574 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				C8C39DD486923E3933801D232041B590 /* InputBarAccessoryView */,
 				2D834CBBD351637528FA6B93E42745DC /* MessageKit */,
+=======
+			productRefGroup = 35B1C99CED9C79F4E63CA2CA58899EF7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 				207BB035DC5AC1C4F1AFC7FA98B31134 /* Pods-VideoSDK_Example */,
 				9B78EE4AF6AE03E79D88886319853FF7 /* Starscream */,
 				B6E2C457741647223A51766707CCB8CA /* VideoSDKRTC */,
@@ -880,11 +1182,18 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+<<<<<<< HEAD
 		291AA43ADAD4E793F0212A12266E1D43 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				16854A9A19CEFC25255F37BDD64611E1 /* Assets.xcassets in Resources */,
+=======
+		35A65106468F41044FA646EC25E421ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,6 +1204,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		9AA42F8A3E29C830BF5A8AAD4B4D5849 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -913,15 +1223,27 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 		1F8859E7B94AE66DF30D2719D8C20FD3 /* [CP] Copy XCFrameworks */ = {
+=======
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B057D013BED5819710565D3413D512BC /* [CP] Copy XCFrameworks */ = {
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/VideoSDKRTC/VideoSDKRTC-xcframeworks.sh",
+<<<<<<< HEAD
 				"${PODS_ROOT}/VideoSDKRTC/Frameworks/VideoSDKRTC.xcframework",
 				"${PODS_ROOT}/VideoSDKRTC/Frameworks/vl_mediasoup_client_ios.xcframework",
 				"${PODS_ROOT}/VideoSDKRTC/Frameworks/WebRTC.xcframework",
+=======
+				"${PODS_ROOT}/../Frameworks/VideoSDKRTC.xcframework",
+				"${PODS_ROOT}/../Frameworks/vl_mediasoup_client_ios.xcframework",
+				"${PODS_ROOT}/../Frameworks/WebRTC.xcframework",
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			);
 			name = "[CP] Copy XCFrameworks";
 			outputPaths = (
@@ -937,6 +1259,7 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+<<<<<<< HEAD
 		01D120C647867B017F8EBBF284BBB98D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1012,6 +1335,13 @@
 				AA85CB36702EF93CA3C1867F6BBB5118 /* UIEdgeInsets+Extensions.swift in Sources */,
 				3B5B56C402289BF8410699DC301FD926 /* UIImage+Extensions.swift in Sources */,
 				0F069FF09EC156BFFA21880A177386A1 /* UIView+Extensions.swift in Sources */,
+=======
+		37BB6AD416B2FC8B9D0B5EDF01CDA634 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1D24F7FBDD64601FD1FFFDBB66381F4 /* Pods-VideoSDK_Example-dummy.m in Sources */,
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1043,6 +1373,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+<<<<<<< HEAD
 		BED254A08173A965F6113110B8424B09 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1131,10 +1462,33 @@
 			name = Starscream;
 			target = 9B78EE4AF6AE03E79D88886319853FF7 /* Starscream */;
 			targetProxy = FFCF783F50C02A78637EF38D78A47218 /* PBXContainerItemProxy */;
+=======
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		358340E5F79BB1010440AB103546FA7C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Starscream;
+			target = 9B78EE4AF6AE03E79D88886319853FF7 /* Starscream */;
+			targetProxy = 8DDB87744E90A64E3FF407BA5093604E /* PBXContainerItemProxy */;
+		};
+		43D16B26BA3D79D893FEB02DBD02D0A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VideoSDKRTC;
+			target = B6E2C457741647223A51766707CCB8CA /* VideoSDKRTC */;
+			targetProxy = 387B5DA5DBD3EBAC2BF832E39BA406CC /* PBXContainerItemProxy */;
+		};
+		BFFDCD0E4C3EF39D658450DEF5F744E4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Starscream;
+			target = 9B78EE4AF6AE03E79D88886319853FF7 /* Starscream */;
+			targetProxy = 33F2DD00D511C3383877E976C16FC7F8 /* PBXContainerItemProxy */;
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+<<<<<<< HEAD
 		055DAFC2F0BA73FB7FED68455D58AD20 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3E1C2B7DE63C547CF0D2DA4946C85CF3 /* MessageKit.debug.xcconfig */;
@@ -1233,11 +1587,17 @@
 			name = Debug;
 		};
 		750F92BDD5688787A873D0235B1FC3FE /* Release */ = {
+=======
+		5EBB101ACD247E10AE9D7784F6BF7AD9 /* Release */ = {
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4B6F202ED9D86710097988B1B7E721D /* Pods-VideoSDK_Example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+<<<<<<< HEAD
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+=======
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1249,7 +1609,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-VideoSDK_Example/Pods-VideoSDK_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+<<<<<<< HEAD
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+=======
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-VideoSDK_Example/Pods-VideoSDK_Example.modulemap";
@@ -1269,9 +1633,14 @@
 		};
 		80353CD044352EB25177A464B1165673 /* Release */ = {
 			isa = XCBuildConfiguration;
+<<<<<<< HEAD
 			baseConfigurationReference = F967A8C9905F5D875098817D76B06B4B /* Starscream.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+=======
+			baseConfigurationReference = E6B8353DB672E6C84ABAF6B044BC47F3 /* Starscream.release.xcconfig */;
+			buildSettings = {
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1283,7 +1652,11 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Starscream/Starscream-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Starscream/Starscream-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+<<<<<<< HEAD
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+=======
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Starscream/Starscream.modulemap";
 				PRODUCT_MODULE_NAME = Starscream;
@@ -1299,6 +1672,7 @@
 			};
 			name = Release;
 		};
+<<<<<<< HEAD
 		8C34FCF843F112ABA2DE0E7F78E02CB5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 094B31BA93F3B122E73A807344642A56 /* VideoSDKRTC.release.xcconfig */;
@@ -1308,6 +1682,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+=======
+		885A6B4266CAD7975F6259D896C97131 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2EE98B20ED921D9C45CB15A71F17DD72 /* VideoSDKRTC.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1315,7 +1699,11 @@
 			};
 			name = Release;
 		};
+<<<<<<< HEAD
 		903A0004D3E6651EFD5D2E16214D101B /* Release */ = {
+=======
+		8DE5143C03248BB6CD542DE3963D6F3A /* Debug */ = {
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1350,6 +1738,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+<<<<<<< HEAD
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1357,6 +1746,18 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_RELEASE=1",
+=======
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1365,6 +1766,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+<<<<<<< HEAD
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1390,13 +1792,31 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
+=======
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			name = Debug;
 		};
 		97CFD2EBB8E28F03BDCBFEBEC8ECF3B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+<<<<<<< HEAD
 			baseConfigurationReference = AC7C1D437E99858B5D588125C1F8DBE5 /* Starscream.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+=======
+			baseConfigurationReference = 2C1CF04602B9D61F89BCC51DEA7939B0 /* Starscream.debug.xcconfig */;
+			buildSettings = {
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1408,7 +1828,11 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Starscream/Starscream-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Starscream/Starscream-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+<<<<<<< HEAD
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+=======
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Starscream/Starscream.modulemap";
 				PRODUCT_MODULE_NAME = Starscream;
@@ -1423,7 +1847,11 @@
 			};
 			name = Debug;
 		};
+<<<<<<< HEAD
 		B4EFE046ACF8F37157F6E322C7FCFC28 /* Debug */ = {
+=======
+		9E406C6AAF85E580207CD97B0044DEAB /* Release */ = {
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1458,6 +1886,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+<<<<<<< HEAD
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1468,6 +1897,15 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_DEBUG=1",
 					"DEBUG=1",
+=======
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1476,6 +1914,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+<<<<<<< HEAD
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1490,11 +1929,28 @@
 			name = Debug;
 		};
 		CB2AFE4867CE0572D7214E5D6C861746 /* Debug */ = {
+=======
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		B8D66D72FACACE9B379E1BF6BAEBBF19 /* Debug */ = {
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 16BFA68DB3CD4A2716D4703BCCE11326 /* Pods-VideoSDK_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+<<<<<<< HEAD
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+=======
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1506,7 +1962,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-VideoSDK_Example/Pods-VideoSDK_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+<<<<<<< HEAD
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+=======
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-VideoSDK_Example/Pods-VideoSDK_Example.modulemap";
@@ -1523,6 +1983,7 @@
 			};
 			name = Debug;
 		};
+<<<<<<< HEAD
 		FCA7F93D83A258DA0CA8C3D0018C71FD /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 282BB204826340A5761177D6D4573198 /* MessageKit.release.xcconfig */;
@@ -1555,10 +2016,26 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+=======
+		C5480309BDA446B8AFF8CC8F030412D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89B2607DD1678875AB07A7B1A23A4F78 /* VideoSDKRTC.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+<<<<<<< HEAD
 		14691BFD7BD746D185C01FCB1ACE7681 /* Build configuration list for PBXNativeTarget "Pods-VideoSDK_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1573,15 +2050,30 @@
 			buildConfigurations = (
 				9604C1D23ADEEC964B167C45BE5FF738 /* Debug */,
 				8C34FCF843F112ABA2DE0E7F78E02CB5 /* Release */,
+=======
+		2A91A3A557C8645CFB88C4D37A189015 /* Build configuration list for PBXAggregateTarget "VideoSDKRTC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5480309BDA446B8AFF8CC8F030412D6 /* Debug */,
+				885A6B4266CAD7975F6259D896C97131 /* Release */,
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+<<<<<<< HEAD
 		32FAEE34BCA4C1B0FB518050D7129A19 /* Build configuration list for PBXNativeTarget "InputBarAccessoryView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				74B5EF4C41E81D0EC60201006A55602B /* Debug */,
 				3658A489383DA7809E5CB01C782BAFB1 /* Release */,
+=======
+		3EA01B44A9085F30CFC67B83ED170499 /* Build configuration list for PBXNativeTarget "Pods-VideoSDK_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8D66D72FACACE9B379E1BF6BAEBBF19 /* Debug */,
+				5EBB101ACD247E10AE9D7784F6BF7AD9 /* Release */,
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1589,8 +2081,13 @@
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
+<<<<<<< HEAD
 				B4EFE046ACF8F37157F6E322C7FCFC28 /* Debug */,
 				903A0004D3E6651EFD5D2E16214D101B /* Release */,
+=======
+				8DE5143C03248BB6CD542DE3963D6F3A /* Debug */,
+				9E406C6AAF85E580207CD97B0044DEAB /* Release */,
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1604,6 +2101,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+<<<<<<< HEAD
 		9337ED340BEB01B953DBB0C9ED2D4DB4 /* Build configuration list for PBXNativeTarget "MessageKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1613,6 +2111,8 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+=======
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 /* End XCConfigurationList section */
 	};
 	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;

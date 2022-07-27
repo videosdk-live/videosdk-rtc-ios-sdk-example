@@ -3,12 +3,21 @@ BUILD_LIBRARY_FOR_DISTRIBUTION = YES
 CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES
 CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
 ENABLE_BITCODE = NO
+<<<<<<< HEAD
 FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/InputBarAccessoryView" "${PODS_CONFIGURATION_BUILD_DIR}/MessageKit" "${PODS_CONFIGURATION_BUILD_DIR}/Starscream" "${PODS_ROOT}/VideoSDKRTC/Frameworks" "${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/InputBarAccessoryView/InputBarAccessoryView.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/MessageKit/MessageKit.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Starscream/Starscream.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) /usr/lib/swift '@executable_path/Frameworks' '@loader_path/Frameworks'
 LIBRARY_SEARCH_PATHS = $(inherited) "${DT_TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}" /usr/lib/swift
 OTHER_LDFLAGS = $(inherited) -framework "InputBarAccessoryView" -framework "MessageKit" -framework "Starscream" -framework "UIKit" -framework "VideoSDKRTC" -framework "WebRTC" -framework "vl_mediasoup_client_ios"
+=======
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Starscream" "${PODS_ROOT}/../Frameworks" "${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Starscream/Starscream.framework/Headers"
+LD_RUNPATH_SEARCH_PATHS = $(inherited) /usr/lib/swift '@executable_path/Frameworks' '@loader_path/Frameworks'
+LIBRARY_SEARCH_PATHS = $(inherited) "${DT_TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}" /usr/lib/swift
+OTHER_LDFLAGS = $(inherited) -framework "Starscream" -framework "VideoSDKRTC" -framework "WebRTC" -framework "vl_mediasoup_client_ios"
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS -Xcc -Wno-error=non-modular-include-in-framework-module
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

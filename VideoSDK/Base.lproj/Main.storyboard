@@ -87,11 +87,19 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I1m-uL-Dp4">
+<<<<<<< HEAD
                                 <rect key="frame" x="95" y="308.33333333333331" width="200" height="45"/>
                                 <color key="backgroundColor" red="0.21568629149999999" green="0.46274507050000002" blue="0.94117647410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="6xW-OQ-0vE"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="hFk-Cn-8oy"/>
+=======
+                                <rect key="frame" x="120" y="308.33333333333331" width="150" height="45"/>
+                                <color key="backgroundColor" red="0.21568629149999999" green="0.46274507050000002" blue="0.94117647410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="6xW-OQ-0vE"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="hFk-Cn-8oy"/>
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <state key="normal" title="JOIN">
@@ -101,6 +109,7 @@
                                     <action selector="startMeetingButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Xle-zf-qq4"/>
                                 </connections>
                             </button>
+<<<<<<< HEAD
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LnF-gu-eIj">
                                 <rect key="frame" x="95" y="363.33333333333331" width="200" height="45"/>
                                 <color key="backgroundColor" red="0.21568629149999999" green="0.46274507050000002" blue="0.94117647410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -125,18 +134,34 @@
                             <constraint firstItem="dwu-cN-bvq" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="30" id="DWl-sI-Vj3"/>
                             <constraint firstItem="dwu-cN-bvq" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="40" id="Jue-Co-c78"/>
                             <constraint firstItem="LnF-gu-eIj" firstAttribute="top" secondItem="I1m-uL-Dp4" secondAttribute="bottom" constant="10" id="ZzO-FM-tmD"/>
+=======
+                        </subviews>
+                        <color key="backgroundColor" red="0.1294117719" green="0.12549020350000001" blue="0.19215688110000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="dwu-cN-bvq" secondAttribute="trailing" constant="30" id="3gC-Hm-7AN"/>
+                            <constraint firstItem="I1m-uL-Dp4" firstAttribute="top" secondItem="dwu-cN-bvq" secondAttribute="bottom" constant="30" id="6hI-CF-XSA"/>
+                            <constraint firstItem="dwu-cN-bvq" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="30" id="DWl-sI-Vj3"/>
+                            <constraint firstItem="dwu-cN-bvq" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="40" id="Jue-Co-c78"/>
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
                             <constraint firstItem="I1m-uL-Dp4" firstAttribute="centerX" secondItem="dwu-cN-bvq" secondAttribute="centerX" id="zPF-Go-KXd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Zujo Now" id="jsl-Xe-hfc"/>
                     <connections>
                         <outlet property="copyMeetingIdButton" destination="EUO-Jn-iQ6" id="Wy7-xP-e4x"/>
+<<<<<<< HEAD
                         <outlet property="createMeetingButton" destination="LnF-gu-eIj" id="pUE-f4-XXv"/>
+=======
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
                         <outlet property="meetingIdTextField" destination="rda-l2-hhC" id="P3Y-Ke-JXc"/>
                         <outlet property="nameDescriptionLabel" destination="KMi-n1-ouy" id="X3I-wT-cXn"/>
                         <outlet property="nameTextField" destination="3Vb-gE-Ec4" id="YyU-Hx-UGs"/>
                         <outlet property="startMeetingButton" destination="I1m-uL-Dp4" id="wHz-sS-tZl"/>
+<<<<<<< HEAD
                         <segue destination="4hO-lx-3x2" kind="presentation" identifier="StartMeeting" modalPresentationStyle="fullScreen" id="HFG-Xa-3cA"/>
+=======
+                        <segue destination="c23-rP-2jo" kind="presentation" identifier="StartMeeting" modalPresentationStyle="fullScreen" id="HFG-Xa-3cA"/>
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -156,7 +181,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xbq-Hk-3SH">
+<<<<<<< HEAD
                                 <rect key="frame" x="0.0" y="88" width="390" height="722"/>
+=======
+                                <rect key="frame" x="0.0" y="44" width="390" height="766"/>
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GDF-7P-ZrO" customClass="ScreenSharingView" customModule="VideoSDK_Example" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="422"/>
@@ -191,7 +220,11 @@
                                         </connections>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VPH-tS-jwU">
+<<<<<<< HEAD
                                         <rect key="frame" x="0.0" y="432" width="390" height="230"/>
+=======
+                                        <rect key="frame" x="0.0" y="432" width="390" height="274"/>
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
                                         <color key="backgroundColor" red="0.12941176470588234" green="0.12549019607843137" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="P1x-WC-9V1">
                                             <size key="itemSize" width="128" height="128"/>
@@ -342,7 +375,11 @@
                                         </connections>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Qr-zo-EFu">
+<<<<<<< HEAD
                                         <rect key="frame" x="0.0" y="672" width="390" height="50"/>
+=======
+                                        <rect key="frame" x="0.0" y="716" width="390" height="50"/>
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uxe-Ty-vUs">
                                                 <rect key="frame" x="50" y="0.0" width="290" height="50"/>
@@ -361,7 +398,11 @@
                                 </subviews>
                             </stackView>
                         </subviews>
+<<<<<<< HEAD
                         <color key="backgroundColor" red="0.12941176470588234" green="0.12549019607843137" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+=======
+                        <color key="backgroundColor" red="0.1294117719" green="0.12549020350000001" blue="0.19215688110000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
                         <constraints>
                             <constraint firstItem="21B-kf-iu7" firstAttribute="top" secondItem="xbq-Hk-3SH" secondAttribute="bottom" id="8eM-XA-jlb"/>
                             <constraint firstItem="xbq-Hk-3SH" firstAttribute="leading" secondItem="XnP-e9-YIK" secondAttribute="leading" id="OMO-9Y-gUv"/>
@@ -401,7 +442,10 @@
                             </mask>
                         </variation>
                     </view>
+<<<<<<< HEAD
                     <navigationItem key="navigationItem" id="OFm-kA-gcW"/>
+=======
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
                     <connections>
                         <outlet property="buttonsView" destination="uxe-Ty-vUs" id="2hH-8F-GG9"/>
                         <outlet property="collectionView" destination="VPH-tS-jwU" id="PfI-TO-ken"/>
@@ -411,7 +455,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jql-AL-uf0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
             <point key="canvasLocation" x="2873.8461538461538" y="133.64928909952607"/>
+=======
+            <point key="canvasLocation" x="1946" y="134"/>
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8n2-0y-6xg">
@@ -452,7 +500,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7y5-NJ-nHe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
             <point key="canvasLocation" x="3713.8461538461538" y="132.93838862559241"/>
+=======
+            <point key="canvasLocation" x="2784.8000000000002" y="133.5832083958021"/>
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
         </scene>
         <!--Add Streams-->
         <scene sceneID="ES3-Q9-maE">
@@ -572,6 +624,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8oh-DM-fhF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
             <point key="canvasLocation" x="4610.7692307692305" y="133.64928909952607"/>
         </scene>
         <!--Navigation Controller-->
@@ -796,6 +849,14 @@
         <image name="mic_on" width="15.23799991607666" height="16"/>
         <image name="multiply" catalog="system" width="128" height="111"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+=======
+            <point key="canvasLocation" x="3682" y="134"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="doc.on.doc" catalog="system" width="32" height="32"/>
+        <image name="livestream" width="512" height="512"/>
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -8,13 +8,22 @@
 
 import Foundation
 
+<<<<<<< HEAD
+=======
+let LOCAL_SERVER_URL = "https://dev-ios-api.zujonow.com"
+
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 enum EndPoint {
     case getToken
     case createMeeting(String)
     case validateMeeting(String, String)
     
     var baseURL: URL {
+<<<<<<< HEAD
         URL(string: AUTH_URL)!
+=======
+        URL(string: LOCAL_SERVER_URL)!
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
     }
     
     var value: String {

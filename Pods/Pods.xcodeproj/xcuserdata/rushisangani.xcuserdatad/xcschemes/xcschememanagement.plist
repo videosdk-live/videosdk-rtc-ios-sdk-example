@@ -4,6 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+<<<<<<< HEAD
 		<key>InputBarAccessoryView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -14,6 +15,8 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+=======
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 		<key>Pods-VideoSDK_Example.xcscheme</key>
 		<dict>
 			<key>isShown</key>

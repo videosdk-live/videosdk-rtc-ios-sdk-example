@@ -8,7 +8,10 @@
 
 import Foundation
 import UIKit
+<<<<<<< HEAD
 import VideoSDKRTC
+=======
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
  
 extension UIViewController {
     
@@ -30,6 +33,7 @@ extension UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+<<<<<<< HEAD
     func showQualitySelectionsheet(options: [MenuOption], fromView view: UIView, currentQuality: VideoQuality, completion: @escaping(VideoQuality) -> Void) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         if let popover = alertController.popoverPresentationController {
@@ -62,6 +66,8 @@ extension UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+=======
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
     func showAlert(title: String?, message: String?, autoDismiss: Bool = false) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(.init(title: "Ok", style: .default, handler: nil))
@@ -92,6 +98,7 @@ extension UIViewController {
         actions.forEach { alertController.addAction($0) }
         present(alertController, animated: true, completion: nil)
     }
+<<<<<<< HEAD
     
     func showToast(message: String, font: UIFont) {
 
@@ -155,4 +162,6 @@ extension UIViewController {
             barButtonItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
         }
     }
+=======
+>>>>>>> da4f5e8d577141b9b4a2514a23d7835bff88ca3b
 }
