@@ -92,6 +92,23 @@ extension UIViewController {
         actions.forEach { alertController.addAction($0) }
         present(alertController, animated: true, completion: nil)
     }
+    
+    func showToast(message: String, font: UIFont) {
+
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 125, y: self.view.frame.size.height-100, width: 250, height: 50))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = font
+        toastLabel.textAlignment = .center;
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            toastLabel.removeFromSuperview()
+        }
+    }
 }
 
 // MARK: - NavigationBar Appearance

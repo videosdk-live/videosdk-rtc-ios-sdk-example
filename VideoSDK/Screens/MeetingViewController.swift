@@ -26,6 +26,8 @@ enum MenuOption: String {
     case high = "High"
     case low = "Low"
     case medium = "Medium"
+    case showParticipantList = "Show Participants List"
+    case raiseHand = "Raise Hand"
     
     var style: UIAlertAction.Style {
         switch self {
@@ -41,6 +43,7 @@ private let reuseIdentifier = "ParticipantViewCell"
 private let addStreamOutputSegueIdentifier = "Add Livestream Outputs"
 private let recordingWebhookUrl = "https://www.google.com"
 private let CHAT_TOPIC = "CHAT"
+private let RAISE_HAND_TOPIC = "RAISE_HAND"
 
 class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScrollViewDelegate {
     
@@ -50,6 +53,7 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
     @IBOutlet weak var screenSharingView: ScreenSharingView!
     @IBOutlet weak var buttonsView: UIView!
     
+    @IBOutlet weak var meetingIDButton: UIButton!
     /// View for handling meeting controls consists of Mic, Video, and End buttons
     lazy var buttonControlsView: ButtonControlsView! = {
         Bundle.main.loadNibNamed("ButtonControlsView", owner: self, options: nil)?[0] as! ButtonControlsView
@@ -97,6 +101,9 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
         
         // init meeting
         initializeMeeting()
+        
+        // set meeting id in button text
+        meetingIDButton.setTitle("Meeting Id : \(meetingData.meetingId)", for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -193,6 +200,13 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
             }
         }
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func onClickCopyMeetingID(_ sender: UIButton) {
+        UIPasteboard.general.string = meetingData.meetingId
+        self.showToast(message: "Meeting id copied", font: .systemFont(ofSize: 18))
+    }
 }
 
 // MARK: - MeetingEventListener
@@ -216,6 +230,9 @@ extension MeetingViewController: MeetingEventListener {
         
         // listen/subscribe for chat topic
         meeting?.pubsub.subscribe(topic: CHAT_TOPIC, forListener: self)
+        
+	// listen/subscribe for raise-hand topic
+        meeting?.pubsub.subscribe(topic: RAISE_HAND_TOPIC, forListener: self)
     }
     
     /// Meeting ended
@@ -413,10 +430,23 @@ extension MeetingViewController: PubSubMessageListener {
     
     func onMessageReceived(_ message: PubSubMessage) {
         print("Message Received:= " + message.message)
-        
-        if let chatViewController = navigationController?.topViewController as? ChatViewController {
-            chatViewController.showNewMessage(message)
+        let localParticipantID = participants.first(where: { $0.isLocal == true })?.id
+        if(message.topic == RAISE_HAND_TOPIC){
+           
+            self.showToast(message: "\(message.senderId == localParticipantID ? "You" : "\(message.senderName)") raised hand 🖐🏼", font: .systemFont(ofSize: 18))
+        } else {
+            if let chatViewController = navigationController?.topViewController as? ChatViewController {
+                chatViewController.showNewMessage(message)
+                
+            } else {
+                
+                if message.senderId != localParticipantID {
+                    self.showToast(message: "\(message.senderName) says: \(message.message)", font: .systemFont(ofSize: 18))
+                }
+            }
         }
+        
+        
     }
 }
 
@@ -436,7 +466,9 @@ private extension MeetingViewController {
         }
         
         // onVideoTapped
-        buttonControlsView.onVideoTapped = { on in  
+        buttonControlsView.onVideoTapped = { on in
+            self.meeting?.pubsub.publish(topic: CHAT_TOPIC, message: "How are you?", options: [:])
+            
             if !on {
                 self.meeting?.enableWebcam()
             } else {
@@ -468,6 +500,8 @@ private extension MeetingViewController {
         /// Menu tap
         buttonControlsView.onMenuButtonTapped = {
             var menuOptions: [MenuOption] = []
+            menuOptions.append(.showParticipantList)
+            menuOptions.append(.raiseHand)
             menuOptions.append(.switchCamera)
             menuOptions.append(.switchAudioOutput)
             menuOptions.append(!self.recordingStarted ? .startRecording : .stopRecording)
@@ -493,6 +527,15 @@ private extension MeetingViewController {
                     
                 case .switchAudioOutput:
                     AVAudioSession.sharedInstance().changeAudioOutput(presenterViewController: self)
+                    
+                case .showParticipantList:
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let participantsViewController = storyBoard.instantiateViewController(withIdentifier: "ParticipantsViewController") as! ParticipantsViewController
+                    participantsViewController.participants = self.participants
+                    self.present(participantsViewController, animated: true, completion: nil)
+                    
+                case .raiseHand:
+                    self.meeting?.pubsub.publish(topic: RAISE_HAND_TOPIC, message: "Raise Hand by Me", options: [:])
                 
                 default:
                     break

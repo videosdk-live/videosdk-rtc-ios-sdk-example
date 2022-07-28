@@ -22,6 +22,7 @@ class StartViewController: UIViewController {
     @IBOutlet weak var nameDescriptionLabel: UILabel!
     @IBOutlet weak var startMeetingButton: UIButton!
     
+    @IBOutlet weak var createMeetingButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,9 +31,39 @@ class StartViewController: UIViewController {
         self.serverToken = AUTH_TOKEN
     }
     
+    // MARK: - Custom Function
+    
+    func joinRoom() {
+        
+        let urlString = "https://api.videosdk.live/v2/rooms"
+        let session = URLSession.shared
+        let url = URL(string: urlString)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue(self.serverToken, forHTTPHeaderField: "Authorization")
+        
+        session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            
+            if let data = data, let utf8Text = String(data: data, encoding: .utf8)
+            {
+                print("UTF =>=>\(utf8Text)") // original server data as UTF8 string
+                do{
+                    let dataArray = try JSONDecoder().decode(RoomsStruct.self,from: data)
+                    DispatchQueue.main.async {
+                        self.meetingIdTextField.text = dataArray.roomID
+                        self.joinMeeting()
+                    }
+                    print(dataArray)
+                } catch {
+                    print(error)
+                }
+            }
+        }
+        ).resume()
+    }
     // MARK: - Actions
     
-    @IBAction func startMeetingButtonTapped(_ sender: Any) {
+    func joinMeeting() {
         nameTextField.resignFirstResponder()
         
         if !serverToken.isEmpty {
@@ -53,6 +84,13 @@ class StartViewController: UIViewController {
             self.showAlert(title: "Auth Token Required", message: "Please provide auth token to start the meeting.")
         }
     }
+  
+    
+    // MARK: - Actions
+    
+    @IBAction func startMeetingButtonTapped(_ sender: Any) {
+        joinMeeting()
+    }
     
     @IBAction func copyMeetingIdButtonTapped(_ sender: Any) {
         guard let meetingId = meetingIdTextField.text, !meetingId.isEmpty else { return }
@@ -60,6 +98,10 @@ class StartViewController: UIViewController {
         
         UIPasteboard.general.string = meetingLink
         self.showAlert(title: "Link Copied", message: nil, autoDismiss: true)
+    }
+    
+    @IBAction func onClickCreateMeeting(_ sender: UIButton) {
+        joinRoom()
     }
     
     // MARK: - Navigation
@@ -108,6 +150,8 @@ extension StartViewController {
         nameTextField.attributedPlaceholder = NSAttributedString(string: "Enter Your Name", attributes: attributes)
         meetingIdTextField.attributedPlaceholder = NSAttributedString(string: "Enter Meeting ID", attributes: attributes)
         
+        meetingIdTextField.text = "y9n1-du8z-vmnu"
+        
         copyMeetingIdButton.layer.borderWidth = 0.8
         copyMeetingIdButton.layer.borderColor = UIColor.darkGray.cgColor
         copyMeetingIdButton.layer.cornerRadius = 5
@@ -121,7 +165,7 @@ extension StartViewController {
             $0?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         }
         startMeetingButton.layer.cornerRadius = 5
-        
+        createMeetingButton.layer.cornerRadius = 5
         nameDescriptionLabel.text = "Your name will help everyone identify you in the meeting"
         nameDescriptionLabel.textColor = UIColor.darkGray
         nameDescriptionLabel.font = UIFont.systemFont(ofSize: 13)

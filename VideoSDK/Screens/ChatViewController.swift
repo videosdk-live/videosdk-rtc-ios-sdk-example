@@ -150,7 +150,7 @@ extension ChatViewController: MessagesDisplayDelegate, MessagesLayoutDelegate {
     }
     
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        UIColor.systemDarkBackground.withAlphaComponent(0.4)
+        UIColor.systemDarkBackground?.withAlphaComponent(0.4) ?? UIColor(named: "systemDarkBackground")!
     }
     
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
