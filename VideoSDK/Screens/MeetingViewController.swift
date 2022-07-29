@@ -91,6 +91,8 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        Utils.loaderShow(viewControler: self)
+        
         // setup
         setupUI()
         setupActions()
@@ -233,6 +235,8 @@ extension MeetingViewController: MeetingEventListener {
         
 	// listen/subscribe for raise-hand topic
         meeting?.pubsub.subscribe(topic: RAISE_HAND_TOPIC, forListener: self)
+        
+        Utils.loaderDismiss(viewControler: self)
     }
     
     /// Meeting ended

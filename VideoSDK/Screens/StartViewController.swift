@@ -9,7 +9,7 @@
 import UIKit
 
 class StartViewController: UIViewController {
-
+    
     // MARK: - Properties
     
     private var serverToken = ""
@@ -25,7 +25,7 @@ class StartViewController: UIViewController {
     @IBOutlet weak var createMeetingButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupUI()
         
         self.serverToken = AUTH_TOKEN
@@ -43,7 +43,9 @@ class StartViewController: UIViewController {
         request.addValue(self.serverToken, forHTTPHeaderField: "Authorization")
         
         session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-            
+            DispatchQueue.main.async {
+                Utils.loaderDismiss(viewControler: self)
+            }
             if let data = data, let utf8Text = String(data: data, encoding: .utf8)
             {
                 print("UTF =>=>\(utf8Text)") // original server data as UTF8 string
@@ -84,7 +86,7 @@ class StartViewController: UIViewController {
             self.showAlert(title: "Auth Token Required", message: "Please provide auth token to start the meeting.")
         }
     }
-  
+    
     
     // MARK: - Actions
     
@@ -101,11 +103,12 @@ class StartViewController: UIViewController {
     }
     
     @IBAction func onClickCreateMeeting(_ sender: UIButton) {
+        Utils.loaderShow(viewControler: self)
         joinRoom()
     }
     
     // MARK: - Navigation
-
+    
     func startMeeting() {
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "StartMeeting", sender: nil)
@@ -114,9 +117,9 @@ class StartViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let navigation = segue.destination as? UINavigationController,
-            let meetingViewController = navigation.topViewController as? MeetingViewController else {
-            return
-        }
+              let meetingViewController = navigation.topViewController as? MeetingViewController else {
+                  return
+              }
         
         meetingViewController.meetingData = MeetingData(
             token: serverToken,
@@ -150,7 +153,7 @@ extension StartViewController {
         nameTextField.attributedPlaceholder = NSAttributedString(string: "Enter Your Name", attributes: attributes)
         meetingIdTextField.attributedPlaceholder = NSAttributedString(string: "Enter Meeting ID", attributes: attributes)
         
-        meetingIdTextField.text = "y9n1-du8z-vmnu"
+        meetingIdTextField.text = ""
         
         copyMeetingIdButton.layer.borderWidth = 0.8
         copyMeetingIdButton.layer.borderColor = UIColor.darkGray.cgColor
