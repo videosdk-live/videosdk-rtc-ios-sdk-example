@@ -48,6 +48,7 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		622101222893AE460099C6D7 /* VideoSDK_ExampleRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VideoSDK_ExampleRelease.entitlements; sourceTree = "<group>"; };
 		623A5F1B2892FCE60051F40C /* ParticipantsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantsViewController.swift; sourceTree = "<group>"; };
 		623A5F1D2892FD1B0051F40C /* joinRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = joinRoom.swift; sourceTree = "<group>"; };
 		623A5F1F2892FD350051F40C /* ParticipantCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantCellView.swift; sourceTree = "<group>"; };
@@ -98,6 +99,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				622101222893AE460099C6D7 /* VideoSDK_ExampleRelease.entitlements */,
 				623A5F23289399840051F40C /* VideoSDK_Example.entitlements */,
 				607FACD21AFB9204008FA782 /* Example for VideoSDK */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -522,7 +524,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zujo.videosdk.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -534,7 +536,7 @@
 			baseConfigurationReference = 06C2C886064125CDBD21A786 /* Pods-VideoSDK_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = VideoSDK_Example.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VideoSDK_ExampleRelease.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8GZ776NSU2;
 				INFOPLIST_FILE = VideoSDK/Info.plist;
@@ -544,7 +546,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zujo.videosdk.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

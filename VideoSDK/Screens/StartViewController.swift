@@ -91,7 +91,12 @@ class StartViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func startMeetingButtonTapped(_ sender: Any) {
-        joinMeeting()
+        if((meetingIdTextField.text ?? "").isEmpty){
+            self.showAlert(title: "Meeting id Required", message: "Please provide meeting id to start the meeting.")
+            meetingIdTextField.resignFirstResponder()
+        } else {
+            joinMeeting()
+        }
     }
     
     @IBAction func copyMeetingIdButtonTapped(_ sender: Any) {

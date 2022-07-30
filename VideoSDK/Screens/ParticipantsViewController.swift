@@ -15,7 +15,7 @@ class ParticipantsViewController: UIViewController {
     
     @IBOutlet weak var lblParticipants: UILabel!
     @IBOutlet weak var mainView: UIView!
-    //@IBOutlet weak var tblParticipantsView: UITableView?
+    @IBOutlet weak var tblParticipantsView: UITableView?
     
     /// video participants including self to show in Grid
     var participants: [Participant] = []
@@ -32,10 +32,23 @@ class ParticipantsViewController: UIViewController {
     override func viewDidLoad() {
         mainView.roundCorners(corners: [.topLeft,.topRight], radius: 20)
         lblParticipants.text = "Participants (\(participants.count))"
+        
+        // removing any existing observer for 'shareParticipants'
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "shareParticipants"), object: nil)
+        // adding new observer for 'shareParticipants'
+        NotificationCenter.default.addObserver(self, selector: #selector(notifyParticipants(_:)), name: NSNotification.Name(rawValue: "shareParticipants"), object: nil)
     }
 
     @IBAction func btnClose_Clicked(_ sender: Any) {
         self.dismiss(animated: true)
+    }
+    
+    @objc func notifyParticipants(_ notification:NSNotification)
+    {
+        if let updatedParticipants = notification.userInfo!["participants"] as? [Participant] {
+            self.participants = updatedParticipants
+            self.tblParticipantsView?.reloadData()
+      }
     }
 }
 

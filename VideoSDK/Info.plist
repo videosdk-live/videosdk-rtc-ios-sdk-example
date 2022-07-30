@@ -28,6 +28,7 @@
 	<string>Allow microphone access to start audio.</string>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>remote-notification</string>
 		<string>voip</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
@@ -45,5 +46,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>method</key>
+	<string>app-store</string>
 </dict>
 </plist>
