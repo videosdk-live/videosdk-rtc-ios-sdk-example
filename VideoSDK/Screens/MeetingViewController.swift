@@ -26,6 +26,8 @@ enum MenuOption: String {
     case high = "High"
     case low = "Low"
     case medium = "Medium"
+    case showParticipantList = "Show Participants List"
+    case raiseHand = "Raise Hand"
     
     var style: UIAlertAction.Style {
         switch self {
@@ -41,8 +43,9 @@ private let reuseIdentifier = "ParticipantViewCell"
 private let addStreamOutputSegueIdentifier = "Add Livestream Outputs"
 private let recordingWebhookUrl = "https://www.google.com"
 private let CHAT_TOPIC = "CHAT"
+private let RAISE_HAND_TOPIC = "RAISE_HAND"
 
-class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScrollViewDelegate {
+class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScrollViewDelegate, UNUserNotificationCenterDelegate {
     
     // MARK: - View
     
@@ -50,6 +53,7 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
     @IBOutlet weak var screenSharingView: ScreenSharingView!
     @IBOutlet weak var buttonsView: UIView!
     
+    @IBOutlet weak var meetingIDButton: UIButton!
     /// View for handling meeting controls consists of Mic, Video, and End buttons
     lazy var buttonControlsView: ButtonControlsView! = {
         Bundle.main.loadNibNamed("ButtonControlsView", owner: self, options: nil)?[0] as! ButtonControlsView
@@ -79,6 +83,9 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
     /// Camera position
     private var cameraPosition = CameraPosition.front
     
+    /// Notification center for sending and authorize notification
+    var userNotificationCenter = UNUserNotificationCenter.current()
+    
     
     // MARK: - Life Cycle
     
@@ -87,6 +94,8 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        Utils.loaderShow(viewControler: self)
+        
         // setup
         setupUI()
         setupActions()
@@ -97,6 +106,23 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
         
         // init meeting
         initializeMeeting()
+        
+        // set meeting id in button text
+        meetingIDButton.setTitle("Meeting Id : \(meetingData.meetingId)", for: .normal)
+        
+        // setting up notification for viewcontroller to check, it going to background or not
+        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+        
+        // Assigning self delegate on userNotificationCenter
+        self.userNotificationCenter.delegate = self
+        
+        // requesting authorization to send the local notification
+        self.requestNotificationAuthorization()
+    }
+    
+    // method called once app state changes to background
+    @objc func appMovedToBackground() {
+        self.sendNotification()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,6 +133,7 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.isHidden = false
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -193,6 +220,55 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
             }
         }
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func onClickCopyMeetingID(_ sender: UIButton) {
+        UIPasteboard.general.string = meetingData.meetingId
+        self.showToast(message: "Meeting id copied", font: .systemFont(ofSize: 18))
+    }
+    
+    // Mark: - Delegate Methods for Local notificatiom
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
+}
+
+// MARK: - Notification Center Methods
+
+extension MeetingViewController {
+    
+    func requestNotificationAuthorization() {
+        self.userNotificationCenter.requestAuthorization(options: UNAuthorizationOptions.init(arrayLiteral: .alert, .badge, .sound)) { (success, error) in
+            if let error = error {
+                print("requestAuthorization error: ", error)
+            }
+        }
+    }
+
+    func sendNotification() {
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "Your application is in background"
+        notificationContent.body = "This may cause you to leave the meeting automatically"
+        notificationContent.sound = UNNotificationSound.default
+            
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1,
+                                                        repeats: false)
+        let request = UNNotificationRequest(identifier: "backgroundNotification",
+                                                content: notificationContent,
+                                                trigger: trigger)
+            
+        self.userNotificationCenter.add(request) { (error) in
+            if let error = error {
+                print("Notification Error: ", error)
+            }
+        }
+    }
+    
 }
 
 // MARK: - MeetingEventListener
@@ -216,6 +292,11 @@ extension MeetingViewController: MeetingEventListener {
         
         // listen/subscribe for chat topic
         meeting?.pubsub.subscribe(topic: CHAT_TOPIC, forListener: self)
+        
+	// listen/subscribe for raise-hand topic
+        meeting?.pubsub.subscribe(topic: RAISE_HAND_TOPIC, forListener: self)
+        
+        Utils.loaderDismiss(viewControler: self)
     }
     
     /// Meeting ended
@@ -240,6 +321,9 @@ extension MeetingViewController: MeetingEventListener {
         
         // show in ui
         addParticipantToGridView()
+        
+        //notification to participants via sharing participants
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "shareParticipants"), object: nil, userInfo: ["participants": participants])
     }
     
     /// A participant left from the meeting
@@ -259,6 +343,9 @@ extension MeetingViewController: MeetingEventListener {
         
         // hide from ui
         removeParticipantFromGridView(at: index)
+        
+        //notification to participants via sharing participants
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "shareParticipants"), object: nil, userInfo: ["participants": participants])
     }
     
     /// Called after recording starts
@@ -370,6 +457,9 @@ extension MeetingViewController: ParticipantEventListener {
             // turn on controls for local participant
             self.buttonControlsView.updateButtons(forStream: stream, enabled: true)
         }
+        
+        //notification to participants via sharing participants
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "shareParticipants"), object: nil, userInfo: ["participants": self.participants])
     }
     
     /// Participant has disabled mic, video or screenshare
@@ -394,6 +484,9 @@ extension MeetingViewController: ParticipantEventListener {
             // turn off controls for local participant
             self.buttonControlsView.updateButtons(forStream: stream, enabled: false)
         }
+        
+        //notification to participants via sharing participants
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "shareParticipants"), object: nil, userInfo: ["participants": self.participants])
     }
 }
 
@@ -413,10 +506,23 @@ extension MeetingViewController: PubSubMessageListener {
     
     func onMessageReceived(_ message: PubSubMessage) {
         print("Message Received:= " + message.message)
-        
-        if let chatViewController = navigationController?.topViewController as? ChatViewController {
-            chatViewController.showNewMessage(message)
+        let localParticipantID = participants.first(where: { $0.isLocal == true })?.id
+        if(message.topic == RAISE_HAND_TOPIC){
+           
+            self.showToast(message: "\(message.senderId == localParticipantID ? "You" : "\(message.senderName)") raised hand 🖐🏼", font: .systemFont(ofSize: 18))
+        } else {
+            if let chatViewController = navigationController?.topViewController as? ChatViewController {
+                chatViewController.showNewMessage(message)
+                
+            } else {
+                
+                if message.senderId != localParticipantID {
+                    self.showToast(message: "\(message.senderName) says: \(message.message)", font: .systemFont(ofSize: 18))
+                }
+            }
         }
+        
+        
     }
 }
 
@@ -436,7 +542,9 @@ private extension MeetingViewController {
         }
         
         // onVideoTapped
-        buttonControlsView.onVideoTapped = { on in  
+        buttonControlsView.onVideoTapped = { on in
+            self.meeting?.pubsub.publish(topic: CHAT_TOPIC, message: "How are you?", options: [:])
+            
             if !on {
                 self.meeting?.enableWebcam()
             } else {
@@ -468,6 +576,8 @@ private extension MeetingViewController {
         /// Menu tap
         buttonControlsView.onMenuButtonTapped = {
             var menuOptions: [MenuOption] = []
+            menuOptions.append(.showParticipantList)
+            menuOptions.append(.raiseHand)
             menuOptions.append(.switchCamera)
             menuOptions.append(.switchAudioOutput)
             menuOptions.append(!self.recordingStarted ? .startRecording : .stopRecording)
@@ -493,6 +603,15 @@ private extension MeetingViewController {
                     
                 case .switchAudioOutput:
                     AVAudioSession.sharedInstance().changeAudioOutput(presenterViewController: self)
+                    
+                case .showParticipantList:
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let participantsViewController = storyBoard.instantiateViewController(withIdentifier: "ParticipantsViewController") as! ParticipantsViewController
+                    participantsViewController.participants = self.participants
+                    self.present(participantsViewController, animated: true, completion: nil)
+                    
+                case .raiseHand:
+                    self.meeting?.pubsub.publish(topic: RAISE_HAND_TOPIC, message: "Raise Hand by Me", options: [:])
                 
                 default:
                     break

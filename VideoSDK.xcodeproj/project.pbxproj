@@ -10,6 +10,10 @@
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
+		623A5F1C2892FCE60051F40C /* ParticipantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A5F1B2892FCE60051F40C /* ParticipantsViewController.swift */; };
+		623A5F1E2892FD1B0051F40C /* joinRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A5F1D2892FD1B0051F40C /* joinRoom.swift */; };
+		623A5F202892FD350051F40C /* ParticipantCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A5F1F2892FD350051F40C /* ParticipantCellView.swift */; };
+		623A5F22289393470051F40C /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A5F21289393470051F40C /* Loader.swift */; };
 		900CFC63365C16AC382AE1D4 /* Pods_VideoSDK_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2538F3BD0A079B17BE501311 /* Pods_VideoSDK_Example.framework */; };
 		A23250C9271F2F4F00A23CCB /* AddStreamOutputiewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23250C8271F2F4F00A23CCB /* AddStreamOutputiewController.swift */; };
 		A23250CB271F2FAE00A23CCB /* AddStreamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23250CA271F2FAE00A23CCB /* AddStreamTableViewCell.swift */; };
@@ -44,6 +48,12 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		622101222893AE460099C6D7 /* VideoSDK_ExampleRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VideoSDK_ExampleRelease.entitlements; sourceTree = "<group>"; };
+		623A5F1B2892FCE60051F40C /* ParticipantsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantsViewController.swift; sourceTree = "<group>"; };
+		623A5F1D2892FD1B0051F40C /* joinRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = joinRoom.swift; sourceTree = "<group>"; };
+		623A5F1F2892FD350051F40C /* ParticipantCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantCellView.swift; sourceTree = "<group>"; };
+		623A5F21289393470051F40C /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		623A5F23289399840051F40C /* VideoSDK_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VideoSDK_Example.entitlements; sourceTree = "<group>"; };
 		A23250C8271F2F4F00A23CCB /* AddStreamOutputiewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStreamOutputiewController.swift; sourceTree = "<group>"; };
 		A23250CA271F2FAE00A23CCB /* AddStreamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStreamTableViewCell.swift; sourceTree = "<group>"; };
 		A23250CC271F37A900A23CCB /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -89,6 +99,8 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				622101222893AE460099C6D7 /* VideoSDK_ExampleRelease.entitlements */,
+				623A5F23289399840051F40C /* VideoSDK_Example.entitlements */,
 				607FACD21AFB9204008FA782 /* Example for VideoSDK */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
@@ -151,11 +163,13 @@
 		A2573BEA26F120960087AB36 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				623A5F1F2892FD350051F40C /* ParticipantCellView.swift */,
 				A2573BEC26F120960087AB36 /* ParticipantViewCell.swift */,
 				A2573BED26F120960087AB36 /* ButtonControlsView.swift */,
 				A2573BEB26F120960087AB36 /* ButtonControlsView.xib */,
 				A23250CA271F2FAE00A23CCB /* AddStreamTableViewCell.swift */,
 				A23250D22722D42100A23CCB /* ScreenSharingView.swift */,
+				623A5F21289393470051F40C /* Loader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,6 +198,7 @@
 		A2BF00AC27A1A29900772DEA /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				623A5F1B2892FCE60051F40C /* ParticipantsViewController.swift */,
 				A2573BE726F1204E0087AB36 /* StartViewController.swift */,
 				A2573BE626F1204E0087AB36 /* MeetingViewController.swift */,
 				A2BF00AA27A1A1DB00772DEA /* ChatViewController.swift */,
@@ -195,6 +210,7 @@
 		A2BF00AD27A1A2A700772DEA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				623A5F1D2892FD1B0051F40C /* joinRoom.swift */,
 				A2BF00B027A1A2CC00772DEA /* MeetingData.swift */,
 				A2BF00AE27A1A2B100772DEA /* Message.swift */,
 				A2BF00B427A2E1EE00772DEA /* ChatUser.swift */,
@@ -343,10 +359,13 @@
 				A23250CD271F37A900A23CCB /* UIViewController+Extension.swift in Sources */,
 				A2573BF226F120960087AB36 /* ButtonControlsView.swift in Sources */,
 				A2573BE826F1204E0087AB36 /* MeetingViewController.swift in Sources */,
+				623A5F22289393470051F40C /* Loader.swift in Sources */,
 				A2BF00B127A1A2CC00772DEA /* MeetingData.swift in Sources */,
+				623A5F1C2892FCE60051F40C /* ParticipantsViewController.swift in Sources */,
 				A2BF00B527A2E1EE00772DEA /* ChatUser.swift in Sources */,
 				A2D244AE276E14FA002FD101 /* UIColor+Extension.swift in Sources */,
 				A2BF00B327A28C8100772DEA /* Date+Extension.swift in Sources */,
+				623A5F202892FD350051F40C /* ParticipantCellView.swift in Sources */,
 				A23250D32722D42100A23CCB /* ScreenSharingView.swift in Sources */,
 				A2A1D38A27266BAB00082CD8 /* APIService.swift in Sources */,
 				A2573BE926F1204E0087AB36 /* StartViewController.swift in Sources */,
@@ -359,6 +378,7 @@
 				A23250CB271F2FAE00A23CCB /* AddStreamTableViewCell.swift in Sources */,
 				A2BF00AF27A1A2B100772DEA /* Message.swift in Sources */,
 				A2BF00B727A3DC7C00772DEA /* Constants.swift in Sources */,
+				623A5F1E2892FD1B0051F40C /* joinRoom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +514,7 @@
 			baseConfigurationReference = 194EEB231FC28C6F0E52641E /* Pods-VideoSDK_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = VideoSDK_Example.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8GZ776NSU2;
 				INFOPLIST_FILE = VideoSDK/Info.plist;
@@ -503,7 +524,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zujo.videosdk.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -515,6 +536,7 @@
 			baseConfigurationReference = 06C2C886064125CDBD21A786 /* Pods-VideoSDK_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = VideoSDK_ExampleRelease.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8GZ776NSU2;
 				INFOPLIST_FILE = VideoSDK/Info.plist;
@@ -524,7 +546,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zujo.videosdk.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
