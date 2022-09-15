@@ -93,7 +93,7 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         Utils.loaderShow(viewControler: self)
         
         // setup
@@ -140,7 +140,7 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
         super.prepare(for: segue, sender: sender)
         
         guard let navigationController = segue.destination as? UINavigationController,
-            let addStreamsController = navigationController.viewControllers.first as? AddStreamOutputiewController
+              let addStreamsController = navigationController.viewControllers.first as? AddStreamOutputiewController
         else { return }
         
         addStreamsController.onStart =  { streamOutputs in
@@ -171,17 +171,17 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
         // join
         meeting?.join()
     }
-
+    
     // MARK: UICollectionViewDataSource
-
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return participants.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ParticipantViewCell
         
@@ -219,6 +219,15 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
                 videoStream.pause()
             }
         }
+        
+        for data in self.collectionView.visibleCells {
+            if let indexPath = self.collectionView.indexPath(for: data as UICollectionViewCell) {
+                let cell = collectionView.cellForItem(at: indexPath) as? ParticipantViewCell
+                if let participant = self.participants[indexPath.row].streams.values.first {
+                    cell?.updateView(forStream: participant, enabled: true)
+                }
+            }
+        }
     }
     
     // MARK: - Actions
@@ -232,7 +241,7 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         completionHandler()
     }
-
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .badge, .sound])
     }
@@ -249,19 +258,19 @@ extension MeetingViewController {
             }
         }
     }
-
+    
     func sendNotification() {
         let notificationContent = UNMutableNotificationContent()
         notificationContent.title = "Your application is in background"
         notificationContent.body = "This may cause you to leave the meeting automatically"
         notificationContent.sound = UNNotificationSound.default
-            
+        
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1,
                                                         repeats: false)
         let request = UNNotificationRequest(identifier: "backgroundNotification",
-                                                content: notificationContent,
-                                                trigger: trigger)
-            
+                                            content: notificationContent,
+                                            trigger: trigger)
+        
         self.userNotificationCenter.add(request) { (error) in
             if let error = error {
                 print("Notification Error: ", error)
@@ -274,7 +283,7 @@ extension MeetingViewController {
 // MARK: - MeetingEventListener
 
 extension MeetingViewController: MeetingEventListener {
-
+    
     /// Meeting started
     func onMeetingJoined() {
         
@@ -293,7 +302,7 @@ extension MeetingViewController: MeetingEventListener {
         // listen/subscribe for chat topic
         meeting?.pubsub.subscribe(topic: CHAT_TOPIC, forListener: self)
         
-	// listen/subscribe for raise-hand topic
+        // listen/subscribe for raise-hand topic
         meeting?.pubsub.subscribe(topic: RAISE_HAND_TOPIC, forListener: self)
         
         Utils.loaderDismiss(viewControler: self)
@@ -382,7 +391,7 @@ extension MeetingViewController: MeetingEventListener {
         
         // show indication for active speaker
         if let participant = participants.first(where: { $0.id == participantId }),
-            let cell = cellForParticipant(participant) {
+           let cell = cellForParticipant(participant) {
             
             cell.showActiveSpeakerIndicator(true)
         }
@@ -434,7 +443,7 @@ extension MeetingViewController: MeetingEventListener {
 // MARK: - ParticipantEventListener
 
 extension MeetingViewController: ParticipantEventListener {
- 
+    
     /// Participant has enabled mic, video or screenshare
     /// - Parameters:
     ///   - stream: enabled stream object
@@ -508,7 +517,7 @@ extension MeetingViewController: PubSubMessageListener {
         print("Message Received:= " + message.message)
         let localParticipantID = participants.first(where: { $0.isLocal == true })?.id
         if(message.topic == RAISE_HAND_TOPIC){
-           
+            
             self.showToast(message: "\(message.senderId == localParticipantID ? "You" : "\(message.senderName)") raised hand 🖐🏼", font: .systemFont(ofSize: 18))
         } else {
             if let chatViewController = navigationController?.topViewController as? ChatViewController {
@@ -587,7 +596,7 @@ private extension MeetingViewController {
                 switch option {
                 case .switchCamera:
                     self.meeting?.switchWebcam()
-            
+                    
                 case .startRecording:
                     self.showAlertWithTextField(title: "Enter Webhook Url", value: recordingWebhookUrl) { url in
                         self.meeting?.startRecording(webhookUrl: url!)
@@ -597,7 +606,7 @@ private extension MeetingViewController {
                     
                 case .startLivestream:
                     self.performSegue(withIdentifier: addStreamOutputSegueIdentifier, sender: nil)
-                
+                    
                 case .stopLivestream:
                     self.stopLivestream()
                     
@@ -612,7 +621,7 @@ private extension MeetingViewController {
                     
                 case .raiseHand:
                     self.meeting?.pubsub.publish(topic: RAISE_HAND_TOPIC, message: "Raise Hand by Me", options: [:])
-                
+                    
                 default:
                     break
                 }
@@ -630,7 +639,7 @@ private extension MeetingViewController {
     
     func showParticipantControlOptions(_ participant: Participant) {
         guard let cell = cellForParticipant(participant) else { return }
-
+        
         // toggle mic, toggle cam
         var menuOptions: [MenuOption] = [.toggleMic, .toggleWebcam]
         
@@ -641,7 +650,7 @@ private extension MeetingViewController {
         
         // remove
         menuOptions.append(.remove)
-
+        
         self.showActionsheet(options: menuOptions, fromView: cell.menuButton) { option in
             switch option {
             case .toggleMic:
@@ -660,7 +669,7 @@ private extension MeetingViewController {
                 
             case .remove:
                 participant.remove()
-             
+                
             case .toggleQuality:
                 self.showQualitySelectionsheet(options: [.high, .medium, .low], fromView: cell.menuButton, currentQuality: participant.videoQuality) { quality in
                     
@@ -810,8 +819,8 @@ private extension MeetingViewController {
         // change audio output to louder speaker
         NotificationCenter.default.addObserver(forName: AVAudioSession.routeChangeNotification, object: nil, queue: nil) { notification in
             guard let info = notification.userInfo,
-                let value = info[AVAudioSessionRouteChangeReasonKey] as? UInt,
-                let reason = AVAudioSession.RouteChangeReason(rawValue: value) else { return }
+                  let value = info[AVAudioSessionRouteChangeReasonKey] as? UInt,
+                  let reason = AVAudioSession.RouteChangeReason(rawValue: value) else { return }
             switch reason {
             case .categoryChange: try? AVAudioSession.sharedInstance().overrideOutputAudioPort(.speaker)
             default: break
