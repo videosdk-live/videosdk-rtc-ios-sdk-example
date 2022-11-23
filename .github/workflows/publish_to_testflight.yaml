@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Add TOKEN
-        run: cd VideoSDK/API && rm Constants.swift && touch Constants.swift && echo "import Foundation\npublic let AUTH_URL = \"\"\npublic let AUTH_TOKEN = \"${{secrets.AUTH_TOKEN}}\"" >> Constants.swift
+        run: cd VideoSDK/API && rm Constants.swift && touch Constants.swift && echo "import Foundation\npublic let AUTH_URL = \"\"\npublic let AUTH_TOKEN = \"${{secrets.AUTH_TOKEN}}\"" >> Constants.swift && ls && cat Constants.swift
       - name: Install Pods
         run: pod install
 
