@@ -13,7 +13,7 @@ jobs:
       - name: Add TOKEN
         run: cd VideoSDK/API && rm Constants.swift && touch Constants.swift
       - name: Add AUTH TOKEN
-        run: echo "import foundation\npublic let AUTH_URL = \"\"\npublic let AUTH_TOKEN = \"${{secrets.AUTH_TOKEN}}\"" >> Constants.swift
+        run: echo "import Foundation\npublic let AUTH_URL = \"\"\npublic let AUTH_TOKEN = \"${{secrets.AUTH_TOKEN}}\"" >> Constants.swift
       - name: Install Pods
         run: pod install
 
