@@ -28,6 +28,7 @@ jobs:
           team-id: ${{ secrets.TEAM_ID }}
           certificate-password: ${{ secrets.CERTIFICATE_PASSWORD}}
           scheme: VideoSDK-Example
+          workspace-path: VideoSDK.xcworkspace # optional
           export-options: ExportOptions.plist
 
       - name: "Upload app to TestFlight"
