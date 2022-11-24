@@ -1,0 +1,37 @@
+name: Publish to TestFlight
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Add TOKEN
+        run: cd VideoSDK/API && rm Constants.swift && touch Constants.swift && echo "import Foundation; public let AUTH_URL = \"\"; public let AUTH_TOKEN = \"${{secrets.AUTH_TOKEN}}\";" >> Constants.swift && ls && cat Constants.swift
+      - name: Install Pods
+        run: pod install
+
+      - name: Build IOS App
+        uses: yukiarrr/ios-build-action@v1.5.0
+        with:
+          project-path: VideoSDK.xcodeproj
+          p12-base64: ${{ secrets.P12_BASE64 }}
+          mobileprovision-base64: |
+            ${{ secrets.MOBILEPROVISION_BASE64 }}
+          code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
+          team-id: ${{ secrets.TEAM_ID }}
+          certificate-password: ${{ secrets.CERTIFICATE_PASSWORD}}
+          scheme: VideoSDK-Example
+          workspace-path: VideoSDK.xcworkspace # optional
+          export-options: ExportOptions.plist
+
+      - name: "Upload app to TestFlight"
+        uses: apple-actions/upload-testflight-build@v1
+        with:
+          app-path: "output.ipa"
+          issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
+          api-key-id: ${{ secrets.APPSTORE_KEY_ID }}
+          api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
