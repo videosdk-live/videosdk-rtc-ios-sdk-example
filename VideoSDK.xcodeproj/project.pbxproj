@@ -34,6 +34,7 @@
 		A2BF00B527A2E1EE00772DEA /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF00B427A2E1EE00772DEA /* ChatUser.swift */; };
 		A2BF00B727A3DC7C00772DEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF00B627A3DC7C00772DEA /* Constants.swift */; };
 		A2D244AE276E14FA002FD101 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D244AD276E14FA002FD101 /* UIColor+Extension.swift */; };
+		B28478CA293667E2005F4FF2 /* NewMeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28478C9293667E2005F4FF2 /* NewMeetingViewController.swift */; };
 		B2EDCFE427B7AADC00E61E33 /* AVAudioSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EDCFE327B7AADC00E61E33 /* AVAudioSession+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		A2BF00B427A2E1EE00772DEA /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
 		A2BF00B627A3DC7C00772DEA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A2D244AD276E14FA002FD101 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		B28478C9293667E2005F4FF2 /* NewMeetingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMeetingViewController.swift; sourceTree = "<group>"; };
 		B2EDCFE327B7AADC00E61E33 /* AVAudioSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAudioSession+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,6 +205,7 @@
 				A2573BE626F1204E0087AB36 /* MeetingViewController.swift */,
 				A2BF00AA27A1A1DB00772DEA /* ChatViewController.swift */,
 				A23250C8271F2F4F00A23CCB /* AddStreamOutputiewController.swift */,
+				B28478C9293667E2005F4FF2 /* NewMeetingViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				A2BF00B327A28C8100772DEA /* Date+Extension.swift in Sources */,
 				623A5F202892FD350051F40C /* ParticipantCellView.swift in Sources */,
 				A23250D32722D42100A23CCB /* ScreenSharingView.swift in Sources */,
+				B28478CA293667E2005F4FF2 /* NewMeetingViewController.swift in Sources */,
 				A2A1D38A27266BAB00082CD8 /* APIService.swift in Sources */,
 				A2573BE926F1204E0087AB36 /* StartViewController.swift in Sources */,
 				A2573BF126F120960087AB36 /* ParticipantViewCell.swift in Sources */,

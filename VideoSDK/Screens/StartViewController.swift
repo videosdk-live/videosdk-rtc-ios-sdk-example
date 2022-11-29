@@ -122,7 +122,7 @@ class StartViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let navigation = segue.destination as? UINavigationController,
-              let meetingViewController = navigation.topViewController as? MeetingViewController else {
+              let meetingViewController = navigation.topViewController as? NewMeetingViewController else {
                   return
               }
         
@@ -158,7 +158,7 @@ extension StartViewController {
         nameTextField.attributedPlaceholder = NSAttributedString(string: "Enter Your Name", attributes: attributes)
         meetingIdTextField.attributedPlaceholder = NSAttributedString(string: "Enter Meeting ID", attributes: attributes)
         
-        meetingIdTextField.text = "c6gh-cojp-jx09"
+        meetingIdTextField.text = "l3vu-s2ow-6h9n"
         
         copyMeetingIdButton.layer.borderWidth = 0.8
         copyMeetingIdButton.layer.borderColor = UIColor.darkGray.cgColor
