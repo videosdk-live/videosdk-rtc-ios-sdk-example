@@ -67,6 +67,12 @@ class NewMeetingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupUI()
+        setupActions()
+        setupVideoView()
+        setupNameView()
+        setupNameBackgroundView()
+        
         // config
         VideoSDK.config(token: meetingData.token)
 
@@ -160,6 +166,15 @@ extension NewMeetingViewController: MeetingEventListener {
         
         // add listener
         participant.addEventListener(self)
+        
+        let nameComponents = participant.displayName.components(separatedBy: " ")
+        lblParticipantName.text = nameComponents.first
+        
+        lblParticipantName.text = nameComponents
+            .reduce("") {
+                ($0.isEmpty ? "" : "\($0.first?.uppercased() ?? "")") +
+                ($1.isEmpty ? "" : "\($1.first?.uppercased() ?? "")")
+            }
         
         //notification to participants via sharing participants
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "shareParticipants"), object: nil, userInfo: ["participants": participants])
@@ -282,17 +297,22 @@ extension NewMeetingViewController: ParticipantEventListener {
         
         if stream.kind == .video {
             // show video
-            showVideoView(true)
             if participant.isLocal {
                 guard let track = stream.track as? RTCVideoTrack else {
                     return
                 }
                 track.add(localParticipantVideoView)
+                localParticipantNameContainerView.isHidden = true
+                localParticipantNameBackgroundView.isHidden = true
+                showVideoView(true, view: localParticipantVideoView)
             } else {
                 guard let track = stream.track as? RTCVideoTrack else {
                     return
                 }
                 track.add(participantVideoView)
+                participantNameView.isHidden = true
+                participantNameBackgroundView.isHidden = true
+                showVideoView(true, view: participantVideoView)
             }
             return
         }
@@ -311,17 +331,22 @@ extension NewMeetingViewController: ParticipantEventListener {
         
         if stream.kind == .video {
             // show video
-            showVideoView(true)
             if participant.isLocal {
                 guard let track = stream.track as? RTCVideoTrack else {
                     return
                 }
                 track.remove(localParticipantVideoView)
+                localParticipantNameContainerView.isHidden = false
+                localParticipantNameBackgroundView.isHidden = false
+                showVideoView(false, view: localParticipantVideoView)
             } else {
                 guard let track = stream.track as? RTCVideoTrack else {
                     return
                 }
                 track.remove(participantVideoView)
+                participantNameView.isHidden = false
+                participantNameBackgroundView.isHidden = false
+                showVideoView(false, view: participantVideoView)
             }
             return
         }
@@ -368,6 +393,111 @@ extension NewMeetingViewController: PubSubMessageListener {
         
     }
 }
+
+// MARK: - Actions
+
+private extension NewMeetingViewController {
+    
+    func setupActions() {
+        
+        // onMicTapped
+        buttonControlsView.onMicTapped = { on in
+            if !on {
+                self.meeting?.unmuteMic()
+            } else {
+                self.meeting?.muteMic()
+            }
+        }
+        
+        // onVideoTapped
+        buttonControlsView.onVideoTapped = { on in
+            //self.meeting?.pubsub.publish(topic: CHAT_TOPIC, message: "How are you?", options: [:])
+            
+            if !on {
+                self.meeting?.enableWebcam()
+            } else {
+                self.meeting?.disableWebcam()
+            }
+        }
+        
+        // onEndMeetingTapped
+        buttonControlsView.onEndMeetingTapped = {
+            let menuOptions: [MenuOption] = [.leaveMeeting, .endMeeting]
+            
+            self.showActionsheet(options: menuOptions, fromView: self.buttonControlsView.leaveMeetingButton) { option in
+                switch option {
+                case .leaveMeeting:
+                    self.meeting?.leave()
+                case .endMeeting:
+                    self.meeting?.end()
+                default:
+                    break
+                }
+            }
+        }
+        
+        /// Chat Button Tap
+        buttonControlsView.onChatButtonTapped = {
+            self.openChat()
+        }
+        
+        /// Menu tap
+        buttonControlsView.onMenuButtonTapped = {
+            var menuOptions: [MenuOption] = []
+            menuOptions.append(.showParticipantList)
+            menuOptions.append(.raiseHand)
+            menuOptions.append(.switchCamera)
+            menuOptions.append(.switchAudioOutput)
+            menuOptions.append(!self.recordingStarted ? .startRecording : .stopRecording)
+            menuOptions.append(!self.liveStreamStarted ? .startLivestream : .stopLivestream)
+            
+            self.showActionsheet(options: menuOptions, fromView: self.buttonControlsView.menuButton) { option in
+                switch option {
+                case .switchCamera:
+                    self.meeting?.switchWebcam()
+            
+                case .startRecording:
+                    self.showAlertWithTextField(title: "Enter Webhook Url", value: recordingWebhookUrl) { url in
+                        self.meeting?.startRecording(webhookUrl: url!)
+                    }
+                case .stopRecording:
+                    self.stopRecording()
+                    
+                case .startLivestream:
+                    self.performSegue(withIdentifier: addStreamOutputSegueIdentifier, sender: nil)
+                
+                case .stopLivestream:
+                    self.stopLivestream()
+                    
+                case .switchAudioOutput:
+                    AVAudioSession.sharedInstance().changeAudioOutput(presenterViewController: self)
+                    
+                case .showParticipantList:
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let participantsViewController = storyBoard.instantiateViewController(withIdentifier: "ParticipantsViewController") as! ParticipantsViewController
+                    participantsViewController.participants = self.participants
+                    self.present(participantsViewController, animated: true, completion: nil)
+                    
+                case .raiseHand:
+                    self.meeting?.pubsub.publish(topic: RAISE_HAND_TOPIC, message: "Raise Hand by Me", options: [:])
+                
+                default:
+                    break
+                }
+            }
+        }
+    }
+    
+    func stopRecording() {
+        meeting?.stopRecording()
+    }
+    
+    func stopLivestream() {
+        meeting?.stopLivestream()
+    }
+    
+}
+
 
 // MARK: - Helpers
 
@@ -417,12 +547,54 @@ private extension NewMeetingViewController {
 //        }
 //    }
 
-    func showVideoView(_ show: Bool) {
+    func showVideoView(_ show: Bool, view: RTCMTLVideoView) {
         UIView.animate(withDuration: 0.5) {
-            self.participantVideoView.isHidden = !show
+            self.view.isHidden = !show
         } completion: { completed in
             
         }
     }
+    
+    func setupVideoView() {
+        participantVideoView.videoContentMode = .scaleAspectFill
+        
+        [participantVideoView, participantMainView].forEach {
+            $0?.layer.cornerRadius = 5
+        }
+    }
+    
+    func setupNameView() {
+        localParticipantNameContainerView.layer.cornerRadius = 5
+        localParticipantNameBackgroundView.layer.cornerRadius = 5
+        participantNameBackgroundView.layer.cornerRadius = 5
+        participantNameView.layer.cornerRadius = 5
+        lblLocalParticipantName.textColor = UIColor.white
+        lblParticipantName.textColor = UIColor.white
+        
+    }
+    
+    func setupNameBackgroundView() {
+        localParticipantNameBackgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        participantNameView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        participantNameBackgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+    }
+    
+    func setupButtons() {
+//        micButton.makeRounded()
+//        micButton.setImage(UIImage(named: "mic_off"), for: .normal)
+//        micButton.backgroundColor = UIColor.systemRed
+//        micButton.isUserInteractionEnabled = false
+//        updateMicButton()
+//
+//        menuButton.setImage(UIImage(named: "more"), for: .normal)
+//        menuButton.layer.cornerRadius = 5
+//        menuButton.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+    }
+    
+    func updateMicButton() {
+//        micButton.alpha = micEnabled ? 0.0 : 1.0
+    }
 }
+
+
 

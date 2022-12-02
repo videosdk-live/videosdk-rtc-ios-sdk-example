@@ -818,13 +818,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b58-cX-IQJ" userLabel="Participant View" customClass="ScreenSharingView" customModule="VideoSDK_Example" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="136" width="390" height="599"/>
+                                <rect key="frame" x="0.0" y="132" width="390" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JdS-rt-kbh">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="599"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="603"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5J-YT-Jb6" userLabel="Participant Video View" customClass="RTCMTLVideoView">
-                                                <rect key="frame" x="0.0" y="0.0" width="390" height="599"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="390" height="603"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                         </subviews>
@@ -837,10 +837,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2TB-iX-Y1d" userLabel="Participant Name View">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="599"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="603"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XXn-b7-Djw">
-                                                <rect key="frame" x="155" y="259.66666666666669" width="80" height="80"/>
+                                                <rect key="frame" x="155" y="261.66666666666669" width="80" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHI-G1-dq0">
                                                         <rect key="frame" x="21.666666666666654" y="23" width="36.666666666666657" height="34"/>
@@ -883,17 +883,21 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wqj-65-kUa" userLabel="Local Participant View" customClass="ScreenSharingView" customModule="VideoSDK_Example" customModuleProvider="target">
                                 <rect key="frame" x="26" y="530" width="120" height="190"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YhT-zf-uXk">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YhT-zf-uXk">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="190"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yYT-Fd-cWo" userLabel="Participant Video View" customClass="RTCMTLVideoView">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yYT-Fd-cWo" userLabel="Participant Video View" customClass="RTCMTLVideoView">
                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="190"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="yYT-Fd-cWo" secondAttribute="trailing" id="exn-Nh-Gwa"/>
+                                            <constraint firstAttribute="bottom" secondItem="yYT-Fd-cWo" secondAttribute="bottom" id="frF-wU-ZY7"/>
+                                            <constraint firstItem="yYT-Fd-cWo" firstAttribute="top" secondItem="YhT-zf-uXk" secondAttribute="top" id="g3j-hO-cbk"/>
+                                            <constraint firstItem="yYT-Fd-cWo" firstAttribute="leading" secondItem="YhT-zf-uXk" secondAttribute="leading" id="qGi-71-liX"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v5h-kv-AQX" userLabel="Participant Name View">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="190"/>
@@ -923,12 +927,16 @@
                                         <color key="backgroundColor" red="0.20000001789999999" green="0.19607841970000001" blue="0.26274511220000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="YhT-zf-uXk" secondAttribute="trailing" id="6Qs-ge-Y9c"/>
+                                    <constraint firstAttribute="bottom" secondItem="YhT-zf-uXk" secondAttribute="bottom" id="K2x-Y2-uXl"/>
+                                    <constraint firstItem="YhT-zf-uXk" firstAttribute="leading" secondItem="Wqj-65-kUa" secondAttribute="leading" id="SiE-Jz-JQw"/>
                                     <constraint firstItem="AFC-G6-sQp" firstAttribute="centerY" secondItem="Wqj-65-kUa" secondAttribute="centerY" id="YTV-AQ-F9F"/>
                                     <constraint firstAttribute="width" constant="120" id="bV5-xR-55x"/>
                                     <constraint firstAttribute="height" constant="190" id="c7H-af-i9D"/>
                                     <constraint firstItem="AFC-G6-sQp" firstAttribute="centerX" secondItem="Wqj-65-kUa" secondAttribute="centerX" id="fVh-nP-gZU"/>
+                                    <constraint firstItem="YhT-zf-uXk" firstAttribute="top" secondItem="Wqj-65-kUa" secondAttribute="top" id="pYg-es-qz5"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="containerView" destination="YhT-zf-uXk" id="SVP-TM-ued"/>
@@ -978,7 +986,7 @@
                             <constraint firstItem="IQ5-EL-HYX" firstAttribute="trailing" secondItem="b58-cX-IQJ" secondAttribute="trailing" id="eSb-KJ-mIh"/>
                             <constraint firstItem="3rN-qM-Etk" firstAttribute="top" secondItem="LeI-v1-g4X" secondAttribute="bottom" id="j4o-t5-RjP"/>
                             <constraint firstItem="IQ5-EL-HYX" firstAttribute="top" secondItem="b58-cX-IQJ" secondAttribute="bottom" constant="5" id="lKC-I9-iHd"/>
-                            <constraint firstItem="b58-cX-IQJ" firstAttribute="top" secondItem="3rN-qM-Etk" secondAttribute="bottom" constant="5" id="mZd-x0-lQR"/>
+                            <constraint firstItem="b58-cX-IQJ" firstAttribute="top" secondItem="3rN-qM-Etk" secondAttribute="bottom" constant="1" id="mZd-x0-lQR"/>
                             <constraint firstItem="Wqj-65-kUa" firstAttribute="leading" secondItem="Kbi-q0-UYH" secondAttribute="leadingMargin" constant="10" id="zJs-3q-WBf"/>
                         </constraints>
                     </view>
