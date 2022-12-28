@@ -23,11 +23,11 @@ variant_for_slice()
   "VideoSDKRTC.xcframework/ios-arm64")
     echo ""
     ;;
-  "vl_mediasoup_client_ios.xcframework/ios-arm64_x86_64-simulator")
-    echo "simulator"
-    ;;
   "vl_mediasoup_client_ios.xcframework/ios-arm64")
     echo ""
+    ;;
+  "vl_mediasoup_client_ios.xcframework/ios-arm64_x86_64-simulator")
+    echo "simulator"
     ;;
   "WebRTC.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
@@ -47,11 +47,11 @@ archs_for_slice()
   "VideoSDKRTC.xcframework/ios-arm64")
     echo "arm64"
     ;;
-  "vl_mediasoup_client_ios.xcframework/ios-arm64_x86_64-simulator")
-    echo "arm64 x86_64"
-    ;;
   "vl_mediasoup_client_ios.xcframework/ios-arm64")
     echo "arm64"
+    ;;
+  "vl_mediasoup_client_ios.xcframework/ios-arm64_x86_64-simulator")
+    echo "arm64 x86_64"
     ;;
   "WebRTC.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
@@ -142,6 +142,6 @@ install_xcframework() {
 }
 
 install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/VideoSDKRTC.xcframework" "VideoSDKRTC" "framework" "ios-arm64_x86_64-simulator" "ios-arm64"
-install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/vl_mediasoup_client_ios.xcframework" "VideoSDKRTC" "framework" "ios-arm64_x86_64-simulator" "ios-arm64"
+install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/vl_mediasoup_client_ios.xcframework" "VideoSDKRTC" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
 install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/WebRTC.xcframework" "VideoSDKRTC" "framework" "ios-arm64_x86_64-simulator" "ios-arm64"
 

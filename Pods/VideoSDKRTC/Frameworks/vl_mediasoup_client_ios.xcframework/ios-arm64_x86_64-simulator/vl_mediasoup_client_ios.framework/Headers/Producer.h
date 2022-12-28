@@ -6,10 +6,11 @@
 //  Copyright © 2019 Ethan. All rights reserved.
 //
 
+#import <WebRTC/RTCMediaStreamTrack.h>
+#import <WebRTC/RTCPeerConnectionFactory.h>
+
 #ifndef Producer_h
 #define Producer_h
-
-@class RTCMediaStreamTrack;
 
 @interface Producer : NSObject
 /*! @brief libmediasoupclient native producer object */
@@ -66,9 +67,9 @@
 
 /*!
     @brief Executed when the transport this producer belongs to is closed for whatever reason. The producer itself is also closed
-    @param producer The producer instance executing this method
+    @param producerId The producer id of the producer instance executing this method
  */
--(void)onTransportClose:(Producer *)producer;
+-(void)onTransportClose:(NSString *)producerId;
 
 @end
 

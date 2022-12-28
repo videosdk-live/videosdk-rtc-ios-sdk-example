@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/Consumer.h</key>
 		<data>
-		TdNOUBJu/ObxJa2btChykxA8VnM=
+		EDGyerymfhdGip4orpasxoHqjQI=
 		</data>
 		<key>Headers/Consumer.hpp</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>Headers/ConsumerWrapper.h</key>
 		<data>
-		kPVd+yrG0jml8P1omGjm4GpuTCs=
+		6uwyScIBZ4thsoP3v1sOFOGNJ68=
 		</data>
 		<key>Headers/DataConsumer.hpp</key>
 		<data>
@@ -30,11 +30,11 @@
 		</data>
 		<key>Headers/DeviceWrapper.h</key>
 		<data>
-		BxNT9rN7EZjg+Q/wqwMPQR2JSuQ=
+		qVMOxXOG97o4wtM1Ti+HEB0umGQ=
 		</data>
 		<key>Headers/Handler.hpp</key>
 		<data>
-		cxjsn004+pqJlF6Bnz1Szm+8jbM=
+		igCRQvbZWk/Iyqod9lDRhIiVdko=
 		</data>
 		<key>Headers/Logger.hpp</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Headers/MediasoupDevice.h</key>
 		<data>
-		kr11LI5pR0eRZD/Dd7Kck8exNug=
+		qCS0sOv1y29pVCssuZV0WYke+wU=
 		</data>
 		<key>Headers/MediasoupLogger.h</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>Headers/Producer.h</key>
 		<data>
-		Tw4M7OVF2EuxUXl4Srjz2b7W97c=
+		6bNelYyJrXngvVLy8++DDLNs+58=
 		</data>
 		<key>Headers/Producer.hpp</key>
 		<data>
@@ -78,19 +78,19 @@
 		</data>
 		<key>Headers/ProducerWrapper.h</key>
 		<data>
-		avfqIxZMkTNWJZWr4yLJ6HpBOGI=
+		dPn3DVxgNbC3TjIGzoRBbaUzxwY=
 		</data>
 		<key>Headers/RTCUtils.h</key>
 		<data>
-		2gEUGH3yv4AyUn0BusP9vuNukjs=
+		EMRyLrNqrRpxMrCv4WksTqbwFkU=
 		</data>
 		<key>Headers/RecvTransport.h</key>
 		<data>
-		pLp6Q26SAHwx+ssQEd4PcMf0FUI=
+		jEm5HFhodvcDyD3Nk/nPDSv/4jo=
 		</data>
 		<key>Headers/SendTransport.h</key>
 		<data>
-		Zg1ZQIy8E4tE6PKIePQBmlsRbf8=
+		b6Tmmb8fKQXNgWZgpJgxbPU61DM=
 		</data>
 		<key>Headers/Transport.h</key>
 		<data>
@@ -98,11 +98,11 @@
 		</data>
 		<key>Headers/Transport.hpp</key>
 		<data>
-		ZdEXHExxXrSLLKynZFyNqmG4qTs=
+		ZDATqZcLA4J31YFWlny4PIcCqrg=
 		</data>
 		<key>Headers/TransportWrapper.h</key>
 		<data>
-		8scddEs1jmjCt8EPZGWfVtY7SxY=
+		qpeTVGnicW616y/0EYGGdRoJg9k=
 		</data>
 		<key>Headers/Utils.hpp</key>
 		<data>
@@ -126,7 +126,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		IkX0OiHu8BPDFM6U7+ZW8P+L2WA=
+		K9zz4o+2IE1yMBvhOkAve98W0+U=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -139,7 +139,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9A7MVaL8r+Q6HBx8v1wbWGPhBL91r8353Dw6kOxVOQo=
+			DFRURwDefPbmy+z9HFK0xrMjm0IERABrRWZmC/Xqkr8=
 			</data>
 		</dict>
 		<key>Headers/Consumer.hpp</key>
@@ -153,7 +153,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Em9iA9Rh6+dgWXX51BlJ75prtb445pvQ/cKnPFrOFNE=
+			6Z54pBvyfJdkNk87TTCkr7W9UABv8gSqXnf5gSJ8sRI=
 			</data>
 		</dict>
 		<key>Headers/DataConsumer.hpp</key>
@@ -181,14 +181,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			GRncw0a1qEZfg9kLUcaDzPPrs8Shlni2mv+BiNSBNZU=
+			xpHRcmO/zChFQ9Cm48qRKfjZg8LUTdeHXIQnFHSl2Iw=
 			</data>
 		</dict>
 		<key>Headers/Handler.hpp</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			On8h3SA1smimuE8Gk0op/I8ukkeitVRaYOXjqrx3RHE=
+			zoC41zoXGsEqG2VC6uk6ublW2f0q5Qva61br1KtE1hc=
 			</data>
 		</dict>
 		<key>Headers/Logger.hpp</key>
@@ -216,7 +216,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			CcpimzGzNDpe4GKmtgWEbwnuPjTEZLnhA/oB9S7Fv9c=
+			9+pK2ccoRU+pKB6UmzZdIhFeKRVqrgYITt5ZGkjpSZM=
 			</data>
 		</dict>
 		<key>Headers/MediasoupLogger.h</key>
@@ -251,7 +251,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			VkmUeHBxrOCNzFIUyLobdAxAqZsrFQHrL/iCdkQT2ZE=
+			0TSxyfjTE12VZUIPZa/sdX/8w8tNvWNXPlvmdAgQoPc=
 			</data>
 		</dict>
 		<key>Headers/Producer.hpp</key>
@@ -265,28 +265,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			jVEEWn8bWyF6c4LC3PT9gx5GbX+EepyTVZxDnr4jzpg=
+			wJs9Re06qqU6sueMMYt1r+aZPkLU8FHnye6sje2+0iU=
 			</data>
 		</dict>
 		<key>Headers/RTCUtils.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			8o7nxBaT7c7Z5lW93SzrwUr/K5TD6zROk0AWL8eZJug=
+			9SbJClAEs4FDs77jcPAg/TlSs4zCEidjmxyXSuIUgsw=
 			</data>
 		</dict>
 		<key>Headers/RecvTransport.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			T/CLoHXkU0agm8mJXWIc4M+Vc25iAxlxlfAKsSYMx+w=
+			fOfTuWut6KbVkxlO2obHryhrCkWBMqg9kx7PkHvSTkY=
 			</data>
 		</dict>
 		<key>Headers/SendTransport.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			LzZagDKyjvqP0piNyO5YXPqP02Q3+TObK4/kU4/OIvs=
+			AO/MZCJwSyuq+jttx1WkulOeyMdYv7iTYJvEYGsXdNA=
 			</data>
 		</dict>
 		<key>Headers/Transport.h</key>
@@ -300,14 +300,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5fwgQqx+VlWnOGNo59jw1pgw+Sf2IAHPJmxq/1JzqBo=
+			UOXFpcZwcLNrgtDxeDwTsbRbWwHqUA8qPS/+O7EBb3o=
 			</data>
 		</dict>
 		<key>Headers/TransportWrapper.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			cWD1mGa5jTjF9RRGlZcNlogmq20uy6s4SViEbt2zh8I=
+			FpClz3CzQHZIHtGQVrkWUCt9IBebPn+4JcW1hKPlB3g=
 			</data>
 		</dict>
 		<key>Headers/Utils.hpp</key>

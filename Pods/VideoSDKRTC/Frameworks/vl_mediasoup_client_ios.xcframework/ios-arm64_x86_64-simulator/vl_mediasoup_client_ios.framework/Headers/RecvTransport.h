@@ -5,6 +5,7 @@
 //  Created by Ethan.
 //  Copyright © 2019 Ethan. All rights reserved.
 //
+#import <WebRTC/RTCMediaStreamTrack.h>
 
 #import "Transport.h"
 #import "Consumer.h"
@@ -13,6 +14,11 @@
 #define RecvTransport_h
 
 @interface RecvTransport : Transport
+/*! @brief libmediasoupclient native recv transport object */
+@property(nonatomic, strong) NSValue* _nativeTransport;
+
+/*! @brief Disposes of the recv transport instance */
+-(void)dispose;
 /*!
     @brief Instructs the transport to receive an audio or video track to the mediasoup router
     @param listener ConsumerListener deletage
@@ -22,7 +28,7 @@
     @param rtpParameters Receive RTP parameters
     @return Consumer
  */
--(Consumer *)consume:(id<ConsumerListener>)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters;
+-(Consumer *)consume:(id<ConsumerListener>)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters error:(NSError **)errPtr;
 /*!
    @brief Instructs the transport to receive an audio or video track to the mediasoup router
    @param listener ConsumerListener deletage
@@ -33,7 +39,7 @@
    @param appData Custom application data
    @return Consumer
 */
--(Consumer *)consume:(id<ConsumerListener>)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData;
+-(Consumer *)consume:(id<ConsumerListener>)listener id:(NSString *)id producerId:(NSString *)producerId kind:(NSString *)kind rtpParameters:(NSString *)rtpParameters appData:(NSString *)appData error:(NSError **)errPtr;
 
 @end
 

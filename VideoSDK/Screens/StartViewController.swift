@@ -101,7 +101,8 @@ class StartViewController: UIViewController {
     
     @IBAction func copyMeetingIdButtonTapped(_ sender: Any) {
         guard let meetingId = meetingIdTextField.text, !meetingId.isEmpty else { return }
-        let meetingLink = "https://call.zujonow.com/meeting/\(meetingId)"
+//        let meetingLink = "https://call.zujonow.com/meeting/\(meetingId)"
+        let meetingLink = "\(meetingId)"
         
         UIPasteboard.general.string = meetingLink
         self.showAlert(title: "Link Copied", message: nil, autoDismiss: true)
@@ -157,8 +158,6 @@ extension StartViewController {
         
         nameTextField.attributedPlaceholder = NSAttributedString(string: "Enter Your Name", attributes: attributes)
         meetingIdTextField.attributedPlaceholder = NSAttributedString(string: "Enter Meeting ID", attributes: attributes)
-        
-        meetingIdTextField.text = "c6gh-cojp-jx09"
         
         copyMeetingIdButton.layer.borderWidth = 0.8
         copyMeetingIdButton.layer.borderColor = UIColor.darkGray.cgColor

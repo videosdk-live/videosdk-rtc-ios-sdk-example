@@ -6,6 +6,6 @@ framework module VideoSDKRTC {
 }
 
 module VideoSDKRTC.Swift {
-    header "VideoSDKRTC-Swift.h"
-    requires objc
+  header "VideoSDKRTC-Swift.h"
+  requires objc
 }

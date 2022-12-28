@@ -31,41 +31,43 @@
 
 class ProducerListenerWrapper final : public mediasoupclient::Producer::Listener {
 private:
-    Protocol<ProducerListener>* listener_;
-    ::Producer* producer_;
+  Protocol<ProducerListener>* listener_;
+  ::Producer* producer_;
 public:
-    ProducerListenerWrapper(Protocol<ProducerListener>* listener)
-    : listener_(listener) {}
-    
-    ~ProducerListenerWrapper() {
-        [producer_ release];
-        [listener_ release];
-    };
-    
-    void OnTransportClose(mediasoupclient::Producer* nativeProducer) override {
-        [this->listener_ onTransportClose:this->producer_];
-    };
-    
-    void SetProducer(::Producer *producer) {
-        this->producer_ = producer;
+  ProducerListenerWrapper(Protocol<ProducerListener>* listener)
+  : listener_(listener) {}
+  
+  ~ProducerListenerWrapper() {
+    [producer_ release];
+    [listener_ release];
+  };
+  
+  void OnTransportClose(mediasoupclient::Producer* nativeProducer) override {
+    if (this->listener_ != nullptr && nativeProducer != nullptr) {
+      [this->listener_ onTransportClose:[NSString stringWithUTF8String:nativeProducer->GetId().c_str()]];
     }
+  };
+  
+  void SetProducer(::Producer *producer) {
+    this->producer_ = producer;
+  }
 };
 
 class OwnedProducer {
 public:
-    OwnedProducer(mediasoupclient::Producer* producer, ProducerListenerWrapper* listener)
-    : producer_(producer), listener_(listener) {}
-    
-    ~OwnedProducer() {
-        delete producer_;
-        delete listener_;
-    };
-    
-    mediasoupclient::Producer* producer() const { return producer_; }
-    
+  OwnedProducer(mediasoupclient::Producer* producer, ProducerListenerWrapper* listener)
+  : producer_(producer), listener_(listener) {}
+  
+  ~OwnedProducer() {
+    delete producer_;
+    delete listener_;
+  };
+  
+  mediasoupclient::Producer* producer() const { return producer_; }
+  
 private:
-    mediasoupclient::Producer* producer_;
-    ProducerListenerWrapper* listener_;
+  mediasoupclient::Producer* producer_;
+  ProducerListenerWrapper* listener_;
 };
 
 #endif /* ProducerWrapper_h */

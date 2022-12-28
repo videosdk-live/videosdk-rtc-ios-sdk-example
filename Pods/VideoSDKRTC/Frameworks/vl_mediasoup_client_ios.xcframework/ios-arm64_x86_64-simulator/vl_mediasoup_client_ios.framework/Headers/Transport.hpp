@@ -50,6 +50,7 @@ namespace mediasoupclient
 		nlohmann::json GetStats() const;
 		void RestartIce(const nlohmann::json& iceParameters);
 		void UpdateIceServers(const nlohmann::json& iceServers);
+		void UpdateIceTransportType(const webrtc::PeerConnectionInterface::IceTransportsType type);
 
 	protected:
 		void SetHandler(Handler* handler);

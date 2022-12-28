@@ -5,6 +5,8 @@
 //  Created by Ethan.
 //  Copyright © 2019 Ethan. All rights reserved.
 //
+#import <WebRTC/RTCMediaStreamTrack.h>
+#import <WebRTC/RTCRtpEncodingParameters.h>
 
 #import "Transport.h"
 #import "Producer.h"
@@ -12,9 +14,12 @@
 #ifndef SendTransport_h
 #define SendTransport_h
 
-@class RTCMediaStreamTrack;
-
 @interface SendTransport : Transport
+/*! @brief libmediasoupclient native send transport object */
+@property(nonatomic, strong) NSValue* _nativeTransport;
+
+/*! @brief Disposes of the send transport instance */
+-(void)dispose;
 /*!
     @brief Instructs the transport to send an audio or video track to the mediasoup router
     @param listener ProducerListener delegate
@@ -23,7 +28,7 @@
     @param codecOptions Per codec specific options
     @return Producer
  */
--(Producer *)produce:(id<ProducerListener>)listener track:(RTCMediaStreamTrack *)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions;
+-(Producer *)produce:(id<ProducerListener>)listener track:(RTCMediaStreamTrack *)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions error:(NSError **)errPtr;
 /*!
    @brief Instructs the transport to send an audio or video track to the mediasoup router
    @param listener ProducerListener delegate
@@ -33,7 +38,7 @@
    @param appData Custom application data
    @return Producer
 */
--(Producer *)produce:(id<ProducerListener>)listener track:(RTCMediaStreamTrack *)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData;
+-(Producer *)produce:(id<ProducerListener>)listener track:(RTCMediaStreamTrack *)track encodings:(NSArray *)encodings codecOptions:(NSString *)codecOptions appData:(NSString *)appData error:(NSError **)errPtr;
 
 @end
 
@@ -42,7 +47,7 @@
 /*!
     @brief Emitted when the transport needs to transmit information about a new producer to the associated server side transport.
     @discussion This even occurs <b>before</b> the produce() method completes
-    @param transportId SendTransport identifier
+    @param transportId Transport identifier
     @param kind Producer's media kind (video or audio)
     @param rtpParameters Producer's RTP parameters
     @param appData Custom application data (given in the transport.producer() method)

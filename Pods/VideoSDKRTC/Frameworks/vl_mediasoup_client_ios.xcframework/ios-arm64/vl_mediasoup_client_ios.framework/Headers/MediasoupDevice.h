@@ -6,25 +6,31 @@
 //  Copyright © 2019 Ethan. All rights reserved.
 //
 #import <Foundation/Foundation.h>
+#import <WebRTC/RTCPeerConnectionFactoryOptions.h>
+
+#import "SendTransport.h"
+#import "RecvTransport.h"
 
 #ifndef MediasoupDevice_h
 #define MediasoupDevice_h
 
-@class RTCPeerConnectionFactoryOptions;
-@class SendTransport;
-@class RecvTransport;
-@protocol SendTransportListener;
-@protocol RecvTransportListener;
-
-
 @interface MediasoupDevice : NSObject
+/*! @brief libmediasoupclient native device object */
+@property(nonatomic, strong) NSValue* _nativeDevice;
 
+/*!
+    @brief Creates a new libmediasoupclient device object
+    @return New libmediasoupclient device object
+ */
+-(id)init;
+/*! @brief Destroys the libmediasoupclient device */
+-(void)dispose;
 /*!
     @brief Loads the device with the RTP capabilities of the mediasoup router
     @discussion This method takes the RTP capabilities of the mediasoup router and works out what media codecs to use etc.
     @param routerRtpCapabilities mediasoup router RTP capabilities
  */
--(void)load:(NSString *)routerRtpCapabilities;
+-(BOOL)load:(NSString *)routerRtpCapabilities error:(NSError **)errPtr;
 /*!
     @brief Checks whether the device has been loaded
     @return Whether the device has been loaded or not
@@ -35,13 +41,13 @@
     @returns Device's RTP capabilities
     @throws The device has not been loaded
  */
--(NSString *)getRtpCapabilities;
+-(NSString *)getRtpCapabilities:(NSError **)errPtr;
 /*!
     @brief Returns the devices sctpCapabilities
     @returns Devices SCTP Capabilities
     @throws The device has not been loaded
  */
--(NSString *)getSctpCapabilities;
+-(NSString *)getSctpCapabilities:(NSError **)errPtr;
 /*!
     @brief Returns whether the device can produce media of the given kind
     @discussion This depends on the media codecs enabled in the mediasoup router and the media capabilities of libwebrtc
@@ -58,7 +64,7 @@
     @param dtlsParameters DTLS parameters of the server side transport
     @return SendTransport
  */
--(SendTransport *)createSendTransport:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters;
+-(SendTransport *)createSendTransport:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters error:(NSError **)errPtr;
 /*!
    @brief Creates a new WebRTC transport to <b>send</b> media
    @discussion The transport must be previously created in the mediasoup router
@@ -72,7 +78,7 @@
    @param appData Custom application data
    @return SendTransport
 */
--(SendTransport *)createSendTransport:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData;
+-(SendTransport *)createSendTransport:(id<SendTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData error:(NSError **)errPtr;
 /*!
     @brief Creates a new WebRTC transport to <b>receive</b> media
     @discussion The transport must be previously created in the mediasoup router
@@ -83,7 +89,7 @@
     @param dtlsParameters DTLS parameters of the server side transport
     @return RecvTransport
  */
--(RecvTransport *)createRecvTransport:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters;
+-(RecvTransport *)createRecvTransport:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters error:(NSError **)errPtr;
 /*!
    @brief Creates a new WebRTC transport to <b>receive</b> media
    @discussion The transport must be previously created in the mediasoup router
@@ -97,7 +103,7 @@
    @param appData Custom application data
    @return RecvTransport
 */
--(RecvTransport *)createRecvTransport:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData;
+-(RecvTransport *)createRecvTransport:(id<RecvTransportListener>)listener id:(NSString *)id iceParameters:(NSString *)iceParameters iceCandidates:(NSString *)iceCandidates dtlsParameters:(NSString *)dtlsParameters sctpParameters:(NSString *)sctpParameters options:(RTCPeerConnectionFactoryOptions *)options appData:(NSString *)appData error:(NSError **)errPtr;
 @end
 
 #endif /* Device_h */
