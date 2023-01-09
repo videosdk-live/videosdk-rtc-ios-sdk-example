@@ -450,17 +450,28 @@ extension MeetingViewController: ParticipantEventListener {
     ///   - participant: participant object
     func onStreamEnabled(_ stream: MediaStream, forParticipant participant: Participant) {
         
-        if stream.kind == .share {
-            // show screen share
-            showScreenSharingView(true)
-            screenSharingView.showMediastream(stream)
-            return
-        }
+//        if stream.kind == .share {
+//            // show screen share
+//            showScreenSharingView(true)
+//            screenSharingView.showMediastream(stream)
+//            return
+//        }
         
-        // show stream in cell
-        if let cell = self.cellForParticipant(participant) {
-            cell.updateView(forStream: stream, enabled: true)
+        let videoStreams = (participant.streams.filter{ $1.kind == .video }).count
+        
+        if stream.kind == .video  {
+            if videoStreams <= 1 {
+                // show stream in cell
+                if let cell = self.cellForParticipant(participant) {
+                    cell.updateView(forStream: stream, enabled: true)
+                }
+            }
+        } else {
+            if let cell = self.cellForParticipant(participant) {
+                cell.updateView(forStream: stream, enabled: true)
+            }
         }
+    
         
         if participant.isLocal {
             // turn on controls for local participant
@@ -477,16 +488,26 @@ extension MeetingViewController: ParticipantEventListener {
     ///   - participant: participant object
     func onStreamDisabled(_ stream: MediaStream, forParticipant participant: Participant) {
         
-        if stream.kind == .share {
-            // hide screen share
-            showScreenSharingView(false)
-            screenSharingView.hideMediastream(stream)
-            return
-        }
+//        if stream.kind == .share {
+//            // hide screen share
+//            showScreenSharingView(false)
+//            screenSharingView.hideMediastream(stream)
+//            return
+//        }
         
-        // hide stream in cell
-        if let cell = self.cellForParticipant(participant) {
-            cell.updateView(forStream: stream, enabled: false)
+        let videoStreams = (participant.streams.filter{ $1.kind == .video }).count
+        
+        if stream.kind == .video {
+            if videoStreams < 1 {
+                // hide stream in cell
+                if let cell = self.cellForParticipant(participant) {
+                    cell.updateView(forStream: stream, enabled: false)
+                }
+            }
+        } else {
+            if let cell = self.cellForParticipant(participant) {
+                cell.updateView(forStream: stream, enabled: true)
+            }
         }
         
         if participant.isLocal {
@@ -552,7 +573,6 @@ private extension MeetingViewController {
         
         // onVideoTapped
         buttonControlsView.onVideoTapped = { on in
-            self.meeting?.pubsub.publish(topic: CHAT_TOPIC, message: "How are you?", options: [:])
             
             if !on {
                 self.meeting?.enableWebcam()

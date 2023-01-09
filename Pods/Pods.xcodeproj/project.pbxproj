@@ -11,7 +11,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 2A91A3A557C8645CFB88C4D37A189015 /* Build configuration list for PBXAggregateTarget "VideoSDKRTC" */;
 			buildPhases = (
-				1F8859E7B94AE66DF30D2719D8C20FD3 /* [CP] Copy XCFrameworks */,
+				13A14F6971AE355FB2E30EF22975616F /* [CP] Copy XCFrameworks */,
 			);
 			dependencies = (
 				95A6DAA521A5EC6E95D21F156371DB77 /* PBXTargetDependency */,
@@ -210,6 +210,7 @@
 		00170232AF24240DABD984A681AC1449 /* AvatarPosition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AvatarPosition.swift; path = Sources/Models/AvatarPosition.swift; sourceTree = "<group>"; };
 		0288679BB31DEC2D08AD2692D30FF646 /* AutocompleteManagerDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AutocompleteManagerDelegate.swift; path = Sources/Plugins/AutocompleteManager/Protocols/AutocompleteManagerDelegate.swift; sourceTree = "<group>"; };
 		0667A57E6C0119F2667A12ED155B51B9 /* AutocompleteManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AutocompleteManager.swift; path = Sources/Plugins/AutocompleteManager/AutocompleteManager.swift; sourceTree = "<group>"; };
+		067BC6434E6D23B903A162A39872C0AA /* VideoSDKRTC.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = VideoSDKRTC.xcframework; path = Frameworks/VideoSDKRTC.xcframework; sourceTree = "<group>"; };
 		07A7B375B459F7EFF7C0DFEC8E075EAA /* Pods-VideoSDK_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VideoSDK_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		08728371258F688167BF43028215CF4A /* AutocompleteCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AutocompleteCell.swift; path = Sources/Plugins/AutocompleteManager/Views/AutocompleteCell.swift; sourceTree = "<group>"; };
 		094B31BA93F3B122E73A807344642A56 /* VideoSDKRTC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = VideoSDKRTC.release.xcconfig; sourceTree = "<group>"; };
@@ -225,7 +226,6 @@
 		15A68A8F33BD9EB9AFD02465B0418BCF /* MessageKit */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MessageKit; path = MessageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15F044453D4764165EC858C6FE6B1859 /* InputBarAccessoryViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InputBarAccessoryViewDelegate.swift; path = Sources/Protocols/InputBarAccessoryViewDelegate.swift; sourceTree = "<group>"; };
 		16BFA68DB3CD4A2716D4703BCCE11326 /* Pods-VideoSDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VideoSDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		176AF3B5C46A75838EFA547E67723DA2 /* WebRTC.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = WebRTC.xcframework; path = Frameworks/WebRTC.xcframework; sourceTree = "<group>"; };
 		199EDB007C57409CB114348EEE96149A /* ConcreteMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConcreteMessage.swift; path = Sources/Models/ConcreteMessage.swift; sourceTree = "<group>"; };
 		1A17777095302E654D779571D7CB1D54 /* InputBarAccessoryView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = InputBarAccessoryView.debug.xcconfig; sourceTree = "<group>"; };
 		1A71C6B7FFFE7ED42ED49978D8026A62 /* WebSocketServer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebSocketServer.swift; path = Sources/Server/WebSocketServer.swift; sourceTree = "<group>"; };
@@ -295,6 +295,7 @@
 		882B18414AD1FF43F3BA91D1B7F11A0F /* VideoSDKRTC-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "VideoSDKRTC-xcframeworks.sh"; sourceTree = "<group>"; };
 		891B2270823847ED23F2ECFC28F935EC /* Starscream */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Starscream; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89B210D6330BA0AFDEE81E4A147C3DE6 /* MediaItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MediaItem.swift; path = Sources/Protocols/MediaItem.swift; sourceTree = "<group>"; };
+		8B06A08F12EEDBB74FE68B03EAAB03AC /* Mediasoup.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = Mediasoup.xcframework; path = Frameworks/Mediasoup.xcframework; sourceTree = "<group>"; };
 		8C7C27BE7140A9B8F6032E465FAF7362 /* NSNotification+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSNotification+Extensions.swift"; path = "Sources/Extensions/NSNotification+Extensions.swift"; sourceTree = "<group>"; };
 		8D3A430D8F0A9F20666E0D34D93EF349 /* MessagesViewController+Menu.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MessagesViewController+Menu.swift"; path = "Sources/Controllers/MessagesViewController+Menu.swift"; sourceTree = "<group>"; };
 		8D7BFA6BB99DE7CA8FA63650B23FAF87 /* Compression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Compression.swift; path = Sources/Compression/Compression.swift; sourceTree = "<group>"; };
@@ -324,7 +325,6 @@
 		ACAD2B8F337D423FD96A3A8AE54ADADF /* LinkPreviewFonts.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LinkPreviewFonts.swift; path = Sources/Models/LinkPreviewFonts.swift; sourceTree = "<group>"; };
 		AE23A274E27A68B082AF2AF90936ACE6 /* AudioMessageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AudioMessageCell.swift; path = Sources/Views/Cells/AudioMessageCell.swift; sourceTree = "<group>"; };
 		B00AB8AF8DEF3C6336A6910A1AB0C1BD /* DetectorType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DetectorType.swift; path = Sources/Models/DetectorType.swift; sourceTree = "<group>"; };
-		B1EFDDD2108CA099B1F38D63F7C123BA /* VideoSDKRTC.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = VideoSDKRTC.xcframework; path = Frameworks/VideoSDKRTC.xcframework; sourceTree = "<group>"; };
 		B20A72F633117D8F5BA0B5F32B919FDB /* UIColor+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Extensions.swift"; path = "Sources/Extensions/UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		B2A434DC17AA0249DBD064110B4A0D66 /* NSMutableAttributedString+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSMutableAttributedString+Extensions.swift"; path = "Sources/Extensions/NSMutableAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		B38C932E94572AAFB9728340CB5E6276 /* InputBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InputBarButtonItem.swift; path = Sources/Controls/InputBarButtonItem.swift; sourceTree = "<group>"; };
@@ -336,7 +336,6 @@
 		BA68C5FF3572DF97376FEBEB32B63A92 /* HTTPHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPHandler.swift; path = Sources/Framer/HTTPHandler.swift; sourceTree = "<group>"; };
 		C1E749E249CB8C6EEE9A7BEF4BFE1E6C /* MessagesLayoutDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessagesLayoutDelegate.swift; path = Sources/Protocols/MessagesLayoutDelegate.swift; sourceTree = "<group>"; };
 		C43AB0CC5EF8CC6B567797C128E72B83 /* MessageCellDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageCellDelegate.swift; path = Sources/Protocols/MessageCellDelegate.swift; sourceTree = "<group>"; };
-		C44F37D2CF4A61D3EB931DB7EE5D9923 /* vl_mediasoup_client_ios.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = vl_mediasoup_client_ios.xcframework; path = Frameworks/vl_mediasoup_client_ios.xcframework; sourceTree = "<group>"; };
 		C5E20F603C881F71D6534E29B7DFCA22 /* MessagesViewController+Keyboard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MessagesViewController+Keyboard.swift"; path = "Sources/Controllers/MessagesViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		C7CFCB9342D71E587F204457996BA36F /* AttachmentCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AttachmentCell.swift; path = Sources/Plugins/AttachmentManager/Views/AttachmentCell.swift; sourceTree = "<group>"; };
 		C8FAD1BD0C815193856603D1334364A8 /* InsetLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InsetLabel.swift; path = Sources/Views/InsetLabel.swift; sourceTree = "<group>"; };
@@ -366,6 +365,7 @@
 		EE2816BBFAB5D60126385905F16F1367 /* MessageKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MessageKit-dummy.m"; sourceTree = "<group>"; };
 		F08C044044432B9EA960C0A70FCC73EC /* Pods-VideoSDK_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VideoSDK_Example-umbrella.h"; sourceTree = "<group>"; };
 		F0917718B47294238B1A65606F86A342 /* CGRect+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGRect+Extensions.swift"; path = "Sources/Extensions/CGRect+Extensions.swift"; sourceTree = "<group>"; };
+		F1C60AB4F7199D5E61CBD9CA61CFD205 /* WebRTC.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = WebRTC.xcframework; path = Frameworks/WebRTC.xcframework; sourceTree = "<group>"; };
 		F37B856F4842F5A5480F6000EB705348 /* MessagesViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessagesViewController.swift; path = Sources/Controllers/MessagesViewController.swift; sourceTree = "<group>"; };
 		F434C56294C2A8CE71603FD1C91C6AB3 /* InputBarAccessoryView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "InputBarAccessoryView-Info.plist"; sourceTree = "<group>"; };
 		F8B013BE51F555000B0CE1D872215FA2 /* MessageKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MessageKit-prefix.pch"; sourceTree = "<group>"; };
@@ -613,7 +613,7 @@
 		D45EFB0E12F2AA9FCC9C4FC93BAE188E /* VideoSDKRTC */ = {
 			isa = PBXGroup;
 			children = (
-				EE3F82FC56F61E9032E6C5B7E96F0E49 /* Frameworks */,
+				FDE5FCF087DBF3A607C3760ED451FFA3 /* Frameworks */,
 				0155464C6881B5E96FA478B0DCFE9669 /* Support Files */,
 			);
 			name = VideoSDKRTC;
@@ -708,12 +708,12 @@
 			path = Starscream;
 			sourceTree = "<group>";
 		};
-		EE3F82FC56F61E9032E6C5B7E96F0E49 /* Frameworks */ = {
+		FDE5FCF087DBF3A607C3760ED451FFA3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B1EFDDD2108CA099B1F38D63F7C123BA /* VideoSDKRTC.xcframework */,
-				C44F37D2CF4A61D3EB931DB7EE5D9923 /* vl_mediasoup_client_ios.xcframework */,
-				176AF3B5C46A75838EFA547E67723DA2 /* WebRTC.xcframework */,
+				8B06A08F12EEDBB74FE68B03EAAB03AC /* Mediasoup.xcframework */,
+				067BC6434E6D23B903A162A39872C0AA /* VideoSDKRTC.xcframework */,
+				F1C60AB4F7199D5E61CBD9CA61CFD205 /* WebRTC.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -912,7 +912,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1F8859E7B94AE66DF30D2719D8C20FD3 /* [CP] Copy XCFrameworks */ = {
+		13A14F6971AE355FB2E30EF22975616F /* [CP] Copy XCFrameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -920,13 +920,13 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/VideoSDKRTC/VideoSDKRTC-xcframeworks.sh",
 				"${PODS_ROOT}/VideoSDKRTC/Frameworks/VideoSDKRTC.xcframework",
-				"${PODS_ROOT}/VideoSDKRTC/Frameworks/vl_mediasoup_client_ios.xcframework",
+				"${PODS_ROOT}/VideoSDKRTC/Frameworks/Mediasoup.xcframework",
 				"${PODS_ROOT}/VideoSDKRTC/Frameworks/WebRTC.xcframework",
 			);
 			name = "[CP] Copy XCFrameworks";
 			outputPaths = (
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/VideoSDKRTC.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/vl_mediasoup_client_ios.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/Mediasoup.framework",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/WebRTC.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

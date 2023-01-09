@@ -4,13 +4,13 @@
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
 import Foundation
+import Mediasoup
 import Starscream
 import Swift
 @_exported import VideoSDKRTC
 import WebRTC
 import _Concurrency
 import _StringProcessing
-import vl_mediasoup_client_ios
 public enum CameraPosition : Swift.Int {
   case back
   case front
@@ -46,30 +46,20 @@ public struct LivestreamOutput : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
-public enum StreamKind : Swift.String {
-  case video
-  case audio
-  case share
-  public init?(rawValue: Swift.String)
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
-    get
-  }
-}
 @_hasMissingDesignatedInitializers public class MediaStream : Swift.Equatable {
   public var id: Swift.String {
     get
   }
-  public var kind: VideoSDKRTC.StreamKind {
+  public var kind: Mediasoup.MediaKind {
     get
   }
   public var track: WebRTC.RTCMediaStreamTrack {
     get
   }
-  public var producer: vl_mediasoup_client_ios.Producer? {
+  public var producer: Mediasoup.Producer? {
     get
   }
-  public var consumer: vl_mediasoup_client_ios.Consumer? {
+  public var consumer: Mediasoup.Consumer? {
     get
   }
   @objc deinit
@@ -231,9 +221,6 @@ public enum VideoQuality : Swift.String, Swift.CaseIterable {
 extension VideoSDKRTC.CameraPosition : Swift.Equatable {}
 extension VideoSDKRTC.CameraPosition : Swift.Hashable {}
 extension VideoSDKRTC.CameraPosition : Swift.RawRepresentable {}
-extension VideoSDKRTC.StreamKind : Swift.Equatable {}
-extension VideoSDKRTC.StreamKind : Swift.Hashable {}
-extension VideoSDKRTC.StreamKind : Swift.RawRepresentable {}
 extension VideoSDKRTC.VideoQuality : Swift.Equatable {}
 extension VideoSDKRTC.VideoQuality : Swift.Hashable {}
 extension VideoSDKRTC.VideoQuality : Swift.RawRepresentable {}

@@ -261,8 +261,9 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 8GZ776NSU2;
 						LastSwiftMigration = 1250;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -332,7 +333,7 @@
 				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/VideoSDKRTC.framework/VideoSDKRTC",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/vl_mediasoup_client_ios.framework/vl_mediasoup_client_ios",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/Mediasoup.framework/Mediasoup",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/WebRTC.framework/WebRTC",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -341,7 +342,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VideoSDKRTC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/vl_mediasoup_client_ios.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mediasoup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebRTC.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,9 +517,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VideoSDK_Example.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8GZ776NSU2;
 				INFOPLIST_FILE = VideoSDK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -541,9 +542,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VideoSDK_ExampleRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8GZ776NSU2;
 				INFOPLIST_FILE = VideoSDK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
