@@ -104,7 +104,6 @@ class ParticipantViewCell: UICollectionViewCell {
     }
     
     func reset() {
-        participant = nil
         livestreamIndicator.isHidden = true
         contentView.layer.borderColor = UIColor.clear.cgColor
         
@@ -115,6 +114,7 @@ class ParticipantViewCell: UICollectionViewCell {
         if let videoTrack = participant?.streams.first(where: { $1.kind == .video })?.value.track as? RTCVideoTrack {
             videoTrack.remove(videoView)
         }
+        participant = nil
     }
     
     // MARK: - Actions
