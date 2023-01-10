@@ -30,6 +30,7 @@
 	<string>Allow microphone access to start audio.</string>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>location</string>
 		<string>remote-notification</string>
 		<string>voip</string>
 	</array>
