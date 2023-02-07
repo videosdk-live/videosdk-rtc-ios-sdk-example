@@ -27,20 +27,6 @@ Check out demo [here](https://videosdk.live/prebuilt/)
 - [x] Raise hand
 - [x] Recording
 
-## Interactive Live Streaming Features
-
-#### Host
-
-- [x] Enable/disable camera
-- [x] Mute/unmute mic
-- [x] Chat
-- [x] Raise hand
-- [x] Recording
-
-#### Viewer
-
-- [x] Raise hand
-
 <br/>
 
 ## Setup Guide
@@ -325,7 +311,7 @@ By registering callback handlers, VideoSDK sends callbacks to the client app whe
   }
 ```
 
-If you want to learn more about the SDK, read the Complete Documentation of [React VideoSDK](https://docs.videosdk.live/react/api/sdk-reference/setup)
+If you want to learn more about the SDK, read the Complete Documentation of [iOS VideoSDK](https://docs.videosdk.live/ios/api/sdk-reference/setup)
 
 <br/>
 
