@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="ButtonControlsView" id="iN0-l3-epB" customClass="ButtonControlsView" customModule="VideoSDKRTC_Example" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="center" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="cQs-0J-x7G">
+                    <rect key="frame" x="16" y="8" width="268" height="44"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MbV-5U-QCf" userLabel="meetingEndView">
+                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="call_end" translatesAutoresizingMaskIntoConstraints="NO" id="gvV-8S-iIo">
+                                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small" weight="medium"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfH-yT-a0A">
+                                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain"/>
+                                    <connections>
+                                        <action selector="leaveMeetingButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="ceD-xy-Jha"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" name="systemRed"/>
+                            <constraints>
+                                <constraint firstItem="kfH-yT-a0A" firstAttribute="leading" secondItem="MbV-5U-QCf" secondAttribute="leading" id="BzJ-vo-xEB"/>
+                                <constraint firstAttribute="bottom" secondItem="kfH-yT-a0A" secondAttribute="bottom" id="JQs-hq-nxd"/>
+                                <constraint firstItem="gvV-8S-iIo" firstAttribute="leading" secondItem="MbV-5U-QCf" secondAttribute="leading" id="Qcu-FA-5mx"/>
+                                <constraint firstItem="gvV-8S-iIo" firstAttribute="top" secondItem="MbV-5U-QCf" secondAttribute="top" id="Qxk-uW-2yd"/>
+                                <constraint firstAttribute="width" constant="44" id="fYy-aU-9h2"/>
+                                <constraint firstAttribute="width" secondItem="MbV-5U-QCf" secondAttribute="height" multiplier="1:1" id="gsF-Sk-eCc"/>
+                                <constraint firstItem="kfH-yT-a0A" firstAttribute="top" secondItem="MbV-5U-QCf" secondAttribute="top" id="oEf-ia-U4F"/>
+                                <constraint firstAttribute="trailing" secondItem="gvV-8S-iIo" secondAttribute="trailing" id="p6j-uj-B1X"/>
+                                <constraint firstAttribute="bottom" secondItem="gvV-8S-iIo" secondAttribute="bottom" id="rJt-kZ-ztk"/>
+                                <constraint firstAttribute="trailing" secondItem="kfH-yT-a0A" secondAttribute="trailing" id="ucK-oV-L3Q"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsH-Lu-4b8" userLabel="toggleMicView">
+                            <rect key="frame" x="56" y="0.0" width="44" height="44"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mic.slash.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="OsC-bb-GF1">
+                                    <rect key="frame" x="0.0" y="-0.5" width="44" height="44"/>
+                                    <color key="tintColor" name="textColor"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgJ-Fi-Tdy">
+                                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain"/>
+                                    <connections>
+                                        <action selector="micButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ybc-2b-aTw"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="OsC-bb-GF1" firstAttribute="leading" secondItem="bsH-Lu-4b8" secondAttribute="leading" id="1oR-A3-23O"/>
+                                <constraint firstItem="zgJ-Fi-Tdy" firstAttribute="leading" secondItem="bsH-Lu-4b8" secondAttribute="leading" id="BXU-wV-3Wi"/>
+                                <constraint firstAttribute="width" secondItem="bsH-Lu-4b8" secondAttribute="height" multiplier="1:1" id="KSv-nj-tmq"/>
+                                <constraint firstAttribute="bottom" secondItem="OsC-bb-GF1" secondAttribute="bottom" id="Lf1-5G-Ots"/>
+                                <constraint firstAttribute="width" constant="44" id="UAX-hV-aSe"/>
+                                <constraint firstAttribute="trailing" secondItem="OsC-bb-GF1" secondAttribute="trailing" id="dJ5-Or-Oe6"/>
+                                <constraint firstItem="zgJ-Fi-Tdy" firstAttribute="top" secondItem="bsH-Lu-4b8" secondAttribute="top" id="iH7-dI-LCd"/>
+                                <constraint firstAttribute="bottom" secondItem="zgJ-Fi-Tdy" secondAttribute="bottom" id="lse-sO-2Fv"/>
+                                <constraint firstItem="OsC-bb-GF1" firstAttribute="top" secondItem="bsH-Lu-4b8" secondAttribute="top" id="ouP-Zk-FK9"/>
+                                <constraint firstAttribute="trailing" secondItem="zgJ-Fi-Tdy" secondAttribute="trailing" id="w27-x0-7Ea"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yex-nd-A6t" userLabel="toggleVideoView">
+                            <rect key="frame" x="112" y="0.0" width="44" height="44"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Wb7-N0-v4y">
+                                    <rect key="frame" x="0.0" y="2.5" width="44" height="39.5"/>
+                                    <color key="tintColor" name="textColor"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AG6-Sn-3WV">
+                                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain"/>
+                                    <connections>
+                                        <action selector="videoButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="qrT-jd-dRa"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Wb7-N0-v4y" secondAttribute="trailing" id="CWX-Rp-6tD"/>
+                                <constraint firstItem="AG6-Sn-3WV" firstAttribute="leading" secondItem="Yex-nd-A6t" secondAttribute="leading" id="EZM-Af-37N"/>
+                                <constraint firstAttribute="width" secondItem="Yex-nd-A6t" secondAttribute="height" multiplier="1:1" id="Ec6-eI-kVd"/>
+                                <constraint firstItem="Wb7-N0-v4y" firstAttribute="leading" secondItem="Yex-nd-A6t" secondAttribute="leading" id="NbD-4c-p78"/>
+                                <constraint firstAttribute="bottom" secondItem="AG6-Sn-3WV" secondAttribute="bottom" id="T7d-V6-1pc"/>
+                                <constraint firstAttribute="bottom" secondItem="Wb7-N0-v4y" secondAttribute="bottom" id="YM7-cH-PM1"/>
+                                <constraint firstItem="Wb7-N0-v4y" firstAttribute="top" secondItem="Yex-nd-A6t" secondAttribute="top" id="Ytp-0e-Sed"/>
+                                <constraint firstItem="AG6-Sn-3WV" firstAttribute="top" secondItem="Yex-nd-A6t" secondAttribute="top" id="bg6-wg-VwX"/>
+                                <constraint firstAttribute="width" constant="44" id="fcT-Pa-woX"/>
+                                <constraint firstAttribute="trailing" secondItem="AG6-Sn-3WV" secondAttribute="trailing" id="vBu-qM-Edf"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vSJ-Q7-Xbf" userLabel="chatView">
+                            <rect key="frame" x="168" y="0.0" width="44" height="44"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat" translatesAutoresizingMaskIntoConstraints="NO" id="AJc-2v-2So">
+                                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                    <color key="tintColor" name="textColor"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSz-gp-5Ie">
+                                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain"/>
+                                    <connections>
+                                        <action selector="chatButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="92h-mN-Hyr"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="qSz-gp-5Ie" secondAttribute="bottom" id="6JG-Kf-5gf"/>
+                                <constraint firstItem="AJc-2v-2So" firstAttribute="top" secondItem="vSJ-Q7-Xbf" secondAttribute="top" id="8fW-yk-cIF"/>
+                                <constraint firstAttribute="trailing" secondItem="AJc-2v-2So" secondAttribute="trailing" id="Av5-rm-NfT"/>
+                                <constraint firstAttribute="bottom" secondItem="AJc-2v-2So" secondAttribute="bottom" id="KTF-T7-W84"/>
+                                <constraint firstItem="qSz-gp-5Ie" firstAttribute="top" secondItem="vSJ-Q7-Xbf" secondAttribute="top" id="NQq-eJ-do2"/>
+                                <constraint firstItem="AJc-2v-2So" firstAttribute="leading" secondItem="vSJ-Q7-Xbf" secondAttribute="leading" id="Wqb-zL-36C"/>
+                                <constraint firstAttribute="width" constant="44" id="kdw-UL-9ZJ"/>
+                                <constraint firstItem="qSz-gp-5Ie" firstAttribute="leading" secondItem="vSJ-Q7-Xbf" secondAttribute="leading" id="nbs-jg-JO8"/>
+                                <constraint firstAttribute="trailing" secondItem="qSz-gp-5Ie" secondAttribute="trailing" id="tew-UQ-4Wc"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B2C-2r-saq" userLabel="moreView">
+                            <rect key="frame" x="224" y="0.0" width="44" height="44"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more" translatesAutoresizingMaskIntoConstraints="NO" id="2U3-ug-GlA">
+                                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                    <color key="tintColor" name="textColor"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V0A-oQ-QAu">
+                                    <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain"/>
+                                    <connections>
+                                        <action selector="menuButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="rSO-qG-Zke"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="V0A-oQ-QAu" secondAttribute="bottom" id="48k-Om-RVc"/>
+                                <constraint firstAttribute="width" constant="44" id="5N1-nB-Wha"/>
+                                <constraint firstItem="V0A-oQ-QAu" firstAttribute="leading" secondItem="B2C-2r-saq" secondAttribute="leading" id="QAL-FV-Plq"/>
+                                <constraint firstItem="V0A-oQ-QAu" firstAttribute="top" secondItem="B2C-2r-saq" secondAttribute="top" id="VrR-XD-u4r"/>
+                                <constraint firstAttribute="bottom" secondItem="2U3-ug-GlA" secondAttribute="bottom" id="bWq-fa-rVf"/>
+                                <constraint firstAttribute="trailing" secondItem="2U3-ug-GlA" secondAttribute="trailing" id="hJW-tV-GTb"/>
+                                <constraint firstItem="2U3-ug-GlA" firstAttribute="leading" secondItem="B2C-2r-saq" secondAttribute="leading" id="iGx-Zj-mpA"/>
+                                <constraint firstItem="2U3-ug-GlA" firstAttribute="top" secondItem="B2C-2r-saq" secondAttribute="top" id="mzF-tZ-fGL"/>
+                                <constraint firstAttribute="trailing" secondItem="V0A-oQ-QAu" secondAttribute="trailing" id="zzy-tv-JBh"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Yex-nd-A6t" firstAttribute="width" secondItem="Yex-nd-A6t" secondAttribute="height" multiplier="1:1" id="IPk-ZG-WXq"/>
+                        <constraint firstItem="B2C-2r-saq" firstAttribute="width" secondItem="B2C-2r-saq" secondAttribute="height" multiplier="1:1" id="jAH-GW-uVO"/>
+                        <constraint firstItem="vSJ-Q7-Xbf" firstAttribute="width" secondItem="vSJ-Q7-Xbf" secondAttribute="height" multiplier="1:1" id="tnb-OU-tsa"/>
+                        <constraint firstItem="bsH-Lu-4b8" firstAttribute="width" secondItem="bsH-Lu-4b8" secondAttribute="height" multiplier="1:1" id="yMj-oW-FlV"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="cQs-0J-x7G" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="DP6-TE-uyL"/>
+                <constraint firstItem="cQs-0J-x7G" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="to3-VG-5tj"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btnChatMessage" destination="qSz-gp-5Ie" id="h0J-tF-hT0"/>
+                <outlet property="btnMoreOptions" destination="V0A-oQ-QAu" id="mbe-PV-jR6"/>
+                <outlet property="btnToggleMic" destination="zgJ-Fi-Tdy" id="hF2-wi-WQ5"/>
+                <outlet property="btnToggleVideo" destination="AG6-Sn-3WV" id="YsS-fm-RQZ"/>
+                <outlet property="imgToggleMic" destination="OsC-bb-GF1" id="oVs-5C-vwn"/>
+                <outlet property="imgToggleVideo" destination="Wb7-N0-v4y" id="YG9-uK-PUk"/>
+                <outlet property="leaveMeetingButton" destination="kfH-yT-a0A" id="HRd-et-LAD"/>
+                <outlet property="viewChatContainer" destination="vSJ-Q7-Xbf" id="ctI-j7-ex3"/>
+                <outlet property="viewEndMeetingContainer" destination="MbV-5U-QCf" id="u0P-Og-z4R"/>
+                <outlet property="viewMoreOptionsContainer" destination="B2C-2r-saq" id="si3-3I-QFG"/>
+                <outlet property="viewToggleMicContainer" destination="bsH-Lu-4b8" id="raO-WF-Xfv"/>
+                <outlet property="viewToggleVideoContainer" destination="Yex-nd-A6t" id="lwR-JZ-VOs"/>
+            </connections>
+            <point key="canvasLocation" x="298.55072463768118" y="-48.214285714285715"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="call_end" width="22.881999969482422" height="7.8439998626708984"/>
+        <image name="chat" width="16" height="16"/>
+        <image name="mic.slash.fill" catalog="system" width="108" height="128"/>
+        <image name="more" width="16" height="4"/>
+        <image name="video.fill" catalog="system" width="128" height="81"/>
+        <namedColor name="systemRed">
+            <color red="0.76099997758865356" green="0.24699999392032623" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="textColor">
+            <color red="0.95294117647058818" green="0.95686274509803926" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

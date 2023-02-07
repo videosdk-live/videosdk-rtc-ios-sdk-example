@@ -1,0 +1,6 @@
+framework module Pods_VideoSDKRTC_Example {
+  umbrella header "Pods-VideoSDKRTC_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
