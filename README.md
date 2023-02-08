@@ -10,11 +10,7 @@ At Video SDK, we’re building tools to help companies create world-class collab
 
 ## Demo App
 
-Check out demo [here](https://videosdk.live/prebuilt/)
-
-📲 Download the Sample iOS app here: https://testflight.apple.com/join/LYj3QJPx
-
-📱 Download the Sample Android app here: https://appdistribution.firebase.dev/i/a4c63049415c4356
+📲 Download the Sample iOS app here: https://testflight.apple.com/join/26EBZkcX
 
 <br/>
 
@@ -48,31 +44,27 @@ Check out demo [here](https://videosdk.live/prebuilt/)
 
 ## Run the Sample App
 
-### Step 1. There are two options:
-   1. Option 1: Get Auth Token from [VideoSDK Dashboard](https://app.videosdk.live/dashboard)
-   2. Option 2: Setting up Auth Server [Instructions](https://github.com/videosdk-live/videosdk-rtc-nodejs-sdk-example)
-
-### Step 2. Clone the repo
+### Step 1: Clone the sample project
 
    ```sh
-   $ git clone https://github.com/videosdk-live/videosdk-rtc-ios-sdk-example.git
+   git clone https://github.com/videosdk-live/videosdk-rtc-ios-sdk-example.git
    ```
+   
+### Step 2. Install Pods
 
-### Step 3. run `pod install` in terminal from the Example project directory.
+Run `pod install` in terminal from the Example project directory.
 
-### Step 4. Either update `AUTH_TOKEN` or `AUTH_URL` in the `Constants.swift` file.
+### Step 3. update `AUTH_TOKEN` in the `Constants.swift` file.
+
+Generate temporary token from [Video SDK Account](https://app.videosdk.live/signup).
 
    ```
    public let AUTH_TOKEN = "#YOUR_GENERATED_TOKEN"
    ```
-
-   OR
-
-   ```
-   public let AUTH_URL = "#YOUR_AUTH_SERVER_URL"
-   ```
    
-### Step 5. Run the project.
+### Step 4. Run the project.
+
+Run App from Xcode. Please run the app in real device for better experience because audio and video is not supported in simulator.
 
 <br/>
 
@@ -113,10 +105,6 @@ Token is used to create and validate a meeting using API and also initialise a m
 🌐 `Production Environment`:
 
 - You must set up an authentication server to authorise users for production. To set up an authentication server, refer to our official example repositories. [videosdk-rtc-api-server-examples](https://github.com/videosdk-live/videosdk-rtc-api-server-examples)
-
-> **Note** :
->
-> Development environment tokens have a 7-day expiration period.
 
 <br/>
 
@@ -209,7 +197,6 @@ Token is used to create and validate a meeting using API and also initialise a m
     
     // raise hand on click event
     self.meeting?.pubsub.publish(topic: RAISE_HAND_TOPIC, message: "Raise Hand by Me", options: [:])
-};
 ```
 
 <br/>
