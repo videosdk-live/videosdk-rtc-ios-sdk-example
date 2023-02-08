@@ -45,25 +45,17 @@ At Video SDK, we’re building tools to help companies create world-class collab
 ## Run the Sample App
 
 ### Step 1: Clone the sample project
-
    ```sh
    git clone https://github.com/videosdk-live/videosdk-rtc-ios-sdk-example.git
    ```
-   
 ### Step 2. Install Pods
-
 Run `pod install` in terminal from the Example project directory.
-
 ### Step 3. update `AUTH_TOKEN` in the `Constants.swift` file.
-
 Generate temporary token from [Video SDK Account](https://app.videosdk.live/signup).
-
    ```
    public let AUTH_TOKEN = "#YOUR_GENERATED_TOKEN"
    ```
-   
 ### Step 4. Run the project.
-
 Run App from Xcode. Please run the app in real device for better experience because audio and video is not supported in simulator.
 
 <br/>
