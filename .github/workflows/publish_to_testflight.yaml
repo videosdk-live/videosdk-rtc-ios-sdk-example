@@ -13,7 +13,7 @@ jobs:
           xcode-version: latest-stable
       - uses: actions/checkout@v2
       - name: Add TOKEN
-        run: cd VideoSDK/API && rm Constants.swift && touch Constants.swift && echo "import Foundation; public let AUTH_URL = \"\"; public let AUTH_TOKEN = \"${{secrets.AUTH_TOKEN}}\";" >> Constants.swift && ls && cat Constants.swift
+        run: cd VideoSDKRTC_Example/API && rm Constants.swift && touch Constants.swift && echo "import Foundation; public let AUTH_URL = \"\"; public let AUTH_TOKEN = \"${{secrets.AUTH_TOKEN}}\";" >> Constants.swift && ls && cat Constants.swift
       - name: Install Pods
         run: pod install
 
