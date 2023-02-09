@@ -20,15 +20,15 @@ jobs:
       - name: Build IOS App
         uses: yukiarrr/ios-build-action@v1.5.0
         with:
-          project-path: VideoSDK.xcodeproj
+          project-path: VideoSDKRTC_Example.xcodeproj
           p12-base64: ${{ secrets.P12_BASE64 }}
           mobileprovision-base64: |
             ${{ secrets.MOBILEPROVISION_BASE64 }}
           code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
           team-id: ${{ secrets.TEAM_ID }}
           certificate-password: ${{ secrets.CERTIFICATE_PASSWORD}}
-          scheme: VideoSDK-Example
-          workspace-path: VideoSDK.xcworkspace # optional
+          scheme: VideoSDKRTC_Example
+          workspace-path: VideoSDKRTC_Example.xcworkspace # optional
           export-options: ExportOptions.plist
 
       - name: "Upload app to TestFlight"
