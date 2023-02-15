@@ -70,7 +70,7 @@ class StartMeetingViewController: UIViewController {
         txtMeetingCodeField.attributedPlaceholder = NSAttributedString(string: "Enter meeting code", attributes: attributes)
         txtEnterNameField.delegate = self
         txtMeetingCodeField.delegate = self
-        txtMeetingCodeField.text = ""
+        txtMeetingCodeField.text = "kqlm-udpj-45d3"
         
         [viewCameraViewContainer, viewCreateAMeetingButton, viewJoinAMeetingButton, viewTestAudioVideoContainer].forEach {
             $0?.roundCorners(corners: [.allCorners], radius: 12.0)
@@ -166,21 +166,23 @@ class StartMeetingViewController: UIViewController {
         session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
             DispatchQueue.main.async {
                 Utils.loaderDismiss(viewControler: self)
-            }
-            if let data = data, let utf8Text = String(data: data, encoding: .utf8)
-            {
-                print("UTF =>=>\(utf8Text)") // original server data as UTF8 string
-                do{
-                    let dataArray = try JSONDecoder().decode(RoomsStruct.self,from: data)
-                    DispatchQueue.main.async {
-                        self.txtMeetingCodeField.text = dataArray.roomID
+                if let data = data, let utf8Text = String(data: data, encoding: .utf8)
+                {
+                    print("UTF =>=>\(utf8Text)") // original server data as UTF8 string
+                    do{
+                        let dataArray = try JSONDecoder().decode(RoomsStruct.self,from: data)
+                        DispatchQueue.main.async {
+                            self.txtMeetingCodeField.text = dataArray.roomID
+                        }
                         self.joinMeeting()
+                        print(dataArray)
+                    } catch {
+                        print("Error while creating a meeting: \(error)")
+                        self.showToast(message: "Error while creating a meeting: \(error)", font: .systemFont(ofSize: 15.0))
                     }
-                    print(dataArray)
-                } catch {
-                    print(error)
                 }
             }
+            
         }
         ).resume()
     }
@@ -212,7 +214,10 @@ class StartMeetingViewController: UIViewController {
     
     func startMeeting() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "StartMeeting", sender: nil)
+//            self.dismiss(animated: true)
+            self.dismiss(animated: true) {
+                self.performSegue(withIdentifier: "StartMeeting", sender: nil)
+            }
         }
         
             //let meetingViewController = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MeetingViewController") as? MeetingViewController
@@ -242,10 +247,11 @@ class StartMeetingViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         guard let navigation = segue.destination as? UINavigationController,
               let meetingViewController = navigation.topViewController as? MeetingViewController else {
-                  return
-              }
+              return
+          }
         
         meetingViewController.meetingData = MeetingData(
             token: serverToken,
