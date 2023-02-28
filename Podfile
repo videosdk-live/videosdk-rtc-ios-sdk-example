@@ -1,9 +1,9 @@
-platform :ios, '11.0'
+platform :ios, '12.0'
 
 target 'VideoSDKRTC_Example' do
   use_frameworks!
 
-	 pod 'VideoSDKRTC', :git => 'https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git', :tag => 'v2.0.0'
+	 pod 'VideoSDKRTC', :git => 'https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git'
    pod 'MessageKit'
    pod 'IQKeyboardManagerSwift'
 

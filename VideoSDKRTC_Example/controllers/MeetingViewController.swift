@@ -71,6 +71,7 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate 
     
     override var prefersStatusBarHidden: Bool { true }
 
+    var participantIsSharingScreen: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,6 +162,9 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate 
         }
         
         ivIsRecording.isHidden = true
+        
+        localParticipantViewVideoContainer.isHidden = false
+        remoteParticipantVideoContainer.isHidden = false
     
     }
     
@@ -217,60 +221,6 @@ extension MeetingViewController: MeetingEventListener {
             
             localParticipant.setQuality(.high)
             
-            // show in ui
-            // addParticipantToGridView(participant: localParticipant)
-            UIView.animate(withDuration: 0.5){
-                self.setNameToView(localParticipant)
-                if let videoStream = localParticipant.streams.first(where: { $1.kind == .video })?.value.track as? RTCVideoTrack {
-                    if self.participants.count != 1 {
-                        videoStream.add(self.localParticipantViewVideoContainer)
-                        self.localParticipantViewNameContainer.isHidden = true
-                        self.localParticipantViewVideoContainer.isHidden = false
-                        self.localParticipantViewContainer.isHidden = false
-                    } else {
-                        videoStream.add(self.remoteParticipantVideoContainer)
-                        self.remoteParticipantNameContainer.isHidden = true
-                        self.remoteParticipantVideoContainer.isHidden = false
-                        self.localParticipantViewContainer.isHidden = true
-                    }
-                    
-                } else if let _ = localParticipant.streams.first(where: { $1.kind == .audio })?.value.track as? RTCVideoTrack {
-                    if self.participants.count != 1 {
-                        self.localParticipantViewNameContainer.isHidden = false
-                        self.localParticipantViewVideoContainer.isHidden = true
-                        self.localParticipantViewContainer.isHidden = false
-                    } else {
-                        self.remoteParticipantNameContainer.isHidden = false
-                        self.remoteParticipantVideoContainer.isHidden = true
-                        self.localParticipantViewContainer.isHidden = true
-                        self.viewRemoteMicContainer.isHidden = true
-                    }
-                } else {
-                    self.viewRemoteMicContainer.isHidden = false
-                }
-                // other participant
-                if let otherParticipant = self.participants.first(where: { $0.id != localParticipant.id }), otherParticipant.isLocal {
-                    // set remained participant name
-                    self.setNameToView(otherParticipant)
-                    // find videostream of other participant
-                    if let videoStream = otherParticipant.streams.first(where: { $1.kind == .video })?.value.track as? RTCVideoTrack  {
-                        // added remote video stream to remote participant video container
-                        videoStream.add(self.remoteParticipantVideoContainer)
-                        // hide remote name container
-                        self.remoteParticipantNameContainer.isHidden = true
-                        // show remote video container
-                        self.remoteParticipantVideoContainer.isHidden = false
-                    } else if let _ = otherParticipant.streams.first(where: { $1.kind == .audio })?.value.track as? RTCVideoTrack{
-                        // show remote name container
-                        self.remoteParticipantNameContainer.isHidden = false
-                        self.remoteParticipantVideoContainer.isHidden = true
-                        self.viewRemoteMicContainer.isHidden = true
-                    } else {
-                        self.viewRemoteMicContainer.isHidden = false
-                    }
-                }
-            }
-            
             // listen/subscribe for chat topic
             meeting?.pubsub.subscribe(topic: CHAT_TOPIC, forListener: self)
             
@@ -298,10 +248,6 @@ extension MeetingViewController: MeetingEventListener {
     func onParticipantJoined(_ participant: Participant) {
 
         if participants.count < 2 {
-            if let currentVideoTrack = self.participants.first(where: {$0.id != participant.id})?.streams.first(where: {$1.kind == .video})?.value.track as? RTCVideoTrack {
-                currentVideoTrack.remove(self.remoteParticipantVideoContainer)
-                self.remoteParticipantVideoContainer.isHidden = true
-            }
             
             // add new participant to list
             participants.append(participant)
@@ -312,45 +258,6 @@ extension MeetingViewController: MeetingEventListener {
             participant.setQuality(.high)
             
             self.setNameToView(participant)
-            
-            // show in ui
-            UIView.animate(withDuration: 0.5){
-                DispatchQueue.main.async {
-                    if let videoStream = participant.streams.first(where: { $1.kind == .video })?.value.track as? RTCVideoTrack {
-                        videoStream.add(self.remoteParticipantVideoContainer)
-                        self.remoteParticipantNameContainer.isHidden = true
-                        self.participantViewsContainer.backgroundColor = UIColor.red
-                        self.remoteParticipantVideoContainer.isHidden = false
-                        self.participantViewsContainer.backgroundColor = UIColor.clear
-                    } else if let _ = participant.streams.first(where: { $1.kind == .audio })?.value.track as? RTCVideoTrack {
-                        self.remoteParticipantNameContainer.isHidden = false
-                        self.remoteParticipantVideoContainer.isHidden = true
-                        self.viewRemoteMicContainer.isHidden = true
-                    } else {
-                        self.viewRemoteMicContainer.isHidden = false
-                    }
-                    
-                    // other participant
-                    if let otherParticipant = self.participants.first(where: { $0.id != participant.id }), otherParticipant.isLocal {
-                        // set remained participant name
-                        self.setNameToView(otherParticipant)
-                        // find videostream of other participant
-                        if let videoStream = otherParticipant.streams.first(where: { $1.kind == .video })?.value.track as? RTCVideoTrack  {
-                            // added remote video stream to remote participant video container
-                            videoStream.add(self.localParticipantViewVideoContainer)
-                            // hide remote name container
-                            self.localParticipantViewNameContainer.isHidden = true
-                            // show remote video container
-                            self.localParticipantViewVideoContainer.isHidden = false
-                        } else {
-                            // show remote name container
-                            self.localParticipantViewNameContainer.isHidden = false
-                            self.localParticipantViewVideoContainer.isHidden = true
-                        }
-                        self.localParticipantViewContainer.isHidden = false
-                    }
-                }
-            }
         } else {
             //Navigate to Error Screen
         }
@@ -480,7 +387,7 @@ extension MeetingViewController: ParticipantEventListener {
     ///   - stream: enabled stream object
     ///   - participant: participant object
     func onStreamEnabled(_ stream: MediaStream, forParticipant participant: Participant) {
-            
+        print("stream: \(stream.kind) is enabled of participant: \(participant.displayName) which is local : \(participant.isLocal)")
         updateView(participant: participant, forStream: stream, enabled: true)
         
         if participant.isLocal {
@@ -497,7 +404,7 @@ extension MeetingViewController: ParticipantEventListener {
     ///   - stream: disabled stream object
     ///   - participant: participant object
     func onStreamDisabled(_ stream: MediaStream, forParticipant participant: Participant) {
-
+        print("stream: \(stream.kind) is disabled of participant: \(participant.displayName) which is local : \(participant.isLocal)")
         updateView(participant: participant, forStream: stream, enabled: false)
         
         if participant.isLocal {
@@ -686,19 +593,64 @@ private extension MeetingViewController {
     
     func updateView(participant: Participant, forStream stream: MediaStream, enabled: Bool) { // true
         switch stream.kind {
-        case .video:
+        case .state(value: .video):
             if let videotrack = stream.track as? RTCVideoTrack {
-            
                 if enabled {
-                    // show video
-                    showVideoView(participant: participant, stream: videotrack)
+                    showVideoView(participant: participant, stream: videotrack) // show video
                 } else {
-                    // hide video
-                    hideVideoView(participant: participant, stream: videotrack)
+                    hideVideoView(participant: participant, stream: videotrack) // hide video
                 }
             }
-        case .audio:
+            
+        case .state(value: .audio):
             updateMic(participant: participant, enabled)
+            
+        case .share:
+            if let shareTrack = stream.track as? RTCVideoTrack {
+                if enabled {
+                    if let videoStream = self.participants.first(where: {$0.id == participant.id})?.streams.first(where: { $1.kind == .state(value: .video) })?.value.track as? RTCVideoTrack {
+                        videoStream.remove(self.remoteParticipantVideoContainer)
+                        shareTrack.add(self.remoteParticipantVideoContainer)
+                        self.remoteParticipantVideoContainer.isHidden = false
+                        self.remoteParticipantVideoContainer.videoContentMode = .scaleAspectFit
+                        self.remoteParticipantNameContainer.isHidden = false
+                        if let localVideoStream = self.participants.first(where: { $0.isLocal })?.streams.first(where: { $1.kind == .state(value: .video)})?.value.track as? RTCVideoTrack {
+                            localVideoStream.remove(self.localParticipantViewVideoContainer)
+                            videoStream.add(self.localParticipantViewVideoContainer)
+                            self.localParticipantViewVideoContainer.isHidden = false
+                            self.localParticipantViewNameContainer.isHidden = true
+                        }
+                    } else {
+                        shareTrack.add(self.remoteParticipantVideoContainer)
+                        self.remoteParticipantVideoContainer.videoContentMode = .scaleAspectFit
+                        self.remoteParticipantVideoContainer.isHidden = false
+                        self.remoteParticipantNameContainer.isHidden = false
+                        if let localVideoStream = self.participants.first(where: { $0.isLocal })?.streams.first(where: { $1.kind == .state(value: .video)})?.value.track as? RTCVideoTrack {
+                            localVideoStream.remove(self.localParticipantViewVideoContainer)
+                        }
+                        self.localParticipantViewVideoContainer.isHidden = true
+                        self.localParticipantViewNameContainer.isHidden = false
+                        self.localParticipantViewContainer.isHidden = false
+                    }
+                } else {
+                    shareTrack.remove(self.remoteParticipantVideoContainer)
+                    if let videoStream = self.participants.first(where: {$0.id == participant.id})?.streams.first(where: { $1.kind == .state(value: .video) })?.value.track as? RTCVideoTrack {
+                        videoStream.remove(self.localParticipantViewVideoContainer)
+                        videoStream.add(self.remoteParticipantVideoContainer)
+                        self.remoteParticipantVideoContainer.videoContentMode = .scaleAspectFill
+                        self.remoteParticipantVideoContainer.isHidden = false
+                        self.remoteParticipantNameContainer.isHidden = false
+                    } else {
+                        self.remoteParticipantVideoContainer.isHidden = false
+                        self.remoteParticipantNameContainer.isHidden = false
+                    }
+                    if let localVideoStream = self.participants.first(where: { $0.isLocal })?.streams.first(where: { $1.kind == .state(value: .video)})?.value.track as? RTCVideoTrack {
+                        localVideoStream.add(self.localParticipantViewVideoContainer)
+                        self.localParticipantViewVideoContainer.isHidden = false
+                        self.localParticipantViewNameContainer.isHidden = true
+                    }
+                }
+            }
             
         default:
             break
@@ -706,94 +658,83 @@ private extension MeetingViewController {
     }
     
     func showVideoView(participant: Participant, stream: RTCVideoTrack){
-        UIView.animate(withDuration: 0.5){
-            if self.participants.count > 1 {
-                if participant.isLocal {
-                    stream.add(self.localParticipantViewVideoContainer)
-                    self.localParticipantViewVideoContainer.isHidden = false
-                    self.localParticipantViewNameContainer.isHidden = true
-                    self.localParticipantViewContainer.isHidden = false
-                } else {
-                    if let currentVideoTrack = self.participants.first(where: {$0.id != participant.id})?.streams.first(where: {$1.kind == .video})?.value.track as? RTCVideoTrack {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.5){
+                if self.participants.count > 1 {
+                    if let currentVideoTrack = self.participants.first(where: { $0.isLocal })?.streams.first(where: {$1.kind == .state(value: .video)})?.value.track as? RTCVideoTrack {
                         currentVideoTrack.remove(self.remoteParticipantVideoContainer)
+                        currentVideoTrack.remove(self.localParticipantViewVideoContainer)
                     }
+                    let hasShareStream = self.participants.first(where: { !$0.isLocal })?.streams.contains(where: {$1.kind == .share})
+                    if hasShareStream ?? false {
+                        if let currentVideoTrack = self.participants.first(where: { !$0.isLocal })?.streams.first(where: {$1.kind == .state(value: .video)})?.value.track as? RTCVideoTrack {
+                            currentVideoTrack.add(self.localParticipantViewVideoContainer)
+                            self.localParticipantViewVideoContainer.isHidden = false
+                            self.localParticipantViewNameContainer.isHidden = true
+                        }
+                    } else {
+                        stream.add(participant.isLocal ? self.localParticipantViewVideoContainer : self.remoteParticipantVideoContainer)
+                        if participant.isLocal {
+                            self.localParticipantViewVideoContainer.isHidden = false
+                            self.localParticipantViewNameContainer.isHidden = true
+                            self.localParticipantViewContainer.isHidden = false
+                        } else {
+                            self.remoteParticipantVideoContainer.isHidden = false
+                            self.remoteParticipantNameContainer.isHidden = true
+                        }
+                        if let localParticipantVideoStream = self.participants.first(where: { $0.isLocal })?.streams.first(where: {$1.kind == .state(value: .video )})?.value.track as? RTCVideoTrack {
+                            localParticipantVideoStream.add(self.localParticipantViewVideoContainer)
+                            self.localParticipantViewVideoContainer.isHidden = false
+                            self.localParticipantViewNameContainer.isHidden = true
+                            self.localParticipantViewContainer.isHidden = false
+                        }
+                        
+                    }
+                } else {
                     stream.add(self.remoteParticipantVideoContainer)
                     self.remoteParticipantVideoContainer.isHidden = false
                     self.remoteParticipantNameContainer.isHidden = true
                 }
-            } else {
-                stream.add(self.remoteParticipantVideoContainer)
-                self.remoteParticipantVideoContainer.isHidden = false
-                self.remoteParticipantNameContainer.isHidden = true
             }
         }
+        
     }
     
     func hideVideoView(participant: Participant, stream: RTCVideoTrack){
         UIView.animate(withDuration: 0.5){
             if self.participants.count > 1 {
+                let hasShareStream = self.participants.first(where: { !$0.isLocal })?.streams.contains(where: {$1.kind == .share})
+                if hasShareStream ?? false {
+                    if let currentVideoTrack = self.participants.first(where: { !$0.isLocal })?.streams.first(where: {$1.kind == .state(value: .video)})?.value.track as? RTCVideoTrack {
+                        currentVideoTrack.remove(self.localParticipantViewVideoContainer)
+                        self.localParticipantViewVideoContainer.isHidden = true
+                        self.localParticipantViewNameContainer.isHidden = false
+                    } else {
+                        self.localParticipantViewVideoContainer.isHidden = true
+                        self.localParticipantViewNameContainer.isHidden = false
+                    }
+                } else {
+                    stream.remove(participant.isLocal ? self.localParticipantViewVideoContainer : self.remoteParticipantVideoContainer)
+                    if participant.isLocal {
+                        self.localParticipantViewVideoContainer.videoContentMode = .scaleAspectFill
+                        self.localParticipantViewVideoContainer.isHidden = true
+                        self.localParticipantViewNameContainer.isHidden = false
+                    } else {
+                        self.remoteParticipantVideoContainer.isHidden = true
+                        self.remoteParticipantNameContainer.isHidden = false
+                    }
+                }
+            } else {
                 if participant.isLocal {
                     stream.remove(self.localParticipantViewVideoContainer)
                     self.localParticipantViewVideoContainer.isHidden = true
                     self.localParticipantViewNameContainer.isHidden = false
-                    self.localParticipantViewContainer.isHidden = false
                 } else {
                     stream.remove(self.remoteParticipantVideoContainer)
                     self.remoteParticipantVideoContainer.isHidden = true
                     self.remoteParticipantNameContainer.isHidden = false
                 }
-            } else {
-                stream.remove(self.remoteParticipantVideoContainer)
-                self.remoteParticipantVideoContainer.isHidden = true
-                self.remoteParticipantNameContainer.isHidden = false
             }
-        }
-    }
-    
-    func showVideoView_OLD(participant: Participant, _ show: Bool) {
-        UIView.animate(withDuration: 0.5){
-            if (self.participants.count > 1 && participant.isLocal) {
-                // hide local name container
-                self.localParticipantViewNameContainer.isHidden = show
-                // show local video container
-                self.localParticipantViewVideoContainer.isHidden = !show
-                // bring up local video view on container
-                //self.localParticipantViewContainer.bringSubviewToFront(self.localParticipantViewVideoContainer)
-                
-                // other remote participant
-                if let remoteParticipant = self.participants.first(where: { $0.id != participant.id }), !remoteParticipant.isLocal {
-                    // set remained participant name
-                    self.setNameToView(remoteParticipant)
-                    // find videostream of remote participant
-                    if let videoStream = remoteParticipant.streams.first(where: { $1.kind == .video })?.value.track as? RTCVideoTrack  {
-                        // added remote video stream to remote participant video container
-                        videoStream.add(self.remoteParticipantVideoContainer)
-                        // hide remote name container
-                        self.remoteParticipantNameContainer.isHidden = !show
-                        // show remote video container
-                        self.remoteParticipantVideoContainer.isHidden = show
-//                        // show remote participant main container
-//                        self.participantViewsContainer.isHidden = !show
-                    } else {
-                        // show remote name container
-                        self.remoteParticipantNameContainer.isHidden = show
-                        // hide remote video container
-                        self.remoteParticipantVideoContainer.isHidden = !show
-//                        // show remote participant main container
-//                        self.participantViewsContainer.isHidden = !show
-                    }
-                }
-            } else {
-                // show remote video container
-                self.remoteParticipantVideoContainer.isHidden = !show
-                // hide remote name container
-                self.remoteParticipantNameContainer.isHidden = show
-                // bring up remote video container
-                //self.participantViewsContainer.bringSubviewToFront(self.remoteParticipantVideoContainer)
-                // hide local participant container
-                self.localParticipantViewContainer.isHidden = (self.participants.count == 1)
-            }
-        } completion: { completed in
         }
     }
     
@@ -813,10 +754,11 @@ private extension MeetingViewController {
                 self.localParticipantViewVideoContainer.isHidden = true
                 self.localParticipantViewNameContainer.isHidden = true
                 self.localParticipantViewContainer.isHidden = true
+                self.remoteParticipantVideoContainer.videoContentMode = .scaleAspectFill
                 // other remote participant
                 if let remoteParticipant = self.participants.first(where: { $0.id != participant.id }) {
                     // find videostream of remote participant
-                    if let videoStream = remoteParticipant.streams.first(where: { $1.kind == .video })?.value.track as? RTCVideoTrack  {
+                    if let videoStream = remoteParticipant.streams.first(where: { $1.kind == .state(value: .video) })?.value.track as? RTCVideoTrack  {
                         // added remote video stream to remote participant video container
                         videoStream.add(self.remoteParticipantVideoContainer)
                         // hide remote name container

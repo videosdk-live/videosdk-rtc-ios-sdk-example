@@ -35,6 +35,12 @@ variant_for_slice()
   "WebRTC.xcframework/ios-arm64")
     echo ""
     ;;
+  "Starscream.xcframework/ios-arm64")
+    echo ""
+    ;;
+  "Starscream.xcframework/ios-arm64_x86_64-simulator")
+    echo "simulator"
+    ;;
   esac
 }
 
@@ -58,6 +64,12 @@ archs_for_slice()
     ;;
   "WebRTC.xcframework/ios-arm64")
     echo "arm64"
+    ;;
+  "Starscream.xcframework/ios-arm64")
+    echo "arm64"
+    ;;
+  "Starscream.xcframework/ios-arm64_x86_64-simulator")
+    echo "arm64 x86_64"
     ;;
   esac
 }
@@ -144,4 +156,5 @@ install_xcframework() {
 install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/VideoSDKRTC.xcframework" "VideoSDKRTC" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
 install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/Mediasoup.xcframework" "VideoSDKRTC" "framework" "ios-arm64_x86_64-simulator" "ios-arm64"
 install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/WebRTC.xcframework" "VideoSDKRTC" "framework" "ios-arm64_x86_64-simulator" "ios-arm64"
+install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/Starscream.xcframework" "VideoSDKRTC" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
 

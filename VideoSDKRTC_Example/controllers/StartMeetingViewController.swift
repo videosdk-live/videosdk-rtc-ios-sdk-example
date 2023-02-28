@@ -70,7 +70,7 @@ class StartMeetingViewController: UIViewController {
         txtMeetingCodeField.attributedPlaceholder = NSAttributedString(string: "Enter meeting code", attributes: attributes)
         txtEnterNameField.delegate = self
         txtMeetingCodeField.delegate = self
-        txtMeetingCodeField.text = "kqlm-udpj-45d3"
+        txtMeetingCodeField.text = ""
         
         [viewCameraViewContainer, viewCreateAMeetingButton, viewJoinAMeetingButton, viewTestAudioVideoContainer].forEach {
             $0?.roundCorners(corners: [.allCorners], radius: 12.0)
@@ -214,36 +214,10 @@ class StartMeetingViewController: UIViewController {
     
     func startMeeting() {
         DispatchQueue.main.async {
-//            self.dismiss(animated: true)
             self.dismiss(animated: true) {
                 self.performSegue(withIdentifier: "StartMeeting", sender: nil)
             }
         }
-        
-            //let meetingViewController = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MeetingViewController") as? MeetingViewController
-            
-//            let meetingViewController = self.storyboard?.instantiateViewController(withIdentifier: "MeetingViewController") as? MeetingViewController
-//
-//            meetingViewController?.meetingData = MeetingData(
-//                token: self.serverToken,
-//                name: self.txtEnterNameField.text ?? "Guest",
-//                meetingId: self.txtMeetingCodeField.text ?? "",
-//                micEnabled: true,
-//                cameraEnabled: true
-//            )
-//            self.navigationController?.pushViewController(meetingViewController!, animated: true)
-//            guard let navigation = storyboard.destination as? UINavigationController,
-//                  let meetingViewController = navigation.topViewController as? MeetingViewController else {
-//                      return
-//                  }
-//            meetingViewController.meetingData = MeetingData(
-//                token: serverToken,
-//                name: txtEnterNameField.text ?? "Guest",
-//                meetingId: txtMeetingCodeField.text ?? "",
-//                micEnabled: true,
-//                cameraEnabled: true
-//            )
-            //self.performSegue(withIdentifier: "StartMeeting", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

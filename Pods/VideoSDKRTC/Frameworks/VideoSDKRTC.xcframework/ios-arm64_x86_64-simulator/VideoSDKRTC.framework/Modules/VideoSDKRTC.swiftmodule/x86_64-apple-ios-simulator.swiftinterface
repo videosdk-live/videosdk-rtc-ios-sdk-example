@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)
-// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name VideoSDKRTC
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name VideoSDKRTC
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
 import Foundation
@@ -50,7 +50,7 @@ public struct LivestreamOutput : Swift.Codable {
   public var id: Swift.String {
     get
   }
-  public var kind: Mediasoup.MediaKind {
+  public var kind: VideoSDKRTC.MediaType {
     get
   }
   public var track: WebRTC.RTCMediaStreamTrack {
@@ -70,6 +70,11 @@ extension VideoSDKRTC.MediaStream {
 }
 extension VideoSDKRTC.MediaStream {
   public static func == (lhs: VideoSDKRTC.MediaStream, rhs: VideoSDKRTC.MediaStream) -> Swift.Bool
+}
+public enum MediaType : Swift.Equatable {
+  case share
+  case state(value: Mediasoup.MediaKind)
+  public static func == (a: VideoSDKRTC.MediaType, b: VideoSDKRTC.MediaType) -> Swift.Bool
 }
 @_hasMissingDesignatedInitializers public class Meeting : Swift.Equatable {
   public var id: Swift.String {

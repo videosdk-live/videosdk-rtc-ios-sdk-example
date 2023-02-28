@@ -607,14 +607,14 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "MediaKind",
-                "printedName": "Mediasoup.MediaKind",
-                "usr": "s:9Mediasoup9MediaKindO"
+                "name": "MediaType",
+                "printedName": "VideoSDKRTC.MediaType",
+                "usr": "s:11VideoSDKRTC9MediaTypeO"
               }
             ],
             "declKind": "Var",
-            "usr": "s:11VideoSDKRTC11MediaStreamC4kind9Mediasoup0C4KindOvp",
-            "mangledName": "$s11VideoSDKRTC11MediaStreamC4kind9Mediasoup0C4KindOvp",
+            "usr": "s:11VideoSDKRTC11MediaStreamC4kindAA0C4TypeOvp",
+            "mangledName": "$s11VideoSDKRTC11MediaStreamC4kindAA0C4TypeOvp",
             "moduleName": "VideoSDKRTC",
             "declAttributes": [
               "HasStorage",
@@ -631,14 +631,14 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "MediaKind",
-                    "printedName": "Mediasoup.MediaKind",
-                    "usr": "s:9Mediasoup9MediaKindO"
+                    "name": "MediaType",
+                    "printedName": "VideoSDKRTC.MediaType",
+                    "usr": "s:11VideoSDKRTC9MediaTypeO"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:11VideoSDKRTC11MediaStreamC4kind9Mediasoup0C4KindOvg",
-                "mangledName": "$s11VideoSDKRTC11MediaStreamC4kind9Mediasoup0C4KindOvg",
+                "usr": "s:11VideoSDKRTC11MediaStreamC4kindAA0C4TypeOvg",
+                "mangledName": "$s11VideoSDKRTC11MediaStreamC4kindAA0C4TypeOvg",
                 "moduleName": "VideoSDKRTC",
                 "implicit": true,
                 "accessorKind": "get"
@@ -901,6 +901,155 @@
           "AccessControl"
         ],
         "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "MediaType",
+        "printedName": "MediaType",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "share",
+            "printedName": "share",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.MediaType.Type) -> VideoSDKRTC.MediaType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MediaType",
+                    "printedName": "VideoSDKRTC.MediaType",
+                    "usr": "s:11VideoSDKRTC9MediaTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.MediaType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MediaType",
+                        "printedName": "VideoSDKRTC.MediaType",
+                        "usr": "s:11VideoSDKRTC9MediaTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC9MediaTypeO5shareyA2CmF",
+            "mangledName": "$s11VideoSDKRTC9MediaTypeO5shareyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "state",
+            "printedName": "state",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.MediaType.Type) -> (Mediasoup.MediaKind) -> VideoSDKRTC.MediaType",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Mediasoup.MediaKind) -> VideoSDKRTC.MediaType",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MediaType",
+                        "printedName": "VideoSDKRTC.MediaType",
+                        "usr": "s:11VideoSDKRTC9MediaTypeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(value: Mediasoup.MediaKind)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "MediaKind",
+                            "printedName": "Mediasoup.MediaKind",
+                            "usr": "s:9Mediasoup9MediaKindO"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.MediaType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MediaType",
+                        "printedName": "VideoSDKRTC.MediaType",
+                        "usr": "s:11VideoSDKRTC9MediaTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC9MediaTypeO5stateyAC9Mediasoup0C4KindO_tcACmF",
+            "mangledName": "$s11VideoSDKRTC9MediaTypeO5stateyAC9Mediasoup0C4KindO_tcACmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Function",
+            "name": "==",
+            "printedName": "==(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MediaType",
+                "printedName": "VideoSDKRTC.MediaType",
+                "usr": "s:11VideoSDKRTC9MediaTypeO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MediaType",
+                "printedName": "VideoSDKRTC.MediaType",
+                "usr": "s:11VideoSDKRTC9MediaTypeO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11VideoSDKRTC9MediaTypeO2eeoiySbAC_ACtFZ",
+            "mangledName": "$s11VideoSDKRTC9MediaTypeO2eeoiySbAC_ACtFZ",
+            "moduleName": "VideoSDKRTC",
+            "static": true,
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:11VideoSDKRTC9MediaTypeO",
+        "mangledName": "$s11VideoSDKRTC9MediaTypeO",
+        "moduleName": "VideoSDKRTC",
+        "declAttributes": [
+          "AccessControl"
+        ],
         "conformances": [
           {
             "kind": "Conformance",
@@ -6837,7 +6986,7 @@
     {
       "filePath": "\/Users\/parth\/Documents\/Zujo\/Parth\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/Classes\/MediaStream.swift",
       "kind": "BooleanLiteral",
-      "offset": 1198,
+      "offset": 1256,
       "length": 5,
       "value": "false"
     },
@@ -6984,21 +7133,21 @@
     {
       "filePath": "\/Users\/parth\/Documents\/Zujo\/Parth\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/SocketRequestHandler.swift",
       "kind": "Dictionary",
-      "offset": 6312,
+      "offset": 6316,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/parth\/Documents\/Zujo\/Parth\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/SocketRequestHandler.swift",
       "kind": "Dictionary",
-      "offset": 8214,
+      "offset": 8218,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/parth\/Documents\/Zujo\/Parth\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/SocketRequestHandler.swift",
       "kind": "Dictionary",
-      "offset": 9183,
+      "offset": 9187,
       "length": 3,
       "value": "[]"
     },

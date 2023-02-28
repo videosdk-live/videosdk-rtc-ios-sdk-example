@@ -1,7 +1,7 @@
 /*
  MIT License
 
- Copyright (c) 2017-2019 MessageKit
+ Copyright (c) 2017-2020 MessageKit
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -45,14 +45,17 @@ internal extension MessagesViewController {
 
     @objc
     private func handleTextViewDidBeginEditing(_ notification: Notification) {
-        if scrollsToLastItemOnKeyboardBeginsEditing || scrollsToBottomOnKeyboardBeginsEditing {
-            guard let inputTextView = notification.object as? InputTextView,
-                inputTextView === messageInputBar.inputTextView else { return }
-
+        if scrollsToLastItemOnKeyboardBeginsEditing || scrollsToLastItemOnKeyboardBeginsEditing {
+            guard
+                let inputTextView = notification.object as? InputTextView,
+                inputTextView === messageInputBar.inputTextView
+            else {
+                return
+            }
             if scrollsToLastItemOnKeyboardBeginsEditing {
                 messagesCollectionView.scrollToLastItem()
             } else {
-                messagesCollectionView.scrollToBottom(animated: true)
+                messagesCollectionView.scrollToLastItem(animated: true)
             }
         }
     }
@@ -95,13 +98,18 @@ internal extension MessagesViewController {
         let newBottomInset = requiredScrollViewBottomInset(forKeyboardFrame: keyboardEndFrame)
         let differenceOfBottomInset = newBottomInset - messageCollectionViewBottomInset
 
-        if maintainPositionOnKeyboardFrameChanged && differenceOfBottomInset != 0 {
-            let contentOffset = CGPoint(x: messagesCollectionView.contentOffset.x, y: messagesCollectionView.contentOffset.y + differenceOfBottomInset)
-            messagesCollectionView.setContentOffset(contentOffset, animated: false)
-        }
-
         UIView.performWithoutAnimation {
             messageCollectionViewBottomInset = newBottomInset
+        }
+        
+        if maintainPositionOnKeyboardFrameChanged && differenceOfBottomInset != 0 {
+            let contentOffset = CGPoint(x: messagesCollectionView.contentOffset.x, y: messagesCollectionView.contentOffset.y + differenceOfBottomInset)
+            // Changing contentOffset to bigger number than the contentSize will result in a jump of content
+            // https://github.com/MessageKit/MessageKit/issues/1486
+            guard contentOffset.y <= messagesCollectionView.contentSize.height else {
+                return
+            }
+            messagesCollectionView.setContentOffset(contentOffset, animated: false)
         }
     }
 

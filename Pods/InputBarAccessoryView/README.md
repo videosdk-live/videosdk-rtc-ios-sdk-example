@@ -16,10 +16,6 @@
 - [x] Compatible with all iPhones and iPads
 - [x] RTL Support
 
-### InputBarAccessoryView is being sponsored by the following tool; please help to support us by taking a look and signing up to a free trial
-
-<a href="https://tracking.gitads.io/?repo=InputBarAccessoryView"><img src="https://images.gitads.io/InputBarAccessoryView" alt="GitAds"/></a>
-
 ### Installation via Swift Package Manager (SPM)
 
 The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler.
@@ -27,7 +23,7 @@ Once you have your Swift package set up, adding InputBarAccessoryView as a depen
 
 ```
 dependencies: [
-    .package(url: "https://github.com/nathantannar4/InputBarAccessoryView.git", .upToNextMajor(from: "4.5.0"))
+    .package(url: "https://github.com/nathantannar4/InputBarAccessoryView.git", .upToNextMajor(from: "5.2.0"))
 ]
 ```
 You can also add it via XCode SPM editor with URL:
@@ -39,29 +35,33 @@ To make `RxSwift`/`RxCocoa` extensions work you need to explicitly import `Rx` d
 ### Installation via CocoaPods
 
 ```ruby
-# Swift 5.0
+# Swift 5.5
 pod 'InputBarAccessoryView'
 
-# Swift 4.2
-pod 'InputBarAccessoryView', '4.2.2'
+# Swift 5.0
+pod 'InputBarAccessoryView', '5.1.0'
 ```
 
 ### Installation via Carthage
 
 ```ruby
-# Swift 5.0
+# Swift 5.5
 github "nathantannar4/InputBarAccessoryView"
 
-# Swift 4.2
-github "nathantannar4/InputBarAccessoryView" "4.2.2"
+# Swift 5.0
+github "nathantannar4/InputBarAccessoryView" "5.1.0"
 ```
 
 ### Requirements
 
-iOS 11.0+
-Swift 5.0
+iOS 12.0+
+Swift 5.5
+
+> The latest iOS 11 release is v5.1.0
 
 > The latest iOS 9 + iOS 10 release is v4.3.3
+
+> The latest Swift 5.0 release is v5.1.0 
 
 > The latest Swift 4.2 release is v4.2.2 
 
@@ -94,20 +94,33 @@ Add your app to the list of apps using this library and make a pull request.
 iMessage style [TypingIndicator](https://github.com/nathantannar4/TypingIndicator) for chat apps
 
 ## Latest Releases
-- 5.1.0
-    - Added support for smooth height transitions when the text view expands, set `shouldAnimateTextDidChangeLayout` to `true`
-    - Fixed accessibility of `HorizontalEdgePadding` initializers and a typo in its filename
-    - Added support for Dark Mode on iOS 13+
-- 5.0.0
-    - Drop support for iOS 9 and iOS 10
-    - Remove `RxSwift`/`RxCocoa`  from SPM
-    - Fix image paste logic
-    - Fixed Getting started preview and hashtag typo
-    - Update documentation for setStackViewItems
-- 4.3.3
-    - Added support for Swift Package Manager (SPM)
-    - Made `reuseIdentifier` public accessible
-    - Fixed warnings
+5.5.0
+   - Update SPM tools to Swift 5.5
+   - Added new optional delegate method for custom attachments size
+   - Added new animations for left/right stack view constraints
+
+5.4.0
+   - Make sure framework is ready for XCode 13
+   - Fix availability in AppExtensions
+   - Fix Package.swift to support iOS 12+ only
+
+5.3.0
+   - Allow setting `canBecomeFirstResponder`
+   - Fix interactive keyboard dismissal lag
+   - Add example implemntation of `sendButton` animation
+
+5.2.3
+   - Fixed appendSpaceOnCompletion inserting space at wrong location
+
+5.2.2
+   - Added an optional offset in KeyboardManager.bind(tableView:)
+   - Change reuseIdentifier from `public` to `open` to allow inheritance
+   - Fix send button loading indicator for dark mode
+   - Fix iOS 14 UIPasteboard system notification with images
+
+5.2.0
+   - Drop support for iOS 11 and bump minimum version to iOS 12+
+   - Support Swift 5.3 and higher for XCode 12
     
 See [CHANGELOG](./CHANGELOG.md) for more details and older releases.
 
@@ -153,6 +166,7 @@ private var onDisabledAction: InputBarButtonItemAction?
 </p>
 
 **Nathan Tannar** - [https://nathantannar.me](https://nathantannar.me)
+**Jakub Kaspar** - [https://jakubkaspar.dev](https://jakubkaspar.dev)
 
 ## License
 
