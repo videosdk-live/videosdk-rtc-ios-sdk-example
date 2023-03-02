@@ -117,7 +117,9 @@ class StartViewController: UIViewController {
     
     func startMeeting() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "StartMeeting", sender: nil)
+            self.dismiss(animated: true) {
+                self.performSegue(withIdentifier: "StartMeeting", sender: nil)
+            }
         }
     }
     

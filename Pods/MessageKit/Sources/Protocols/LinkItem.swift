@@ -24,13 +24,14 @@
 
 import Foundation
 import CoreGraphics
+import UIKit
 
 /// A protocol used to represent the data for a link preview message.
 public protocol LinkItem {
 
     /// A link item needs a message to present, it can be a simple String or
     /// a NSAttributedString, but only one will be shown.
-    /// LinkItem.text has priority over LinkeItem.attributedText.
+    /// LinkItem.text has priority over LinkItem.attributedText.
 
     /// The message text.
     var text: String? { get }

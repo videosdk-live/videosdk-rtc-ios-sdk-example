@@ -47,7 +47,7 @@ class ParticipantCellView: UITableViewCell {
         
         cellParticipantIsHost?.isHidden = self.participant?.isLocal ?? false ? false : true
         
-        if (self.participant?.streams.first(where: { $1.kind == .audio })?.value) != nil {
+        if (self.participant?.streams.first(where: { $1.kind == .state(value: .audio) })?.value) != nil {
             cellParticipantMicEnable?.setImage(UIImage(named: "mic_on"), for: .normal)
             cellParticipantMicEnable?.backgroundColor = UIColor.clear
         } else {
@@ -55,7 +55,7 @@ class ParticipantCellView: UITableViewCell {
             cellParticipantMicEnable?.backgroundColor = UIColor.systemRed
         }
         
-        if (self.participant?.streams.first(where: { $1.kind == .video })?.value) != nil {
+        if (self.participant?.streams.first(where: { $1.kind == .state(value: .video) })?.value) != nil {
             cellParticipantVideoEnable?.setImage(UIImage(named: "camera_on"), for: .normal)
             cellParticipantVideoEnable?.backgroundColor = UIColor.clear
         } else {

@@ -209,13 +209,13 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
         
         // resume streams for visible participants
         visibleParticipants.forEach { participant in
-            if let videoStream = participant.streams.first(where: { $1.kind == .video })?.value {
+            if let videoStream = participant.streams.first(where: { $1.kind == .state(value: .video) })?.value {
                 videoStream.resume()
             }
         }
         // pause streams for non visible participants
         nonVisibleParticipants.forEach { participant in
-            if let videoStream = participant.streams.first(where: { $1.kind == .video })?.value {
+            if let videoStream = participant.streams.first(where: { $1.kind == .state(value: .video) })?.value {
                 videoStream.pause()
             }
         }
@@ -450,16 +450,16 @@ extension MeetingViewController: ParticipantEventListener {
     ///   - participant: participant object
     func onStreamEnabled(_ stream: MediaStream, forParticipant participant: Participant) {
         
-//        if stream.kind == .share {
-//            // show screen share
-//            showScreenSharingView(true)
-//            screenSharingView.showMediastream(stream)
-//            return
-//        }
+        if stream.kind == .share {
+            // show screen share
+            showScreenSharingView(true)
+            screenSharingView.showMediastream(stream)
+            return
+        }
         
-        let videoStreams = (participant.streams.filter{ $1.kind == .video }).count
+        let videoStreams = (participant.streams.filter{ $1.kind == .state(value: .video) }).count
         
-        if stream.kind == .video  {
+        if stream.kind == .state(value: .video)  {
             if videoStreams <= 1 {
                 // show stream in cell
                 if let cell = self.cellForParticipant(participant) {
@@ -488,16 +488,16 @@ extension MeetingViewController: ParticipantEventListener {
     ///   - participant: participant object
     func onStreamDisabled(_ stream: MediaStream, forParticipant participant: Participant) {
         
-//        if stream.kind == .share {
-//            // hide screen share
-//            showScreenSharingView(false)
-//            screenSharingView.hideMediastream(stream)
-//            return
-//        }
+        if stream.kind == .share {
+            // hide screen share
+            showScreenSharingView(false)
+            screenSharingView.hideMediastream(stream)
+            return
+        }
         
-        let videoStreams = (participant.streams.filter{ $1.kind == .video }).count
+        let videoStreams = (participant.streams.filter{ $1.kind == .state(value: .video) }).count
         
-        if stream.kind == .video {
+        if stream.kind == .state(value: .video) {
             if videoStreams < 1 {
                 // hide stream in cell
                 if let cell = self.cellForParticipant(participant) {
@@ -664,7 +664,7 @@ private extension MeetingViewController {
         var menuOptions: [MenuOption] = [.toggleMic, .toggleWebcam]
         
         // toggle video quality
-        if participant.streams.contains(where: { $1.kind == .video }) && !participant.isLocal {
+        if participant.streams.contains(where: { $1.kind == .state(value: .video) }) && !participant.isLocal {
             menuOptions.append(.toggleQuality)
         }
         
