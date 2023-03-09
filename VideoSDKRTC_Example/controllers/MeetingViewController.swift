@@ -216,6 +216,8 @@ extension MeetingViewController: MeetingEventListener {
             // add to list
             participants.append(localParticipant)
             
+            setNameToView(localParticipant)
+            
             // add event listener
             localParticipant.addEventListener(self)
             
@@ -387,7 +389,6 @@ extension MeetingViewController: ParticipantEventListener {
     ///   - stream: enabled stream object
     ///   - participant: participant object
     func onStreamEnabled(_ stream: MediaStream, forParticipant participant: Participant) {
-        print("stream: \(stream.kind) is enabled of participant: \(participant.displayName) which is local : \(participant.isLocal)")
         updateView(participant: participant, forStream: stream, enabled: true)
         
         if participant.isLocal {
@@ -404,7 +405,6 @@ extension MeetingViewController: ParticipantEventListener {
     ///   - stream: disabled stream object
     ///   - participant: participant object
     func onStreamDisabled(_ stream: MediaStream, forParticipant participant: Participant) {
-        print("stream: \(stream.kind) is disabled of participant: \(participant.displayName) which is local : \(participant.isLocal)")
         updateView(participant: participant, forStream: stream, enabled: false)
         
         if participant.isLocal {
@@ -705,13 +705,15 @@ private extension MeetingViewController {
             if self.participants.count > 1 {
                 let hasShareStream = self.participants.first(where: { !$0.isLocal })?.streams.contains(where: {$1.kind == .share})
                 if hasShareStream ?? false {
-                    if let currentVideoTrack = self.participants.first(where: { !$0.isLocal })?.streams.first(where: {$1.kind == .state(value: .video)})?.value.track as? RTCVideoTrack {
-                        currentVideoTrack.remove(self.localParticipantViewVideoContainer)
-                        self.localParticipantViewVideoContainer.isHidden = true
-                        self.localParticipantViewNameContainer.isHidden = false
-                    } else {
-                        self.localParticipantViewVideoContainer.isHidden = true
-                        self.localParticipantViewNameContainer.isHidden = false
+                    if !participant.isLocal {
+                        if let currentVideoTrack = self.participants.first(where: { !$0.isLocal })?.streams.first(where: {$1.kind == .state(value: .video)})?.value.track as? RTCVideoTrack {
+                            currentVideoTrack.remove(self.localParticipantViewVideoContainer)
+                            self.localParticipantViewVideoContainer.isHidden = true
+                            self.localParticipantViewNameContainer.isHidden = false
+                        } else {
+                            self.localParticipantViewVideoContainer.isHidden = true
+                            self.localParticipantViewNameContainer.isHidden = false
+                        }
                     }
                 } else {
                     stream.remove(participant.isLocal ? self.localParticipantViewVideoContainer : self.remoteParticipantVideoContainer)
@@ -725,15 +727,9 @@ private extension MeetingViewController {
                     }
                 }
             } else {
-                if participant.isLocal {
-                    stream.remove(self.localParticipantViewVideoContainer)
-                    self.localParticipantViewVideoContainer.isHidden = true
-                    self.localParticipantViewNameContainer.isHidden = false
-                } else {
-                    stream.remove(self.remoteParticipantVideoContainer)
-                    self.remoteParticipantVideoContainer.isHidden = true
-                    self.remoteParticipantNameContainer.isHidden = false
-                }
+                stream.remove(self.remoteParticipantVideoContainer)
+                self.remoteParticipantVideoContainer.isHidden = true
+                self.remoteParticipantNameContainer.isHidden = false
             }
         }
     }

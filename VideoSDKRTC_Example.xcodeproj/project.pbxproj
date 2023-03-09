@@ -16,6 +16,7 @@
 		B21ECED3296F126000A48C5B /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B21ECED2296F126000A48C5B /* Roboto-Bold.ttf */; };
 		B21ECED5296F1C7C00A48C5B /* StartMeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21ECED4296F1C7C00A48C5B /* StartMeetingViewController.swift */; };
 		B21ECED8296F1DFF00A48C5B /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21ECED7296F1DFF00A48C5B /* View+Extensions.swift */; };
+		B2302D9D29B8BFBB005B20A0 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2302D9C29B8BFBB005B20A0 /* ErrorViewController.swift */; };
 		B27B7B4D2984336A00FAC601 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27B7B4C2984336A00FAC601 /* ChatViewController.swift */; };
 		B27B7B5029844B3E00FAC601 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B21ECEC2296EEF6000A48C5B /* Main.storyboard */; };
 		B2910BD1298850C200200936 /* ParticipantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2910BD0298850C200200936 /* ParticipantsViewController.swift */; };
@@ -52,6 +53,7 @@
 		B21ECED2296F126000A48C5B /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		B21ECED4296F1C7C00A48C5B /* StartMeetingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMeetingViewController.swift; sourceTree = "<group>"; };
 		B21ECED7296F1DFF00A48C5B /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		B2302D9C29B8BFBB005B20A0 /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		B27B7B4C2984336A00FAC601 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		B2910BD0298850C200200936 /* ParticipantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsViewController.swift; sourceTree = "<group>"; };
 		B2910BD2298850FE00200936 /* ParticipantCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantCellView.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				B27B7B4C2984336A00FAC601 /* ChatViewController.swift */,
 				B2910BD0298850C200200936 /* ParticipantsViewController.swift */,
 				B2D76D9B2992293400A1BD49 /* AddStreamOutputiewController.swift */,
+				B2302D9C29B8BFBB005B20A0 /* ErrorViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				B2EC503D29828198009B612F /* LoaderUtils.swift in Sources */,
 				B2EC5043298282B7009B612F /* UIColor+Extension.swift in Sources */,
 				B2AC8FF3297B1A3D0036A038 /* joinRoom.swift in Sources */,
+				B2302D9D29B8BFBB005B20A0 /* ErrorViewController.swift in Sources */,
 				B2EC5048298299C3009B612F /* AVAudioSession+Extension.swift in Sources */,
 				B2F7E4FE298458BF00F21FDA /* ButtonControlsView.swift in Sources */,
 				B27B7B4D2984336A00FAC601 /* ChatViewController.swift in Sources */,
@@ -492,7 +496,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 8GZ776NSU2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VideoSDKRTC_Example/Info.plist;
@@ -528,7 +532,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 8GZ776NSU2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VideoSDKRTC_Example/Info.plist;

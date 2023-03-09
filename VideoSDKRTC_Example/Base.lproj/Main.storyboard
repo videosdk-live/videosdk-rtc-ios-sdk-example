@@ -13,7 +13,7 @@
         <!--Start Meeting View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="StartMeetingViewController" id="BYZ-38-t0r" customClass="StartMeetingViewController" customModule="VideoSDKRTC_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="StartMeetingViewController" storyboardIdentifier="StartMeetingViewController" id="BYZ-38-t0r" customClass="StartMeetingViewController" customModule="VideoSDKRTC_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="G3a-Fg-gAj"/>
                         <viewControllerLayoutGuide type="bottom" id="Y4F-PU-x5k"/>
@@ -367,7 +367,7 @@
         <!--Meeting View Controller-->
         <scene sceneID="eO5-A3-ea3">
             <objects>
-                <viewController storyboardIdentifier="MeetingViewController" id="ElO-I4-tlo" customClass="MeetingViewController" customModule="VideoSDKRTC_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="MeetingViewController" storyboardIdentifier="MeetingViewController" id="ElO-I4-tlo" customClass="MeetingViewController" customModule="VideoSDKRTC_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GHe-fq-ta1"/>
                         <viewControllerLayoutGuide type="bottom" id="six-dS-N9l"/>
@@ -834,7 +834,104 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xCl-gu-aSM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4280" y="-260"/>
+            <point key="canvasLocation" x="3475" y="-247"/>
+        </scene>
+        <!--Error View Controller-->
+        <scene sceneID="y7x-eG-psh">
+            <objects>
+                <viewController restorationIdentifier="ErrorViewController" storyboardIdentifier="ErrorViewController" modalPresentationStyle="fullScreen" id="t8H-5Z-UHj" customClass="ErrorViewController" customModule="VideoSDKRTC_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lqu-iC-tXd"/>
+                        <viewControllerLayoutGuide type="bottom" id="l7m-uS-uEE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N67-aJ-cVD">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Han-oX-kao">
+                                <rect key="frame" x="16" y="342.66666666666669" width="358" height="158.66666666666669"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OOPS!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUK-js-b0O">
+                                        <rect key="frame" x="0.0" y="0.0" width="358" height="28.666666666666668"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximun 2 participants can join this meeting." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2e8-tv-CyU">
+                                        <rect key="frame" x="0.0" y="44.666666666666629" width="358" height="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please try again later" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGM-h1-Wyp">
+                                        <rect key="frame" x="0.0" y="69.666666666666629" width="358" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <color key="textColor" name="grayTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Va6-wO-Enu" userLabel="viewJMJoinAMeeting">
+                                        <rect key="frame" x="133" y="110.66666666666663" width="92" height="48"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ok" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0N8-WH-HSs">
+                                                <rect key="frame" x="35.333333333333343" y="14" width="21.666666666666671" height="20"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <color key="textColor" name="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPd-Ph-fIb">
+                                                <rect key="frame" x="0.0" y="0.0" width="92" height="48"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="btnOKTapped:" destination="t8H-5Z-UHj" eventType="touchUpInside" id="VpU-jJ-tHT"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" name="purpleButtonBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="0N8-WH-HSs" firstAttribute="centerY" secondItem="Va6-wO-Enu" secondAttribute="centerY" id="1aw-Ql-GYl"/>
+                                            <constraint firstItem="CPd-Ph-fIb" firstAttribute="leading" secondItem="Va6-wO-Enu" secondAttribute="leading" id="7eR-IT-rt2"/>
+                                            <constraint firstAttribute="width" constant="92" id="Cm5-7q-ylq"/>
+                                            <constraint firstItem="0N8-WH-HSs" firstAttribute="centerX" secondItem="Va6-wO-Enu" secondAttribute="centerX" id="V5a-38-uA0"/>
+                                            <constraint firstAttribute="bottom" secondItem="CPd-Ph-fIb" secondAttribute="bottom" id="WE7-Mo-MKF"/>
+                                            <constraint firstAttribute="trailing" secondItem="CPd-Ph-fIb" secondAttribute="trailing" id="eoD-2e-dcE"/>
+                                            <constraint firstItem="CPd-Ph-fIb" firstAttribute="top" secondItem="Va6-wO-Enu" secondAttribute="top" id="hMD-yd-mhX"/>
+                                            <constraint firstAttribute="height" constant="48" id="v3t-FN-qfI"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="backgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Va6-wO-Enu" firstAttribute="top" secondItem="oGM-h1-Wyp" secondAttribute="bottom" constant="24" id="1Pw-bj-XPS"/>
+                                    <constraint firstItem="UUK-js-b0O" firstAttribute="leading" secondItem="Han-oX-kao" secondAttribute="leading" id="GfU-mI-Jjy"/>
+                                    <constraint firstItem="UUK-js-b0O" firstAttribute="top" secondItem="Han-oX-kao" secondAttribute="top" id="MTX-xJ-Lnf"/>
+                                    <constraint firstItem="Va6-wO-Enu" firstAttribute="centerX" secondItem="Han-oX-kao" secondAttribute="centerX" id="Vur-34-hsU"/>
+                                    <constraint firstAttribute="bottom" secondItem="Va6-wO-Enu" secondAttribute="bottom" id="Xnf-3r-bIS"/>
+                                    <constraint firstItem="oGM-h1-Wyp" firstAttribute="top" secondItem="2e8-tv-CyU" secondAttribute="bottom" constant="8" id="YdH-Db-yKp"/>
+                                    <constraint firstAttribute="trailing" secondItem="2e8-tv-CyU" secondAttribute="trailing" id="fu6-pc-3sH"/>
+                                    <constraint firstItem="2e8-tv-CyU" firstAttribute="leading" secondItem="Han-oX-kao" secondAttribute="leading" id="hwm-qc-BYr"/>
+                                    <constraint firstItem="2e8-tv-CyU" firstAttribute="top" secondItem="UUK-js-b0O" secondAttribute="bottom" constant="16" id="jJx-TG-Jgm"/>
+                                    <constraint firstAttribute="trailing" secondItem="UUK-js-b0O" secondAttribute="trailing" id="oKK-VI-X7z"/>
+                                    <constraint firstItem="oGM-h1-Wyp" firstAttribute="leading" secondItem="Han-oX-kao" secondAttribute="leading" id="ppV-OL-rse"/>
+                                    <constraint firstAttribute="trailing" secondItem="oGM-h1-Wyp" secondAttribute="trailing" id="vL2-nJ-cZJ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="backgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Han-oX-kao" firstAttribute="leading" secondItem="N67-aJ-cVD" secondAttribute="leadingMargin" id="1L2-jE-Dc1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Han-oX-kao" secondAttribute="trailing" id="HMG-MM-d3X"/>
+                            <constraint firstItem="Han-oX-kao" firstAttribute="centerX" secondItem="N67-aJ-cVD" secondAttribute="centerX" id="Zs6-Xs-0in"/>
+                            <constraint firstItem="Han-oX-kao" firstAttribute="centerY" secondItem="N67-aJ-cVD" secondAttribute="centerY" id="w7B-JD-YDa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnOK" destination="CPd-Ph-fIb" id="YHW-Do-gMc"/>
+                        <outlet property="viewOkButton" destination="Va6-wO-Enu" id="Gts-PN-B9d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SMr-wk-OQ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4336.9230769230771" y="-247.39336492890993"/>
         </scene>
         <!--Add Streams-->
         <scene sceneID="ZcI-6W-qXL">
@@ -954,7 +1051,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sV6-Yt-bff" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3519" y="-272"/>
+            <point key="canvasLocation" x="2694" y="-247"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ncm-ad-0j6">
@@ -973,7 +1070,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3OE-y9-nEH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2622" y="-273"/>
+            <point key="canvasLocation" x="1802" y="-247"/>
         </scene>
     </scenes>
     <resources>
@@ -1003,6 +1100,9 @@
         </namedColor>
         <namedColor name="chatBackgroundColor">
             <color red="0.16862745098039217" green="0.18823529411764706" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayTextColor">
+            <color red="0.60392156862745094" green="0.62352941176470589" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="iconColor">
             <color red="0.11372549019607843" green="0.16078431372549021" blue="0.22352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
