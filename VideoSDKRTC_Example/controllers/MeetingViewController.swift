@@ -619,6 +619,7 @@ private extension MeetingViewController {
                             videoStream.add(self.localParticipantViewVideoContainer)
                             self.localParticipantViewVideoContainer.isHidden = false
                             self.localParticipantViewNameContainer.isHidden = true
+                            self.localParticipantViewContainer.isHidden = false
                         }
                     } else {
                         shareTrack.add(self.remoteParticipantVideoContainer)

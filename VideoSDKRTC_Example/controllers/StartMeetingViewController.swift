@@ -70,7 +70,7 @@ class StartMeetingViewController: UIViewController {
         txtMeetingCodeField.attributedPlaceholder = NSAttributedString(string: "Enter meeting code", attributes: attributes)
         txtEnterNameField.delegate = self
         txtMeetingCodeField.delegate = self
-        txtMeetingCodeField.text = "kqlm-udpj-45d3"
+        txtMeetingCodeField.text = "pbow-6vec-vahn"
         
         [viewCameraViewContainer, viewCreateAMeetingButton, viewJoinAMeetingButton, viewTestAudioVideoContainer].forEach {
             $0?.roundCorners(corners: [.allCorners], radius: 12.0)
