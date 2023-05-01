@@ -160,7 +160,7 @@ extension StartViewController {
         
         nameTextField.attributedPlaceholder = NSAttributedString(string: "Enter Your Name", attributes: attributes)
         meetingIdTextField.attributedPlaceholder = NSAttributedString(string: "Enter Meeting ID", attributes: attributes)
-        meetingIdTextField.text = "pbow-6vec-vahn"
+        meetingIdTextField.text = ""
         
         copyMeetingIdButton.layer.borderWidth = 0.8
         copyMeetingIdButton.layer.borderColor = UIColor.darkGray.cgColor
