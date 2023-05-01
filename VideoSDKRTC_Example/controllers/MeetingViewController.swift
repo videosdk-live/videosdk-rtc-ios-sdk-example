@@ -172,19 +172,32 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate 
     
     private func initializeMeeting() {
         
+        // for custom Video Track
+        guard let customVideoStream = try? VideoSDK.createCameraVideoTrack(encoderConfig: .h360p_w640p, facingMode: .front, multiStream: true) else { return }
+        
         // initialize
         meeting = VideoSDK.initMeeting(
             meetingId: meetingData.meetingId,
             participantName: meetingData.name,
             micEnabled: meetingData.micEnabled,
-            webcamEnabled: meetingData.cameraEnabled
+            webcamEnabled: meetingData.cameraEnabled,
+            customCameraVideoStream: customVideoStream
         )
+        
+        // without customVideoTrack
+        
+        /*meeting = VideoSDK.initMeeting(
+            meetingId: meetingData.meetingId,
+            participantName: meetingData.name,
+            micEnabled: meetingData.micEnabled,
+            webcamEnabled: meetingData.cameraEnabled,
+        )*/
         
         // listener
         meeting?.addEventListener(self)
         
         // join
-        meeting?.join()
+        meeting?.join(cameraPosition: .front)
     }
     
     
@@ -463,7 +476,12 @@ private extension MeetingViewController {
         buttonControlsView.onVideoTapped = { on in
             
             if !on {
-                self.meeting?.enableWebcam()
+                // with customTrack
+                guard let customVideoStream = try? VideoSDK.createCameraVideoTrack(encoderConfig: .h720p_w1280p, facingMode: .front, multiStream: true) else { return }
+                self.meeting?.enableWebcam(customVideoStream: customVideoStream)
+                
+                // without customVideoTrack
+                /*self.meeting?.enableWebcam()*/
             } else {
                 self.meeting?.disableWebcam()
             }

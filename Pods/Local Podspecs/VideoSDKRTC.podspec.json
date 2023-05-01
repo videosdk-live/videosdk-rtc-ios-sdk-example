@@ -1,6 +1,6 @@
 {
   "name": "VideoSDKRTC",
-  "version": "2.0.3",
+  "version": "2.0.7",
   "summary": "Interactive Video API Experiences for Develoeprs.",
   "description": "Video sdk enables opportunity to integrate immersive video experiences into your application.",
   "homepage": "https://github.com/videosdk-live/videosdk-rtc-ios-sdk",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git",
-    "tag": "v2.0.3"
+    "tag": "v2.0.7"
   },
   "swift_versions": "5.0",
   "platforms": {
@@ -23,7 +23,7 @@
     "Frameworks/VideoSDKRTC.xcframework",
     "Frameworks/Mediasoup.xcframework",
     "Frameworks/WebRTC.xcframework",
-    "Frameworks/Starscream.xcframework"
+    "Frameworks/VideosdkWebSocket.xcframework"
   ],
   "xcconfig": {
     "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES": "YES",

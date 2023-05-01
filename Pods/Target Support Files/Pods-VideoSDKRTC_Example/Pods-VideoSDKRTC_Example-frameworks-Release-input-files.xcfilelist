@@ -5,4 +5,4 @@ ${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework
 ${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/VideoSDKRTC.framework/VideoSDKRTC
 ${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/Mediasoup.framework/Mediasoup
 ${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/WebRTC.framework/WebRTC
-${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/Starscream.framework/Starscream
+${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/VideosdkWebSocket.framework/VideosdkWebSocket
