@@ -5,9 +5,9 @@
 import AVFoundation
 import Foundation
 import Mediasoup
-import Starscream
 import Swift
 @_exported import VideoSDKRTC
+import VideosdkWebSocket
 import WebRTC
 import _Concurrency
 import _StringProcessing
@@ -20,6 +20,17 @@ public enum CameraPosition : Swift.Int {
   public var rawValue: Swift.Int {
     get
   }
+}
+public enum CustomVideoTrackConfig {
+  case h90p_w160p, h180p_w320p, h216p_w384p, h360p_w640p, h540p_w960p, h720p_w1280p, h1080p_w1920p, h1440p_w2560p, h2160p_w3840p, h120p_w160p, h180p_w240p, h240p_w320p, h360p_w480p, h480p_w640p, h540p_w720p, h720p_w960p, h1080p_w1440p, h1440p_w1920p
+  public static func == (a: VideoSDKRTC.CustomVideoTrackConfig, b: VideoSDKRTC.CustomVideoTrackConfig) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class CustomRTCMediaStream {
+  @objc deinit
 }
 extension Foundation.Data {
   public func toJSONString() -> Swift.String
@@ -89,13 +100,16 @@ public enum MediaType : Swift.Equatable {
   public var pubsub: VideoSDKRTC.PubSub {
     get
   }
+  public var customVideoMediaStream: VideoSDKRTC.CustomRTCMediaStream? {
+    get
+  }
   @objc deinit
 }
 extension VideoSDKRTC.Meeting {
-  public func join()
+  public func join(cameraPosition: AVFoundation.AVCaptureDevice.Position)
   public func leave()
   public func end()
-  public func enableWebcam()
+  public func enableWebcam(customVideoStream: VideoSDKRTC.CustomRTCMediaStream? = nil)
   public func disableWebcam()
   public func switchWebcam()
   public func muteMic()
@@ -220,12 +234,15 @@ public enum VideoQuality : Swift.String, Swift.CaseIterable {
 }
 @_hasMissingDesignatedInitializers final public class VideoSDK {
   public static func config(token: Swift.String)
-  public static func initMeeting(meetingId: Swift.String, participantId: Swift.String = "", participantName: Swift.String = "Guest", micEnabled: Swift.Bool = true, webcamEnabled: Swift.Bool = true) -> VideoSDKRTC.Meeting
+  public static func initMeeting(meetingId: Swift.String, participantId: Swift.String = "", participantName: Swift.String = "Guest", micEnabled: Swift.Bool = true, webcamEnabled: Swift.Bool = true, customCameraVideoStream: VideoSDKRTC.CustomRTCMediaStream? = nil) -> VideoSDKRTC.Meeting
+  public static func createCameraVideoTrack(encoderConfig: VideoSDKRTC.CustomVideoTrackConfig? = .h360p_w640p, facingMode: AVFoundation.AVCaptureDevice.Position? = .front, multiStream: Swift.Bool? = true) throws -> VideoSDKRTC.CustomRTCMediaStream?
   @objc deinit
 }
 extension VideoSDKRTC.CameraPosition : Swift.Equatable {}
 extension VideoSDKRTC.CameraPosition : Swift.Hashable {}
 extension VideoSDKRTC.CameraPosition : Swift.RawRepresentable {}
+extension VideoSDKRTC.CustomVideoTrackConfig : Swift.Equatable {}
+extension VideoSDKRTC.CustomVideoTrackConfig : Swift.Hashable {}
 extension VideoSDKRTC.VideoQuality : Swift.Equatable {}
 extension VideoSDKRTC.VideoQuality : Swift.Hashable {}
 extension VideoSDKRTC.VideoQuality : Swift.RawRepresentable {}

@@ -157,19 +157,31 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
     
     private func initializeMeeting() {
         
+        // MARK :- With CustomVideoTrack with multiStream `true`
+        guard let customVideoStream = try? VideoSDK.createCameraVideoTrack(encoderConfig: .h1080p_w1440p, facingMode: .front, multiStream: true) else { return }
+        
         // initialize
         meeting = VideoSDK.initMeeting(
             meetingId: meetingData.meetingId,
             participantName: meetingData.name,
             micEnabled: meetingData.micEnabled,
-            webcamEnabled: meetingData.cameraEnabled
+            webcamEnabled: meetingData.cameraEnabled,
+            customCameraVideoStream: customVideoStream
         )
+        
+        // MARK :- Without CustomVideoTrack
+        /*meeting = VideoSDK.initMeeting(
+            meetingId: meetingData.meetingId,
+            participantName: meetingData.name,
+            micEnabled: meetingData.micEnabled,
+            webcamEnabled: meetingData.cameraEnabled
+        )*/
         
         // listener
         meeting?.addEventListener(self)
         
         // join
-        meeting?.join()
+        meeting?.join(cameraPosition: .front)
     }
     
     // MARK: UICollectionViewDataSource
@@ -575,7 +587,12 @@ private extension MeetingViewController {
         buttonControlsView.onVideoTapped = { on in
             
             if !on {
-                self.meeting?.enableWebcam()
+                // MARK: - With CustomVideoTrack and multiStream `false`
+                guard let customVideoStream = try? VideoSDK.createCameraVideoTrack(encoderConfig: .h480p_w640p, facingMode: .front, multiStream: false) else { return }
+                self.meeting?.enableWebcam(customVideoStream: customVideoStream)
+                
+                // MARK: - Without CustomVideoTrack
+                /*self.meeting?.enableWebcam()*/
             } else {
                 self.meeting?.disableWebcam()
             }

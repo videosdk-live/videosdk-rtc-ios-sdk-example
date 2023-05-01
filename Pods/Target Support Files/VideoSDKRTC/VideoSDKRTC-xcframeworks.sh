@@ -17,28 +17,28 @@ RSYNC_PROTECT_TMP_FILES=(--filter "P .*.??????")
 variant_for_slice()
 {
   case "$1" in
-  "VideoSDKRTC.xcframework/ios-arm64_x86_64-simulator")
-    echo "simulator"
-    ;;
   "VideoSDKRTC.xcframework/ios-arm64")
     echo ""
     ;;
-  "Mediasoup.xcframework/ios-arm64_x86_64-simulator")
+  "VideoSDKRTC.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
   "Mediasoup.xcframework/ios-arm64")
     echo ""
     ;;
-  "WebRTC.xcframework/ios-arm64_x86_64-simulator")
+  "Mediasoup.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
   "WebRTC.xcframework/ios-arm64")
     echo ""
     ;;
-  "Starscream.xcframework/ios-arm64")
+  "WebRTC.xcframework/ios-arm64_x86_64-simulator")
+    echo "simulator"
+    ;;
+  "VideosdkWebSocket.xcframework/ios-arm64")
     echo ""
     ;;
-  "Starscream.xcframework/ios-arm64_x86_64-simulator")
+  "VideosdkWebSocket.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
   esac
@@ -47,28 +47,28 @@ variant_for_slice()
 archs_for_slice()
 {
   case "$1" in
-  "VideoSDKRTC.xcframework/ios-arm64_x86_64-simulator")
-    echo "arm64 x86_64"
-    ;;
   "VideoSDKRTC.xcframework/ios-arm64")
     echo "arm64"
     ;;
-  "Mediasoup.xcframework/ios-arm64_x86_64-simulator")
+  "VideoSDKRTC.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
   "Mediasoup.xcframework/ios-arm64")
     echo "arm64"
     ;;
-  "WebRTC.xcframework/ios-arm64_x86_64-simulator")
+  "Mediasoup.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
   "WebRTC.xcframework/ios-arm64")
     echo "arm64"
     ;;
-  "Starscream.xcframework/ios-arm64")
+  "WebRTC.xcframework/ios-arm64_x86_64-simulator")
+    echo "arm64 x86_64"
+    ;;
+  "VideosdkWebSocket.xcframework/ios-arm64")
     echo "arm64"
     ;;
-  "Starscream.xcframework/ios-arm64_x86_64-simulator")
+  "VideosdkWebSocket.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
   esac
@@ -153,8 +153,8 @@ install_xcframework() {
   echo "Copied $source to $destination"
 }
 
-install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/VideoSDKRTC.xcframework" "VideoSDKRTC" "framework" "ios-arm64_x86_64-simulator" "ios-arm64"
-install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/Mediasoup.xcframework" "VideoSDKRTC" "framework" "ios-arm64_x86_64-simulator" "ios-arm64"
-install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/WebRTC.xcframework" "VideoSDKRTC" "framework" "ios-arm64_x86_64-simulator" "ios-arm64"
-install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/Starscream.xcframework" "VideoSDKRTC" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/VideoSDKRTC.xcframework" "VideoSDKRTC" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/Mediasoup.xcframework" "VideoSDKRTC" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/WebRTC.xcframework" "VideoSDKRTC" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/VideoSDKRTC/Frameworks/VideosdkWebSocket.xcframework" "VideoSDKRTC" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
 

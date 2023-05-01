@@ -181,7 +181,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/VideoSDKRTC.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/Mediasoup.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/WebRTC.framework"
-  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/Starscream.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/VideosdkWebSocket.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/InputBarAccessoryView/InputBarAccessoryView.framework"
@@ -189,7 +189,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/VideoSDKRTC.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/Mediasoup.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/WebRTC.framework"
-  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/Starscream.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoSDKRTC/VideosdkWebSocket.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
