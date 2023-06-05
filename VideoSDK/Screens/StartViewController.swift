@@ -134,7 +134,8 @@ class StartViewController: UIViewController {
             name: nameTextField.text ?? "Guest",
             meetingId: meetingIdTextField.text ?? "",
             micEnabled: true,
-            cameraEnabled: true
+            cameraEnabled: true,
+            mode: .CONFERENCE
         )
     }
 }

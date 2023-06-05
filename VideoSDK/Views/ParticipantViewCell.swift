@@ -28,6 +28,8 @@ class ParticipantViewCell: UICollectionViewCell {
     @IBOutlet weak var micButton: UIButton!
     @IBOutlet weak var menuButton: UIButton!
     
+    @IBOutlet weak var pinButton: UIButton!
+    
     // menu button tap handler
     public var onMenuTapped: ((Participant) -> Void)?
     
@@ -40,6 +42,9 @@ class ParticipantViewCell: UICollectionViewCell {
     
     // handling for video
     private(set) var videoEnabled = false
+    
+    // handling for video
+    private(set) var isPinned = false
     
     // MARK: - Life Cycle
     
@@ -63,7 +68,7 @@ class ParticipantViewCell: UICollectionViewCell {
     
     // MARK: - View Update
     
-    func setParticipant(_ participant: Participant) {
+    func setParticipant(_ participant: Participant, isPinned: Bool = false) {
         self.participant = participant
         
         let nameComponents = participant.displayName.components(separatedBy: " ")
@@ -74,6 +79,9 @@ class ParticipantViewCell: UICollectionViewCell {
                 ($0.isEmpty ? "" : "\($0.first?.uppercased() ?? "")") +
                 ($1.isEmpty ? "" : "\($1.first?.uppercased() ?? "")")
             }
+        
+        self.isPinned = isPinned
+        updatePinButton(isPinned)
     }
     
     func updateView(forStream stream: MediaStream, enabled: Bool) {
@@ -145,6 +153,11 @@ extension ParticipantViewCell {
         micEnabled = enabled
         updateMicButton()
     }
+    
+    func updatePin(_ enabled: Bool) {
+        isPinned = enabled
+        updatePinButton(isPinned)
+    }
 }
 
 
@@ -181,9 +194,22 @@ extension ParticipantViewCell {
         menuButton.setImage(UIImage(named: "more"), for: .normal)
         menuButton.layer.cornerRadius = 5
         menuButton.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        
+        pinButton.makeRounded()
+        pinButton.setImage(UIImage(systemName: "pin.fill"), for: .normal)
+        pinButton.backgroundColor = UIColor.systemRed
+        pinButton.isUserInteractionEnabled = false
+        updatePinButton(isPinned)
     }
     
     func updateMicButton() {
         micButton.alpha = micEnabled ? 0.0 : 1.0
+    }
+    
+    func updatePinButton(_ enabled: Bool = false) {
+        isPinned = enabled
+        DispatchQueue.main.async {
+            self.pinButton.isHidden = self.isPinned ? false : true
+        }
     }
 }

@@ -28,6 +28,11 @@ enum MenuOption: String {
     case medium = "Medium"
     case showParticipantList = "Show Participants List"
     case raiseHand = "Raise Hand"
+    case startHLS = "Start HLS"
+    case stopHLS = "Stop HLS"
+    case changeMode = "Change Mode"
+    case pin = "Pin"
+    case unpin = "Unpin"
     
     var style: UIAlertAction.Style {
         switch self {
@@ -44,6 +49,8 @@ private let addStreamOutputSegueIdentifier = "Add Livestream Outputs"
 private let recordingWebhookUrl = "https://www.google.com"
 private let CHAT_TOPIC = "CHAT"
 private let RAISE_HAND_TOPIC = "RAISE_HAND"
+
+var isConference: Bool = true
 
 class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScrollViewDelegate, UNUserNotificationCenterDelegate {
     
@@ -79,6 +86,9 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
     
     /// keep track of livestream
     private var liveStreamStarted = false
+    
+    /// keep track of HLS
+    private var hlsStreamStarted = false
     
     /// Camera position
     private var cameraPosition = CameraPosition.front
@@ -166,7 +176,8 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
             participantName: meetingData.name,
             micEnabled: meetingData.micEnabled,
             webcamEnabled: meetingData.cameraEnabled,
-            customCameraVideoStream: customVideoStream
+            customCameraVideoStream: customVideoStream,
+            mode: .CONFERENCE
         )
         
         // MARK :- Without CustomVideoTrack
@@ -203,8 +214,11 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
         // save indexPath
         indexPaths[participant.id] = indexPath
         
+        // set isPinned or not
+        let isPinned = self.meeting?.pinnedParticipants.contains(where: { $0.key == participant.id }) ?? false
+        
         // set
-        cell.setParticipant(participant)
+        cell.setParticipant(participant, isPinned: isPinned)
         
         // on menu tap
         cell.onMenuTapped = { peer in
@@ -301,6 +315,10 @@ extension MeetingViewController: MeetingEventListener {
         
         // handle local participant on start
         guard let localParticipant = self.meeting?.localParticipant else { return }
+        
+        if localParticipant.mode == .CONFERENCE {
+            localParticipant.pin()
+        }
         
         // add to list
         participants.append(localParticipant)
@@ -448,6 +466,148 @@ extension MeetingViewController: MeetingEventListener {
             title: "Turn On Camera?",
             message: "\(requesterName) has requested to turn on the camera.",
             actions: [cancelAction, confirmAction])
+    }
+    
+    func onMeetingStateChanged(meetingState: MeetingState) {
+        switch meetingState {
+            case .CONNECTING:
+                print("Meeting is connecting")
+                
+            case .CONNECTED:
+                print("Meeting connected")
+                
+            case .CLOSING:
+                print("Meeting is closing")
+                
+            case .CLOSED:
+                print("Meeting is closed")
+                
+            case .CANCELLED:
+                print("Meeting is cancelled")
+        }
+    }
+    
+    func onError(error: VideoSDKError) {
+        switch error {
+            case .INVALID_TOKEN: print("Invalid Token")
+
+            case .INVALID_MEETING_ID: print("Invalid Meeting Id")
+            
+            case .INVALID_API_KEY: print("Invalid API Key")
+            
+            case .INVALID_PERMISSIONS: print("Invalid Permissions")
+            
+            case .INVALID_PARTICIPANT_ID: print("Invalid Participant ID")
+            
+            case .INVALID_LIVESTREAM_CONFIG: print("Invalid LiveStream Config")
+            
+            case .ACCOUNT_DEACTIVATED: print("Account Deactivated")
+            
+            case .ACCOUNT_DISCONTINUED: print("Account Discontinued")
+            
+            case .DUPLICATE_PARTICIPANT: print("Duplicate Participant")
+            
+            case .HLS_FAILED: print("HLS failed")
+            
+            case .START_HLS_FAILED: print("Start HLS failed")
+            
+            case .STOP_HLS_FAILED: print("Stop HLS failed")
+            
+            case .START_RECORDING_FAILED: print("Start recording failed")
+            
+            case .START_LIVESTREAM_FAILED: print("Start liveStream failed")
+            
+            case .STOP_RECORDING_FAILED: print("Stop recording failed")
+            
+            case .STOP_LIVESTREAM_FAILED: print("Stop liveStream failed")
+            
+            case .RECORDING_FAILED: print("Recording failed")
+            
+            case .MAX_SPEAKER_REACHED: print("Max speaker reached")
+             
+            case .MAX_PARTCIPANT_REACHED: print("Maximum participant limit reached")
+             
+            case .LIVESTREAM_FAILED: print("Error while getting display media")
+             
+            case .ERROR_GET_VIDEO_MEDIA: print("Error while getting video media")
+            
+            case .ERROR_GET_AUDIO_MEDIA: print("Error while getting audio media")
+            
+            case .ERROR_GET_DISPLAY_MEDIA: print("Error while getting display media")
+            
+            case .ERROR_GET_VIDEO_MEDIA_PERMISSION_DENIED: print("Permission denied while getting video camera permission")
+            
+            case .ERROR_GET_AUDIO_MEDIA_PERMISSION_DENIED: print("Permission denied while getting audio speaker permission")
+            
+            case .ERROR_GET_DISPLAY_MEDIA_PERMISSION_DENIED: print("Permission denied while getting display media permission")
+            
+            case .UNKNOWN_ERROR: print("Unknown Error")
+        }
+    }
+    
+    func onHlsStateChanged(state: HLSState, hlsUrl: HLSUrl?) {
+        switch(state) {
+            case .HLS_STARTING:
+                print("HLS Starting")
+                
+            case .HLS_STARTED:
+                self.hlsStreamStarted = true
+                print("HLS Started")
+                
+            case .HLS_PLAYABLE:
+                print("HLS Playable")
+                
+            case .HLS_STOPPING:
+                print("HLS Stopping")
+                
+            case .HLS_STOPPED:
+                self.hlsStreamStarted = false
+                print("HLS Stopped")
+            }
+    }
+    
+    func onRecordingStateChanged(state: RecordingState) {
+        switch(state) {
+            case .RECORDING_STARTING:
+                print("recording starting")
+            
+            case .RECORDING_STARTED:
+                print("recording started")
+                
+            case .RECORDING_STOPPING:
+                print("recording stopping")
+        
+            case .RECORDING_STOPPED:
+                print("recording stopped")
+        }
+    }
+    
+    func onLivestreamStateChanged(state: LiveStreamState) {
+        switch(state) {
+            case .LIVESTREAM_STARTING:
+                print("livestream starting")
+            
+            case .LIVESTREAM_STARTED:
+                print("livestream started")
+                
+            case .LIVESTREAM_STOPPING:
+                print("livestream stoping")
+        
+            case .LIVESTREAM_STOPPED:
+                print("livestream stopped")
+        }
+    }
+
+    func onPinStateChanged(participantId: String, pinType: PinType) {
+        if let participant = participants.first(where: { $0.id == participantId }),
+           let cell = cellForParticipant(participant) {
+
+            cell.updatePinButton(self.meeting?.pinnedParticipants.contains(where: { $0.key == participantId }) ?? false)
+        }
+    }
+    
+    func onParticipantModeChanged(participantId: String, mode: Mode) {
+        print("Participant \(self.participants.first(where: { $0.id == participantId })?.displayName ?? "") mode changed to \(mode.rawValue)")
     }
     
 }
@@ -628,6 +788,7 @@ private extension MeetingViewController {
             menuOptions.append(.switchAudioOutput)
             menuOptions.append(!self.recordingStarted ? .startRecording : .stopRecording)
             menuOptions.append(!self.liveStreamStarted ? .startLivestream : .stopLivestream)
+            menuOptions.append(.changeMode)
             
             self.showActionsheet(options: menuOptions, fromView: self.buttonControlsView.menuButton) { option in
                 switch option {
@@ -659,6 +820,14 @@ private extension MeetingViewController {
                 case .raiseHand:
                     self.meeting?.pubsub.publish(topic: RAISE_HAND_TOPIC, message: "Raise Hand by Me", options: [:])
                     
+                case .changeMode:
+                    if isConference {
+                        self.meeting?.changeMode(.VIEWER)
+                    } else {
+                        self.meeting?.changeMode(.CONFERENCE)
+                    }
+                    isConference = !isConference
+                    
                 default:
                     break
                 }
@@ -683,6 +852,12 @@ private extension MeetingViewController {
         // toggle video quality
         if participant.streams.contains(where: { $1.kind == .state(value: .video) }) && !participant.isLocal {
             menuOptions.append(.toggleQuality)
+        }
+        
+        if (self.meeting?.pinnedParticipants.contains(where: { $0.key == participant.id }) ?? false) {
+            menuOptions.append(.unpin)
+        } else {
+            menuOptions.append(.pin)
         }
         
         // remove
@@ -712,6 +887,20 @@ private extension MeetingViewController {
                     
                     // set quality
                     participant.setQuality(quality)
+                }
+                
+            case .pin:
+                if !participant.isLocal {
+                    participant.pin()
+                } else {
+                    self.meeting?.localParticipant.pin()
+                }
+                
+            case .unpin:
+                if !participant.isLocal {
+                    participant.unpin()
+                } else {
+                    self.meeting?.localParticipant.unpin()
                 }
                 
             default:

@@ -7,11 +7,14 @@
 //
 
 import Foundation
+import VideoSDKRTC
 
 struct MeetingData {
     let token: String
     let name: String
+    let participantId: String? = ""
     let meetingId: String
     let micEnabled: Bool
     let cameraEnabled: Bool
+    let mode: Mode?
 }
