@@ -34,6 +34,9 @@
 		A2BF00B527A2E1EE00772DEA /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF00B427A2E1EE00772DEA /* ChatUser.swift */; };
 		A2BF00B727A3DC7C00772DEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF00B627A3DC7C00772DEA /* Constants.swift */; };
 		A2D244AE276E14FA002FD101 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D244AD276E14FA002FD101 /* UIColor+Extension.swift */; };
+		B2DC7CF12A37811B00AF018F /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DC7CF02A37811B00AF018F /* StatsViewController.swift */; };
+		B2DC7CF32A37817F00AF018F /* ParticipantStatsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DC7CF22A37817F00AF018F /* ParticipantStatsCellView.swift */; };
+		B2DC7CF52A3781AD00AF018F /* StatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DC7CF42A3781AD00AF018F /* StatsModel.swift */; };
 		B2EDCFE427B7AADC00E61E33 /* AVAudioSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EDCFE327B7AADC00E61E33 /* AVAudioSession+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +76,9 @@
 		A2BF00B427A2E1EE00772DEA /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
 		A2BF00B627A3DC7C00772DEA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A2D244AD276E14FA002FD101 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		B2DC7CF02A37811B00AF018F /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		B2DC7CF22A37817F00AF018F /* ParticipantStatsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantStatsCellView.swift; sourceTree = "<group>"; };
+		B2DC7CF42A3781AD00AF018F /* StatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsModel.swift; sourceTree = "<group>"; };
 		B2EDCFE327B7AADC00E61E33 /* AVAudioSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAudioSession+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,6 +176,7 @@
 				A23250CA271F2FAE00A23CCB /* AddStreamTableViewCell.swift */,
 				A23250D22722D42100A23CCB /* ScreenSharingView.swift */,
 				623A5F21289393470051F40C /* Loader.swift */,
+				B2DC7CF22A37817F00AF018F /* ParticipantStatsCellView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,6 +210,7 @@
 				A2573BE626F1204E0087AB36 /* MeetingViewController.swift */,
 				A2BF00AA27A1A1DB00772DEA /* ChatViewController.swift */,
 				A23250C8271F2F4F00A23CCB /* AddStreamOutputiewController.swift */,
+				B2DC7CF02A37811B00AF018F /* StatsViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -214,6 +222,7 @@
 				A2BF00B027A1A2CC00772DEA /* MeetingData.swift */,
 				A2BF00AE27A1A2B100772DEA /* Message.swift */,
 				A2BF00B427A2E1EE00772DEA /* ChatUser.swift */,
+				B2DC7CF42A3781AD00AF018F /* StatsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -365,8 +374,10 @@
 				623A5F1C2892FCE60051F40C /* ParticipantsViewController.swift in Sources */,
 				A2BF00B527A2E1EE00772DEA /* ChatUser.swift in Sources */,
 				A2D244AE276E14FA002FD101 /* UIColor+Extension.swift in Sources */,
+				B2DC7CF32A37817F00AF018F /* ParticipantStatsCellView.swift in Sources */,
 				A2BF00B327A28C8100772DEA /* Date+Extension.swift in Sources */,
 				623A5F202892FD350051F40C /* ParticipantCellView.swift in Sources */,
+				B2DC7CF12A37811B00AF018F /* StatsViewController.swift in Sources */,
 				A23250D32722D42100A23CCB /* ScreenSharingView.swift in Sources */,
 				A2A1D38A27266BAB00082CD8 /* APIService.swift in Sources */,
 				A2573BE926F1204E0087AB36 /* StartViewController.swift in Sources */,
@@ -380,6 +391,7 @@
 				A2BF00AF27A1A2B100772DEA /* Message.swift in Sources */,
 				A2BF00B727A3DC7C00772DEA /* Constants.swift in Sources */,
 				623A5F1E2892FD1B0051F40C /* joinRoom.swift in Sources */,
+				B2DC7CF52A3781AD00AF018F /* StatsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -33,6 +33,7 @@ enum MenuOption: String {
     case changeMode = "Change Mode"
     case pin = "Pin"
     case unpin = "Unpin"
+    case stats = "Get Stats"
     
     var style: UIAlertAction.Style {
         switch self {
@@ -860,6 +861,8 @@ private extension MeetingViewController {
             menuOptions.append(.pin)
         }
         
+        menuOptions.append(.stats)
+        
         // remove
         menuOptions.append(.remove)
         
@@ -901,6 +904,15 @@ private extension MeetingViewController {
                     participant.unpin()
                 } else {
                     self.meeting?.localParticipant.unpin()
+                }
+                
+            case .stats:
+                let statsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StatsViewController") as? StatsViewController
+                statsVC?.participant = participant
+                if #available(iOS 15.0, *) {
+                    self.presentModal(viewController: statsVC!)
+                } else {
+                    self.present(statsVC!, animated: true, completion: nil)
                 }
                 
             default:

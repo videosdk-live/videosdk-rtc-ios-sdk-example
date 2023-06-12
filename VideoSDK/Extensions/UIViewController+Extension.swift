@@ -109,6 +109,16 @@ extension UIViewController {
             toastLabel.removeFromSuperview()
         }
     }
+    
+    @available(iOS 15.0, *)
+    func presentModal(viewController: UIViewController) {
+        let nav = UINavigationController(rootViewController: viewController)
+        nav.modalPresentationStyle = .pageSheet
+        if let sheet = nav.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+        }
+        present(nav, animated: true, completion: nil)
+    }
 }
 
 // MARK: - NavigationBar Appearance
@@ -149,5 +159,13 @@ extension UIViewController {
             let barButtonItem = UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self])
             barButtonItem.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
         }
+    }
+}
+
+extension Double {
+    /// Rounds the double to decimal places value
+    func rounded(toPlaces places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
     }
 }
