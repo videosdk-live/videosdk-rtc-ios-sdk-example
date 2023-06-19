@@ -50,7 +50,7 @@ open class TextMessageSizeCalculator: MessageSizeCalculator {
         var messageContainerSize: CGSize
         let attributedText: NSAttributedString
 
-        let textMessageKind = message.kind
+        let textMessageKind = message.kind.textMessageKind
         switch textMessageKind {
         case .attributedText(let text):
             attributedText = text
