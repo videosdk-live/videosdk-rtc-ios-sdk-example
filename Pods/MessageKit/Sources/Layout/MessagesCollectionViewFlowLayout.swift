@@ -184,21 +184,21 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
         switch message.kind {
         case .text:
-            return messagesLayoutDelegate.textCellSizeCalculator(for: message, at: indexPath, in: messagesCollectionView) ?? textMessageSizeCalculator
+            return textMessageSizeCalculator
         case .attributedText:
-            return messagesLayoutDelegate.attributedTextCellSizeCalculator(for: message, at: indexPath, in: messagesCollectionView) ??  attributedTextMessageSizeCalculator
+            return attributedTextMessageSizeCalculator
         case .emoji:
-            return messagesLayoutDelegate.emojiCellSizeCalculator(for: message, at: indexPath, in: messagesCollectionView) ??  emojiMessageSizeCalculator
+            return emojiMessageSizeCalculator
         case .photo:
-            return messagesLayoutDelegate.photoCellSizeCalculator(for: message, at: indexPath, in: messagesCollectionView) ??  photoMessageSizeCalculator
+            return photoMessageSizeCalculator
         case .video:
-            return messagesLayoutDelegate.videoCellSizeCalculator(for: message, at: indexPath, in: messagesCollectionView) ??  videoMessageSizeCalculator
+            return videoMessageSizeCalculator
         case .location:
-            return messagesLayoutDelegate.locationCellSizeCalculator(for: message, at: indexPath, in: messagesCollectionView) ??  locationMessageSizeCalculator
+            return locationMessageSizeCalculator
         case .audio:
-            return messagesLayoutDelegate.audioCellSizeCalculator(for: message, at: indexPath, in: messagesCollectionView) ??  audioMessageSizeCalculator
+            return audioMessageSizeCalculator
         case .contact:
-            return messagesLayoutDelegate.contactCellSizeCalculator(for: message, at: indexPath, in: messagesCollectionView) ??  contactMessageSizeCalculator
+            return contactMessageSizeCalculator
         case .linkPreview:
             return linkPreviewMessageSizeCalculator
         case .custom:

@@ -23,7 +23,6 @@
  */
 
 import Foundation
-import UIKit
 
 public struct LinkPreviewFonts: Equatable {
     let titleFont: UIFont

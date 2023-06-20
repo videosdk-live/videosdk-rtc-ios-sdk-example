@@ -785,13 +785,11 @@ open class InputBarAccessoryView: UIView {
     /// - Parameters:
     ///   - newValue: New widthAnchor constant
     ///   - animated: If the layout should be animated
-    ///   - extraAnimations: Any extra operations that should also be animated
-    open func setLeftStackViewWidthConstant(to newValue: CGFloat, animated: Bool, animations : (() -> Void)? = nil) {
+    open func setLeftStackViewWidthConstant(to newValue: CGFloat, animated: Bool) {
         performLayout(animated) { 
             self.leftStackViewWidthConstant = newValue
             self.layoutStackViews([.left])
             self.layoutContainerViewIfNeeded()
-            animations?()
         }
     }
     
@@ -800,13 +798,11 @@ open class InputBarAccessoryView: UIView {
     /// - Parameters:
     ///   - newValue: New widthAnchor constant
     ///   - animated: If the layout should be animated
-    ///   - extraAnimations: Any extra operations that should also be animated
-    open func setRightStackViewWidthConstant(to newValue: CGFloat, animated: Bool, animations : (() -> Void)? = nil) {
+    open func setRightStackViewWidthConstant(to newValue: CGFloat, animated: Bool) {
         performLayout(animated) { 
             self.rightStackViewWidthConstant = newValue
             self.layoutStackViews([.right])
             self.layoutContainerViewIfNeeded()
-            animations?()
         }
     }
     

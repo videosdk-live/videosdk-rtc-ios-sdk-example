@@ -64,7 +64,11 @@ open class LinkPreviewMessageCell: TextMessageCell {
             fatalError("LinkPreviewMessageCell received unhandled MessageDataType: \(message.kind)")
         }
 
-        super.configure(with: message, at: indexPath, and: messagesCollectionView)
+        let dummyMessage = ConcreteMessageType(sender: message.sender,
+                                               messageId: message.messageId,
+                                               sentDate: message.sentDate,
+                                               kind: linkItem.textKind)
+        super.configure(with: dummyMessage, at: indexPath, and: messagesCollectionView)
 
         linkPreviewView.titleLabel.text = linkItem.title
         linkPreviewView.teaserLabel.text = linkItem.teaser
