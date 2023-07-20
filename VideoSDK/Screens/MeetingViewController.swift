@@ -810,7 +810,15 @@ private extension MeetingViewController {
                     self.stopLivestream()
                     
                 case .switchAudioOutput:
-                    AVAudioSession.sharedInstance().changeAudioOutput(presenterViewController: self)
+                    AVAudioSession.sharedInstance().changeAudioOutput(presenterViewController: self) { isPlay in
+                        if isPlay {
+                            print("mic unmute")
+                            self.meeting?.unmuteMic()
+                        } else {
+                            print("mic mute")
+                            self.meeting?.muteMic()
+                        }
+                    }
                     
                 case .showParticipantList:
                     let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

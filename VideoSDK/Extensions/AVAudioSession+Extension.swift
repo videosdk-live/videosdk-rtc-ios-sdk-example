@@ -8,10 +8,13 @@
 
 import UIKit
 import AVKit
+import MediaPlayer
+
+var micPaused: Bool = false
 
 extension AVAudioSession {
     
-    func changeAudioOutput(presenterViewController : UIViewController) {
+    func changeAudioOutput(presenterViewController : UIViewController, completion: @escaping (Bool) -> ()) {
         let CHECKED_KEY = "checked"
         let IPHONE_TITLE = "iPhone"
         let HEADPHONES_TITLE = "Headphones"
@@ -22,7 +25,6 @@ extension AVAudioSession {
         var headphonesExist = false
         
         let currentRoute = self.currentRoute
-        
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         for input in self.availableInputs!{
             
@@ -35,6 +37,9 @@ extension AVAudioSession {
                         
                         // set new input
                         try self.setPreferredInput(input)
+                        self.setupCommandCenter { isPlay in
+                            completion(isPlay)
+                        }
                     } catch let error as NSError {
                         print("audioSession error change to input: \(input.portName) with error: \(error.localizedDescription)")
                     }
@@ -57,6 +62,9 @@ extension AVAudioSession {
                         
                         // set new input
                         try self.setPreferredInput(input)
+                        self.setupCommandCenter { isPlay in
+                            completion(isPlay)
+                        }
                     } catch let error as NSError {
                         print("audioSession error change to input: \(input.portName) with error: \(error.localizedDescription)")
                     }
@@ -76,6 +84,9 @@ extension AVAudioSession {
                         
                         // set new input
                         try self.setPreferredInput(input)
+                        self.setupCommandCenter { isPlay in
+                            completion(isPlay)
+                        }
                     } catch let error as NSError {
                         print("audioSession error change to input: \(input.portName) with error: \(error.localizedDescription)")
                     }
@@ -126,5 +137,42 @@ extension AVAudioSession {
         optionMenu.addAction(cancelAction)
         presenterViewController.present(optionMenu, animated: true, completion: nil)
         
+    }
+    
+    func setupCommandCenter( completion: @escaping (Bool) -> ()) {
+        
+        let commandCenter = MPRemoteCommandCenter.shared()
+        commandCenter.playCommand.isEnabled = true
+        commandCenter.playCommand.addTarget { event in
+            print("play")
+            completion(true)
+            return .success
+        }
+        commandCenter.pauseCommand.isEnabled = true
+        commandCenter.pauseCommand.addTarget { event in
+            print("pause")
+            micPaused = !micPaused
+            completion(micPaused)
+            return .success
+        }
+//        commandCenter.playCommand.addTarget(self, action: #selector(self.playCenter))
+//        commandCenter.pauseCommand.addTarget(self, action: #selector(self.pauseCenter))
+    
+    }
+
+    @objc func playCenter() {
+        print("play")
+//        self.state = .play
+//        self.playBtn.setBackgroundImage("some image"), for: .normal)
+//        self.player.play()
+//        self.fetchTracks()
+    }
+    
+    @objc func pauseCenter() {
+        print("pause")
+//        self.state = .pause
+//        self.playBtn.setBackgroundImage("some image"), for: .normal)
+//        self.player.pause()
+//        self.fetchTracks()
     }
 }
