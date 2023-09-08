@@ -798,7 +798,11 @@ private extension MeetingViewController {
                     
                 case .startRecording:
                     self.showAlertWithTextField(title: "Enter Webhook Url", value: recordingWebhookUrl) { url in
-                        self.meeting?.startRecording(webhookUrl: url!)
+                        // with config
+                        self.meeting?.startRecording(webhookUrl: url!, awsDirPath: "", config: RecordingConfig(layout: ConfigLayout(type: .GRID, priority: .PIN, gridSize: 4), theme: .DARK, mode: .video_and_audio, quality: .med, orientation: .landscape))
+                        
+                        // without config
+                        // self.meeting?.startRecording(webhookUrl: url!)
                     }
                 case .stopRecording:
                     self.stopRecording()
