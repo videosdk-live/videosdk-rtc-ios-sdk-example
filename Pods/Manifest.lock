@@ -4,7 +4,7 @@ PODS:
   - InputBarAccessoryView/Core (5.1.0)
   - MessageKit (3.3.0):
     - InputBarAccessoryView (~> 5.1.0)
-  - VideoSDKRTC (2.0.12)
+  - VideoSDKRTC (2.0.13)
 
 DEPENDENCIES:
   - MessageKit (~> 3.3.0)
@@ -21,14 +21,14 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   VideoSDKRTC:
-    :commit: 77dd2258790ddb4a38481c9d43aa9980b6d7d2c3
+    :commit: 1690b6af76c0f7da3f68a8f0a52ce94b34f9662b
     :git: https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git
 
 SPEC CHECKSUMS:
   InputBarAccessoryView: 19953f486a23e846e9487099f92bbe3456e46ce5
   MessageKit: 1f07618183be6d92b648ba7a384aafa097362a00
-  VideoSDKRTC: a8beae41e8abc5a2bf23dbb5c95f7bd89920e26f
+  VideoSDKRTC: 9565f86deed20b49866bf4563a69e9ad871921e4
 
-PODFILE CHECKSUM: df1656dfdf52fcb025dfe264c98a54e39a990444
+PODFILE CHECKSUM: 2ab8249185a34d5b257fcd0d7450ee1cbb8b9527
 
 COCOAPODS: 1.12.0

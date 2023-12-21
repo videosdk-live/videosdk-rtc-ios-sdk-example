@@ -679,7 +679,7 @@ extension MeetingViewController: ParticipantEventListener {
             }
         } else {
             if let cell = self.cellForParticipant(participant) {
-                cell.updateView(forStream: stream, enabled: true)
+                cell.updateView(forStream: stream, enabled: false)
             }
         }
         

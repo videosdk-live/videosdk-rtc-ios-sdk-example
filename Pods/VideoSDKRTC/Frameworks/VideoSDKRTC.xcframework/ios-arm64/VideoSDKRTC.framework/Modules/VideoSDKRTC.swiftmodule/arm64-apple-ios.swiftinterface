@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
 // swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name VideoSDKRTC
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
@@ -13,6 +13,7 @@ import VideosdkWebSocket
 import WebRTC
 import _Concurrency
 import _StringProcessing
+import _SwiftConcurrencyShims
 import os.activity
 import os.log
 import os
@@ -121,12 +122,12 @@ extension VideoSDKRTC.Visitor {
   public mutating func visitExtensionFields(fields: VideoSDKRTC.ExtensionFieldValueSet, start: Swift.Int, end: Swift.Int) throws
 }
 public enum Aggregations {
-  public static func drop() -> VideoSDKRTC.Aggregation
-  public static func defaultAggregation() -> VideoSDKRTC.Aggregation
-  public static func sum() -> VideoSDKRTC.Aggregation
-  public static func lastValue() -> VideoSDKRTC.Aggregation
-  public static func explicitBucketHistogram() -> VideoSDKRTC.Aggregation
-  public static func explicitBucketHistogram(buckets: [Swift.Double]) -> VideoSDKRTC.Aggregation
+  public static func drop() -> any VideoSDKRTC.Aggregation
+  public static func defaultAggregation() -> any VideoSDKRTC.Aggregation
+  public static func sum() -> any VideoSDKRTC.Aggregation
+  public static func lastValue() -> any VideoSDKRTC.Aggregation
+  public static func explicitBucketHistogram() -> any VideoSDKRTC.Aggregation
+  public static func explicitBucketHistogram(buckets: [Swift.Double]) -> any VideoSDKRTC.Aggregation
 }
 public enum JSONDecodingError : Swift.Error {
   case failure
@@ -151,16 +152,16 @@ public enum JSONDecodingError : Swift.Error {
   case messageDepthLimit
   case unknownField(Swift.String)
 }
-public typealias AggregationResolver = (VideoSDKRTC.InstrumentType) -> VideoSDKRTC.Aggregation
+public typealias AggregationResolver = (VideoSDKRTC.InstrumentType) -> any VideoSDKRTC.Aggregation
 public protocol DefaultAggregationSelector {
-  func getDefaultAggregation(for instrument: VideoSDKRTC.InstrumentType) -> VideoSDKRTC.Aggregation
+  func getDefaultAggregation(for instrument: VideoSDKRTC.InstrumentType) -> any VideoSDKRTC.Aggregation
 }
 @_hasMissingDesignatedInitializers public class AggregationSelector : VideoSDKRTC.DefaultAggregationSelector {
   public static let instance: VideoSDKRTC.AggregationSelector
   final public let selector: VideoSDKRTC.AggregationResolver
-  public func getDefaultAggregation(for instrument: VideoSDKRTC.InstrumentType) -> VideoSDKRTC.Aggregation
+  public func getDefaultAggregation(for instrument: VideoSDKRTC.InstrumentType) -> any VideoSDKRTC.Aggregation
   public static func defaultSelector() -> VideoSDKRTC.AggregationResolver
-  public func with(instrumentType: VideoSDKRTC.InstrumentType, aggregation: VideoSDKRTC.Aggregation) -> VideoSDKRTC.AggregationResolver
+  public func with(instrumentType: VideoSDKRTC.InstrumentType, aggregation: any VideoSDKRTC.Aggregation) -> VideoSDKRTC.AggregationResolver
   @objc deinit
 }
 public struct TextFormatDecodingOptions : Swift.Sendable {
@@ -204,12 +205,12 @@ public enum AggregationType : Swift.String, Swift.Codable {
 @_hasMissingDesignatedInitializers public class Aggregator<T> {
   public func update(value: T)
   public func checkpoint()
-  public func toMetricData() -> VideoSDKRTC.MetricData
+  public func toMetricData() -> any VideoSDKRTC.MetricData
   public func getAggregationType() -> VideoSDKRTC.AggregationType
   @objc deinit
 }
 public protocol Aggregation : AnyObject {
-  func createAggregator(descriptor: VideoSDKRTC.InstrumentDescriptor, exemplarFilter: VideoSDKRTC.ExemplarFilter) -> VideoSDKRTC.StableAggregator
+  func createAggregator(descriptor: VideoSDKRTC.InstrumentDescriptor, exemplarFilter: any VideoSDKRTC.ExemplarFilter) -> any VideoSDKRTC.StableAggregator
   func isCompatible(with descriptor: VideoSDKRTC.InstrumentDescriptor) -> Swift.Bool
 }
 @_hasMissingDesignatedInitializers public class AggregatorHandle {
@@ -251,7 +252,7 @@ extension VideoSDKRTC.ArrayWithCapacity : Swift.MutableCollection {
 }
 extension VideoSDKRTC.Message {
   public static func array(fromJSONUTF8Data jsonUTF8Data: Foundation.Data, options: VideoSDKRTC.JSONDecodingOptions = JSONDecodingOptions()) throws -> [Self]
-  public static func array(fromJSONUTF8Data jsonUTF8Data: Foundation.Data, extensions: VideoSDKRTC.ExtensionMap = SimpleExtensionMap(), options: VideoSDKRTC.JSONDecodingOptions = JSONDecodingOptions()) throws -> [Self]
+  public static func array(fromJSONUTF8Data jsonUTF8Data: Foundation.Data, extensions: any VideoSDKRTC.ExtensionMap = SimpleExtensionMap(), options: VideoSDKRTC.JSONDecodingOptions = JSONDecodingOptions()) throws -> [Self]
   public static func jsonUTF8Data<C>(from collection: C, options: VideoSDKRTC.JSONEncodingOptions = JSONEncodingOptions()) throws -> Foundation.Data where Self == C.Element, C : Swift.Collection
 }
 @_hasMissingDesignatedInitializers public class AsynchronousMetricStorage : VideoSDKRTC.MetricStorage {
@@ -325,11 +326,11 @@ public struct AttributesWithCapacityIterator : Swift.IteratorProtocol {
   public static func == (lhs: VideoSDKRTC.AttributeSet, rhs: VideoSDKRTC.AttributeSet) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   @objc deinit
-  open func encode(to encoder: Swift.Encoder) throws
+  open func encode(to encoder: any Swift.Encoder) throws
   open var hashValue: Swift.Int {
     get
   }
-  required public init(from decoder: Swift.Decoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
 }
 public enum AttributeValue : Swift.Equatable, Swift.CustomStringConvertible, Swift.Hashable {
   case string(Swift.String)
@@ -362,31 +363,31 @@ extension VideoSDKRTC.AttributeValue {
   public init(_ value: VideoSDKRTC.AttributeSet)
 }
 extension VideoSDKRTC.AttributeValue : Swift.Codable {
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 public protocol Baggage : AnyObject {
-  static func baggageBuilder() -> VideoSDKRTC.BaggageBuilder
+  static func baggageBuilder() -> any VideoSDKRTC.BaggageBuilder
   func getEntries() -> [VideoSDKRTC.Entry]
   func getEntryValue(key: VideoSDKRTC.EntryKey) -> VideoSDKRTC.EntryValue?
 }
-public func == (lhs: VideoSDKRTC.Baggage, rhs: VideoSDKRTC.Baggage) -> Swift.Bool
+public func == (lhs: any VideoSDKRTC.Baggage, rhs: any VideoSDKRTC.Baggage) -> Swift.Bool
 public protocol BaggageBuilder : AnyObject {
   @discardableResult
-  func setParent(_ parent: VideoSDKRTC.Baggage?) -> Self
+  func setParent(_ parent: (any VideoSDKRTC.Baggage)?) -> Self
   @discardableResult
   func setNoParent() -> Self
   @discardableResult
   func put(key: VideoSDKRTC.EntryKey, value: VideoSDKRTC.EntryValue, metadata: VideoSDKRTC.EntryMetadata?) -> Self
   @discardableResult
   func remove(key: VideoSDKRTC.EntryKey) -> Self
-  func build() -> VideoSDKRTC.Baggage
+  func build() -> any VideoSDKRTC.Baggage
 }
 public protocol BaggageManager : AnyObject {
-  func baggageBuilder() -> VideoSDKRTC.BaggageBuilder
+  func baggageBuilder() -> any VideoSDKRTC.BaggageBuilder
 }
 public class BatchLogRecordProcessor : VideoSDKRTC.LogRecordProcessor {
-  public init(logRecordExporter: VideoSDKRTC.LogRecordExporter, scheduleDelay: Foundation.TimeInterval = 5, exportTimeout: Foundation.TimeInterval = 30, maxQueueSize: Swift.Int = 2048, maxExportBatchSize: Swift.Int = 512, willExportCallback: ((inout [VideoSDKRTC.ReadableLogRecord]) -> Swift.Void)? = nil)
+  public init(logRecordExporter: any VideoSDKRTC.LogRecordExporter, scheduleDelay: Foundation.TimeInterval = 5, exportTimeout: Foundation.TimeInterval = 30, maxQueueSize: Swift.Int = 2048, maxExportBatchSize: Swift.Int = 512, willExportCallback: ((inout [VideoSDKRTC.ReadableLogRecord]) -> Swift.Void)? = nil)
   public func onEmit(logRecord: VideoSDKRTC.ReadableLogRecord)
   public func forceFlush() -> VideoSDKRTC.ExportResult
   public func forceFlush(timeout: Foundation.TimeInterval?)
@@ -394,11 +395,11 @@ public class BatchLogRecordProcessor : VideoSDKRTC.LogRecordProcessor {
   @objc deinit
 }
 public struct BatchSpanProcessor : VideoSDKRTC.SpanProcessor {
-  public init(spanExporter: VideoSDKRTC.SpanExporter, scheduleDelay: Foundation.TimeInterval = 5, exportTimeout: Foundation.TimeInterval = 30, maxQueueSize: Swift.Int = 2048, maxExportBatchSize: Swift.Int = 512, willExportCallback: ((inout [VideoSDKRTC.SpanData]) -> Swift.Void)? = nil)
+  public init(spanExporter: any VideoSDKRTC.SpanExporter, scheduleDelay: Foundation.TimeInterval = 5, exportTimeout: Foundation.TimeInterval = 30, maxQueueSize: Swift.Int = 2048, maxExportBatchSize: Swift.Int = 512, willExportCallback: ((inout [VideoSDKRTC.SpanData]) -> Swift.Void)? = nil)
   public let isStartRequired: Swift.Bool
   public let isEndRequired: Swift.Bool
-  public func onStart(parentContext: VideoSDKRTC.SpanContext?, span: VideoSDKRTC.ReadableSpan)
-  public func onEnd(span: VideoSDKRTC.ReadableSpan)
+  public func onStart(parentContext: VideoSDKRTC.SpanContext?, span: any VideoSDKRTC.ReadableSpan)
+  public func onEnd(span: any VideoSDKRTC.ReadableSpan)
   public func shutdown()
   public func forceFlush(timeout: Foundation.TimeInterval? = nil)
 }
@@ -702,17 +703,17 @@ public struct _NameMap : Swift.ExpressibleByDictionaryLiteral {
 }
 extension VideoSDKRTC.Message {
   public func serializedBytes<Bytes>(partial: Swift.Bool = false) throws -> Bytes where Bytes : VideoSDKRTC.SwiftProtobufContiguousBytes
-  @inlinable public init<Bytes>(serializedBytes bytes: Bytes, extensions: VideoSDKRTC.ExtensionMap? = nil, partial: Swift.Bool = false, options: VideoSDKRTC.BinaryDecodingOptions = BinaryDecodingOptions()) throws where Bytes : VideoSDKRTC.SwiftProtobufContiguousBytes {
+  @inlinable public init<Bytes>(serializedBytes bytes: Bytes, extensions: (any VideoSDKRTC.ExtensionMap)? = nil, partial: Swift.Bool = false, options: VideoSDKRTC.BinaryDecodingOptions = BinaryDecodingOptions()) throws where Bytes : VideoSDKRTC.SwiftProtobufContiguousBytes {
     self.init()
     try merge(serializedBytes: bytes, extensions: extensions, partial: partial, options: options)
   }
-  @inlinable public mutating func merge<Bytes>(serializedBytes bytes: Bytes, extensions: VideoSDKRTC.ExtensionMap? = nil, partial: Swift.Bool = false, options: VideoSDKRTC.BinaryDecodingOptions = BinaryDecodingOptions()) throws where Bytes : VideoSDKRTC.SwiftProtobufContiguousBytes {
+  @inlinable public mutating func merge<Bytes>(serializedBytes bytes: Bytes, extensions: (any VideoSDKRTC.ExtensionMap)? = nil, partial: Swift.Bool = false, options: VideoSDKRTC.BinaryDecodingOptions = BinaryDecodingOptions()) throws where Bytes : VideoSDKRTC.SwiftProtobufContiguousBytes {
     try bytes.withUnsafeBytes { (body: UnsafeRawBufferPointer) in
       try _merge(rawBuffer: body, extensions: extensions, partial: partial, options: options)
     }
   }
   @usableFromInline
-  internal mutating func _merge(rawBuffer body: Swift.UnsafeRawBufferPointer, extensions: VideoSDKRTC.ExtensionMap?, partial: Swift.Bool, options: VideoSDKRTC.BinaryDecodingOptions) throws
+  internal mutating func _merge(rawBuffer body: Swift.UnsafeRawBufferPointer, extensions: (any VideoSDKRTC.ExtensionMap)?, partial: Swift.Bool, options: VideoSDKRTC.BinaryDecodingOptions) throws
 }
 @_hasMissingDesignatedInitializers public class CallbackRegistration {
   public func execute(reader: VideoSDKRTC.RegisteredReader, startEpochNanos: Swift.UInt64, epochNanos: Swift.UInt64)
@@ -736,9 +737,9 @@ extension VideoSDKRTC.Clock {
     get
   }
 }
-public func == (lhs: VideoSDKRTC.Clock, rhs: VideoSDKRTC.Clock) -> Swift.Bool
+public func == (lhs: any VideoSDKRTC.Clock, rhs: any VideoSDKRTC.Clock) -> Swift.Bool
 extension VideoSDKRTC.Message {
-  public init(unpackingAny: VideoSDKRTC.Google_Protobuf_Any, extensions: VideoSDKRTC.ExtensionMap? = nil, options: VideoSDKRTC.BinaryDecodingOptions = BinaryDecodingOptions()) throws
+  public init(unpackingAny: VideoSDKRTC.Google_Protobuf_Any, extensions: (any VideoSDKRTC.ExtensionMap)? = nil, options: VideoSDKRTC.BinaryDecodingOptions = BinaryDecodingOptions()) throws
 }
 public protocol CollectionRegistration {
 }
@@ -888,8 +889,8 @@ public protocol ContextManager : AnyObject {
   func removeContextValue(forKey: VideoSDKRTC.OpenTelemetryContextKeys, value: Swift.AnyObject)
 }
 public protocol ContextPropagators {
-  var textMapPropagator: VideoSDKRTC.TextMapPropagator { get }
-  var textMapBaggagePropagator: VideoSDKRTC.TextMapBaggagePropagator { get }
+  var textMapPropagator: any VideoSDKRTC.TextMapPropagator { get }
+  var textMapBaggagePropagator: any VideoSDKRTC.TextMapBaggagePropagator { get }
 }
 public protocol CounterMetric {
   associatedtype T
@@ -915,7 +916,7 @@ public struct NoopCounterMetric<T> : VideoSDKRTC.CounterMetric {
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class CounterSumAggregator<T> : VideoSDKRTC.Aggregator<T> where T : Swift.SignedNumeric {
   override public func update(value: T)
   override public func checkpoint()
-  override public func toMetricData() -> VideoSDKRTC.MetricData
+  override public func toMetricData() -> any VideoSDKRTC.MetricData
   override public func getAggregationType() -> VideoSDKRTC.AggregationType
   @objc deinit
 }
@@ -934,13 +935,13 @@ public enum CustomVideoTrackConfig {
   public static var instance: VideoSDKRTC.DefaultAggregation {
     get
   }
-  public func createAggregator(descriptor: VideoSDKRTC.InstrumentDescriptor, exemplarFilter: VideoSDKRTC.ExemplarFilter) -> VideoSDKRTC.StableAggregator
+  public func createAggregator(descriptor: VideoSDKRTC.InstrumentDescriptor, exemplarFilter: any VideoSDKRTC.ExemplarFilter) -> any VideoSDKRTC.StableAggregator
   public func isCompatible(with descriptor: VideoSDKRTC.InstrumentDescriptor) -> Swift.Bool
   @objc deinit
 }
 final public class DefaultBaggage : VideoSDKRTC.Baggage, Swift.Equatable {
   public init(entries: [VideoSDKRTC.EntryKey : VideoSDKRTC.Entry?])
-  public static func baggageBuilder() -> VideoSDKRTC.BaggageBuilder
+  public static func baggageBuilder() -> any VideoSDKRTC.BaggageBuilder
   final public func getEntries() -> [VideoSDKRTC.Entry]
   final public func getEntryValue(key: VideoSDKRTC.EntryKey) -> VideoSDKRTC.EntryValue?
   public static func == (lhs: VideoSDKRTC.DefaultBaggage, rhs: VideoSDKRTC.DefaultBaggage) -> Swift.Bool
@@ -949,7 +950,7 @@ final public class DefaultBaggage : VideoSDKRTC.Baggage, Swift.Equatable {
 public class DefaultBaggageBuilder : VideoSDKRTC.BaggageBuilder {
   public init()
   @discardableResult
-  public func setParent(_ parent: VideoSDKRTC.Baggage?) -> Self
+  public func setParent(_ parent: (any VideoSDKRTC.Baggage)?) -> Self
   @discardableResult
   public func setNoParent() -> Self
   @discardableResult
@@ -958,37 +959,37 @@ public class DefaultBaggageBuilder : VideoSDKRTC.BaggageBuilder {
   public func put(key: Swift.String, value: Swift.String, metadata: Swift.String? = nil) -> Self
   @discardableResult
   public func remove(key: VideoSDKRTC.EntryKey) -> Self
-  public func build() -> VideoSDKRTC.Baggage
+  public func build() -> any VideoSDKRTC.Baggage
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class DefaultBaggageManager : VideoSDKRTC.BaggageManager {
   public static var instance: VideoSDKRTC.DefaultBaggageManager
-  public func baggageBuilder() -> VideoSDKRTC.BaggageBuilder
-  public func getCurrentBaggage() -> VideoSDKRTC.Baggage?
+  public func baggageBuilder() -> any VideoSDKRTC.BaggageBuilder
+  public func getCurrentBaggage() -> (any VideoSDKRTC.Baggage)?
   @objc deinit
 }
 public struct DefaultContextPropagators : VideoSDKRTC.ContextPropagators {
-  public var textMapPropagator: VideoSDKRTC.TextMapPropagator
-  public var textMapBaggagePropagator: VideoSDKRTC.TextMapBaggagePropagator
+  public var textMapPropagator: any VideoSDKRTC.TextMapPropagator
+  public var textMapBaggagePropagator: any VideoSDKRTC.TextMapBaggagePropagator
   public init()
-  public init(textPropagators: [VideoSDKRTC.TextMapPropagator], baggagePropagator: VideoSDKRTC.TextMapBaggagePropagator)
-  public mutating func addTextMapPropagator(textFormat: VideoSDKRTC.TextMapPropagator)
+  public init(textPropagators: [any VideoSDKRTC.TextMapPropagator], baggagePropagator: any VideoSDKRTC.TextMapBaggagePropagator)
+  public mutating func addTextMapPropagator(textFormat: any VideoSDKRTC.TextMapPropagator)
 }
 @_hasMissingDesignatedInitializers public class DefaultLogger : VideoSDKRTC.Logger {
-  public func eventBuilder(name: Swift.String) -> VideoSDKRTC.EventBuilder
-  public func logRecordBuilder() -> VideoSDKRTC.LogRecordBuilder
+  public func eventBuilder(name: Swift.String) -> any VideoSDKRTC.EventBuilder
+  public func logRecordBuilder() -> any VideoSDKRTC.LogRecordBuilder
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class DefaultLoggerProvider : VideoSDKRTC.LoggerProvider {
-  public static let instance: VideoSDKRTC.LoggerProvider
-  public func get(instrumentationScopeName: Swift.String) -> VideoSDKRTC.Logger
-  public func loggerBuilder(instrumentationScopeName: Swift.String) -> VideoSDKRTC.LoggerBuilder
+  public static let instance: any VideoSDKRTC.LoggerProvider
+  public func get(instrumentationScopeName: Swift.String) -> any VideoSDKRTC.Logger
+  public func loggerBuilder(instrumentationScopeName: Swift.String) -> any VideoSDKRTC.LoggerBuilder
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class DefaultMeterProvider : VideoSDKRTC.MeterProvider {
-  public static var instance: VideoSDKRTC.MeterProvider
-  public static func setDefault(meterFactory: VideoSDKRTC.MeterProvider)
-  public func get(instrumentationName: Swift.String, instrumentationVersion: Swift.String? = nil) -> VideoSDKRTC.Meter
+  public static var instance: any VideoSDKRTC.MeterProvider
+  public static func setDefault(meterFactory: any VideoSDKRTC.MeterProvider)
+  public func get(instrumentationName: Swift.String, instrumentationVersion: Swift.String? = nil) -> any VideoSDKRTC.Meter
   @objc deinit
 }
 public enum BinaryDecodingError : Swift.Error {
@@ -1007,41 +1008,41 @@ public enum BinaryDecodingError : Swift.Error {
   }
 }
 @_hasMissingDesignatedInitializers public class DefaultStableMeter : VideoSDKRTC.StableMeter {
-  public func counterBuilder(name: Swift.String) -> VideoSDKRTC.LongCounterBuilder
-  public func upDownCounterBuilder(name: Swift.String) -> VideoSDKRTC.LongUpDownCounterBuilder
-  public func histogramBuilder(name: Swift.String) -> VideoSDKRTC.DoubleHistogramBuilder
-  public func gaugeBuilder(name: Swift.String) -> VideoSDKRTC.DoubleGaugeBuilder
+  public func counterBuilder(name: Swift.String) -> any VideoSDKRTC.LongCounterBuilder
+  public func upDownCounterBuilder(name: Swift.String) -> any VideoSDKRTC.LongUpDownCounterBuilder
+  public func histogramBuilder(name: Swift.String) -> any VideoSDKRTC.DoubleHistogramBuilder
+  public func gaugeBuilder(name: Swift.String) -> any VideoSDKRTC.DoubleGaugeBuilder
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class DefaultStableMeterProvider : VideoSDKRTC.StableMeterProvider {
-  public static func noop() -> VideoSDKRTC.MeterBuilder
-  public func get(name: Swift.String) -> VideoSDKRTC.StableMeter
-  public func meterBuilder(name: Swift.String) -> VideoSDKRTC.MeterBuilder
-  public static var instance: VideoSDKRTC.StableMeterProvider
+  public static func noop() -> any VideoSDKRTC.MeterBuilder
+  public func get(name: Swift.String) -> any VideoSDKRTC.StableMeter
+  public func meterBuilder(name: Swift.String) -> any VideoSDKRTC.MeterBuilder
+  public static var instance: any VideoSDKRTC.StableMeterProvider
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class DefaultTracer : VideoSDKRTC.Tracer {
   public static var instance: VideoSDKRTC.DefaultTracer
-  public func spanBuilder(spanName: Swift.String) -> VideoSDKRTC.SpanBuilder
+  public func spanBuilder(spanName: Swift.String) -> any VideoSDKRTC.SpanBuilder
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class DefaultTracerProvider : VideoSDKRTC.TracerProvider {
   public static let instance: VideoSDKRTC.DefaultTracerProvider
-  public func get(instrumentationName: Swift.String, instrumentationVersion: Swift.String? = nil) -> VideoSDKRTC.Tracer
+  public func get(instrumentationName: Swift.String, instrumentationVersion: Swift.String? = nil) -> any VideoSDKRTC.Tracer
   @objc deinit
 }
 public protocol AnyMessageExtension : Swift.Sendable {
   var fieldNumber: Swift.Int { get }
   var fieldName: Swift.String { get }
-  var messageType: VideoSDKRTC.Message.Type { get }
-  func _protobuf_newField<D>(decoder: inout D) throws -> VideoSDKRTC.AnyExtensionField? where D : VideoSDKRTC.SPBDecoder
+  var messageType: any VideoSDKRTC.Message.Type { get }
+  func _protobuf_newField<D>(decoder: inout D) throws -> (any VideoSDKRTC.AnyExtensionField)? where D : VideoSDKRTC.SPBDecoder
 }
 final public class MessageExtension<FieldType, MessageType> : VideoSDKRTC.AnyMessageExtension where FieldType : VideoSDKRTC.ExtensionField, MessageType : VideoSDKRTC.Message {
   final public let fieldNumber: Swift.Int
   final public let fieldName: Swift.String
-  final public let messageType: VideoSDKRTC.Message.Type
+  final public let messageType: any VideoSDKRTC.Message.Type
   public init(_protobuf_fieldNumber: Swift.Int, fieldName: Swift.String)
-  final public func _protobuf_newField<D>(decoder: inout D) throws -> VideoSDKRTC.AnyExtensionField? where D : VideoSDKRTC.SPBDecoder
+  final public func _protobuf_newField<D>(decoder: inout D) throws -> (any VideoSDKRTC.AnyExtensionField)? where D : VideoSDKRTC.SPBDecoder
   @objc deinit
 }
 public protocol DoubleCounter {
@@ -1049,12 +1050,12 @@ public protocol DoubleCounter {
   mutating func add(value: Swift.Double, attributes: [Swift.String : VideoSDKRTC.AttributeValue])
 }
 public protocol DoubleCounterBuilder : AnyObject {
-  func build() -> VideoSDKRTC.DoubleCounter
-  func buildWithCallback(_ callback: @escaping (VideoSDKRTC.ObservableDoubleMeasurement) -> Swift.Void) -> VideoSDKRTC.ObservableDoubleCounter
+  func build() -> any VideoSDKRTC.DoubleCounter
+  func buildWithCallback(_ callback: @escaping (any VideoSDKRTC.ObservableDoubleMeasurement) -> Swift.Void) -> any VideoSDKRTC.ObservableDoubleCounter
 }
 @_hasMissingDesignatedInitializers public class DoubleCounterMeterBuilderSdk : VideoSDKRTC.DoubleCounterBuilder {
-  public func build() -> VideoSDKRTC.DoubleCounter
-  public func buildWithCallback(_ callback: @escaping (VideoSDKRTC.ObservableDoubleMeasurement) -> Swift.Void) -> VideoSDKRTC.ObservableDoubleCounter
+  public func build() -> any VideoSDKRTC.DoubleCounter
+  public func buildWithCallback(_ callback: @escaping (any VideoSDKRTC.ObservableDoubleMeasurement) -> Swift.Void) -> any VideoSDKRTC.ObservableDoubleCounter
   @objc deinit
 }
 public enum HistogramAggregatorError : Swift.Error {
@@ -1069,12 +1070,12 @@ public class DoubleExplicitBucketHistogramAggregator : VideoSDKRTC.StableAggrega
   @objc deinit
 }
 public protocol DoubleGaugeBuilder : AnyObject {
-  func ofLongs() -> VideoSDKRTC.LongGaugeBuilder
-  func buildWithCallback(_ callback: @escaping (VideoSDKRTC.ObservableDoubleMeasurement) -> Swift.Void) -> VideoSDKRTC.ObservableDoubleGauge
+  func ofLongs() -> any VideoSDKRTC.LongGaugeBuilder
+  func buildWithCallback(_ callback: @escaping (any VideoSDKRTC.ObservableDoubleMeasurement) -> Swift.Void) -> any VideoSDKRTC.ObservableDoubleGauge
 }
 @_hasMissingDesignatedInitializers public class DoubleGaugeBuilderSdk : VideoSDKRTC.DoubleGaugeBuilder {
-  public func ofLongs() -> VideoSDKRTC.LongGaugeBuilder
-  public func buildWithCallback(_ callback: @escaping (VideoSDKRTC.ObservableDoubleMeasurement) -> Swift.Void) -> VideoSDKRTC.ObservableDoubleGauge
+  public func ofLongs() -> any VideoSDKRTC.LongGaugeBuilder
+  public func buildWithCallback(_ callback: @escaping (any VideoSDKRTC.ObservableDoubleMeasurement) -> Swift.Void) -> any VideoSDKRTC.ObservableDoubleGauge
   @objc deinit
 }
 public protocol DoubleHistogram {
@@ -1082,8 +1083,8 @@ public protocol DoubleHistogram {
   mutating func record(value: Swift.Double, attributes: [Swift.String : VideoSDKRTC.AttributeValue])
 }
 public protocol DoubleHistogramBuilder : AnyObject {
-  func ofLongs() -> VideoSDKRTC.LongHistogramBuilder
-  func build() -> VideoSDKRTC.DoubleHistogram
+  func ofLongs() -> any VideoSDKRTC.LongHistogramBuilder
+  func build() -> any VideoSDKRTC.DoubleHistogram
 }
 public protocol SPBDecoder {
   mutating func handleConflictingOneOf() throws
@@ -1143,20 +1144,20 @@ public protocol SPBDecoder {
   mutating func decodeMapField<KeyType, ValueType>(fieldType: VideoSDKRTC._ProtobufMap<KeyType, ValueType>.Type, value: inout VideoSDKRTC._ProtobufMap<KeyType, ValueType>.BaseType) throws where KeyType : VideoSDKRTC.MapKeyType, ValueType : VideoSDKRTC.MapValueType
   mutating func decodeMapField<KeyType, ValueType>(fieldType: VideoSDKRTC._ProtobufEnumMap<KeyType, ValueType>.Type, value: inout VideoSDKRTC._ProtobufEnumMap<KeyType, ValueType>.BaseType) throws where KeyType : VideoSDKRTC.MapKeyType, ValueType : VideoSDKRTC.Enum, ValueType.RawValue == Swift.Int
   mutating func decodeMapField<KeyType, ValueType>(fieldType: VideoSDKRTC._ProtobufMessageMap<KeyType, ValueType>.Type, value: inout VideoSDKRTC._ProtobufMessageMap<KeyType, ValueType>.BaseType) throws where KeyType : VideoSDKRTC.MapKeyType, ValueType : Swift.Hashable, ValueType : VideoSDKRTC.Message
-  mutating func decodeExtensionField(values: inout VideoSDKRTC.ExtensionFieldValueSet, messageType: VideoSDKRTC.Message.Type, fieldNumber: Swift.Int) throws
-  mutating func decodeExtensionFieldsAsMessageSet(values: inout VideoSDKRTC.ExtensionFieldValueSet, messageType: VideoSDKRTC.Message.Type) throws
+  mutating func decodeExtensionField(values: inout VideoSDKRTC.ExtensionFieldValueSet, messageType: any VideoSDKRTC.Message.Type, fieldNumber: Swift.Int) throws
+  mutating func decodeExtensionFieldsAsMessageSet(values: inout VideoSDKRTC.ExtensionFieldValueSet, messageType: any VideoSDKRTC.Message.Type) throws
 }
 extension VideoSDKRTC.SPBDecoder {
-  public mutating func decodeExtensionFieldsAsMessageSet(values: inout VideoSDKRTC.ExtensionFieldValueSet, messageType: VideoSDKRTC.Message.Type) throws
+  public mutating func decodeExtensionFieldsAsMessageSet(values: inout VideoSDKRTC.ExtensionFieldValueSet, messageType: any VideoSDKRTC.Message.Type) throws
 }
 @_hasMissingDesignatedInitializers public class DoubleHistogramMeterBuilderSdk : VideoSDKRTC.DoubleHistogramBuilder {
-  public func ofLongs() -> VideoSDKRTC.LongHistogramBuilder
-  public func build() -> VideoSDKRTC.DoubleHistogram
+  public func ofLongs() -> any VideoSDKRTC.LongHistogramBuilder
+  public func build() -> any VideoSDKRTC.DoubleHistogram
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class DoubleHistogramMeterSdk : VideoSDKRTC.DoubleHistogram, VideoSDKRTC.Instrument {
   public var instrumentDescriptor: VideoSDKRTC.InstrumentDescriptor
-  public var storage: VideoSDKRTC.WritableMetricStorage
+  public var storage: any VideoSDKRTC.WritableMetricStorage
   public func record(value: Swift.Double)
   public func record(value: Swift.Double, attributes: [Swift.String : VideoSDKRTC.AttributeValue])
   @objc deinit
@@ -1193,12 +1194,12 @@ public protocol DoubleUpDownCounter {
   mutating func add(value: Swift.Double, attributes: [Swift.String : VideoSDKRTC.AttributeValue])
 }
 public protocol DoubleUpDownCounterBuilder : AnyObject {
-  func build() -> VideoSDKRTC.DoubleUpDownCounter
-  func buildWithCallback(_ callback: @escaping (VideoSDKRTC.ObservableDoubleMeasurement) -> Swift.Void) -> VideoSDKRTC.ObservableDoubleUpDownCounter
+  func build() -> any VideoSDKRTC.DoubleUpDownCounter
+  func buildWithCallback(_ callback: @escaping (any VideoSDKRTC.ObservableDoubleMeasurement) -> Swift.Void) -> any VideoSDKRTC.ObservableDoubleUpDownCounter
 }
 @_hasMissingDesignatedInitializers public class DoubleUpDownCounterBuilderSdk : VideoSDKRTC.DoubleUpDownCounterBuilder {
-  public func build() -> VideoSDKRTC.DoubleUpDownCounter
-  public func buildWithCallback(_ callback: @escaping (VideoSDKRTC.ObservableDoubleMeasurement) -> Swift.Void) -> VideoSDKRTC.ObservableDoubleUpDownCounter
+  public func build() -> any VideoSDKRTC.DoubleUpDownCounter
+  public func buildWithCallback(_ callback: @escaping (any VideoSDKRTC.ObservableDoubleMeasurement) -> Swift.Void) -> any VideoSDKRTC.ObservableDoubleUpDownCounter
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class DoubleUpDownCounterSdk : VideoSDKRTC.DoubleUpDownCounter, VideoSDKRTC.Instrument {
@@ -1213,14 +1214,14 @@ public protocol DoubleUpDownCounterBuilder : AnyObject {
   public static var instance: VideoSDKRTC.DropAggregation {
     get
   }
-  public func createAggregator(descriptor: VideoSDKRTC.InstrumentDescriptor, exemplarFilter: VideoSDKRTC.ExemplarFilter) -> VideoSDKRTC.StableAggregator
+  public func createAggregator(descriptor: VideoSDKRTC.InstrumentDescriptor, exemplarFilter: any VideoSDKRTC.ExemplarFilter) -> any VideoSDKRTC.StableAggregator
   public func isCompatible(with descriptor: VideoSDKRTC.InstrumentDescriptor) -> Swift.Bool
   @objc deinit
 }
 extension VideoSDKRTC.Message {
   public func textFormatString() -> Swift.String
   public func textFormatString(options: VideoSDKRTC.TextFormatEncodingOptions) -> Swift.String
-  public init(textFormatString: Swift.String, options: VideoSDKRTC.TextFormatDecodingOptions = TextFormatDecodingOptions(), extensions: VideoSDKRTC.ExtensionMap? = nil) throws
+  public init(textFormatString: Swift.String, options: VideoSDKRTC.TextFormatDecodingOptions = TextFormatDecodingOptions(), extensions: (any VideoSDKRTC.ExtensionMap)? = nil) throws
 }
 @_hasMissingDesignatedInitializers public class DropAggregator : VideoSDKRTC.StableAggregator {
   public static var POINT_DATA: VideoSDKRTC.PointData {
@@ -1277,7 +1278,7 @@ public struct ExtensionFieldValueSet : Swift.Hashable {
   public init()
   public func hash(into hasher: inout Swift.Hasher)
   public func traverse<V>(visitor: inout V, start: Swift.Int, end: Swift.Int) throws where V : VideoSDKRTC.Visitor
-  public subscript(index: Swift.Int) -> VideoSDKRTC.AnyExtensionField? {
+  public subscript(index: Swift.Int) -> (any VideoSDKRTC.AnyExtensionField)? {
     get
     set
   }
@@ -1393,7 +1394,7 @@ public enum ExemplarReservoirCollection {
   public static var instance: VideoSDKRTC.ExplicitBucketHistogramAggregation {
     get
   }
-  public func createAggregator(descriptor: VideoSDKRTC.InstrumentDescriptor, exemplarFilter: VideoSDKRTC.ExemplarFilter) -> VideoSDKRTC.StableAggregator
+  public func createAggregator(descriptor: VideoSDKRTC.InstrumentDescriptor, exemplarFilter: any VideoSDKRTC.ExemplarFilter) -> any VideoSDKRTC.StableAggregator
   public func isCompatible(with descriptor: VideoSDKRTC.InstrumentDescriptor) -> Swift.Bool
   @objc deinit
 }
@@ -1423,8 +1424,8 @@ public struct Headers {
 }
 public let defaultAnyTypeURLPrefix: Swift.String
 extension VideoSDKRTC.Google_Protobuf_Any {
-  public init(message: VideoSDKRTC.Message, partial: Swift.Bool = false, typePrefix: Swift.String = defaultAnyTypeURLPrefix) throws
-  public init(textFormatString: Swift.String, options: VideoSDKRTC.TextFormatDecodingOptions = TextFormatDecodingOptions(), extensions: VideoSDKRTC.ExtensionMap? = nil) throws
+  public init(message: any VideoSDKRTC.Message, partial: Swift.Bool = false, typePrefix: Swift.String = defaultAnyTypeURLPrefix) throws
+  public init(textFormatString: Swift.String, options: VideoSDKRTC.TextFormatDecodingOptions = TextFormatDecodingOptions(), extensions: (any VideoSDKRTC.ExtensionMap)? = nil) throws
   public func isA<M>(_ type: M.Type) -> Swift.Bool where M : VideoSDKRTC.Message
   public func hash(into hasher: inout Swift.Hasher)
 }
@@ -1432,7 +1433,7 @@ extension VideoSDKRTC.Google_Protobuf_Any {
   public init(explicitBoundaries: Swift.Array<T>? = nil) throws
   override public func update(value: T)
   override public func checkpoint()
-  override public func toMetricData() -> VideoSDKRTC.MetricData
+  override public func toMetricData() -> any VideoSDKRTC.MetricData
   override public func getAggregationType() -> VideoSDKRTC.AggregationType
   @objc deinit
 }
@@ -1471,15 +1472,39 @@ public struct NoopHistogramMetric<T> : VideoSDKRTC.HistogramMetric {
   @objc deinit
 }
 public class HLSConfig {
+  public var layout: VideoSDKRTC.ConfigLayout
+  public var theme: VideoSDKRTC.ConfigTheme
+  public var mode: VideoSDKRTC.ConfigMode
+  public var quality: VideoSDKRTC.ConfigQuality
+  public var orientation: VideoSDKRTC.ConfigOrientation
   public init(layout: VideoSDKRTC.ConfigLayout, theme: VideoSDKRTC.ConfigTheme, mode: VideoSDKRTC.ConfigMode, quality: VideoSDKRTC.ConfigQuality, orientation: VideoSDKRTC.ConfigOrientation)
+  public func toJson() -> [Swift.String : Any]
   @objc deinit
 }
 public class RecordingConfig {
+  public var layout: VideoSDKRTC.ConfigLayout
+  public var theme: VideoSDKRTC.ConfigTheme
+  public var mode: VideoSDKRTC.ConfigMode
+  public var quality: VideoSDKRTC.ConfigQuality
+  public var orientation: VideoSDKRTC.ConfigOrientation
   public init(layout: VideoSDKRTC.ConfigLayout, theme: VideoSDKRTC.ConfigTheme, mode: VideoSDKRTC.ConfigMode, quality: VideoSDKRTC.ConfigQuality, orientation: VideoSDKRTC.ConfigOrientation)
+  public func toJson() -> [Swift.String : Any]
+  @objc deinit
+}
+public class HLSUrl {
+  public var downstreamUrl: Swift.String
+  public var playbackHlsUrl: Swift.String
+  public var livestreamUrl: Swift.String
+  public init(downstreamUrl: Swift.String? = nil, playbackHlsUrl: Swift.String? = nil, livestreamUrl: Swift.String? = nil)
+  public func toJson() -> [Swift.String : Any]
   @objc deinit
 }
 public class ConfigLayout {
+  public var type: VideoSDKRTC.ConfigLayoutGrid
+  public var priority: VideoSDKRTC.ConfigLayoutPriority
+  public var gridSize: Swift.Int
   public init(type: VideoSDKRTC.ConfigLayoutGrid, priority: VideoSDKRTC.ConfigLayoutPriority, gridSize: Swift.Int)
+  public func toJson() -> [Swift.String : Any]
   @objc deinit
 }
 public enum ConfigLayoutPriority : Swift.String {
@@ -1530,9 +1555,6 @@ public enum ConfigOrientation : Swift.String {
     get
   }
 }
-@_hasMissingDesignatedInitializers public class HLSUrl {
-  @objc deinit
-}
 public protocol IdGenerator {
   func generateSpanId() -> VideoSDKRTC.SpanId
   func generateTraceId() -> VideoSDKRTC.TraceId
@@ -1564,11 +1586,11 @@ public struct InstrumentationScopeInfo : Swift.Hashable, Swift.Codable, Swift.Eq
   public init(name: Swift.String, version: Swift.String? = nil, schemaUrl: Swift.String? = nil)
   public func hash(into hasher: inout Swift.Hasher)
   public static func == (a: VideoSDKRTC.InstrumentationScopeInfo, b: VideoSDKRTC.InstrumentationScopeInfo) -> Swift.Bool
-  public func encode(to encoder: Swift.Encoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
   public var hashValue: Swift.Int {
     get
   }
-  public init(from decoder: Swift.Decoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 public struct InstrumentDescriptor : Swift.Equatable {
   public let name: Swift.String
@@ -1594,8 +1616,8 @@ public class InstrumentSelectorBuilder {
   @objc deinit
 }
 public protocol ExtensionMap : Swift.Sendable {
-  subscript(messageType: VideoSDKRTC.Message.Type, fieldNumber: Swift.Int) -> VideoSDKRTC.AnyMessageExtension? { get }
-  func fieldNumberForProto(messageType: VideoSDKRTC.Message.Type, protoFieldName: Swift.String) -> Swift.Int?
+  subscript(messageType: any VideoSDKRTC.Message.Type, fieldNumber: Swift.Int) -> (any VideoSDKRTC.AnyMessageExtension)? { get }
+  func fieldNumberForProto(messageType: any VideoSDKRTC.Message.Type, protoFieldName: Swift.String) -> Swift.Int?
 }
 public enum InstrumentType : Swift.CaseIterable {
   case counter
@@ -1667,14 +1689,14 @@ extension Swift.Encodable {
   public static var instance: VideoSDKRTC.LastValueAggregation {
     get
   }
-  public func createAggregator(descriptor: VideoSDKRTC.InstrumentDescriptor, exemplarFilter: VideoSDKRTC.ExemplarFilter) -> VideoSDKRTC.StableAggregator
+  public func createAggregator(descriptor: VideoSDKRTC.InstrumentDescriptor, exemplarFilter: any VideoSDKRTC.ExemplarFilter) -> any VideoSDKRTC.StableAggregator
   public func isCompatible(with descriptor: VideoSDKRTC.InstrumentDescriptor) -> Swift.Bool
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class LastValueAggregator<T> : VideoSDKRTC.Aggregator<T> where T : Swift.SignedNumeric {
   override public func update(value: T)
   override public func checkpoint()
-  override public func toMetricData() -> VideoSDKRTC.MetricData
+  override public func toMetricData() -> any VideoSDKRTC.MetricData
   override public func getAggregationType() -> VideoSDKRTC.AggregationType
   @objc deinit
 }
@@ -1682,12 +1704,12 @@ public struct LivestreamOutput : Swift.Codable {
   public let url: Swift.String
   public let streamKey: Swift.String
   public init(url: Swift.String, streamKey: Swift.String)
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 public protocol Logger {
-  func eventBuilder(name: Swift.String) -> VideoSDKRTC.EventBuilder
-  func logRecordBuilder() -> VideoSDKRTC.LogRecordBuilder
+  func eventBuilder(name: Swift.String) -> any VideoSDKRTC.EventBuilder
+  func logRecordBuilder() -> any VideoSDKRTC.LogRecordBuilder
 }
 public protocol LoggerBuilder {
   func setEventDomain(_ eventDomain: Swift.String) -> Self
@@ -1695,7 +1717,7 @@ public protocol LoggerBuilder {
   func setInstrumentationVersion(_ instrumentationVersion: Swift.String) -> Self
   func setIncludeTraceContext(_ includeTraceContext: Swift.Bool) -> Self
   func setAttributes(_ attributes: [Swift.String : VideoSDKRTC.AttributeValue]) -> Self
-  func build() -> VideoSDKRTC.Logger
+  func build() -> any VideoSDKRTC.Logger
 }
 @_hasMissingDesignatedInitializers public class LoggerBuilderSdk : VideoSDKRTC.LoggerBuilder {
   public func setEventDomain(_ eventDomain: Swift.String) -> Self
@@ -1703,15 +1725,15 @@ public protocol LoggerBuilder {
   public func setInstrumentationVersion(_ instrumentationVersion: Swift.String) -> Self
   public func setIncludeTraceContext(_ includeTraceContext: Swift.Bool) -> Self
   public func setAttributes(_ attributes: [Swift.String : VideoSDKRTC.AttributeValue]) -> Self
-  public func build() -> VideoSDKRTC.Logger
+  public func build() -> any VideoSDKRTC.Logger
   @objc deinit
 }
 public protocol LoggerProvider : AnyObject {
-  func get(instrumentationScopeName: Swift.String) -> VideoSDKRTC.Logger
-  func loggerBuilder(instrumentationScopeName: Swift.String) -> VideoSDKRTC.LoggerBuilder
+  func get(instrumentationScopeName: Swift.String) -> any VideoSDKRTC.Logger
+  func loggerBuilder(instrumentationScopeName: Swift.String) -> any VideoSDKRTC.LoggerBuilder
 }
 public class LoggerProviderBuilder {
-  public var clock: VideoSDKRTC.Clock {
+  public var clock: any VideoSDKRTC.Clock {
     get
   }
   public var resource: VideoSDKRTC.Resource {
@@ -1720,26 +1742,26 @@ public class LoggerProviderBuilder {
   public var logLimits: VideoSDKRTC.LogLimits {
     get
   }
-  public var logProcessors: [VideoSDKRTC.LogRecordProcessor] {
+  public var logProcessors: [any VideoSDKRTC.LogRecordProcessor] {
     get
   }
   public init()
-  public func with(clock: VideoSDKRTC.Clock) -> Self
+  public func with(clock: any VideoSDKRTC.Clock) -> Self
   public func with(resource: VideoSDKRTC.Resource) -> Self
   public func with(logLimits: VideoSDKRTC.LogLimits) -> Self
-  public func with(processors: [VideoSDKRTC.LogRecordProcessor]) -> Self
+  public func with(processors: [any VideoSDKRTC.LogRecordProcessor]) -> Self
   public func build() -> VideoSDKRTC.LoggerProviderSdk
   @objc deinit
 }
 public class LoggerProviderSdk : VideoSDKRTC.LoggerProvider {
-  public init(clock: VideoSDKRTC.Clock = MillisClock(), resource: VideoSDKRTC.Resource = EnvVarResource.get(), logLimits: VideoSDKRTC.LogLimits = LogLimits(), logRecordProcessors: [VideoSDKRTC.LogRecordProcessor] = [])
-  public func get(instrumentationScopeName: Swift.String) -> VideoSDKRTC.Logger
-  public func loggerBuilder(instrumentationScopeName: Swift.String) -> VideoSDKRTC.LoggerBuilder
+  public init(clock: any VideoSDKRTC.Clock = MillisClock(), resource: VideoSDKRTC.Resource = EnvVarResource.get(), logLimits: VideoSDKRTC.LogLimits = LogLimits(), logRecordProcessors: [any VideoSDKRTC.LogRecordProcessor] = [])
+  public func get(instrumentationScopeName: Swift.String) -> any VideoSDKRTC.Logger
+  public func loggerBuilder(instrumentationScopeName: Swift.String) -> any VideoSDKRTC.LoggerBuilder
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class LoggerSdk : VideoSDKRTC.Logger {
-  public func eventBuilder(name: Swift.String) -> VideoSDKRTC.EventBuilder
-  public func logRecordBuilder() -> VideoSDKRTC.LogRecordBuilder
+  public func eventBuilder(name: Swift.String) -> any VideoSDKRTC.EventBuilder
+  public func logRecordBuilder() -> any VideoSDKRTC.LogRecordBuilder
   @objc deinit
 }
 public struct LogLimits {
@@ -1784,11 +1806,11 @@ public protocol LogRecordProcessor {
   func shutdown() -> VideoSDKRTC.ExportResult
 }
 extension VideoSDKRTC.Message {
-  @inlinable public init(serializedData data: Foundation.Data, extensions: VideoSDKRTC.ExtensionMap? = nil, partial: Swift.Bool = false, options: VideoSDKRTC.BinaryDecodingOptions = BinaryDecodingOptions()) throws {
+  @inlinable public init(serializedData data: Foundation.Data, extensions: (any VideoSDKRTC.ExtensionMap)? = nil, partial: Swift.Bool = false, options: VideoSDKRTC.BinaryDecodingOptions = BinaryDecodingOptions()) throws {
     self.init()
     try merge(serializedBytes: data, extensions: extensions, partial: partial, options: options)
   }
-  @inlinable public mutating func merge(serializedData data: Foundation.Data, extensions: VideoSDKRTC.ExtensionMap? = nil, partial: Swift.Bool = false, options: VideoSDKRTC.BinaryDecodingOptions = BinaryDecodingOptions()) throws {
+  @inlinable public mutating func merge(serializedData data: Foundation.Data, extensions: (any VideoSDKRTC.ExtensionMap)? = nil, partial: Swift.Bool = false, options: VideoSDKRTC.BinaryDecodingOptions = BinaryDecodingOptions()) throws {
     try merge(serializedBytes: data, extensions: extensions, partial: partial, options: options)
   }
   public func serializedData(partial: Swift.Bool = false) throws -> Foundation.Data
@@ -2022,9 +2044,9 @@ public protocol LongCounter {
   mutating func add(value: Swift.Int, attribute: [Swift.String : VideoSDKRTC.AttributeValue])
 }
 public protocol LongCounterBuilder : AnyObject {
-  func ofDoubles() -> VideoSDKRTC.DoubleCounterBuilder
-  func build() -> VideoSDKRTC.LongCounter
-  func buildWithCallback(_ callback: @escaping (VideoSDKRTC.ObservableLongMeasurement) -> Swift.Void) -> VideoSDKRTC.ObservableLongCounter
+  func ofDoubles() -> any VideoSDKRTC.DoubleCounterBuilder
+  func build() -> any VideoSDKRTC.LongCounter
+  func buildWithCallback(_ callback: @escaping (any VideoSDKRTC.ObservableLongMeasurement) -> Swift.Void) -> any VideoSDKRTC.ObservableLongCounter
 }
 public struct Google_Protobuf_DoubleValue {
   public var value: Swift.Double
@@ -2180,9 +2202,9 @@ extension VideoSDKRTC.Google_Protobuf_BytesValue : VideoSDKRTC.Message, VideoSDK
   }
 }
 @_hasMissingDesignatedInitializers public class LongCounterMeterBuilderSdk : VideoSDKRTC.LongCounterBuilder {
-  public func ofDoubles() -> VideoSDKRTC.DoubleCounterBuilder
-  public func build() -> VideoSDKRTC.LongCounter
-  public func buildWithCallback(_ callback: @escaping (VideoSDKRTC.ObservableLongMeasurement) -> Swift.Void) -> VideoSDKRTC.ObservableLongCounter
+  public func ofDoubles() -> any VideoSDKRTC.DoubleCounterBuilder
+  public func build() -> any VideoSDKRTC.LongCounter
+  public func buildWithCallback(_ callback: @escaping (any VideoSDKRTC.ObservableLongMeasurement) -> Swift.Void) -> any VideoSDKRTC.ObservableLongCounter
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class LongCounterSdk : VideoSDKRTC.LongCounter, VideoSDKRTC.Instrument {
@@ -2197,10 +2219,10 @@ public struct DoubleCounterSdk : VideoSDKRTC.DoubleCounter, VideoSDKRTC.Instrume
   public mutating func add(value: Swift.Double, attributes: [Swift.String : VideoSDKRTC.AttributeValue])
 }
 public protocol LongGaugeBuilder : AnyObject {
-  func buildWithCallback(_ callback: @escaping (VideoSDKRTC.ObservableLongMeasurement) -> Swift.Void) -> VideoSDKRTC.ObservableLongGauge
+  func buildWithCallback(_ callback: @escaping (any VideoSDKRTC.ObservableLongMeasurement) -> Swift.Void) -> any VideoSDKRTC.ObservableLongGauge
 }
 @_hasMissingDesignatedInitializers public class LongGaugeBuilderSdk : VideoSDKRTC.LongGaugeBuilder {
-  public func buildWithCallback(_ callback: @escaping (VideoSDKRTC.ObservableLongMeasurement) -> Swift.Void) -> VideoSDKRTC.ObservableLongGauge
+  public func buildWithCallback(_ callback: @escaping (any VideoSDKRTC.ObservableLongMeasurement) -> Swift.Void) -> any VideoSDKRTC.ObservableLongGauge
   @objc deinit
 }
 public protocol LongHistogram {
@@ -2208,10 +2230,10 @@ public protocol LongHistogram {
   mutating func record(value: Swift.Int, attributes: [Swift.String : VideoSDKRTC.AttributeValue])
 }
 public protocol LongHistogramBuilder : AnyObject {
-  func build() -> VideoSDKRTC.LongHistogram
+  func build() -> any VideoSDKRTC.LongHistogram
 }
 @_hasMissingDesignatedInitializers public class LongHistogramMeterBuilderSdk : VideoSDKRTC.LongHistogramBuilder {
-  public func build() -> VideoSDKRTC.LongHistogram
+  public func build() -> any VideoSDKRTC.LongHistogram
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class LongHistogramMeterSdk : VideoSDKRTC.LongHistogram, VideoSDKRTC.Instrument {
@@ -2251,27 +2273,27 @@ public struct JSONEncodingOptions : Swift.Sendable {
 public struct SimpleExtensionMap : VideoSDKRTC.ExtensionMap, Swift.ExpressibleByArrayLiteral {
   public typealias Element = VideoSDKRTC.AnyMessageExtension
   public init()
-  public init(arrayLiteral: VideoSDKRTC.SimpleExtensionMap.Element...)
+  public init(arrayLiteral: any VideoSDKRTC.AnyMessageExtension...)
   public init(_ others: VideoSDKRTC.SimpleExtensionMap...)
-  public subscript(messageType: VideoSDKRTC.Message.Type, fieldNumber: Swift.Int) -> VideoSDKRTC.AnyMessageExtension? {
+  public subscript(messageType: any VideoSDKRTC.Message.Type, fieldNumber: Swift.Int) -> (any VideoSDKRTC.AnyMessageExtension)? {
     get
   }
-  public func fieldNumberForProto(messageType: VideoSDKRTC.Message.Type, protoFieldName: Swift.String) -> Swift.Int?
-  public mutating func insert(_ newValue: VideoSDKRTC.SimpleExtensionMap.Element)
-  public mutating func insert(contentsOf: [VideoSDKRTC.SimpleExtensionMap.Element])
+  public func fieldNumberForProto(messageType: any VideoSDKRTC.Message.Type, protoFieldName: Swift.String) -> Swift.Int?
+  public mutating func insert(_ newValue: any VideoSDKRTC.AnyMessageExtension)
+  public mutating func insert(contentsOf: [any VideoSDKRTC.AnyMessageExtension])
   public mutating func formUnion(_ other: VideoSDKRTC.SimpleExtensionMap)
   public func union(_ other: VideoSDKRTC.SimpleExtensionMap) -> VideoSDKRTC.SimpleExtensionMap
-  public typealias ArrayLiteralElement = VideoSDKRTC.SimpleExtensionMap.Element
+  public typealias ArrayLiteralElement = any VideoSDKRTC.AnyMessageExtension
 }
 public protocol LongUpDownCounterBuilder : AnyObject {
-  func ofDoubles() -> VideoSDKRTC.DoubleUpDownCounterBuilder
-  func build() -> VideoSDKRTC.LongUpDownCounter
-  func buildWithCallback(_ callback: @escaping (VideoSDKRTC.ObservableLongMeasurement) -> Swift.Void) -> VideoSDKRTC.ObservableLongUpDownCounter
+  func ofDoubles() -> any VideoSDKRTC.DoubleUpDownCounterBuilder
+  func build() -> any VideoSDKRTC.LongUpDownCounter
+  func buildWithCallback(_ callback: @escaping (any VideoSDKRTC.ObservableLongMeasurement) -> Swift.Void) -> any VideoSDKRTC.ObservableLongUpDownCounter
 }
 @_hasMissingDesignatedInitializers public class LongUpDownCounterBuilderSdk : VideoSDKRTC.LongUpDownCounterBuilder {
-  public func ofDoubles() -> VideoSDKRTC.DoubleUpDownCounterBuilder
-  public func build() -> VideoSDKRTC.LongUpDownCounter
-  public func buildWithCallback(_ callback: @escaping (VideoSDKRTC.ObservableLongMeasurement) -> Swift.Void) -> VideoSDKRTC.ObservableLongUpDownCounter
+  public func ofDoubles() -> any VideoSDKRTC.DoubleUpDownCounterBuilder
+  public func build() -> any VideoSDKRTC.LongUpDownCounter
+  public func buildWithCallback(_ callback: @escaping (any VideoSDKRTC.ObservableLongMeasurement) -> Swift.Void) -> any VideoSDKRTC.ObservableLongUpDownCounter
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class LongUpDownCounterSdk : VideoSDKRTC.LongUpDownCounter, VideoSDKRTC.Instrument {
@@ -2285,7 +2307,7 @@ public protocol LongUpDownCounterBuilder : AnyObject {
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MaxValueAggregator<T> : VideoSDKRTC.Aggregator<T> where T : Swift.Comparable, T : Swift.SignedNumeric {
   override public func update(value: T)
   override public func checkpoint()
-  override public func toMetricData() -> VideoSDKRTC.MetricData
+  override public func toMetricData() -> any VideoSDKRTC.MetricData
   override public func getAggregationType() -> VideoSDKRTC.AggregationType
   @objc deinit
 }
@@ -2352,7 +2374,7 @@ public struct NoopMeasureMetric<T> : VideoSDKRTC.MeasureMetric {
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MeasureMinMaxSumCountAggregator<T> : VideoSDKRTC.Aggregator<T> where T : Swift.Comparable, T : Swift.SignedNumeric {
   override public func update(value: T)
   override public func checkpoint()
-  override public func toMetricData() -> VideoSDKRTC.MetricData
+  override public func toMetricData() -> any VideoSDKRTC.MetricData
   override public func getAggregationType() -> VideoSDKRTC.AggregationType
   @objc deinit
 }
@@ -2432,8 +2454,8 @@ extension VideoSDKRTC.Meeting {
   public func changeMode(_ mode: VideoSDKRTC.Mode)
 }
 extension VideoSDKRTC.Meeting {
-  public func addEventListener(_ meetingEventListener: VideoSDKRTC.MeetingEventListener)
-  public func removeEventListener(_ meetingEventListener: VideoSDKRTC.MeetingEventListener)
+  public func addEventListener(_ meetingEventListener: any VideoSDKRTC.MeetingEventListener)
+  public func removeEventListener(_ meetingEventListener: any VideoSDKRTC.MeetingEventListener)
 }
 extension VideoSDKRTC.Meeting {
   public static func == (lhs: VideoSDKRTC.Meeting, rhs: VideoSDKRTC.Meeting) -> Swift.Bool
@@ -2565,10 +2587,10 @@ public protocol Meter {
   func createRawIntHistogram(name: Swift.String) -> VideoSDKRTC.AnyRawHistogramMetric<Swift.Int>
   func createRawDoubleCounter(name: Swift.String) -> VideoSDKRTC.AnyRawCounterMetric<Swift.Double>
   func createRawIntCounter(name: Swift.String) -> VideoSDKRTC.AnyRawCounterMetric<Swift.Int>
-  func createIntObserver(name: Swift.String, absolute: Swift.Bool, callback: @escaping (VideoSDKRTC.IntObserverMetric) -> Swift.Void) -> VideoSDKRTC.IntObserverMetric
-  func createDoubleObserver(name: Swift.String, absolute: Swift.Bool, callback: @escaping (VideoSDKRTC.DoubleObserverMetric) -> Swift.Void) -> VideoSDKRTC.DoubleObserverMetric
-  func createIntObservableGauge(name: Swift.String, callback: @escaping (VideoSDKRTC.IntObserverMetric) -> Swift.Void) -> VideoSDKRTC.IntObserverMetric
-  func createDoubleObservableGauge(name: Swift.String, callback: @escaping (VideoSDKRTC.DoubleObserverMetric) -> Swift.Void) -> VideoSDKRTC.DoubleObserverMetric
+  func createIntObserver(name: Swift.String, absolute: Swift.Bool, callback: @escaping (any VideoSDKRTC.IntObserverMetric) -> Swift.Void) -> any VideoSDKRTC.IntObserverMetric
+  func createDoubleObserver(name: Swift.String, absolute: Swift.Bool, callback: @escaping (any VideoSDKRTC.DoubleObserverMetric) -> Swift.Void) -> any VideoSDKRTC.DoubleObserverMetric
+  func createIntObservableGauge(name: Swift.String, callback: @escaping (any VideoSDKRTC.IntObserverMetric) -> Swift.Void) -> any VideoSDKRTC.IntObserverMetric
+  func createDoubleObservableGauge(name: Swift.String, callback: @escaping (any VideoSDKRTC.DoubleObserverMetric) -> Swift.Void) -> any VideoSDKRTC.DoubleObserverMetric
   func getLabelSet(labels: [Swift.String : Swift.String]) -> VideoSDKRTC.LabelSet
 }
 extension VideoSDKRTC.Meter {
@@ -2576,57 +2598,57 @@ extension VideoSDKRTC.Meter {
   public func createDoubleCounter(name: Swift.String) -> VideoSDKRTC.AnyCounterMetric<Swift.Double>
   public func createIntMeasure(name: Swift.String) -> VideoSDKRTC.AnyMeasureMetric<Swift.Int>
   public func createDoubleMeasure(name: Swift.String) -> VideoSDKRTC.AnyMeasureMetric<Swift.Double>
-  public func createIntObserver(name: Swift.String, callback: @escaping (VideoSDKRTC.IntObserverMetric) -> Swift.Void) -> VideoSDKRTC.IntObserverMetric
-  public func createDoubleObserver(name: Swift.String, callback: @escaping (VideoSDKRTC.DoubleObserverMetric) -> Swift.Void) -> VideoSDKRTC.DoubleObserverMetric
+  public func createIntObserver(name: Swift.String, callback: @escaping (any VideoSDKRTC.IntObserverMetric) -> Swift.Void) -> any VideoSDKRTC.IntObserverMetric
+  public func createDoubleObserver(name: Swift.String, callback: @escaping (any VideoSDKRTC.DoubleObserverMetric) -> Swift.Void) -> any VideoSDKRTC.DoubleObserverMetric
 }
 public protocol MeterBuilder : AnyObject {
   func setSchemaUrl(schemaUrl: Swift.String) -> Self
   func setInstrumentationVersion(instrumentationVersion: Swift.String) -> Self
-  func build() -> VideoSDKRTC.StableMeter
+  func build() -> any VideoSDKRTC.StableMeter
 }
 @_hasMissingDesignatedInitializers public class MeterBuilderSdk : VideoSDKRTC.MeterBuilder {
   public func setSchemaUrl(schemaUrl: Swift.String) -> Self
   public func setInstrumentationVersion(instrumentationVersion: Swift.String) -> Self
-  public func build() -> VideoSDKRTC.StableMeter
+  public func build() -> any VideoSDKRTC.StableMeter
   @objc deinit
 }
 public protocol MeterProvider : AnyObject {
-  func get(instrumentationName: Swift.String, instrumentationVersion: Swift.String?) -> VideoSDKRTC.Meter
+  func get(instrumentationName: Swift.String, instrumentationVersion: Swift.String?) -> any VideoSDKRTC.Meter
 }
 public class MeterProviderBuilder {
   public var resource: VideoSDKRTC.Resource {
     get
   }
-  public var metricExporter: VideoSDKRTC.MetricExporter {
+  public var metricExporter: any VideoSDKRTC.MetricExporter {
     get
   }
   public var metricPushInterval: Foundation.TimeInterval {
     get
   }
-  public var metricProcessor: VideoSDKRTC.MetricProcessor {
+  public var metricProcessor: any VideoSDKRTC.MetricProcessor {
     get
   }
   public init()
-  public func with(processor: VideoSDKRTC.MetricProcessor) -> Self
-  public func with(exporter: VideoSDKRTC.MetricExporter) -> Self
+  public func with(processor: any VideoSDKRTC.MetricProcessor) -> Self
+  public func with(exporter: any VideoSDKRTC.MetricExporter) -> Self
   public func with(pushInterval: Foundation.TimeInterval) -> Self
   public func with(resource: VideoSDKRTC.Resource) -> Self
-  public func build() -> VideoSDKRTC.MeterProvider
+  public func build() -> any VideoSDKRTC.MeterProvider
   @objc deinit
 }
 public class MeterProviderSdk : VideoSDKRTC.MeterProvider {
   public static let defaultPushInterval: Swift.Double
   convenience public init()
-  public init(metricProcessor: VideoSDKRTC.MetricProcessor, metricExporter: VideoSDKRTC.MetricExporter, metricPushInterval: Foundation.TimeInterval = MeterProviderSdk.defaultPushInterval, resource: VideoSDKRTC.Resource = EnvVarResource.get())
-  public func get(instrumentationName: Swift.String, instrumentationVersion: Swift.String? = nil) -> VideoSDKRTC.Meter
-  public func setMetricProcessor(_ metricProcessor: VideoSDKRTC.MetricProcessor)
-  public func addMetricExporter(_ metricExporter: VideoSDKRTC.MetricExporter)
+  public init(metricProcessor: any VideoSDKRTC.MetricProcessor, metricExporter: any VideoSDKRTC.MetricExporter, metricPushInterval: Foundation.TimeInterval = MeterProviderSdk.defaultPushInterval, resource: VideoSDKRTC.Resource = EnvVarResource.get())
+  public func get(instrumentationName: Swift.String, instrumentationVersion: Swift.String? = nil) -> any VideoSDKRTC.Meter
+  public func setMetricProcessor(_ metricProcessor: any VideoSDKRTC.MetricProcessor)
+  public func addMetricExporter(_ metricExporter: any VideoSDKRTC.MetricExporter)
   public func setMetricPushInterval(_ interval: Foundation.TimeInterval)
   public func setResource(_ resource: VideoSDKRTC.Resource)
   @objc deinit
 }
 extension VideoSDKRTC.Meter {
-  public func addMetric(name _: Swift.String, type _: VideoSDKRTC.AggregationType, data _: [VideoSDKRTC.MetricData])
+  public func addMetric(name _: Swift.String, type _: VideoSDKRTC.AggregationType, data _: [any VideoSDKRTC.MetricData])
 }
 public struct Metric {
   public var namespace: Swift.String {
@@ -2647,7 +2669,7 @@ public struct Metric {
   public var aggregationType: VideoSDKRTC.AggregationType {
     get
   }
-  public var data: [VideoSDKRTC.MetricData] {
+  public var data: [any VideoSDKRTC.MetricData] {
     get
   }
 }
@@ -2655,8 +2677,8 @@ extension VideoSDKRTC.Metric : Swift.Equatable {
   public static func == (lhs: VideoSDKRTC.Metric, rhs: VideoSDKRTC.Metric) -> Swift.Bool
 }
 extension VideoSDKRTC.Metric : Swift.Codable {
-  public init(from decoder: Swift.Decoder) throws
-  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
 }
 public protocol MetricData {
   var startTimestamp: Foundation.Date { get set }
@@ -2696,29 +2718,29 @@ public struct HistogramData<T> : VideoSDKRTC.MetricData {
 }
 extension VideoSDKRTC.NoopMetricData : Swift.Equatable, Swift.Codable {
   public static func == (a: VideoSDKRTC.NoopMetricData, b: VideoSDKRTC.NoopMetricData) -> Swift.Bool
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 extension VideoSDKRTC.SumData : Swift.Equatable where T : Swift.Equatable {
   public static func == (a: VideoSDKRTC.SumData<T>, b: VideoSDKRTC.SumData<T>) -> Swift.Bool
 }
 extension VideoSDKRTC.SumData : Swift.Codable where T : Swift.Decodable, T : Swift.Encodable {
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 extension VideoSDKRTC.SummaryData : Swift.Equatable where T : Swift.Equatable {
   public static func == (a: VideoSDKRTC.SummaryData<T>, b: VideoSDKRTC.SummaryData<T>) -> Swift.Bool
 }
 extension VideoSDKRTC.SummaryData : Swift.Codable where T : Swift.Decodable, T : Swift.Encodable {
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 extension VideoSDKRTC.HistogramData : Swift.Equatable where T : Swift.Equatable {
   public static func == (lhs: VideoSDKRTC.HistogramData<T>, rhs: VideoSDKRTC.HistogramData<T>) -> Swift.Bool
 }
 extension VideoSDKRTC.HistogramData : Swift.Codable where T : Swift.Decodable, T : Swift.Encodable {
-  public init(from decoder: Swift.Decoder) throws
-  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
 }
 public struct MetricDescriptor : Swift.Hashable {
   public var name: Swift.String {
@@ -2794,7 +2816,7 @@ public struct NoopMetricProducer : VideoSDKRTC.MetricProducer {
 }
 extension VideoSDKRTC.Message {
   public init(jsonUTF8Data: Foundation.Data, options: VideoSDKRTC.JSONDecodingOptions = JSONDecodingOptions()) throws
-  public init(jsonUTF8Data: Foundation.Data, extensions: VideoSDKRTC.ExtensionMap? = nil, options: VideoSDKRTC.JSONDecodingOptions = JSONDecodingOptions()) throws
+  public init(jsonUTF8Data: Foundation.Data, extensions: (any VideoSDKRTC.ExtensionMap)? = nil, options: VideoSDKRTC.JSONDecodingOptions = JSONDecodingOptions()) throws
   public func jsonUTF8Data(options: VideoSDKRTC.JSONEncodingOptions = JSONEncodingOptions()) throws -> Foundation.Data
 }
 public enum Opentelemetry_Proto_Metrics_V1_AggregationTemporality : VideoSDKRTC.Enum {
@@ -3395,7 +3417,7 @@ public class MillisClock : VideoSDKRTC.Clock {
   @objc deinit
 }
 public class MonotonicClock : VideoSDKRTC.Clock {
-  public init(clock: VideoSDKRTC.Clock)
+  public init(clock: any VideoSDKRTC.Clock)
   public var now: Foundation.Date {
     get
   }
@@ -3414,7 +3436,7 @@ extension VideoSDKRTC.Google_Protobuf_ListValue {
   }
 }
 public class MultiLogRecordExporter : VideoSDKRTC.LogRecordExporter {
-  public init(logRecordExporters: [VideoSDKRTC.LogRecordExporter])
+  public init(logRecordExporters: [any VideoSDKRTC.LogRecordExporter])
   public func export(logRecords: [VideoSDKRTC.ReadableLogRecord]) -> VideoSDKRTC.ExportResult
   public func shutdown()
   public func forceFlush() -> VideoSDKRTC.ExportResult
@@ -3423,12 +3445,12 @@ public class MultiLogRecordExporter : VideoSDKRTC.LogRecordExporter {
 public class MultiLogRecordProcessor : VideoSDKRTC.LogRecordProcessor {
   public func forceFlush() -> VideoSDKRTC.ExportResult
   public func shutdown() -> VideoSDKRTC.ExportResult
-  public init(logRecordProcessors: [VideoSDKRTC.LogRecordProcessor])
+  public init(logRecordProcessors: [any VideoSDKRTC.LogRecordProcessor])
   public func onEmit(logRecord: VideoSDKRTC.ReadableLogRecord)
   @objc deinit
 }
 public class MultiSpanExporter : VideoSDKRTC.SpanExporter {
-  public init(spanExporters: [VideoSDKRTC.SpanExporter])
+  public init(spanExporters: [any VideoSDKRTC.SpanExporter])
   public func export(spans: [VideoSDKRTC.SpanData]) -> VideoSDKRTC.SpanExporterResultCode
   public func flush() -> VideoSDKRTC.SpanExporterResultCode
   public func shutdown()
@@ -3491,15 +3513,15 @@ extension VideoSDKRTC.Google_Protobuf_BytesValue {
   public init(_ value: VideoSDKRTC.Google_Protobuf_BytesValue.WrappedType.BaseType)
 }
 public struct MultiSpanProcessor : VideoSDKRTC.SpanProcessor {
-  public init(spanProcessors: [VideoSDKRTC.SpanProcessor])
+  public init(spanProcessors: [any VideoSDKRTC.SpanProcessor])
   public var isStartRequired: Swift.Bool {
     get
   }
   public var isEndRequired: Swift.Bool {
     get
   }
-  public func onStart(parentContext: VideoSDKRTC.SpanContext?, span: VideoSDKRTC.ReadableSpan)
-  public func onEnd(span: VideoSDKRTC.ReadableSpan)
+  public func onStart(parentContext: VideoSDKRTC.SpanContext?, span: any VideoSDKRTC.ReadableSpan)
+  public func onEnd(span: any VideoSDKRTC.ReadableSpan)
   public func shutdown()
   public func forceFlush(timeout: Foundation.TimeInterval? = nil)
 }
@@ -3529,8 +3551,8 @@ public protocol ObservableDoubleUpDownCounter {
 }
 public protocol AnyExtensionField {
   func hash(into hasher: inout Swift.Hasher)
-  var protobufExtension: VideoSDKRTC.AnyMessageExtension { get }
-  func isEqual(other: VideoSDKRTC.AnyExtensionField) -> Swift.Bool
+  var protobufExtension: any VideoSDKRTC.AnyMessageExtension { get }
+  func isEqual(other: any VideoSDKRTC.AnyExtensionField) -> Swift.Bool
   mutating func decodeExtensionField<T>(decoder: inout T) throws where T : VideoSDKRTC.SPBDecoder
   func traverse<V>(visitor: inout V) throws where V : VideoSDKRTC.Visitor
   var isInitialized: Swift.Bool { get }
@@ -3543,20 +3565,20 @@ extension VideoSDKRTC.AnyExtensionField {
 public protocol ExtensionField : Swift.Hashable, VideoSDKRTC.AnyExtensionField {
   associatedtype ValueType
   var value: Self.ValueType { get set }
-  init(protobufExtension: VideoSDKRTC.AnyMessageExtension, value: Self.ValueType)
-  init?<D>(protobufExtension: VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
+  init(protobufExtension: any VideoSDKRTC.AnyMessageExtension, value: Self.ValueType)
+  init?<D>(protobufExtension: any VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
 }
 public struct OptionalExtensionField<T> : VideoSDKRTC.ExtensionField where T : VideoSDKRTC.FieldType {
   public typealias BaseType = T.BaseType
   public typealias ValueType = VideoSDKRTC.OptionalExtensionField<T>.BaseType
   public var value: VideoSDKRTC.OptionalExtensionField<T>.ValueType
-  public var protobufExtension: VideoSDKRTC.AnyMessageExtension
+  public var protobufExtension: any VideoSDKRTC.AnyMessageExtension
   public static func == (lhs: VideoSDKRTC.OptionalExtensionField<T>, rhs: VideoSDKRTC.OptionalExtensionField<T>) -> Swift.Bool
-  public init(protobufExtension: VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.OptionalExtensionField<T>.ValueType)
+  public init(protobufExtension: any VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.OptionalExtensionField<T>.ValueType)
   public func hash(into hasher: inout Swift.Hasher)
-  public func isEqual(other: VideoSDKRTC.AnyExtensionField) -> Swift.Bool
+  public func isEqual(other: any VideoSDKRTC.AnyExtensionField) -> Swift.Bool
   public mutating func decodeExtensionField<D>(decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
-  public init?<D>(protobufExtension: VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
+  public init?<D>(protobufExtension: any VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
   public func traverse<V>(visitor: inout V) throws where V : VideoSDKRTC.Visitor
   public var hashValue: Swift.Int {
     get
@@ -3566,13 +3588,13 @@ public struct RepeatedExtensionField<T> : VideoSDKRTC.ExtensionField where T : V
   public typealias BaseType = T.BaseType
   public typealias ValueType = [VideoSDKRTC.RepeatedExtensionField<T>.BaseType]
   public var value: VideoSDKRTC.RepeatedExtensionField<T>.ValueType
-  public var protobufExtension: VideoSDKRTC.AnyMessageExtension
+  public var protobufExtension: any VideoSDKRTC.AnyMessageExtension
   public static func == (lhs: VideoSDKRTC.RepeatedExtensionField<T>, rhs: VideoSDKRTC.RepeatedExtensionField<T>) -> Swift.Bool
-  public init(protobufExtension: VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.RepeatedExtensionField<T>.ValueType)
+  public init(protobufExtension: any VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.RepeatedExtensionField<T>.ValueType)
   public func hash(into hasher: inout Swift.Hasher)
-  public func isEqual(other: VideoSDKRTC.AnyExtensionField) -> Swift.Bool
+  public func isEqual(other: any VideoSDKRTC.AnyExtensionField) -> Swift.Bool
   public mutating func decodeExtensionField<D>(decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
-  public init?<D>(protobufExtension: VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
+  public init?<D>(protobufExtension: any VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
   public func traverse<V>(visitor: inout V) throws where V : VideoSDKRTC.Visitor
   public var hashValue: Swift.Int {
     get
@@ -3582,13 +3604,13 @@ public struct PackedExtensionField<T> : VideoSDKRTC.ExtensionField where T : Vid
   public typealias BaseType = T.BaseType
   public typealias ValueType = [VideoSDKRTC.PackedExtensionField<T>.BaseType]
   public var value: VideoSDKRTC.PackedExtensionField<T>.ValueType
-  public var protobufExtension: VideoSDKRTC.AnyMessageExtension
+  public var protobufExtension: any VideoSDKRTC.AnyMessageExtension
   public static func == (lhs: VideoSDKRTC.PackedExtensionField<T>, rhs: VideoSDKRTC.PackedExtensionField<T>) -> Swift.Bool
-  public init(protobufExtension: VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.PackedExtensionField<T>.ValueType)
+  public init(protobufExtension: any VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.PackedExtensionField<T>.ValueType)
   public func hash(into hasher: inout Swift.Hasher)
-  public func isEqual(other: VideoSDKRTC.AnyExtensionField) -> Swift.Bool
+  public func isEqual(other: any VideoSDKRTC.AnyExtensionField) -> Swift.Bool
   public mutating func decodeExtensionField<D>(decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
-  public init?<D>(protobufExtension: VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
+  public init?<D>(protobufExtension: any VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
   public func traverse<V>(visitor: inout V) throws where V : VideoSDKRTC.Visitor
   public var hashValue: Swift.Int {
     get
@@ -3598,13 +3620,13 @@ public struct OptionalEnumExtensionField<E> : VideoSDKRTC.ExtensionField where E
   public typealias BaseType = E
   public typealias ValueType = E
   public var value: VideoSDKRTC.OptionalEnumExtensionField<E>.ValueType
-  public var protobufExtension: VideoSDKRTC.AnyMessageExtension
+  public var protobufExtension: any VideoSDKRTC.AnyMessageExtension
   public static func == (lhs: VideoSDKRTC.OptionalEnumExtensionField<E>, rhs: VideoSDKRTC.OptionalEnumExtensionField<E>) -> Swift.Bool
-  public init(protobufExtension: VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.OptionalEnumExtensionField<E>.ValueType)
+  public init(protobufExtension: any VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.OptionalEnumExtensionField<E>.ValueType)
   public func hash(into hasher: inout Swift.Hasher)
-  public func isEqual(other: VideoSDKRTC.AnyExtensionField) -> Swift.Bool
+  public func isEqual(other: any VideoSDKRTC.AnyExtensionField) -> Swift.Bool
   public mutating func decodeExtensionField<D>(decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
-  public init?<D>(protobufExtension: VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
+  public init?<D>(protobufExtension: any VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
   public func traverse<V>(visitor: inout V) throws where V : VideoSDKRTC.Visitor
   public var hashValue: Swift.Int {
     get
@@ -3614,13 +3636,13 @@ public struct RepeatedEnumExtensionField<E> : VideoSDKRTC.ExtensionField where E
   public typealias BaseType = E
   public typealias ValueType = [E]
   public var value: VideoSDKRTC.RepeatedEnumExtensionField<E>.ValueType
-  public var protobufExtension: VideoSDKRTC.AnyMessageExtension
+  public var protobufExtension: any VideoSDKRTC.AnyMessageExtension
   public static func == (lhs: VideoSDKRTC.RepeatedEnumExtensionField<E>, rhs: VideoSDKRTC.RepeatedEnumExtensionField<E>) -> Swift.Bool
-  public init(protobufExtension: VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.RepeatedEnumExtensionField<E>.ValueType)
+  public init(protobufExtension: any VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.RepeatedEnumExtensionField<E>.ValueType)
   public func hash(into hasher: inout Swift.Hasher)
-  public func isEqual(other: VideoSDKRTC.AnyExtensionField) -> Swift.Bool
+  public func isEqual(other: any VideoSDKRTC.AnyExtensionField) -> Swift.Bool
   public mutating func decodeExtensionField<D>(decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
-  public init?<D>(protobufExtension: VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
+  public init?<D>(protobufExtension: any VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
   public func traverse<V>(visitor: inout V) throws where V : VideoSDKRTC.Visitor
   public var hashValue: Swift.Int {
     get
@@ -3630,13 +3652,13 @@ public struct PackedEnumExtensionField<E> : VideoSDKRTC.ExtensionField where E :
   public typealias BaseType = E
   public typealias ValueType = [E]
   public var value: VideoSDKRTC.PackedEnumExtensionField<E>.ValueType
-  public var protobufExtension: VideoSDKRTC.AnyMessageExtension
+  public var protobufExtension: any VideoSDKRTC.AnyMessageExtension
   public static func == (lhs: VideoSDKRTC.PackedEnumExtensionField<E>, rhs: VideoSDKRTC.PackedEnumExtensionField<E>) -> Swift.Bool
-  public init(protobufExtension: VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.PackedEnumExtensionField<E>.ValueType)
+  public init(protobufExtension: any VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.PackedEnumExtensionField<E>.ValueType)
   public func hash(into hasher: inout Swift.Hasher)
-  public func isEqual(other: VideoSDKRTC.AnyExtensionField) -> Swift.Bool
+  public func isEqual(other: any VideoSDKRTC.AnyExtensionField) -> Swift.Bool
   public mutating func decodeExtensionField<D>(decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
-  public init?<D>(protobufExtension: VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
+  public init?<D>(protobufExtension: any VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
   public func traverse<V>(visitor: inout V) throws where V : VideoSDKRTC.Visitor
   public var hashValue: Swift.Int {
     get
@@ -3646,13 +3668,13 @@ public struct OptionalMessageExtensionField<M> : VideoSDKRTC.ExtensionField wher
   public typealias BaseType = M
   public typealias ValueType = VideoSDKRTC.OptionalMessageExtensionField<M>.BaseType
   public var value: VideoSDKRTC.OptionalMessageExtensionField<M>.ValueType
-  public var protobufExtension: VideoSDKRTC.AnyMessageExtension
+  public var protobufExtension: any VideoSDKRTC.AnyMessageExtension
   public static func == (lhs: VideoSDKRTC.OptionalMessageExtensionField<M>, rhs: VideoSDKRTC.OptionalMessageExtensionField<M>) -> Swift.Bool
-  public init(protobufExtension: VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.OptionalMessageExtensionField<M>.ValueType)
+  public init(protobufExtension: any VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.OptionalMessageExtensionField<M>.ValueType)
   public func hash(into hasher: inout Swift.Hasher)
-  public func isEqual(other: VideoSDKRTC.AnyExtensionField) -> Swift.Bool
+  public func isEqual(other: any VideoSDKRTC.AnyExtensionField) -> Swift.Bool
   public mutating func decodeExtensionField<D>(decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
-  public init?<D>(protobufExtension: VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
+  public init?<D>(protobufExtension: any VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
   public func traverse<V>(visitor: inout V) throws where V : VideoSDKRTC.Visitor
   public var isInitialized: Swift.Bool {
     get
@@ -3665,13 +3687,13 @@ public struct RepeatedMessageExtensionField<M> : VideoSDKRTC.ExtensionField wher
   public typealias BaseType = M
   public typealias ValueType = [VideoSDKRTC.RepeatedMessageExtensionField<M>.BaseType]
   public var value: VideoSDKRTC.RepeatedMessageExtensionField<M>.ValueType
-  public var protobufExtension: VideoSDKRTC.AnyMessageExtension
+  public var protobufExtension: any VideoSDKRTC.AnyMessageExtension
   public static func == (lhs: VideoSDKRTC.RepeatedMessageExtensionField<M>, rhs: VideoSDKRTC.RepeatedMessageExtensionField<M>) -> Swift.Bool
-  public init(protobufExtension: VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.RepeatedMessageExtensionField<M>.ValueType)
+  public init(protobufExtension: any VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.RepeatedMessageExtensionField<M>.ValueType)
   public func hash(into hasher: inout Swift.Hasher)
-  public func isEqual(other: VideoSDKRTC.AnyExtensionField) -> Swift.Bool
+  public func isEqual(other: any VideoSDKRTC.AnyExtensionField) -> Swift.Bool
   public mutating func decodeExtensionField<D>(decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
-  public init?<D>(protobufExtension: VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
+  public init?<D>(protobufExtension: any VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
   public func traverse<V>(visitor: inout V) throws where V : VideoSDKRTC.Visitor
   public var isInitialized: Swift.Bool {
     get
@@ -3684,13 +3706,13 @@ public struct OptionalGroupExtensionField<G> : VideoSDKRTC.ExtensionField where 
   public typealias BaseType = G
   public typealias ValueType = VideoSDKRTC.OptionalGroupExtensionField<G>.BaseType
   public var value: G
-  public var protobufExtension: VideoSDKRTC.AnyMessageExtension
+  public var protobufExtension: any VideoSDKRTC.AnyMessageExtension
   public static func == (lhs: VideoSDKRTC.OptionalGroupExtensionField<G>, rhs: VideoSDKRTC.OptionalGroupExtensionField<G>) -> Swift.Bool
-  public init(protobufExtension: VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.OptionalGroupExtensionField<G>.ValueType)
+  public init(protobufExtension: any VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.OptionalGroupExtensionField<G>.ValueType)
   public func hash(into hasher: inout Swift.Hasher)
-  public func isEqual(other: VideoSDKRTC.AnyExtensionField) -> Swift.Bool
+  public func isEqual(other: any VideoSDKRTC.AnyExtensionField) -> Swift.Bool
   public mutating func decodeExtensionField<D>(decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
-  public init?<D>(protobufExtension: VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
+  public init?<D>(protobufExtension: any VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
   public func traverse<V>(visitor: inout V) throws where V : VideoSDKRTC.Visitor
   public var isInitialized: Swift.Bool {
     get
@@ -3703,13 +3725,13 @@ public struct RepeatedGroupExtensionField<G> : VideoSDKRTC.ExtensionField where 
   public typealias BaseType = G
   public typealias ValueType = [VideoSDKRTC.RepeatedGroupExtensionField<G>.BaseType]
   public var value: VideoSDKRTC.RepeatedGroupExtensionField<G>.ValueType
-  public var protobufExtension: VideoSDKRTC.AnyMessageExtension
+  public var protobufExtension: any VideoSDKRTC.AnyMessageExtension
   public static func == (lhs: VideoSDKRTC.RepeatedGroupExtensionField<G>, rhs: VideoSDKRTC.RepeatedGroupExtensionField<G>) -> Swift.Bool
-  public init(protobufExtension: VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.RepeatedGroupExtensionField<G>.ValueType)
+  public init(protobufExtension: any VideoSDKRTC.AnyMessageExtension, value: VideoSDKRTC.RepeatedGroupExtensionField<G>.ValueType)
   public func hash(into hasher: inout Swift.Hasher)
-  public func isEqual(other: VideoSDKRTC.AnyExtensionField) -> Swift.Bool
+  public func isEqual(other: any VideoSDKRTC.AnyExtensionField) -> Swift.Bool
   public mutating func decodeExtensionField<D>(decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
-  public init?<D>(protobufExtension: VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
+  public init?<D>(protobufExtension: any VideoSDKRTC.AnyMessageExtension, decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
   public func traverse<V>(visitor: inout V) throws where V : VideoSDKRTC.Visitor
   public var isInitialized: Swift.Bool {
     get
@@ -3740,34 +3762,34 @@ public func defaultOltpHTTPMetricsEndpoint() -> Foundation.URL
 public struct OpenTelemetry {
   public static var version: Swift.String
   public static var instance: VideoSDKRTC.OpenTelemetry
-  public var tracerProvider: VideoSDKRTC.TracerProvider {
+  public var tracerProvider: any VideoSDKRTC.TracerProvider {
     get
   }
-  public var meterProvider: VideoSDKRTC.MeterProvider {
+  public var meterProvider: any VideoSDKRTC.MeterProvider {
     get
   }
-  public var stableMeterProvider: VideoSDKRTC.StableMeterProvider? {
+  public var stableMeterProvider: (any VideoSDKRTC.StableMeterProvider)? {
     get
   }
-  public var loggerProvider: VideoSDKRTC.LoggerProvider {
+  public var loggerProvider: any VideoSDKRTC.LoggerProvider {
     get
   }
-  public var baggageManager: VideoSDKRTC.BaggageManager {
+  public var baggageManager: any VideoSDKRTC.BaggageManager {
     get
   }
-  public var propagators: VideoSDKRTC.ContextPropagators {
+  public var propagators: any VideoSDKRTC.ContextPropagators {
     get
   }
   public var contextProvider: VideoSDKRTC.OpenTelemetryContextProvider {
     get
   }
-  public static func registerStableMeterProvider(meterProvider: VideoSDKRTC.StableMeterProvider)
-  public static func registerTracerProvider(tracerProvider: VideoSDKRTC.TracerProvider)
-  public static func registerMeterProvider(meterProvider: VideoSDKRTC.MeterProvider)
-  public static func registerLoggerProvider(loggerProvider: VideoSDKRTC.LoggerProvider)
-  public static func registerBaggageManager(baggageManager: VideoSDKRTC.BaggageManager)
-  public static func registerPropagators(textPropagators: [VideoSDKRTC.TextMapPropagator], baggagePropagator: VideoSDKRTC.TextMapBaggagePropagator)
-  public static func registerContextManager(contextManager: VideoSDKRTC.ContextManager)
+  public static func registerStableMeterProvider(meterProvider: any VideoSDKRTC.StableMeterProvider)
+  public static func registerTracerProvider(tracerProvider: any VideoSDKRTC.TracerProvider)
+  public static func registerMeterProvider(meterProvider: any VideoSDKRTC.MeterProvider)
+  public static func registerLoggerProvider(loggerProvider: any VideoSDKRTC.LoggerProvider)
+  public static func registerBaggageManager(baggageManager: any VideoSDKRTC.BaggageManager)
+  public static func registerPropagators(textPropagators: [any VideoSDKRTC.TextMapPropagator], baggagePropagator: any VideoSDKRTC.TextMapBaggagePropagator)
+  public static func registerContextManager(contextManager: any VideoSDKRTC.ContextManager)
 }
 public enum OpenTelemetryContextKeys : Swift.String {
   case span
@@ -3779,16 +3801,16 @@ public enum OpenTelemetryContextKeys : Swift.String {
   }
 }
 public struct OpenTelemetryContextProvider {
-  public var activeSpan: VideoSDKRTC.Span? {
+  public var activeSpan: (any VideoSDKRTC.Span)? {
     get
   }
-  public var activeBaggage: VideoSDKRTC.Baggage? {
+  public var activeBaggage: (any VideoSDKRTC.Baggage)? {
     get
   }
-  public func setActiveSpan(_ span: VideoSDKRTC.Span)
-  public func setActiveBaggage(_ baggage: VideoSDKRTC.Baggage)
-  public func removeContextForSpan(_ span: VideoSDKRTC.Span)
-  public func removeContextForBaggage(_ baggage: VideoSDKRTC.Baggage)
+  public func setActiveSpan(_ span: any VideoSDKRTC.Span)
+  public func setActiveBaggage(_ baggage: any VideoSDKRTC.Baggage)
+  public func removeContextForSpan(_ span: any VideoSDKRTC.Span)
+  public func removeContextForBaggage(_ baggage: any VideoSDKRTC.Baggage)
 }
 public struct OtlpConfiguration {
   public static let DefaultTimeoutInterval: Foundation.TimeInterval
@@ -3798,7 +3820,7 @@ public struct OtlpConfiguration {
 }
 public class OtlpHttpExporterBase {
   public init(endpoint: Foundation.URL, useSession: Foundation.URLSession? = nil, authToken: Swift.String)
-  public func createRequest(body: VideoSDKRTC.Message, endpoint: Foundation.URL, authToken: Swift.String) -> Foundation.URLRequest
+  public func createRequest(body: any VideoSDKRTC.Message, endpoint: Foundation.URL, authToken: Swift.String) -> Foundation.URLRequest
   public func shutdown()
   @objc deinit
 }
@@ -3818,16 +3840,16 @@ public func defaultOltpHttpTracesEndpoint() -> Foundation.URL
   @objc deinit
 }
 public struct OtlpSpan : Swift.Codable {
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 public struct Attribute : Swift.Codable {
   public struct Value : Swift.Codable {
-    public func encode(to encoder: Swift.Encoder) throws
-    public init(from decoder: Swift.Decoder) throws
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 public enum OTPCConstants {
   public enum HTTP {
@@ -3882,8 +3904,8 @@ extension VideoSDKRTC.Participant {
   public func setPinState(pinState: VideoSDKRTC.ParticipantPinState, peerId: Swift.String = "")
 }
 extension VideoSDKRTC.Participant {
-  public func addEventListener(_ listener: VideoSDKRTC.ParticipantEventListener)
-  public func removeEventListener(_ listener: VideoSDKRTC.ParticipantEventListener)
+  public func addEventListener(_ listener: any VideoSDKRTC.ParticipantEventListener)
+  public func removeEventListener(_ listener: any VideoSDKRTC.ParticipantEventListener)
 }
 extension VideoSDKRTC.Participant {
   public static func == (lhs: VideoSDKRTC.Participant, rhs: VideoSDKRTC.Participant) -> Swift.Bool
@@ -3905,8 +3927,8 @@ public enum PinType : Swift.String {
   }
 }
 public struct ParticipantPinState : Swift.Codable {
-  public init(from decoder: Swift.Decoder) throws
-  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
 }
 @_hasMissingDesignatedInitializers public class PointData : Swift.Equatable {
   public var startEpochNanos: Swift.UInt64
@@ -3929,18 +3951,18 @@ public struct ProxyMeter : VideoSDKRTC.Meter {
   public func createDoubleMeasure(name: Swift.String, absolute: Swift.Bool) -> VideoSDKRTC.AnyMeasureMetric<Swift.Double>
   public func createIntHistogram(name: Swift.String, explicitBoundaries: Swift.Array<Swift.Int>? = nil, absolute: Swift.Bool) -> VideoSDKRTC.AnyHistogramMetric<Swift.Int>
   public func createDoubleHistogram(name: Swift.String, explicitBoundaries: Swift.Array<Swift.Double>?, absolute: Swift.Bool) -> VideoSDKRTC.AnyHistogramMetric<Swift.Double>
-  public func createIntObservableGauge(name: Swift.String, callback: @escaping (VideoSDKRTC.IntObserverMetric) -> Swift.Void) -> VideoSDKRTC.IntObserverMetric
-  public func createDoubleObservableGauge(name: Swift.String, callback: @escaping (VideoSDKRTC.DoubleObserverMetric) -> Swift.Void) -> VideoSDKRTC.DoubleObserverMetric
-  public func createIntObserver(name: Swift.String, absolute: Swift.Bool, callback: @escaping (VideoSDKRTC.IntObserverMetric) -> Swift.Void) -> VideoSDKRTC.IntObserverMetric
-  public func createDoubleObserver(name: Swift.String, absolute: Swift.Bool, callback: @escaping (VideoSDKRTC.DoubleObserverMetric) -> Swift.Void) -> VideoSDKRTC.DoubleObserverMetric
+  public func createIntObservableGauge(name: Swift.String, callback: @escaping (any VideoSDKRTC.IntObserverMetric) -> Swift.Void) -> any VideoSDKRTC.IntObserverMetric
+  public func createDoubleObservableGauge(name: Swift.String, callback: @escaping (any VideoSDKRTC.DoubleObserverMetric) -> Swift.Void) -> any VideoSDKRTC.DoubleObserverMetric
+  public func createIntObserver(name: Swift.String, absolute: Swift.Bool, callback: @escaping (any VideoSDKRTC.IntObserverMetric) -> Swift.Void) -> any VideoSDKRTC.IntObserverMetric
+  public func createDoubleObserver(name: Swift.String, absolute: Swift.Bool, callback: @escaping (any VideoSDKRTC.DoubleObserverMetric) -> Swift.Void) -> any VideoSDKRTC.DoubleObserverMetric
 }
 @_hasMissingDesignatedInitializers public class PubSub {
   @objc deinit
 }
 extension VideoSDKRTC.PubSub {
   public func publish(topic: Swift.String, message: Swift.String, options: [Swift.String : Any] = [:])
-  public func subscribe(topic: Swift.String, forListener listener: VideoSDKRTC.PubSubMessageListener)
-  public func unsubscribe(topic: Swift.String, forListener listener: VideoSDKRTC.PubSubMessageListener)
+  public func subscribe(topic: Swift.String, forListener listener: any VideoSDKRTC.PubSubMessageListener)
+  public func unsubscribe(topic: Swift.String, forListener listener: any VideoSDKRTC.PubSubMessageListener)
   public func getMessagesForTopic(_ topic: Swift.String) -> [VideoSDKRTC.PubSubMessage]
 }
 @objc @_hasMissingDesignatedInitializers public class PubSubMessage : ObjectiveC.NSObject {
@@ -4065,8 +4087,8 @@ public struct ReadableLogRecord : Swift.Codable {
   public var attributes: [Swift.String : VideoSDKRTC.AttributeValue] {
     get
   }
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 public protocol ReadableSpan : VideoSDKRTC.Span {
   var name: Swift.String { get set }
@@ -4093,7 +4115,7 @@ public protocol ReadableSpan : VideoSDKRTC.Span {
   public var hasRemoteParent: Swift.Bool {
     get
   }
-  public var spanProcessor: VideoSDKRTC.SpanProcessor {
+  public var spanProcessor: any VideoSDKRTC.SpanProcessor {
     get
   }
   public var links: [VideoSDKRTC.SpanData.Link] {
@@ -4111,7 +4133,7 @@ public protocol ReadableSpan : VideoSDKRTC.Span {
   public var kind: VideoSDKRTC.SpanKind {
     get
   }
-  public var clock: VideoSDKRTC.Clock {
+  public var clock: any VideoSDKRTC.Clock {
     get
   }
   public var resource: VideoSDKRTC.Resource {
@@ -4145,7 +4167,7 @@ public protocol ReadableSpan : VideoSDKRTC.Span {
   public var hasEnded: Swift.Bool {
     get
   }
-  public static func startSpan(context: VideoSDKRTC.SpanContext, name: Swift.String, instrumentationScopeInfo: VideoSDKRTC.InstrumentationScopeInfo, kind: VideoSDKRTC.SpanKind, parentContext: VideoSDKRTC.SpanContext?, hasRemoteParent: Swift.Bool, spanLimits: VideoSDKRTC.SpanLimits, spanProcessor: VideoSDKRTC.SpanProcessor, clock: VideoSDKRTC.Clock, resource: VideoSDKRTC.Resource, attributes: VideoSDKRTC.AttributesDictionary, links: [VideoSDKRTC.SpanData.Link], totalRecordedLinks: Swift.Int, startTime: Foundation.Date?) -> VideoSDKRTC.RecordEventsReadableSpan
+  public static func startSpan(context: VideoSDKRTC.SpanContext, name: Swift.String, instrumentationScopeInfo: VideoSDKRTC.InstrumentationScopeInfo, kind: VideoSDKRTC.SpanKind, parentContext: VideoSDKRTC.SpanContext?, hasRemoteParent: Swift.Bool, spanLimits: VideoSDKRTC.SpanLimits, spanProcessor: any VideoSDKRTC.SpanProcessor, clock: any VideoSDKRTC.Clock, resource: VideoSDKRTC.Resource, attributes: VideoSDKRTC.AttributesDictionary, links: [VideoSDKRTC.SpanData.Link], totalRecordedLinks: Swift.Int, startTime: Foundation.Date?) -> VideoSDKRTC.RecordEventsReadableSpan
   public func toSpanData() -> VideoSDKRTC.SpanData
   public func setAttribute(key: Swift.String, value: VideoSDKRTC.AttributeValue?)
   public func addEvent(name: Swift.String)
@@ -4161,7 +4183,7 @@ public protocol ReadableSpan : VideoSDKRTC.Span {
 }
 @_hasMissingDesignatedInitializers public class RegisteredReader : Swift.Equatable, Swift.Hashable {
   final public let id: Swift.Int32
-  final public let reader: VideoSDKRTC.StableMetricReader
+  final public let reader: any VideoSDKRTC.StableMetricReader
   final public let registry: VideoSDKRTC.StableViewRegistry
   public var lastCollectedEpochNanos: Swift.UInt64
   public func hash(into hasher: inout Swift.Hasher)
@@ -6108,11 +6130,11 @@ public struct Resource : Swift.Equatable, Swift.Hashable, Swift.Codable {
   public func merging(other: VideoSDKRTC.Resource) -> VideoSDKRTC.Resource
   public static func == (a: VideoSDKRTC.Resource, b: VideoSDKRTC.Resource) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
-  public func encode(to encoder: Swift.Encoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
   public var hashValue: Swift.Int {
     get
   }
-  public init(from decoder: Swift.Decoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 public struct Opentelemetry_Proto_Resource_V1_Resource {
   public var attributes: [VideoSDKRTC.Opentelemetry_Proto_Common_V1_KeyValue]
@@ -6346,9 +6368,9 @@ extension VideoSDKRTC.Message {
   public static func jsonString<C>(from collection: C, options: VideoSDKRTC.JSONEncodingOptions = JSONEncodingOptions()) throws -> Swift.String where Self == C.Element, C : Swift.Collection
   public static func jsonUTF8Bytes<C, Bytes>(from collection: C, options: VideoSDKRTC.JSONEncodingOptions = JSONEncodingOptions()) throws -> Bytes where Self == C.Element, C : Swift.Collection, Bytes : VideoSDKRTC.SwiftProtobufContiguousBytes
   public static func array(fromJSONString jsonString: Swift.String, options: VideoSDKRTC.JSONDecodingOptions = JSONDecodingOptions()) throws -> [Self]
-  public static func array(fromJSONString jsonString: Swift.String, extensions: VideoSDKRTC.ExtensionMap = SimpleExtensionMap(), options: VideoSDKRTC.JSONDecodingOptions = JSONDecodingOptions()) throws -> [Self]
+  public static func array(fromJSONString jsonString: Swift.String, extensions: any VideoSDKRTC.ExtensionMap = SimpleExtensionMap(), options: VideoSDKRTC.JSONDecodingOptions = JSONDecodingOptions()) throws -> [Self]
   public static func array<Bytes>(fromJSONUTF8Bytes jsonUTF8Bytes: Bytes, options: VideoSDKRTC.JSONDecodingOptions = JSONDecodingOptions()) throws -> [Self] where Bytes : VideoSDKRTC.SwiftProtobufContiguousBytes
-  public static func array<Bytes>(fromJSONUTF8Bytes jsonUTF8Bytes: Bytes, extensions: VideoSDKRTC.ExtensionMap = SimpleExtensionMap(), options: VideoSDKRTC.JSONDecodingOptions = JSONDecodingOptions()) throws -> [Self] where Bytes : VideoSDKRTC.SwiftProtobufContiguousBytes
+  public static func array<Bytes>(fromJSONUTF8Bytes jsonUTF8Bytes: Bytes, extensions: any VideoSDKRTC.ExtensionMap = SimpleExtensionMap(), options: VideoSDKRTC.JSONDecodingOptions = JSONDecodingOptions()) throws -> [Self] where Bytes : VideoSDKRTC.SwiftProtobufContiguousBytes
 }
 public protocol Enum : Swift.CaseIterable, Swift.Hashable, Swift.RawRepresentable, Swift.Sendable {
   init()
@@ -6359,17 +6381,17 @@ extension VideoSDKRTC.Enum {
   public func hash(into hasher: inout Swift.Hasher)
 }
 public protocol Sampler : AnyObject, Swift.CustomStringConvertible {
-  func shouldSample(parentContext: VideoSDKRTC.SpanContext?, traceId: VideoSDKRTC.TraceId, name: Swift.String, kind: VideoSDKRTC.SpanKind, attributes: [Swift.String : VideoSDKRTC.AttributeValue], parentLinks: [VideoSDKRTC.SpanData.Link]) -> VideoSDKRTC.Decision
+  func shouldSample(parentContext: VideoSDKRTC.SpanContext?, traceId: VideoSDKRTC.TraceId, name: Swift.String, kind: VideoSDKRTC.SpanKind, attributes: [Swift.String : VideoSDKRTC.AttributeValue], parentLinks: [VideoSDKRTC.SpanData.Link]) -> any VideoSDKRTC.Decision
 }
 public protocol Decision {
   var isSampled: Swift.Bool { get }
   var attributes: [Swift.String : VideoSDKRTC.AttributeValue] { get }
 }
 public enum Samplers {
-  public static var alwaysOn: VideoSDKRTC.Sampler
-  public static var alwaysOff: VideoSDKRTC.Sampler
-  public static func traceIdRatio(ratio: Swift.Double) -> VideoSDKRTC.Sampler
-  public static func parentBased(root: VideoSDKRTC.Sampler, remoteParentSampled: VideoSDKRTC.Sampler? = nil, remoteParentNotSampled: VideoSDKRTC.Sampler? = nil, localParentSampled: VideoSDKRTC.Sampler? = nil, localParentNotSampled: VideoSDKRTC.Sampler? = nil) -> VideoSDKRTC.Sampler
+  public static var alwaysOn: any VideoSDKRTC.Sampler
+  public static var alwaysOff: any VideoSDKRTC.Sampler
+  public static func traceIdRatio(ratio: Swift.Double) -> any VideoSDKRTC.Sampler
+  public static func parentBased(root: any VideoSDKRTC.Sampler, remoteParentSampled: (any VideoSDKRTC.Sampler)? = nil, remoteParentNotSampled: (any VideoSDKRTC.Sampler)? = nil, localParentSampled: (any VideoSDKRTC.Sampler)? = nil, localParentNotSampled: (any VideoSDKRTC.Sampler)? = nil) -> any VideoSDKRTC.Sampler
 }
 public enum Google_Protobuf_Syntax : VideoSDKRTC.Enum {
   public typealias RawValue = Swift.Int
@@ -7101,7 +7123,7 @@ public enum Severity : Swift.Int, Swift.Comparable, Swift.CustomStringConvertibl
   }
 }
 public class SimpleLogRecordProcessor : VideoSDKRTC.LogRecordProcessor {
-  public init(logRecordExporter: VideoSDKRTC.LogRecordExporter)
+  public init(logRecordExporter: any VideoSDKRTC.LogRecordExporter)
   public func onEmit(logRecord: VideoSDKRTC.ReadableLogRecord)
   public func forceFlush() -> VideoSDKRTC.ExportResult
   public func shutdown() -> VideoSDKRTC.ExportResult
@@ -7110,17 +7132,17 @@ public class SimpleLogRecordProcessor : VideoSDKRTC.LogRecordProcessor {
 public struct SimpleSpanProcessor : VideoSDKRTC.SpanProcessor {
   public let isStartRequired: Swift.Bool
   public let isEndRequired: Swift.Bool
-  public func onStart(parentContext: VideoSDKRTC.SpanContext?, span: VideoSDKRTC.ReadableSpan)
-  public mutating func onEnd(span: VideoSDKRTC.ReadableSpan)
+  public func onStart(parentContext: VideoSDKRTC.SpanContext?, span: any VideoSDKRTC.ReadableSpan)
+  public mutating func onEnd(span: any VideoSDKRTC.ReadableSpan)
   public func shutdown()
   public func forceFlush(timeout: Foundation.TimeInterval? = nil)
-  public init(spanExporter: VideoSDKRTC.SpanExporter)
+  public init(spanExporter: any VideoSDKRTC.SpanExporter)
   public func reportingOnlySampled(sampled: Swift.Bool) -> VideoSDKRTC.SimpleSpanProcessor
 }
 #if compiler(>=5.3) && $RethrowsProtocol
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 extension _Concurrency.AsyncSequence where Self.Element == Swift.UInt8 {
-  @inlinable public func binaryProtobufDelimitedMessages<M>(of messageType: M.Type = M.self, extensions: VideoSDKRTC.ExtensionMap? = nil, partial: Swift.Bool = false, options: VideoSDKRTC.BinaryDecodingOptions = BinaryDecodingOptions()) -> VideoSDKRTC.AsyncMessageSequence<Self, M> where M : VideoSDKRTC.Message {
+  @inlinable public func binaryProtobufDelimitedMessages<M>(of messageType: M.Type = M.self, extensions: (any VideoSDKRTC.ExtensionMap)? = nil, partial: Swift.Bool = false, options: VideoSDKRTC.BinaryDecodingOptions = BinaryDecodingOptions()) -> VideoSDKRTC.AsyncMessageSequence<Self, M> where M : VideoSDKRTC.Message {
     AsyncMessageSequence<Self, M>(
       base: self,
       extensions: extensions,
@@ -7134,12 +7156,12 @@ extension _Concurrency.AsyncSequence where Self.Element == Swift.UInt8 {
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 public struct AsyncMessageSequence<Base, M> : _Concurrency.AsyncSequence where Base : _Concurrency.AsyncSequence, M : VideoSDKRTC.Message, Base.Element == Swift.UInt8 {
   public typealias Element = M
-  public init(base: Base, extensions: VideoSDKRTC.ExtensionMap? = nil, partial: Swift.Bool = false, options: VideoSDKRTC.BinaryDecodingOptions = BinaryDecodingOptions())
+  public init(base: Base, extensions: (any VideoSDKRTC.ExtensionMap)? = nil, partial: Swift.Bool = false, options: VideoSDKRTC.BinaryDecodingOptions = BinaryDecodingOptions())
   public struct AsyncIterator : _Concurrency.AsyncIteratorProtocol {
     @usableFromInline
     internal var iterator: Base.AsyncIterator?
     @usableFromInline
-    internal let extensions: VideoSDKRTC.ExtensionMap?
+    internal let extensions: (any VideoSDKRTC.ExtensionMap)?
     @usableFromInline
     internal let partial: Swift.Bool
     @usableFromInline
@@ -7230,7 +7252,7 @@ public protocol Span : AnyObject, Swift.CustomStringConvertible {
 }
 extension VideoSDKRTC.Span {
   public func hash(into hasher: inout Swift.Hasher)
-  public static func == (lhs: VideoSDKRTC.Span, rhs: VideoSDKRTC.Span) -> Swift.Bool
+  public static func == (lhs: any VideoSDKRTC.Span, rhs: any VideoSDKRTC.Span) -> Swift.Bool
 }
 extension VideoSDKRTC.Span {
   public func setAttribute(key: Swift.String, value: Swift.String)
@@ -7252,7 +7274,7 @@ public struct SpanAdapter {
 }
 public protocol SpanBuilder : AnyObject {
   @discardableResult
-  func setParent(_ parent: VideoSDKRTC.Span) -> Self
+  func setParent(_ parent: any VideoSDKRTC.Span) -> Self
   @discardableResult
   func setParent(_ parent: VideoSDKRTC.SpanContext) -> Self
   @discardableResult
@@ -7277,7 +7299,7 @@ public protocol SpanBuilder : AnyObject {
   func setStartTime(time: Foundation.Date) -> Self
   @discardableResult
   func setActive(_ active: Swift.Bool) -> Self
-  func startSpan() -> VideoSDKRTC.Span
+  func startSpan() -> any VideoSDKRTC.Span
 }
 extension VideoSDKRTC.SpanBuilder {
   @discardableResult
@@ -7314,11 +7336,11 @@ public struct SpanContext : Swift.Equatable, Swift.CustomStringConvertible, Swif
     get
   }
   public func hash(into hasher: inout Swift.Hasher)
-  public func encode(to encoder: Swift.Encoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
   public var hashValue: Swift.Int {
     get
   }
-  public init(from decoder: Swift.Decoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 public struct SpanData : Swift.Equatable, Swift.Codable {
   public var traceId: VideoSDKRTC.TraceId {
@@ -7420,8 +7442,8 @@ public struct SpanData : Swift.Equatable, Swift.Codable {
   public mutating func settingTotalRecordedLinks(_ totalRecordedLinks: Swift.Int) -> VideoSDKRTC.SpanData
   @discardableResult
   public mutating func settingTotalAttributeCount(_ totalAttributeCount: Swift.Int) -> VideoSDKRTC.SpanData
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 extension VideoSDKRTC.SpanData {
   public struct Event : Swift.Equatable, Swift.Codable {
@@ -7437,8 +7459,8 @@ extension VideoSDKRTC.SpanData {
     public init(name: Swift.String, timestamp: Foundation.Date, attributes: [Swift.String : VideoSDKRTC.AttributeValue]? = nil)
     public init(timestamp: Foundation.Date, event: VideoSDKRTC.SpanData.Event)
     public static func == (a: VideoSDKRTC.SpanData.Event, b: VideoSDKRTC.SpanData.Event) -> Swift.Bool
-    public func encode(to encoder: Swift.Encoder) throws
-    public init(from decoder: Swift.Decoder) throws
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
 }
 extension VideoSDKRTC.SpanData {
@@ -7446,8 +7468,8 @@ extension VideoSDKRTC.SpanData {
     public let context: VideoSDKRTC.SpanContext
     public let attributes: [Swift.String : VideoSDKRTC.AttributeValue]
     public init(context: VideoSDKRTC.SpanContext, attributes: [Swift.String : VideoSDKRTC.AttributeValue] = [String: AttributeValue]())
-    public func encode(to encoder: Swift.Encoder) throws
-    public init(from decoder: Swift.Decoder) throws
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
 }
 public func == (lhs: VideoSDKRTC.SpanData.Link, rhs: VideoSDKRTC.SpanData.Link) -> Swift.Bool
@@ -7497,11 +7519,11 @@ public struct SpanId : Swift.Equatable, Swift.Comparable, Swift.Hashable, Swift.
   public static func < (lhs: VideoSDKRTC.SpanId, rhs: VideoSDKRTC.SpanId) -> Swift.Bool
   public static func == (lhs: VideoSDKRTC.SpanId, rhs: VideoSDKRTC.SpanId) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
-  public func encode(to encoder: Swift.Encoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
   public var hashValue: Swift.Int {
     get
   }
-  public init(from decoder: Swift.Decoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 extension VideoSDKRTC.Google_Protobuf_Struct : Swift.ExpressibleByDictionaryLiteral {
   public typealias Key = Swift.String
@@ -7559,8 +7581,8 @@ public struct SpanLimits : Swift.Equatable {
 public protocol SpanProcessor {
   var isStartRequired: Swift.Bool { get }
   var isEndRequired: Swift.Bool { get }
-  func onStart(parentContext: VideoSDKRTC.SpanContext?, span: VideoSDKRTC.ReadableSpan)
-  mutating func onEnd(span: VideoSDKRTC.ReadableSpan)
+  func onStart(parentContext: VideoSDKRTC.SpanContext?, span: any VideoSDKRTC.ReadableSpan)
+  mutating func onEnd(span: any VideoSDKRTC.ReadableSpan)
   mutating func shutdown()
   func forceFlush(timeout: Foundation.TimeInterval?)
 }
@@ -7581,36 +7603,36 @@ public enum AnyUnpackError : Swift.Error {
   }
 }
 public protocol StableMeter {
-  func counterBuilder(name: Swift.String) -> VideoSDKRTC.LongCounterBuilder
-  func upDownCounterBuilder(name: Swift.String) -> VideoSDKRTC.LongUpDownCounterBuilder
-  func histogramBuilder(name: Swift.String) -> VideoSDKRTC.DoubleHistogramBuilder
-  func gaugeBuilder(name: Swift.String) -> VideoSDKRTC.DoubleGaugeBuilder
+  func counterBuilder(name: Swift.String) -> any VideoSDKRTC.LongCounterBuilder
+  func upDownCounterBuilder(name: Swift.String) -> any VideoSDKRTC.LongUpDownCounterBuilder
+  func histogramBuilder(name: Swift.String) -> any VideoSDKRTC.DoubleHistogramBuilder
+  func gaugeBuilder(name: Swift.String) -> any VideoSDKRTC.DoubleGaugeBuilder
 }
 public protocol StableMeterProvider : AnyObject {
-  func get(name: Swift.String) -> VideoSDKRTC.StableMeter
-  func meterBuilder(name: Swift.String) -> VideoSDKRTC.MeterBuilder
+  func get(name: Swift.String) -> any VideoSDKRTC.StableMeter
+  func meterBuilder(name: Swift.String) -> any VideoSDKRTC.MeterBuilder
 }
 public class StableMeterProviderBuilder {
-  public var clock: VideoSDKRTC.Clock {
+  public var clock: any VideoSDKRTC.Clock {
     get
   }
   public var resource: VideoSDKRTC.Resource {
     get
   }
-  public var metricReaders: [VideoSDKRTC.StableMetricReader] {
+  public var metricReaders: [any VideoSDKRTC.StableMetricReader] {
     get
   }
   public var registeredViews: [VideoSDKRTC.RegisteredView] {
     get
   }
-  public var exemplarFilter: VideoSDKRTC.ExemplarFilter {
+  public var exemplarFilter: any VideoSDKRTC.ExemplarFilter {
     get
   }
   public init()
-  public func setClock(clock: VideoSDKRTC.Clock) -> Self
+  public func setClock(clock: any VideoSDKRTC.Clock) -> Self
   public func setResource(resource: VideoSDKRTC.Resource) -> Self
   public func registerView(selector: VideoSDKRTC.InstrumentSelector, view: VideoSDKRTC.StableView) -> Self
-  public func registerMetricReader(reader: VideoSDKRTC.StableMetricReader) -> Self
+  public func registerMetricReader(reader: any VideoSDKRTC.StableMetricReader) -> Self
   public func build() -> VideoSDKRTC.StableMeterProviderSdk
   @objc deinit
 }
@@ -7618,16 +7640,16 @@ public class StableMeterProviderBuilder {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class StableMeterProviderSdk : VideoSDKRTC.StableMeterProvider {
-  public func get(name: Swift.String) -> VideoSDKRTC.StableMeter
-  public func meterBuilder(name: Swift.String) -> VideoSDKRTC.MeterBuilder
+  public func get(name: Swift.String) -> any VideoSDKRTC.StableMeter
+  public func meterBuilder(name: Swift.String) -> any VideoSDKRTC.MeterBuilder
   public static func builder() -> VideoSDKRTC.StableMeterProviderBuilder
   public func shutdown() -> VideoSDKRTC.ExportResult
   public func forceFlush() -> VideoSDKRTC.ExportResult
   @objc deinit
 }
 public class MeterProviderSharedState {
-  public init(clock: VideoSDKRTC.Clock, resource: VideoSDKRTC.Resource, startEpochNanos: Swift.UInt64, exemplarFilter: VideoSDKRTC.ExemplarFilter)
-  public var clock: VideoSDKRTC.Clock {
+  public init(clock: any VideoSDKRTC.Clock, resource: VideoSDKRTC.Resource, startEpochNanos: Swift.UInt64, exemplarFilter: any VideoSDKRTC.ExemplarFilter)
+  public var clock: any VideoSDKRTC.Clock {
     get
   }
   public var resource: VideoSDKRTC.Resource {
@@ -7636,7 +7658,7 @@ public class MeterProviderSharedState {
   public var startEpochNanos: Swift.UInt64 {
     get
   }
-  public var exemplarFilter: VideoSDKRTC.ExemplarFilter {
+  public var exemplarFilter: any VideoSDKRTC.ExemplarFilter {
     get
   }
   @objc deinit
@@ -7723,12 +7745,12 @@ public protocol StableMetricExporter : VideoSDKRTC.AggregationTemporalitySelecto
   func shutdown() -> VideoSDKRTC.ExportResult
 }
 extension VideoSDKRTC.StableMetricExporter {
-  public func getDefaultAggregation(for instrument: VideoSDKRTC.InstrumentType) -> VideoSDKRTC.Aggregation
+  public func getDefaultAggregation(for instrument: VideoSDKRTC.InstrumentType) -> any VideoSDKRTC.Aggregation
 }
 public protocol StableMetricReader : VideoSDKRTC.AggregationTemporalitySelectorProtocol, VideoSDKRTC.DefaultAggregationSelector {
   func forceFlush() -> VideoSDKRTC.ExportResult
   func shutdown() -> VideoSDKRTC.ExportResult
-  func register(registration: VideoSDKRTC.CollectionRegistration)
+  func register(registration: any VideoSDKRTC.CollectionRegistration)
 }
 @_hasMissingDesignatedInitializers public class StableObservableMeasurementSdk : VideoSDKRTC.ObservableLongMeasurement, VideoSDKRTC.ObservableDoubleMeasurement {
   public var descriptor: VideoSDKRTC.InstrumentDescriptor {
@@ -7816,24 +7838,24 @@ extension VideoSDKRTC.Google_Protobuf_Mixin : VideoSDKRTC.Message, VideoSDKRTC._
   }
 }
 public class StablePeriodicMetricReaderBuilder {
-  public var exporter: VideoSDKRTC.StableMetricExporter {
+  public var exporter: any VideoSDKRTC.StableMetricExporter {
     get
   }
   public var exporterInterval: Swift.Double {
     get
   }
-  public init(exporter: VideoSDKRTC.StableMetricExporter)
+  public init(exporter: any VideoSDKRTC.StableMetricExporter)
   public func setInterval(timeInterval: Foundation.TimeInterval) -> Self
   public func build() -> VideoSDKRTC.StablePeriodicMetricReaderSdk
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class StablePeriodicMetricReaderSdk : VideoSDKRTC.StableMetricReader {
   @objc deinit
-  public func register(registration: VideoSDKRTC.CollectionRegistration)
+  public func register(registration: any VideoSDKRTC.CollectionRegistration)
   public func forceFlush() -> VideoSDKRTC.ExportResult
   public func shutdown() -> VideoSDKRTC.ExportResult
   public func getAggregationTemporality(for instrument: VideoSDKRTC.InstrumentType) -> VideoSDKRTC.AggregationTemporality
-  public func getDefaultAggregation(for instrument: VideoSDKRTC.InstrumentType) -> VideoSDKRTC.Aggregation
+  public func getDefaultAggregation(for instrument: VideoSDKRTC.InstrumentType) -> any VideoSDKRTC.Aggregation
 }
 @_hasMissingDesignatedInitializers public class StableView {
   public var name: Swift.String? {
@@ -7842,7 +7864,7 @@ public class StablePeriodicMetricReaderBuilder {
   public var description: Swift.String? {
     get
   }
-  public var aggregation: VideoSDKRTC.Aggregation {
+  public var aggregation: any VideoSDKRTC.Aggregation {
     get
   }
   public var attributeProcessor: VideoSDKRTC.AttributeProcessor {
@@ -7879,8 +7901,8 @@ extension VideoSDKRTC.Status : Swift.CustomStringConvertible {
   }
 }
 extension VideoSDKRTC.Status : Swift.Codable {
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 public struct Google_Protobuf_FieldMask {
   public var paths: [Swift.String]
@@ -7908,7 +7930,7 @@ public struct StringUtils {
     get
   }
   public func isCompatible(with descriptor: VideoSDKRTC.InstrumentDescriptor) -> Swift.Bool
-  public func createAggregator(descriptor: VideoSDKRTC.InstrumentDescriptor, exemplarFilter: VideoSDKRTC.ExemplarFilter) -> VideoSDKRTC.StableAggregator
+  public func createAggregator(descriptor: VideoSDKRTC.InstrumentDescriptor, exemplarFilter: any VideoSDKRTC.ExemplarFilter) -> any VideoSDKRTC.StableAggregator
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class SumAggregator {
@@ -7918,7 +7940,7 @@ public struct StringUtils {
 @_hasMissingDesignatedInitializers public class SummaryPointData : VideoSDKRTC.PointData {
   public var count: Swift.UInt64
   public var sum: Swift.Double
-  public var values: [VideoSDKRTC.ValueAtQuantile]
+  public var values: [any VideoSDKRTC.ValueAtQuantile]
   @objc deinit
 }
 extension Swift.Double {
@@ -7937,9 +7959,9 @@ extension Swift.Double {
 }
 extension VideoSDKRTC.Google_Protobuf_Any {
   @discardableResult
-  public static func register(messageType: VideoSDKRTC.Message.Type) -> Swift.Bool
-  public static func messageType(forTypeURL url: Swift.String) -> VideoSDKRTC.Message.Type?
-  public static func messageType(forMessageName name: Swift.String) -> VideoSDKRTC.Message.Type?
+  public static func register(messageType: any VideoSDKRTC.Message.Type) -> Swift.Bool
+  public static func messageType(forTypeURL url: Swift.String) -> (any VideoSDKRTC.Message.Type)?
+  public static func messageType(forMessageName name: Swift.String) -> (any VideoSDKRTC.Message.Type)?
 }
 @_hasMissingDesignatedInitializers public class SynchronousMetricStorage {
   public var metricDescriptor: VideoSDKRTC.MetricDescriptor {
@@ -7964,20 +7986,20 @@ public enum BinaryDelimited {
       get
     }
   }
-  public static func serialize(message: VideoSDKRTC.Message, to stream: Foundation.OutputStream, partial: Swift.Bool = false) throws
-  public static func parse<M>(messageType: M.Type, from stream: Foundation.InputStream, extensions: VideoSDKRTC.ExtensionMap? = nil, partial: Swift.Bool = false, options: VideoSDKRTC.BinaryDecodingOptions = BinaryDecodingOptions()) throws -> M where M : VideoSDKRTC.Message
-  public static func merge<M>(into message: inout M, from stream: Foundation.InputStream, extensions: VideoSDKRTC.ExtensionMap? = nil, partial: Swift.Bool = false, options: VideoSDKRTC.BinaryDecodingOptions = BinaryDecodingOptions()) throws where M : VideoSDKRTC.Message
+  public static func serialize(message: any VideoSDKRTC.Message, to stream: Foundation.OutputStream, partial: Swift.Bool = false) throws
+  public static func parse<M>(messageType: M.Type, from stream: Foundation.InputStream, extensions: (any VideoSDKRTC.ExtensionMap)? = nil, partial: Swift.Bool = false, options: VideoSDKRTC.BinaryDecodingOptions = BinaryDecodingOptions()) throws -> M where M : VideoSDKRTC.Message
+  public static func merge<M>(into message: inout M, from stream: Foundation.InputStream, extensions: (any VideoSDKRTC.ExtensionMap)? = nil, partial: Swift.Bool = false, options: VideoSDKRTC.BinaryDecodingOptions = BinaryDecodingOptions()) throws where M : VideoSDKRTC.Message
 }
 public protocol TextMapBaggagePropagator {
   var fields: Swift.Set<Swift.String> { get }
-  func inject<S>(baggage: VideoSDKRTC.Baggage, carrier: inout [Swift.String : Swift.String], setter: S) where S : VideoSDKRTC.Setter
+  func inject<S>(baggage: any VideoSDKRTC.Baggage, carrier: inout [Swift.String : Swift.String], setter: S) where S : VideoSDKRTC.Setter
   @discardableResult
-  func extract<G>(carrier: [Swift.String : Swift.String], getter: G) -> VideoSDKRTC.Baggage? where G : VideoSDKRTC.Getter
+  func extract<G>(carrier: [Swift.String : Swift.String], getter: G) -> (any VideoSDKRTC.Baggage)? where G : VideoSDKRTC.Getter
 }
 public enum Internal {
   public static let emptyData: Foundation.Data
-  public static func areAllInitialized(_ listOfMessages: [VideoSDKRTC.Message]) -> Swift.Bool
-  public static func areAllInitialized<K>(_ mapToMessages: [K : VideoSDKRTC.Message]) -> Swift.Bool where K : Swift.Hashable
+  public static func areAllInitialized(_ listOfMessages: [any VideoSDKRTC.Message]) -> Swift.Bool
+  public static func areAllInitialized<K>(_ mapToMessages: [K : any VideoSDKRTC.Message]) -> Swift.Bool where K : Swift.Hashable
 }
 public protocol TextMapPropagator {
   var fields: Swift.Set<Swift.String> { get }
@@ -8206,9 +8228,9 @@ extension VideoSDKRTC.Message {
   public func jsonString(options: VideoSDKRTC.JSONEncodingOptions = JSONEncodingOptions()) throws -> Swift.String
   public func jsonUTF8Bytes<Bytes>(options: VideoSDKRTC.JSONEncodingOptions = JSONEncodingOptions()) throws -> Bytes where Bytes : VideoSDKRTC.SwiftProtobufContiguousBytes
   public init(jsonString: Swift.String, options: VideoSDKRTC.JSONDecodingOptions = JSONDecodingOptions()) throws
-  public init(jsonString: Swift.String, extensions: VideoSDKRTC.ExtensionMap? = nil, options: VideoSDKRTC.JSONDecodingOptions = JSONDecodingOptions()) throws
+  public init(jsonString: Swift.String, extensions: (any VideoSDKRTC.ExtensionMap)? = nil, options: VideoSDKRTC.JSONDecodingOptions = JSONDecodingOptions()) throws
   public init<Bytes>(jsonUTF8Bytes: Bytes, options: VideoSDKRTC.JSONDecodingOptions = JSONDecodingOptions()) throws where Bytes : VideoSDKRTC.SwiftProtobufContiguousBytes
-  public init<Bytes>(jsonUTF8Bytes: Bytes, extensions: VideoSDKRTC.ExtensionMap? = nil, options: VideoSDKRTC.JSONDecodingOptions = JSONDecodingOptions()) throws where Bytes : VideoSDKRTC.SwiftProtobufContiguousBytes
+  public init<Bytes>(jsonUTF8Bytes: Bytes, extensions: (any VideoSDKRTC.ExtensionMap)? = nil, options: VideoSDKRTC.JSONDecodingOptions = JSONDecodingOptions()) throws where Bytes : VideoSDKRTC.SwiftProtobufContiguousBytes
 }
 public struct Opentelemetry_Proto_Collector_Trace_V1_ExportTraceServiceRequest {
   public var resourceSpans: [VideoSDKRTC.Opentelemetry_Proto_Trace_V1_ResourceSpans]
@@ -8288,8 +8310,8 @@ public struct TraceFlags : Swift.Equatable, Swift.CustomStringConvertible, Swift
     get
   }
   public static func == (a: VideoSDKRTC.TraceFlags, b: VideoSDKRTC.TraceFlags) -> Swift.Bool
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 public struct TraceId : Swift.Comparable, Swift.Hashable, Swift.CustomStringConvertible, Swift.Equatable, Swift.Codable {
   public static let size: Swift.Int
@@ -8330,23 +8352,23 @@ public struct TraceId : Swift.Comparable, Swift.Hashable, Swift.CustomStringConv
   public static func < (lhs: VideoSDKRTC.TraceId, rhs: VideoSDKRTC.TraceId) -> Swift.Bool
   public static func == (lhs: VideoSDKRTC.TraceId, rhs: VideoSDKRTC.TraceId) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
-  public func encode(to encoder: Swift.Encoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
   public var hashValue: Swift.Int {
     get
   }
-  public init(from decoder: Swift.Decoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 public protocol Tracer : AnyObject {
-  func spanBuilder(spanName: Swift.String) -> VideoSDKRTC.SpanBuilder
+  func spanBuilder(spanName: Swift.String) -> any VideoSDKRTC.SpanBuilder
 }
 public protocol TracerProvider {
-  func get(instrumentationName: Swift.String, instrumentationVersion: Swift.String?) -> VideoSDKRTC.Tracer
+  func get(instrumentationName: Swift.String, instrumentationVersion: Swift.String?) -> any VideoSDKRTC.Tracer
 }
 public class TracerProviderBuilder {
-  public var clock: VideoSDKRTC.Clock {
+  public var clock: any VideoSDKRTC.Clock {
     get
   }
-  public var idGenerator: VideoSDKRTC.IdGenerator {
+  public var idGenerator: any VideoSDKRTC.IdGenerator {
     get
   }
   public var resource: VideoSDKRTC.Resource {
@@ -8355,46 +8377,46 @@ public class TracerProviderBuilder {
   public var spanLimits: VideoSDKRTC.SpanLimits {
     get
   }
-  public var sampler: VideoSDKRTC.Sampler {
+  public var sampler: any VideoSDKRTC.Sampler {
     get
   }
-  public var spanProcessors: [VideoSDKRTC.SpanProcessor] {
+  public var spanProcessors: [any VideoSDKRTC.SpanProcessor] {
     get
   }
   public init()
-  public func with(clock: VideoSDKRTC.Clock) -> Self
-  public func with(idGenerator: VideoSDKRTC.IdGenerator) -> Self
+  public func with(clock: any VideoSDKRTC.Clock) -> Self
+  public func with(idGenerator: any VideoSDKRTC.IdGenerator) -> Self
   public func with(resource: VideoSDKRTC.Resource) -> Self
   public func with(spanLimits: VideoSDKRTC.SpanLimits) -> Self
-  public func with(sampler: VideoSDKRTC.Sampler) -> Self
-  public func add(spanProcessor: VideoSDKRTC.SpanProcessor) -> Self
-  public func add(spanProcessors: [VideoSDKRTC.SpanProcessor]) -> Self
+  public func with(sampler: any VideoSDKRTC.Sampler) -> Self
+  public func add(spanProcessor: any VideoSDKRTC.SpanProcessor) -> Self
+  public func add(spanProcessors: [any VideoSDKRTC.SpanProcessor]) -> Self
   public func build() -> VideoSDKRTC.TracerProviderSdk
   @objc deinit
 }
 public class TracerProviderSdk : VideoSDKRTC.TracerProvider {
-  public init(clock: VideoSDKRTC.Clock = MillisClock(), idGenerator: VideoSDKRTC.IdGenerator = RandomIdGenerator(), resource: VideoSDKRTC.Resource = EnvVarResource.get(), spanLimits: VideoSDKRTC.SpanLimits = SpanLimits(), sampler: VideoSDKRTC.Sampler = Samplers.parentBased(root: Samplers.alwaysOn), spanProcessors: [VideoSDKRTC.SpanProcessor] = [])
+  public init(clock: any VideoSDKRTC.Clock = MillisClock(), idGenerator: any VideoSDKRTC.IdGenerator = RandomIdGenerator(), resource: VideoSDKRTC.Resource = EnvVarResource.get(), spanLimits: VideoSDKRTC.SpanLimits = SpanLimits(), sampler: any VideoSDKRTC.Sampler = Samplers.parentBased(root: Samplers.alwaysOn), spanProcessors: [any VideoSDKRTC.SpanProcessor] = [])
   @objc deinit
-  public func get(instrumentationName: Swift.String, instrumentationVersion: Swift.String? = nil) -> VideoSDKRTC.Tracer
-  public func getActiveClock() -> VideoSDKRTC.Clock
-  public func updateActiveClock(_ newClock: VideoSDKRTC.Clock)
-  public func getActiveIdGenerator() -> VideoSDKRTC.IdGenerator
-  public func updateActiveIdGenerator(_ newGenerator: VideoSDKRTC.IdGenerator)
+  public func get(instrumentationName: Swift.String, instrumentationVersion: Swift.String? = nil) -> any VideoSDKRTC.Tracer
+  public func getActiveClock() -> any VideoSDKRTC.Clock
+  public func updateActiveClock(_ newClock: any VideoSDKRTC.Clock)
+  public func getActiveIdGenerator() -> any VideoSDKRTC.IdGenerator
+  public func updateActiveIdGenerator(_ newGenerator: any VideoSDKRTC.IdGenerator)
   public func getActiveResource() -> VideoSDKRTC.Resource
   public func updateActiveResource(_ newResource: VideoSDKRTC.Resource)
   public func getActiveSpanLimits() -> VideoSDKRTC.SpanLimits
   public func updateActiveSpanLimits(_ spanLimits: VideoSDKRTC.SpanLimits)
-  public func getActiveSampler() -> VideoSDKRTC.Sampler
-  public func updateActiveSampler(_ newSampler: VideoSDKRTC.Sampler)
-  public func getActiveSpanProcessors() -> [VideoSDKRTC.SpanProcessor]
-  public func addSpanProcessor(_ spanProcessor: VideoSDKRTC.SpanProcessor)
+  public func getActiveSampler() -> any VideoSDKRTC.Sampler
+  public func updateActiveSampler(_ newSampler: any VideoSDKRTC.Sampler)
+  public func getActiveSpanProcessors() -> [any VideoSDKRTC.SpanProcessor]
+  public func addSpanProcessor(_ spanProcessor: any VideoSDKRTC.SpanProcessor)
   public func resetSpanProcessors()
   public func shutdown()
   public func forceFlush(timeout: Foundation.TimeInterval? = nil)
 }
 @_hasMissingDesignatedInitializers public class TracerSdk : VideoSDKRTC.Tracer {
   final public let instrumentationScopeInfo: VideoSDKRTC.InstrumentationScopeInfo
-  public func spanBuilder(spanName: Swift.String) -> VideoSDKRTC.SpanBuilder
+  public func spanBuilder(spanName: Swift.String) -> any VideoSDKRTC.SpanBuilder
   @objc deinit
 }
 public struct TraceState : Swift.Equatable, Swift.Codable {
@@ -8415,12 +8437,12 @@ public struct TraceState : Swift.Equatable, Swift.Codable {
     }
     public init?(key: Swift.String, value: Swift.String)
     public static func == (a: VideoSDKRTC.TraceState.Entry, b: VideoSDKRTC.TraceState.Entry) -> Swift.Bool
-    public func encode(to encoder: Swift.Encoder) throws
-    public init(from decoder: Swift.Decoder) throws
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
   public static func == (a: VideoSDKRTC.TraceState, b: VideoSDKRTC.TraceState) -> Swift.Bool
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 public enum Google_Protobuf_NullValue : VideoSDKRTC.Enum {
   public typealias RawValue = Swift.Int
@@ -8556,7 +8578,7 @@ public protocol Message : VideoSDKRTC._MessageBase {
   mutating func decodeMessage<D>(decoder: inout D) throws where D : VideoSDKRTC.SPBDecoder
   func traverse<V>(visitor: inout V) throws where V : VideoSDKRTC.Visitor
   func hash(into hasher: inout Swift.Hasher)
-  func isEqualTo(message: VideoSDKRTC.Message) -> Swift.Bool
+  func isEqualTo(message: any VideoSDKRTC.Message) -> Swift.Bool
 }
 public protocol _MessageBase : Swift.Sendable {
 }
@@ -8571,7 +8593,7 @@ public protocol _MessageImplementationBase : Swift.Hashable, VideoSDKRTC.Message
   func _protobuf_generated_isEqualTo(other: Self) -> Swift.Bool
 }
 extension VideoSDKRTC._MessageImplementationBase {
-  public func isEqualTo(message: VideoSDKRTC.Message) -> Swift.Bool
+  public func isEqualTo(message: any VideoSDKRTC.Message) -> Swift.Bool
   public static func == (lhs: Self, rhs: Self) -> Swift.Bool
   public func _protobuf_generated_isEqualTo(other: Self) -> Swift.Bool
 }
@@ -8631,7 +8653,7 @@ extension VideoSDKRTC.Google_Protobuf_Value {
 @_hasMissingDesignatedInitializers public class ViewBuilder {
   public func withName(name: Swift.String) -> Self
   public func withDescription(description: Swift.String) -> Self
-  public func withAggregation(aggregation: VideoSDKRTC.Aggregation) -> Self
+  public func withAggregation(aggregation: any VideoSDKRTC.Aggregation) -> Self
   public func addAttributeFilter(keyFilter: @escaping (Swift.String) -> Swift.Bool) -> Self
   public func addAttributeProcessor(processor: VideoSDKRTC.AttributeProcessor) -> Self
   public func build() -> VideoSDKRTC.StableView
@@ -8640,8 +8662,8 @@ extension VideoSDKRTC.Google_Protobuf_Value {
 public struct W3CBaggagePropagator : VideoSDKRTC.TextMapBaggagePropagator {
   public init()
   public let fields: Swift.Set<Swift.String>
-  public func inject<S>(baggage: VideoSDKRTC.Baggage, carrier: inout [Swift.String : Swift.String], setter: S) where S : VideoSDKRTC.Setter
-  public func extract<G>(carrier: [Swift.String : Swift.String], getter: G) -> VideoSDKRTC.Baggage? where G : VideoSDKRTC.Getter
+  public func inject<S>(baggage: any VideoSDKRTC.Baggage, carrier: inout [Swift.String : Swift.String], setter: S) where S : VideoSDKRTC.Setter
+  public func extract<G>(carrier: [Swift.String : Swift.String], getter: G) -> (any VideoSDKRTC.Baggage)? where G : VideoSDKRTC.Getter
 }
 public struct W3CTraceContextPropagator : VideoSDKRTC.TextMapPropagator {
   public init()
