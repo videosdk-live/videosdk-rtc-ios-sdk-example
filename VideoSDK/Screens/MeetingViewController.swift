@@ -53,7 +53,7 @@ private let RAISE_HAND_TOPIC = "RAISE_HAND"
 
 var isConference: Bool = true
 
-class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScrollViewDelegate, UNUserNotificationCenterDelegate {
+class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScrollViewDelegate, UNUserNotificationCenterDelegate, UICollectionViewDelegate {
     
     // MARK: - View
     
@@ -322,13 +322,17 @@ extension MeetingViewController: MeetingEventListener {
         }
         
         // add to list
-        participants.append(localParticipant)
-        
+        participants.insert(localParticipant, at: 0)
+            
         // add event listener
         localParticipant.addEventListener(self)
         
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
         // show in ui
-        addParticipantToGridView()
+            // addParticipantToGridView()
+        updateCollectionViewLayout()
         
         // listen/subscribe for chat topic
         meeting?.pubsub.subscribe(topic: CHAT_TOPIC, forListener: self)
@@ -360,7 +364,8 @@ extension MeetingViewController: MeetingEventListener {
         participant.addEventListener(self)
         
         // show in ui
-        addParticipantToGridView()
+//        addParticipantToGridView()
+        updateCollectionViewLayout()
         
         //notification to participants via sharing participants
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "shareParticipants"), object: nil, userInfo: ["participants": participants])
@@ -1050,11 +1055,13 @@ private extension MeetingViewController {
     }
     
     func cellForParticipant(_ participant: Participant) -> ParticipantViewCell? {
-        if let indexPath = self.indexPaths[participant.id],
-           let cell = self.collectionView.cellForItem(at: indexPath) as? ParticipantViewCell {
+//        if let indexPath = self.indexPaths[participant.id],
+//           let cell = self.collectionView.cellForItem(at: indexPath) as? ParticipantViewCell {
+//            return cell
+//        }
+//        return nil
+        let cell = collectionView.cellForItem(at: IndexPath(item: self.participants.firstIndex(of: participant) ?? 0, section: 0)) as? ParticipantViewCell
             return cell
-        }
-        return nil
     }
     
     func addAudioChangeObserver() {
