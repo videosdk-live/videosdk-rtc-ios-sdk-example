@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		40CEA634E8DF618A5BD0D6F7 /* Pods_VideoSDKRTC_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB1FDFBC9A306BDF5A4BFFD7 /* Pods_VideoSDKRTC_Example.framework */; };
+		6BA151E32BC902BB00D9FC4B /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA151E22BC902BB00D9FC4B /* ReplayKit.framework */; };
+		6BA151EA2BC902BB00D9FC4B /* VideoSDKScreenShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6BA151E12BC902BB00D9FC4B /* VideoSDKScreenShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6BA151F52BC9034000D9FC4B /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA151F02BC9034000D9FC4B /* SampleHandler.swift */; };
+		6BA151F62BC9034000D9FC4B /* DarwinNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA151F12BC9034000D9FC4B /* DarwinNotification.swift */; };
+		6BA151F72BC9034000D9FC4B /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA151F22BC9034000D9FC4B /* Atomic.swift */; };
+		6BA151F82BC9034000D9FC4B /* SampleUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA151F32BC9034000D9FC4B /* SampleUploader.swift */; };
+		6BA151F92BC9034000D9FC4B /* SocketConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA151F42BC9034000D9FC4B /* SocketConnection.swift */; };
 		B21ECEBD296EEF6000A48C5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21ECEBC296EEF6000A48C5B /* AppDelegate.swift */; };
 		B21ECEBF296EEF6000A48C5B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21ECEBE296EEF6000A48C5B /* SceneDelegate.swift */; };
 		B21ECEC1296EEF6000A48C5B /* MeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21ECEC0296EEF6000A48C5B /* MeetingViewController.swift */; };
@@ -39,9 +46,44 @@
 		B2F7E50029845C7300F21FDA /* ButtonControlsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2F7E4FF29845C7200F21FDA /* ButtonControlsView.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6BA151E82BC902BB00D9FC4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B21ECEB1296EEF6000A48C5B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6BA151E02BC902BB00D9FC4B;
+			remoteInfo = VideoSDKScreenShare;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6BA151EB2BC902BB00D9FC4B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6BA151EA2BC902BB00D9FC4B /* VideoSDKScreenShare.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1024F6C02786C91AD0868289 /* Pods-VideoSDKRTC_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoSDKRTC_Example.debug.xcconfig"; path = "Target Support Files/Pods-VideoSDKRTC_Example/Pods-VideoSDKRTC_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		42289B3ED1DE1946FDD7A0BD /* Pods-VideoSDKRTC_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoSDKRTC_Example.release.xcconfig"; path = "Target Support Files/Pods-VideoSDKRTC_Example/Pods-VideoSDKRTC_Example.release.xcconfig"; sourceTree = "<group>"; };
+		6BA151E12BC902BB00D9FC4B /* VideoSDKScreenShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VideoSDKScreenShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BA151E22BC902BB00D9FC4B /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
+		6BA151E72BC902BB00D9FC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BA151EF2BC9033F00D9FC4B /* VideoSDKScreenShare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VideoSDKScreenShare-Bridging-Header.h"; sourceTree = "<group>"; };
+		6BA151F02BC9034000D9FC4B /* SampleHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleHandler.swift; sourceTree = "<group>"; };
+		6BA151F12BC9034000D9FC4B /* DarwinNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarwinNotification.swift; sourceTree = "<group>"; };
+		6BA151F22BC9034000D9FC4B /* Atomic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Atomic.swift; sourceTree = "<group>"; };
+		6BA151F32BC9034000D9FC4B /* SampleUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleUploader.swift; sourceTree = "<group>"; };
+		6BA151F42BC9034000D9FC4B /* SocketConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketConnection.swift; sourceTree = "<group>"; };
+		6BA151FA2BC903A100D9FC4B /* VideoSDKRTC_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VideoSDKRTC_Example.entitlements; sourceTree = "<group>"; };
+		6BA151FB2BC903B600D9FC4B /* VideoSDKScreenShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VideoSDKScreenShare.entitlements; sourceTree = "<group>"; };
 		B21ECEB9296EEF6000A48C5B /* VideoSDKRTC_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoSDKRTC_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B21ECEBC296EEF6000A48C5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B21ECEBE296EEF6000A48C5B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +119,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6BA151DE2BC902BB00D9FC4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BA151E32BC902BB00D9FC4B /* ReplayKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B21ECEB6296EEF6000A48C5B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -92,14 +142,31 @@
 			isa = PBXGroup;
 			children = (
 				EB1FDFBC9A306BDF5A4BFFD7 /* Pods_VideoSDKRTC_Example.framework */,
+				6BA151E22BC902BB00D9FC4B /* ReplayKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6BA151E42BC902BB00D9FC4B /* VideoSDKScreenShare */ = {
+			isa = PBXGroup;
+			children = (
+				6BA151FB2BC903B600D9FC4B /* VideoSDKScreenShare.entitlements */,
+				6BA151F22BC9034000D9FC4B /* Atomic.swift */,
+				6BA151F12BC9034000D9FC4B /* DarwinNotification.swift */,
+				6BA151F02BC9034000D9FC4B /* SampleHandler.swift */,
+				6BA151F32BC9034000D9FC4B /* SampleUploader.swift */,
+				6BA151F42BC9034000D9FC4B /* SocketConnection.swift */,
+				6BA151E72BC902BB00D9FC4B /* Info.plist */,
+				6BA151EF2BC9033F00D9FC4B /* VideoSDKScreenShare-Bridging-Header.h */,
+			);
+			path = VideoSDKScreenShare;
 			sourceTree = "<group>";
 		};
 		B21ECEB0296EEF6000A48C5B = {
 			isa = PBXGroup;
 			children = (
 				B21ECEBB296EEF6000A48C5B /* VideoSDKRTC_Example */,
+				6BA151E42BC902BB00D9FC4B /* VideoSDKScreenShare */,
 				B21ECEBA296EEF6000A48C5B /* Products */,
 				C5753D31BB2782FAC5FD3B3B /* Pods */,
 				620C3FBF9C762544E88400A6 /* Frameworks */,
@@ -110,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				B21ECEB9296EEF6000A48C5B /* VideoSDKRTC_Example.app */,
+				6BA151E12BC902BB00D9FC4B /* VideoSDKScreenShare.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,6 +185,7 @@
 		B21ECEBB296EEF6000A48C5B /* VideoSDKRTC_Example */ = {
 			isa = PBXGroup;
 			children = (
+				6BA151FA2BC903A100D9FC4B /* VideoSDKRTC_Example.entitlements */,
 				B2EC504429829345009B612F /* views */,
 				B2AC8FED297B1A3D0036A038 /* models */,
 				B2E43CE62979C4C600EB7F75 /* API */,
@@ -211,6 +280,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6BA151E02BC902BB00D9FC4B /* VideoSDKScreenShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BA151EE2BC902BB00D9FC4B /* Build configuration list for PBXNativeTarget "VideoSDKScreenShare" */;
+			buildPhases = (
+				6BA151DD2BC902BB00D9FC4B /* Sources */,
+				6BA151DE2BC902BB00D9FC4B /* Frameworks */,
+				6BA151DF2BC902BB00D9FC4B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VideoSDKScreenShare;
+			productName = VideoSDKScreenShare;
+			productReference = 6BA151E12BC902BB00D9FC4B /* VideoSDKScreenShare.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		B21ECEB8296EEF6000A48C5B /* VideoSDKRTC_Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B21ECECD296EEF6100A48C5B /* Build configuration list for PBXNativeTarget "VideoSDKRTC_Example" */;
@@ -220,10 +306,12 @@
 				B21ECEB6296EEF6000A48C5B /* Frameworks */,
 				B21ECEB7296EEF6000A48C5B /* Resources */,
 				D8CF325BF28B2FCA2B3F1A51 /* [CP] Embed Pods Frameworks */,
+				6BA151EB2BC902BB00D9FC4B /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6BA151E92BC902BB00D9FC4B /* PBXTargetDependency */,
 			);
 			name = VideoSDKRTC_Example;
 			productName = VideoSDKRTC_Example;
@@ -237,9 +325,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1510;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
+					6BA151E02BC902BB00D9FC4B = {
+						CreatedOnToolsVersion = 15.1;
+						LastSwiftMigration = 1510;
+					};
 					B21ECEB8296EEF6000A48C5B = {
 						CreatedOnToolsVersion = 14.1;
 					};
@@ -259,11 +351,19 @@
 			projectRoot = "";
 			targets = (
 				B21ECEB8296EEF6000A48C5B /* VideoSDKRTC_Example */,
+				6BA151E02BC902BB00D9FC4B /* VideoSDKScreenShare */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6BA151DF2BC902BB00D9FC4B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B21ECEB7296EEF6000A48C5B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -321,6 +421,18 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6BA151DD2BC902BB00D9FC4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BA151F52BC9034000D9FC4B /* SampleHandler.swift in Sources */,
+				6BA151F82BC9034000D9FC4B /* SampleUploader.swift in Sources */,
+				6BA151F72BC9034000D9FC4B /* Atomic.swift in Sources */,
+				6BA151F62BC9034000D9FC4B /* DarwinNotification.swift in Sources */,
+				6BA151F92BC9034000D9FC4B /* SocketConnection.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B21ECEB5296EEF6000A48C5B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -354,6 +466,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		6BA151E92BC902BB00D9FC4B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6BA151E02BC902BB00D9FC4B /* VideoSDKScreenShare */;
+			targetProxy = 6BA151E82BC902BB00D9FC4B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		B21ECEC2296EEF6000A48C5B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -374,6 +494,76 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6BA151EC2BC902BB00D9FC4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = VideoSDKScreenShare/VideoSDKScreenShare.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8GZ776NSU2;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VideoSDKScreenShare/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VideoSDKScreenShare;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zujo.videosdk.example.VideoSDKScreenShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "VideoSDKScreenShare/VideoSDKScreenShare-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6BA151ED2BC902BB00D9FC4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = VideoSDKScreenShare/VideoSDKScreenShare.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8GZ776NSU2;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VideoSDKScreenShare/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VideoSDKScreenShare;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zujo.videosdk.example.VideoSDKScreenShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "VideoSDKScreenShare/VideoSDKScreenShare-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B21ECECB296EEF6100A48C5B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -492,8 +682,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1024F6C02786C91AD0868289 /* Pods-VideoSDKRTC_Example.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = VideoSDKRTC_Example/VideoSDKRTC_Example.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
@@ -528,8 +720,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 42289B3ED1DE1946FDD7A0BD /* Pods-VideoSDKRTC_Example.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = VideoSDKRTC_Example/VideoSDKRTC_Example.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
@@ -563,6 +757,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6BA151EE2BC902BB00D9FC4B /* Build configuration list for PBXNativeTarget "VideoSDKScreenShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BA151EC2BC902BB00D9FC4B /* Debug */,
+				6BA151ED2BC902BB00D9FC4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B21ECEB4296EEF6000A48C5B /* Build configuration list for PBXProject "VideoSDKRTC_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

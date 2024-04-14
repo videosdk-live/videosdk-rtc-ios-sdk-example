@@ -10,6 +10,9 @@
 #endif
 #endif
 
+#import "BroadcastScreenCapturer.h"
+#import "SocketConnection.h"
+#import "SocketConnectionFrameReader.h"
 
 FOUNDATION_EXPORT double VideoSDKRTCVersionNumber;
 FOUNDATION_EXPORT const unsigned char VideoSDKRTCVersionString[];
