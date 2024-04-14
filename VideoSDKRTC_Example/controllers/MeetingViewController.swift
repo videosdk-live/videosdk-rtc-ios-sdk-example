@@ -87,7 +87,7 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate 
         
         prepareUI()
         setupActions()
-        addAudioChangeObserver()
+//        addAudioChangeObserver()
         
         // config
         VideoSDK.config(token: meetingData.token)
