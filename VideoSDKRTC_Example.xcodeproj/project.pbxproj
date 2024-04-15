@@ -76,7 +76,6 @@
 		6BA151E12BC902BB00D9FC4B /* VideoSDKScreenShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VideoSDKScreenShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BA151E22BC902BB00D9FC4B /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
 		6BA151E72BC902BB00D9FC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6BA151EF2BC9033F00D9FC4B /* VideoSDKScreenShare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VideoSDKScreenShare-Bridging-Header.h"; sourceTree = "<group>"; };
 		6BA151F02BC9034000D9FC4B /* SampleHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleHandler.swift; sourceTree = "<group>"; };
 		6BA151F12BC9034000D9FC4B /* DarwinNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarwinNotification.swift; sourceTree = "<group>"; };
 		6BA151F22BC9034000D9FC4B /* Atomic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Atomic.swift; sourceTree = "<group>"; };
@@ -157,7 +156,6 @@
 				6BA151F32BC9034000D9FC4B /* SampleUploader.swift */,
 				6BA151F42BC9034000D9FC4B /* SocketConnection.swift */,
 				6BA151E72BC902BB00D9FC4B /* Info.plist */,
-				6BA151EF2BC9033F00D9FC4B /* VideoSDKScreenShare-Bridging-Header.h */,
 			);
 			path = VideoSDKScreenShare;
 			sourceTree = "<group>";
