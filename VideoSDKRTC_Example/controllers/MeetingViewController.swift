@@ -29,7 +29,9 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate 
     @IBOutlet weak var localParticipantViewContainer: UIView!
     @IBOutlet weak var localParticipantViewNameContainer: UIView!
     @IBOutlet weak var localParticipantViewVideoContainer: RTCMTLVideoView!
+    @IBOutlet weak var localScreenSharedView: UIView!
     
+    @IBOutlet weak var StopPresenting: UIButton!
     @IBOutlet weak var ivIsRecording: UIImageView!
     @IBOutlet weak var buttonsView: UIView!
     @IBOutlet weak var btnCopyMeetingId: UIButton!
@@ -37,6 +39,11 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate 
     @IBOutlet weak var btnRotateCamera: UIButton!
     @IBOutlet weak var lblMeetingId: UILabel!
     
+    @IBAction func StopPresentingTapped(_ sender: Any) {
+        Task {
+            await self.meeting?.disableScreenShare()
+        }
+    }
     // MARK: - Properties
     /// View for handling meeting controls consists of Mic, Video, and End buttons
     lazy var buttonControlsView: ButtonControlsView! = {
@@ -80,7 +87,7 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate 
         
         prepareUI()
         setupActions()
-        addAudioChangeObserver()
+//        addAudioChangeObserver()
         
         // config
         VideoSDK.config(token: meetingData.token)
@@ -137,7 +144,7 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate 
         buttonsView.addSubview(buttonControlsView)
         buttonControlsView.frame = buttonsView.bounds
         
-        [remoteParticipantNameContainer, remoteParticipantVideoContainer].forEach {
+        [remoteParticipantNameContainer, remoteParticipantVideoContainer, localScreenSharedView].forEach {
             $0?.frame = CGRect(x: 0, y: 0, width: participantViewsContainer.frame.width, height: participantViewsContainer.frame.height)
             $0?.bounds = CGRect(x: 0, y: 0, width: participantViewsContainer.frame.width, height: participantViewsContainer.frame.height)
             $0?.clipsToBounds = true
@@ -153,7 +160,7 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate 
             $0?.videoContentMode = .scaleAspectFill
         }
         
-        [participantViewsContainer, remoteParticipantNameContainer, remoteParticipantVideoContainer, remoteParticipantInnerNameView, viewRemoteMicContainer].forEach {
+        [participantViewsContainer, remoteParticipantNameContainer, remoteParticipantVideoContainer, remoteParticipantInnerNameView, viewRemoteMicContainer, localScreenSharedView].forEach {
             $0.roundCorners(corners: [.allCorners], radius: 12.0)
         }
         
@@ -165,6 +172,7 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate 
         
         localParticipantViewVideoContainer.isHidden = false
         remoteParticipantVideoContainer.isHidden = false
+        localScreenSharedView.isHidden = true
     
     }
     
@@ -244,8 +252,9 @@ extension MeetingViewController: MeetingEventListener {
         } else {
             //Navigate to error screen
         }
-        
-        Utils.loaderDismiss(viewControler: self)
+        DispatchQueue.main.async {
+            Utils.loaderDismiss(viewControler: self)
+        }
     }
     
     /// Meeting ended
@@ -402,6 +411,17 @@ extension MeetingViewController: ParticipantEventListener {
     ///   - stream: enabled stream object
     ///   - participant: participant object
     func onStreamEnabled(_ stream: MediaStream, forParticipant participant: Participant) {
+        
+//        if stream.kind == .share && participant.isLocal {
+//            
+//            showLocalScreenShareView(stream: stream)
+//            return
+//        }
+//        else if stream.kind == .share && !participant.isLocal {
+//            showRemoteScreenShare(stream: stream)
+//            return
+//        }
+        
         updateView(participant: participant, forStream: stream, enabled: true)
         
         if participant.isLocal {
@@ -418,6 +438,16 @@ extension MeetingViewController: ParticipantEventListener {
     ///   - stream: disabled stream object
     ///   - participant: participant object
     func onStreamDisabled(_ stream: MediaStream, forParticipant participant: Participant) {
+        
+//        if stream.kind == .share && participant.isLocal {
+//            removeLocalScreenShareView(stream: stream)
+//            return
+//        }
+//        else if stream.kind == .share && !participant.isLocal {
+//            removeRemoteScreenShare(stream: stream)
+//            return
+//        }
+        
         updateView(participant: participant, forStream: stream, enabled: false)
         
         if participant.isLocal {
@@ -516,6 +546,8 @@ private extension MeetingViewController {
             menuOptions.append(.switchAudioOutput)
             menuOptions.append(!self.recordingStarted ? .startRecording : .stopRecording)
             menuOptions.append(!self.liveStreamStarted ? .startLivestream : .stopLivestream)
+            menuOptions.append(.startScreenShare)
+            menuOptions.append(.stopScreenShare)
             
             self.showActionsheet(options: menuOptions, fromView: self.buttonControlsView.btnMoreOptions) { option in
                 switch option {
@@ -539,7 +571,8 @@ private extension MeetingViewController {
                     self.stopLivestream()
                     
                 case .switchAudioOutput:
-                    AVAudioSession.sharedInstance().changeAudioOutput(presenterViewController: self)
+//                    AVAudioSession.sharedInstance().changeAudioOutput(presenterViewController: self)
+                    self.changeAudioOutput(presenterViewController: self)
                     
                 case .showParticipantList:
                     let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -550,6 +583,14 @@ private extension MeetingViewController {
                 case .raiseHand:
                     self.meeting?.pubsub.publish(topic: RAISE_HAND_TOPIC, message: "Raise Hand by Me", options: [:])
                     
+                case .startScreenShare:
+                    Task {
+                        await self.meeting?.enableScreenShare()
+                    }
+                case .stopScreenShare:
+                    Task {
+                        await self.meeting?.disableScreenShare()
+                    }
                 default:
                     break
                 }
@@ -625,55 +666,76 @@ private extension MeetingViewController {
             
         case .share:
             if let shareTrack = stream.track as? RTCVideoTrack {
-                if enabled {
-                    if let videoStream = self.participants.first(where: {$0.id == participant.id})?.streams.first(where: { $1.kind == .state(value: .video) })?.value.track as? RTCVideoTrack {
-                        videoStream.remove(self.remoteParticipantVideoContainer)
-                        shareTrack.add(self.remoteParticipantVideoContainer)
-                        self.remoteParticipantVideoContainer.isHidden = false
-                        self.remoteParticipantVideoContainer.videoContentMode = .scaleAspectFit
-                        self.remoteParticipantNameContainer.isHidden = false
-                        if let localVideoStream = self.participants.first(where: { $0.isLocal })?.streams.first(where: { $1.kind == .state(value: .video)})?.value.track as? RTCVideoTrack {
-                            localVideoStream.remove(self.localParticipantViewVideoContainer)
-                            videoStream.add(self.localParticipantViewVideoContainer)
-                            self.localParticipantViewVideoContainer.isHidden = false
-                            self.localParticipantViewNameContainer.isHidden = true
-                            self.localParticipantViewContainer.isHidden = false
+                DispatchQueue.main.async {
+                    UIView.animate(withDuration: 0.5){
+                        if enabled {
+                            if participant.isLocal {
+                                self.localScreenSharedView.isHidden = false
+                            }
+                            if let videoStream = self.participants.first(where: {$0.id == participant.id})?.streams.first(where: { $1.kind == .state(value: .video) })?.value.track as? RTCVideoTrack {
+                                    videoStream.remove(self.remoteParticipantVideoContainer)
+                            
+                                    shareTrack.add(self.remoteParticipantVideoContainer)
+                                if participant.isLocal {
+                                    self.remoteParticipantVideoContainer.isHidden = true
+                                } else {
+                                    self.remoteParticipantVideoContainer.isHidden = false
+                                }
+                                self.remoteParticipantVideoContainer.videoContentMode = .scaleAspectFit
+                                self.remoteParticipantNameContainer.isHidden = true
+                                if let localVideoStream = self.participants.first(where: { $0.isLocal })?.streams.first(where: { $1.kind == .state(value: .video)})?.value.track as? RTCVideoTrack {
+                                    localVideoStream.remove(self.localParticipantViewVideoContainer)
+                                    videoStream.add(self.localParticipantViewVideoContainer)
+                                    self.localParticipantViewVideoContainer.isHidden = false
+                                    self.localParticipantViewNameContainer.isHidden = true
+                                    self.localParticipantViewContainer.isHidden = false
+                                }
+                            } else {
+                                    shareTrack.add(self.remoteParticipantVideoContainer)
+                                self.remoteParticipantVideoContainer.videoContentMode = .scaleAspectFit
+                                if participant.isLocal {
+                                    self.remoteParticipantVideoContainer.isHidden = true
+                                    self.remoteParticipantNameContainer.isHidden = true
+                                } else {
+                                    self.remoteParticipantVideoContainer.isHidden = false
+                                    self.remoteParticipantNameContainer.isHidden = false
+                                }
+//                                self.remoteParticipantVideoContainer.isHidden = false
+                                if let localVideoStream = self.participants.first(where: { $0.isLocal })?.streams.first(where: { $1.kind == .state(value: .video)})?.value.track as? RTCVideoTrack {
+                                    localVideoStream.remove(self.localParticipantViewVideoContainer)
+                                }
+                                self.localParticipantViewVideoContainer.isHidden = true
+                                self.localParticipantViewNameContainer.isHidden = false
+                                self.localParticipantViewContainer.isHidden = false
+                            }
+                        } else {
+                            if participant.isLocal {
+                                self.localScreenSharedView.isHidden = true
+                            }
+                            shareTrack.remove(self.remoteParticipantVideoContainer)
+                            if let videoStream = self.participants.first(where: {!$0.isLocal})?.streams.first(where: { $1.kind == .state(value: .video) })?.value.track as? RTCVideoTrack {
+                                videoStream.remove(self.localParticipantViewVideoContainer)
+                                videoStream.add(self.remoteParticipantVideoContainer)
+                                self.remoteParticipantVideoContainer.videoContentMode = .scaleAspectFill
+                                self.remoteParticipantVideoContainer.isHidden = false
+                                self.remoteParticipantNameContainer.isHidden = true
+                            } else {
+                                self.remoteParticipantVideoContainer.isHidden = true
+                                self.remoteParticipantNameContainer.isHidden = false
+                            }
+                            if let localVideoStream = self.participants.first(where: { $0.isLocal })?.streams.first(where: { $1.kind == .state(value: .video)})?.value.track as? RTCVideoTrack {
+                                localVideoStream.add(self.localParticipantViewVideoContainer)
+                                self.localParticipantViewVideoContainer.isHidden = false
+                                self.localParticipantViewNameContainer.isHidden = true
+                            }
                         }
-                    } else {
-                        shareTrack.add(self.remoteParticipantVideoContainer)
-                        self.remoteParticipantVideoContainer.videoContentMode = .scaleAspectFit
-                        self.remoteParticipantVideoContainer.isHidden = false
-                        self.remoteParticipantNameContainer.isHidden = false
-                        if let localVideoStream = self.participants.first(where: { $0.isLocal })?.streams.first(where: { $1.kind == .state(value: .video)})?.value.track as? RTCVideoTrack {
-                            localVideoStream.remove(self.localParticipantViewVideoContainer)
-                        }
-                        self.localParticipantViewVideoContainer.isHidden = true
-                        self.localParticipantViewNameContainer.isHidden = false
-                        self.localParticipantViewContainer.isHidden = false
-                    }
-                } else {
-                    shareTrack.remove(self.remoteParticipantVideoContainer)
-                    if let videoStream = self.participants.first(where: {$0.id == participant.id})?.streams.first(where: { $1.kind == .state(value: .video) })?.value.track as? RTCVideoTrack {
-                        videoStream.remove(self.localParticipantViewVideoContainer)
-                        videoStream.add(self.remoteParticipantVideoContainer)
-                        self.remoteParticipantVideoContainer.videoContentMode = .scaleAspectFill
-                        self.remoteParticipantVideoContainer.isHidden = false
-                        self.remoteParticipantNameContainer.isHidden = false
-                    } else {
-                        self.remoteParticipantVideoContainer.isHidden = false
-                        self.remoteParticipantNameContainer.isHidden = false
-                    }
-                    if let localVideoStream = self.participants.first(where: { $0.isLocal })?.streams.first(where: { $1.kind == .state(value: .video)})?.value.track as? RTCVideoTrack {
-                        localVideoStream.add(self.localParticipantViewVideoContainer)
-                        self.localParticipantViewVideoContainer.isHidden = false
-                        self.localParticipantViewNameContainer.isHidden = true
                     }
                 }
             }
-            
-        default:
-            break
-        }
+                default:
+                    break
+                }
+        
     }
     
     func showVideoView(participant: Participant, stream: RTCVideoTrack){
@@ -831,6 +893,35 @@ extension MeetingViewController {
             }
         }
     }
+    
+    func changeAudioOutput(presenterViewController: UIViewController) {
+
+        let CHECKED_KEY = "checked"
+        let Mics = self.meeting?.getMics() ?? []
+        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        for mic in Mics {
+            
+            let action = UIAlertAction(title: mic.deviceName, style: .default) {  UIAlertAction in
+                self.meeting?.changeMic(selectedDevice: mic.deviceName)
+
+                optionMenu.dismiss(animated: true, completion: nil)
+            }
+            
+            if  AVAudioSession.sharedInstance().currentRoute.outputs.contains(where: {$0.portType.rawValue == mic.deviceType}) {
+                action.setValue(true, forKey: CHECKED_KEY)
+            }
+                
+            if action.title?.count ?? 0 > 0 {
+                optionMenu.addAction(action)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        optionMenu.addAction(cancelAction)
+        
+        presenterViewController.present(optionMenu, animated: true, completion: nil)
+    }
+
     
 }
 

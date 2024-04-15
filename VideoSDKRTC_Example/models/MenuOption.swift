@@ -25,6 +25,8 @@ enum MenuOption: String {
     case medium = "Medium"
     case showParticipantList = "Show Participants List"
     case raiseHand = "Raise Hand"
+    case startScreenShare = "Start Screen Share"
+    case stopScreenShare = "Stop Screen Share"
     
     var style: UIAlertAction.Style {
         switch self {

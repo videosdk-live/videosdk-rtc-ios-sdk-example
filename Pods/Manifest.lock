@@ -1,43 +1,38 @@
 PODS:
-  - InputBarAccessoryView (5.1.0):
-    - InputBarAccessoryView/Core (= 5.1.0)
-  - InputBarAccessoryView/Core (5.1.0)
-  - IQKeyboardManagerSwift (6.5.11)
-  - MessageKit (3.3.0):
-    - InputBarAccessoryView (~> 5.1.0)
-  - Starscream (4.0.4)
-  - VideoSDKRTC (2.0.0):
-    - Starscream
+  - InputBarAccessoryView (5.5.0):
+    - InputBarAccessoryView/Core (= 5.5.0)
+  - InputBarAccessoryView/Core (5.5.0)
+  - IQKeyboardManagerSwift (6.5.16)
+  - MessageKit (3.8.0):
+    - InputBarAccessoryView (~> 5.5.0)
+  - VideoSDKRTC (2.1.0)
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift
   - MessageKit
-  - VideoSDKRTC (from `https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git`, tag `v2.0.0`)
+  - VideoSDKRTC (from `https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git`)
 
 SPEC REPOS:
   trunk:
     - InputBarAccessoryView
     - IQKeyboardManagerSwift
     - MessageKit
-    - Starscream
 
 EXTERNAL SOURCES:
   VideoSDKRTC:
     :git: https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git
-    :tag: v2.0.0
 
 CHECKOUT OPTIONS:
   VideoSDKRTC:
+    :commit: 915455b5395e243a620c315d49b650c1884216a0
     :git: https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git
-    :tag: v2.0.0
 
 SPEC CHECKSUMS:
-  InputBarAccessoryView: 19953f486a23e846e9487099f92bbe3456e46ce5
-  IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
-  MessageKit: 1f07618183be6d92b648ba7a384aafa097362a00
-  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
-  VideoSDKRTC: ad324fd5a00b0eda64bd7c142c1c9a2542fcc891
+  InputBarAccessoryView: 1d7b0a672b36e370f01f264b3907ef39d03328e3
+  IQKeyboardManagerSwift: 12d89768845bb77b55cc092ecc2b1f9370f06b76
+  MessageKit: a1ba0c69ebead94029867853eb44dd05b9b3f453
+  VideoSDKRTC: 42abab38e8bb4dd5c9ad5d23415cf5e0ce87908b
 
-PODFILE CHECKSUM: b00727b60298202baa7849a29295ec194e3945fe
+PODFILE CHECKSUM: 9a6c26d40d9f65335d130d844a4f98bb47161e02
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.15.2

@@ -14,7 +14,7 @@ class SendTransportListenerAdapter;
 @class RTCMediaStreamTrack;
 @class RTCRtpEncodingParameters;
 @protocol SendTransportWrapperDelegate;
-typedef NS_ENUM(NSInteger, RTCIceTransportPolicy);
+
 
 @interface SendTransportWrapper : NSObject
 
@@ -40,13 +40,18 @@ typedef NS_ENUM(NSInteger, RTCIceTransportPolicy);
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error
 	__attribute__((swift_error(nonnull_error)));
 
-- (void)updateICETransportPolicy:(RTCIceTransportPolicy)iceTransportPolicy
-	error:(out NSError *__autoreleasing _Nullable *_Nullable)error
-	__attribute__((swift_error(nonnull_error)));
-
 - (ProducerWrapper *_Nullable)createProducerForTrack:(RTCMediaStreamTrack *_Nonnull)mediaTrack
 	encodings:(NSArray<RTCRtpEncodingParameters *> *_Nullable)encodings
 	codecOptions:(NSString *_Nullable)codecOptions
+	codec:(NSString *_Nullable)codec
+	appData:(NSString *_Nullable)appData
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error;
+
+- (ProducerWrapper *_Nullable)createProducerForTrack:(RTCMediaStreamTrack *_Nonnull)mediaTrack
+	encoding:(RTCRtpEncodingParameters *_Nonnull)encoding
+	scalabilityMode:(NSString *_Nonnull)scalabilityMode
+	codecOptions:(NSString *_Nullable)codecOptions
+	codec:(NSString *_Nullable)codec
 	appData:(NSString *_Nullable)appData
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error;
 
