@@ -13,7 +13,7 @@ class ParticipantCellView: UITableViewCell {
     @IBOutlet weak var cellBackgroundView: UIView?
     @IBOutlet weak var cellParticipantImageView: UIImageView?
     @IBOutlet weak var cellParticipantName: UILabel?
-    @IBOutlet weak var cellParticipantIsHost: UILabel?
+//    @IBOutlet weak var cellParticipantIsHost: UILabel?
     @IBOutlet weak var cellParticipantMicEnable: UIButton?
     @IBOutlet weak var cellParticipantVideoEnable: UIButton?
     
@@ -42,9 +42,9 @@ class ParticipantCellView: UITableViewCell {
         let nameComponents = self.participant?.displayName.components(separatedBy: " ")
         cellParticipantName?.text = nameComponents?.first
         
-        cellParticipantIsHost?.text = self.participant?.isLocal ?? false ? "Host" : ""
+//        cellParticipantIsHost?.text = self.participant?.isLocal ?? false ? "Host" : ""
         
-        cellParticipantIsHost?.isHidden = self.participant?.isLocal ?? false ? false : true
+//        cellParticipantIsHost?.isHidden = self.participant?.isLocal ?? false ? false : true
         
         if (self.participant?.streams.first(where: { $1.kind == .state(value: .audio) })?.value) != nil {
             cellParticipantMicEnable?.setImage(UIImage(named: "mic_on"), for: .normal)

@@ -74,30 +74,4 @@ class APIService {
         }
         .resume()
     }
-    
-    class func createMeeting(token: String, completion: @escaping (Result<String, Error>) -> Void) {
-        let request = EndPoint.createMeeting(token).request
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data, let meetingId = data.toJSON()["meetingId"] as? String {
-                completion(.success(meetingId))
-            } else if let err = error {
-                completion(.failure(err))
-            }
-        }
-        .resume()
-    }
-    
-    class func validateMeeting(id: String, token: String, completion: @escaping (Result<String, Error>) -> Void) {
-        let request = EndPoint.validateMeeting(id, token).request
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data, let meetingId = data.toJSON()["meetingId"] as? String {
-                completion(.success(meetingId))
-            } else if let err = error {
-                completion(.failure(err))
-            }
-        }
-        .resume()
-    }
 }

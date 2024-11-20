@@ -1,19 +1,22 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
-// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name VideoSDKRTC
-// swift-module-flags-ignorable: -enable-bare-slash-regex
+// swift-compiler-version: Apple Swift version 6.0 effective-5.10 (swiftlang-6.0.0.9.10 clang-1600.0.26.2)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name VideoSDKRTC
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+import ARKit
 import AVFoundation
 import AVKit
+import CoreImage.CIFilterBuiltins
+import CoreImage
 import CoreMedia
 import Darwin
 import Dispatch
 import Foundation
 import Mediasoup
 import ReplayKit
+import SocketIO
 import Swift
 import UIKit
 @_exported import VideoSDKRTC
-import VideosdkWebSocket
 import WebRTC
 import _Concurrency
 import _StringProcessing
@@ -93,6 +96,60 @@ public protocol Aggregation : AnyObject {
   public func recordDouble(value: Swift.Double, attributes: [Swift.String : VideoSDKRTC.AttributeValue])
   public func recordDouble(value: Swift.Double)
   @objc deinit
+}
+public protocol CharacterDelegate : AnyObject {
+  func joinCharacter(_ config: VideoSDKRTC.CharacterConfig) async -> [Swift.String : Any]?
+  func removeCharacter(_ interactionId: Swift.String) async
+  func sendTextCharacter(_ interactionId: Swift.String, _ message: Swift.String) async
+  func interruptCharacter(_ interactionId: Swift.String) async
+  func addInternalCharacter(_ character: VideoSDKRTC.AICharacter)
+}
+@_hasMissingDesignatedInitializers public class AICharacter {
+  public var characterId: Swift.String {
+    get
+  }
+  public var displayName: Swift.String? {
+    get
+  }
+  public var interactionId: Swift.String? {
+    get
+  }
+  public var characterMode: Swift.String? {
+    get
+  }
+  public var characterRole: Swift.String? {
+    get
+  }
+  public var knowledgeBases: [Swift.String]? {
+    get
+  }
+  public var metaData: [Swift.String]? {
+    get
+  }
+  public var mode: VideoSDKRTC.Mode?
+  public var streams: [Swift.String : VideoSDKRTC.MediaStream] {
+    get
+  }
+  public init(characterConfig: VideoSDKRTC.CharacterConfig)
+  public func join() async
+  public func leave() async
+  public func sendMessage(_ message: Swift.String) async
+  public func interrupt() async
+  @objc deinit
+}
+extension VideoSDKRTC.AICharacter {
+  public func joinFromMeeting()
+  public func removeFromMeeting()
+  public func characterMessageFromMeeting(_ message: VideoSDKRTC.CharacterMessage)
+  public func characterStateChangedFromMeeting(_ characterStateChange: VideoSDKRTC.CharacterStateChange)
+  public func addStream(_ stream: VideoSDKRTC.MediaStream)
+  @discardableResult
+  public func removeStream(_ streamId: Swift.String) -> VideoSDKRTC.MediaStream?
+  public func removeAllStreams()
+}
+extension VideoSDKRTC.AICharacter {
+  public func addEventListener(_ characterEventListener: any VideoSDKRTC.CharacterEventListener)
+  public func removeEventListener(_ characterEventListener: any VideoSDKRTC.CharacterEventListener)
 }
 public struct Google_Protobuf_Any {
   public var typeURL: Swift.String {
@@ -239,7 +296,6 @@ extension VideoSDKRTC.ArrayWithCapacity : Swift.MutableCollection {
   public func isEmpty() -> Swift.Bool
   @objc deinit
 }
-#if compiler(>=5.3) && $RethrowsProtocol
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 extension _Concurrency.AsyncSequence where Self.Element == Swift.UInt8 {
   @inlinable public func binaryProtobufDelimitedMessages<M>(of messageType: M.Type = M.self, extensions: (any VideoSDKRTC.ExtensionMap)? = nil, partial: Swift.Bool = false, options: VideoSDKRTC.BinaryDecodingOptions = BinaryDecodingOptions()) -> VideoSDKRTC.AsyncMessageSequence<Self, M> where M : VideoSDKRTC.Message {
@@ -251,8 +307,6 @@ extension _Concurrency.AsyncSequence where Self.Element == Swift.UInt8 {
     )
   }
 }
-#endif
-#if compiler(>=5.3) && $RethrowsProtocol
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 public struct AsyncMessageSequence<Base, M> : _Concurrency.AsyncSequence where Base : _Concurrency.AsyncSequence, M : VideoSDKRTC.Message, Base.Element == Swift.UInt8 {
   public typealias Element = M
@@ -266,7 +320,6 @@ public struct AsyncMessageSequence<Base, M> : _Concurrency.AsyncSequence where B
     internal let partial: Swift.Bool
     @usableFromInline
     internal let options: VideoSDKRTC.BinaryDecodingOptions
-    #if compiler(>=5.3) && $AsyncAwait
     @inlinable internal mutating func nextVarInt() async throws -> Swift.UInt64? {
       var messageSize: UInt64 = 0
       var shift: UInt64 = 0
@@ -283,18 +336,14 @@ public struct AsyncMessageSequence<Base, M> : _Concurrency.AsyncSequence where B
         }
       }
       if (shift > 0) {
-        // The stream has ended inside a varint.
+         
         iterator = nil
         throw BinaryDelimited.Error.truncated
       }
-      return nil // End of stream reached.
+      return nil  
     }
-    #endif
-    #if compiler(>=5.3) && $AsyncAwait
     @usableFromInline
     internal mutating func readBytes(_ size: Swift.Int) async throws -> [Swift.UInt8]
-    #endif
-    #if compiler(>=5.3) && $AsyncAwait
     @inlinable public mutating func next() async throws -> M? {
       guard let messageSize = try await nextVarInt() else {
         iterator = nil
@@ -320,22 +369,31 @@ public struct AsyncMessageSequence<Base, M> : _Concurrency.AsyncSequence where B
         options: options
       )
     }
-    #endif
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
     public typealias Element = M
+    #if compiler(>=5.3) && $AssociatedTypeImplements
+    @available(iOS 18.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, macOS 15.0, *)
+    @_implements(_Concurrency.AsyncIteratorProtocol, Failure) public typealias __AsyncIteratorProtocol_Failure = any Swift.Error
+    #else
+    @available(iOS 18.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, macOS 15.0, *)
+    public typealias __AsyncIteratorProtocol_Failure = any Swift.Error
+    #endif
   }
   public func makeAsyncIterator() -> VideoSDKRTC.AsyncMessageSequence<Base, M>.AsyncIterator
+  #if compiler(>=5.3) && $AssociatedTypeImplements
+  @available(iOS 18.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, macOS 15.0, *)
+  @_implements(_Concurrency.AsyncSequence, Failure) public typealias __AsyncSequence_Failure = any Swift.Error
+  #else
+  @available(iOS 18.0, tvOS 18.0, watchOS 11.0, visionOS 2.0, macOS 15.0, *)
+  public typealias __AsyncSequence_Failure = any Swift.Error
+  #endif
 }
-#endif
-#if compiler(>=5.3) && $RethrowsProtocol
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 extension VideoSDKRTC.AsyncMessageSequence : Swift.Sendable where Base : Swift.Sendable {
 }
-#endif
-#if compiler(>=5.3) && $RethrowsProtocol
 @available(*, unavailable)
 extension VideoSDKRTC.AsyncMessageSequence.AsyncIterator : Swift.Sendable {
 }
-#endif
 public protocol AttributeProcessorProtocol {
   func process(incoming: [Swift.String : VideoSDKRTC.AttributeValue]) -> [Swift.String : VideoSDKRTC.AttributeValue]
 }
@@ -559,6 +617,62 @@ public enum CameraPosition : Swift.Int {
     get
   }
 }
+public class CharacterConfig {
+  public static func createNewInteraction(characterId: Swift.String, displayName: Swift.String? = nil, characterMode: Swift.String? = nil, characterRole: Swift.String? = nil, knowledgeBases: [Swift.String]? = nil, metaData: [Swift.String]? = nil) -> VideoSDKRTC.CharacterConfig
+  public static func resumeInteraction(interactionId: Swift.String, characterId: Swift.String? = nil, displayName: Swift.String? = nil, characterMode: Swift.String? = nil, characterRole: Swift.String? = nil, knowledgeBases: [Swift.String]? = nil, metaData: [Swift.String]? = nil) -> VideoSDKRTC.CharacterConfig
+  public init(interactionId: Swift.String?, characterId: Swift.String, displayName: Swift.String?, characterMode: Swift.String?, characterRole: Swift.String?, knowledgeBases: [Swift.String]?, metaData: [Swift.String]? = nil)
+  @objc deinit
+}
+public enum CharacterMode : Swift.String {
+  case text
+  case coPilot
+  case autoPilot
+  case visionPilot
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum CharacterState : Swift.String {
+  case characterSpeaking
+  case characterThinking
+  case characterListening
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol CharacterEventListener : AnyObject {
+  func onStreamEnabled(_ stream: VideoSDKRTC.MediaStream, forCharacter character: VideoSDKRTC.AICharacter)
+  func onStreamDisabled(_ stream: VideoSDKRTC.MediaStream, forCharacter character: VideoSDKRTC.AICharacter)
+  func onCharacterJoined(_ character: VideoSDKRTC.AICharacter)
+  func onCharacterLeft(_ character: VideoSDKRTC.AICharacter)
+  func onCharacterMessage(_ message: VideoSDKRTC.CharacterMessage)
+  func onCharacterStateChanged(_ characterStateChange: VideoSDKRTC.CharacterStateChange)
+}
+extension VideoSDKRTC.CharacterEventListener {
+  public func onStreamEnabled(_ stream: VideoSDKRTC.MediaStream, forCharacter character: VideoSDKRTC.AICharacter)
+  public func onStreamDisabled(_ stream: VideoSDKRTC.MediaStream, forCharacter character: VideoSDKRTC.AICharacter)
+  public func onCharacterJoined(_ character: VideoSDKRTC.AICharacter)
+  public func onCharacterLeft(_ character: VideoSDKRTC.AICharacter)
+  public func onCharacterMessage(_ message: VideoSDKRTC.CharacterMessage)
+  public func onCharacterStateChanged(_ characterStateChange: VideoSDKRTC.CharacterStateChange)
+}
+@objc @_hasMissingDesignatedInitializers public class CharacterMessage : ObjectiveC.NSObject {
+  public var characterId: Swift.String
+  public var text: Swift.String
+  public var participantId: Swift.String
+  public var participantName: Swift.String
+  public var timestamp: Swift.String
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers public class CharacterStateChange : ObjectiveC.NSObject {
+  public var id: Swift.String
+  public var status: VideoSDKRTC.CharacterState
+  @objc deinit
+}
 public protocol Clock : AnyObject {
   var now: Foundation.Date { get }
 }
@@ -757,6 +871,9 @@ public enum CustomVideoTrackConfig {
   public var hashValue: Swift.Int {
     get
   }
+}
+public struct noiseConfig {
+  public init(noiseSupression: Swift.Bool?, echoCancellation: Swift.Bool?, autoGainControl: Swift.Bool?, highPassFilter: Swift.Bool?)
 }
 @_hasMissingDesignatedInitializers public class DefaultAggregation : VideoSDKRTC.Aggregation {
   public static var instance: VideoSDKRTC.DefaultAggregation {
@@ -1013,7 +1130,7 @@ public struct Google_Protobuf_ExtensionRangeOptions : VideoSDKRTC.ExtensibleMess
       get
     }
     public typealias AllCases = [VideoSDKRTC.Google_Protobuf_ExtensionRangeOptions.VerificationState]
-    public static var allCases: [VideoSDKRTC.Google_Protobuf_ExtensionRangeOptions.VerificationState] {
+    nonisolated public static var allCases: [VideoSDKRTC.Google_Protobuf_ExtensionRangeOptions.VerificationState] {
       get
     }
   }
@@ -1180,7 +1297,7 @@ public struct Google_Protobuf_FieldDescriptorProto {
       get
     }
     public typealias AllCases = [VideoSDKRTC.Google_Protobuf_FieldDescriptorProto.TypeEnum]
-    public static var allCases: [VideoSDKRTC.Google_Protobuf_FieldDescriptorProto.TypeEnum] {
+    nonisolated public static var allCases: [VideoSDKRTC.Google_Protobuf_FieldDescriptorProto.TypeEnum] {
       get
     }
   }
@@ -1195,7 +1312,7 @@ public struct Google_Protobuf_FieldDescriptorProto {
       get
     }
     public typealias AllCases = [VideoSDKRTC.Google_Protobuf_FieldDescriptorProto.Label]
-    public static var allCases: [VideoSDKRTC.Google_Protobuf_FieldDescriptorProto.Label] {
+    nonisolated public static var allCases: [VideoSDKRTC.Google_Protobuf_FieldDescriptorProto.Label] {
       get
     }
   }
@@ -1550,7 +1667,7 @@ public struct Google_Protobuf_FileOptions : VideoSDKRTC.ExtensibleMessage {
       get
     }
     public typealias AllCases = [VideoSDKRTC.Google_Protobuf_FileOptions.OptimizeMode]
-    public static var allCases: [VideoSDKRTC.Google_Protobuf_FileOptions.OptimizeMode] {
+    nonisolated public static var allCases: [VideoSDKRTC.Google_Protobuf_FileOptions.OptimizeMode] {
       get
     }
   }
@@ -1707,7 +1824,7 @@ public struct Google_Protobuf_FieldOptions : VideoSDKRTC.ExtensibleMessage {
       get
     }
     public typealias AllCases = [VideoSDKRTC.Google_Protobuf_FieldOptions.CType]
-    public static var allCases: [VideoSDKRTC.Google_Protobuf_FieldOptions.CType] {
+    nonisolated public static var allCases: [VideoSDKRTC.Google_Protobuf_FieldOptions.CType] {
       get
     }
   }
@@ -1722,7 +1839,7 @@ public struct Google_Protobuf_FieldOptions : VideoSDKRTC.ExtensibleMessage {
       get
     }
     public typealias AllCases = [VideoSDKRTC.Google_Protobuf_FieldOptions.JSType]
-    public static var allCases: [VideoSDKRTC.Google_Protobuf_FieldOptions.JSType] {
+    nonisolated public static var allCases: [VideoSDKRTC.Google_Protobuf_FieldOptions.JSType] {
       get
     }
   }
@@ -1737,7 +1854,7 @@ public struct Google_Protobuf_FieldOptions : VideoSDKRTC.ExtensibleMessage {
       get
     }
     public typealias AllCases = [VideoSDKRTC.Google_Protobuf_FieldOptions.OptionRetention]
-    public static var allCases: [VideoSDKRTC.Google_Protobuf_FieldOptions.OptionRetention] {
+    nonisolated public static var allCases: [VideoSDKRTC.Google_Protobuf_FieldOptions.OptionRetention] {
       get
     }
   }
@@ -1759,7 +1876,7 @@ public struct Google_Protobuf_FieldOptions : VideoSDKRTC.ExtensibleMessage {
       get
     }
     public typealias AllCases = [VideoSDKRTC.Google_Protobuf_FieldOptions.OptionTargetType]
-    public static var allCases: [VideoSDKRTC.Google_Protobuf_FieldOptions.OptionTargetType] {
+    nonisolated public static var allCases: [VideoSDKRTC.Google_Protobuf_FieldOptions.OptionTargetType] {
       get
     }
   }
@@ -1928,7 +2045,7 @@ public struct Google_Protobuf_MethodOptions : VideoSDKRTC.ExtensibleMessage {
       get
     }
     public typealias AllCases = [VideoSDKRTC.Google_Protobuf_MethodOptions.IdempotencyLevel]
-    public static var allCases: [VideoSDKRTC.Google_Protobuf_MethodOptions.IdempotencyLevel] {
+    nonisolated public static var allCases: [VideoSDKRTC.Google_Protobuf_MethodOptions.IdempotencyLevel] {
       get
     }
   }
@@ -2078,7 +2195,7 @@ public struct Google_Protobuf_FeatureSet : VideoSDKRTC.ExtensibleMessage {
       get
     }
     public typealias AllCases = [VideoSDKRTC.Google_Protobuf_FeatureSet.FieldPresence]
-    public static var allCases: [VideoSDKRTC.Google_Protobuf_FeatureSet.FieldPresence] {
+    nonisolated public static var allCases: [VideoSDKRTC.Google_Protobuf_FeatureSet.FieldPresence] {
       get
     }
   }
@@ -2093,7 +2210,7 @@ public struct Google_Protobuf_FeatureSet : VideoSDKRTC.ExtensibleMessage {
       get
     }
     public typealias AllCases = [VideoSDKRTC.Google_Protobuf_FeatureSet.EnumType]
-    public static var allCases: [VideoSDKRTC.Google_Protobuf_FeatureSet.EnumType] {
+    nonisolated public static var allCases: [VideoSDKRTC.Google_Protobuf_FeatureSet.EnumType] {
       get
     }
   }
@@ -2108,7 +2225,7 @@ public struct Google_Protobuf_FeatureSet : VideoSDKRTC.ExtensibleMessage {
       get
     }
     public typealias AllCases = [VideoSDKRTC.Google_Protobuf_FeatureSet.RepeatedFieldEncoding]
-    public static var allCases: [VideoSDKRTC.Google_Protobuf_FeatureSet.RepeatedFieldEncoding] {
+    nonisolated public static var allCases: [VideoSDKRTC.Google_Protobuf_FeatureSet.RepeatedFieldEncoding] {
       get
     }
   }
@@ -2124,7 +2241,7 @@ public struct Google_Protobuf_FeatureSet : VideoSDKRTC.ExtensibleMessage {
       get
     }
     public typealias AllCases = [VideoSDKRTC.Google_Protobuf_FeatureSet.StringFieldValidation]
-    public static var allCases: [VideoSDKRTC.Google_Protobuf_FeatureSet.StringFieldValidation] {
+    nonisolated public static var allCases: [VideoSDKRTC.Google_Protobuf_FeatureSet.StringFieldValidation] {
       get
     }
   }
@@ -2139,7 +2256,7 @@ public struct Google_Protobuf_FeatureSet : VideoSDKRTC.ExtensibleMessage {
       get
     }
     public typealias AllCases = [VideoSDKRTC.Google_Protobuf_FeatureSet.MessageEncoding]
-    public static var allCases: [VideoSDKRTC.Google_Protobuf_FeatureSet.MessageEncoding] {
+    nonisolated public static var allCases: [VideoSDKRTC.Google_Protobuf_FeatureSet.MessageEncoding] {
       get
     }
   }
@@ -2154,7 +2271,7 @@ public struct Google_Protobuf_FeatureSet : VideoSDKRTC.ExtensibleMessage {
       get
     }
     public typealias AllCases = [VideoSDKRTC.Google_Protobuf_FeatureSet.JsonFormat]
-    public static var allCases: [VideoSDKRTC.Google_Protobuf_FeatureSet.JsonFormat] {
+    nonisolated public static var allCases: [VideoSDKRTC.Google_Protobuf_FeatureSet.JsonFormat] {
       get
     }
   }
@@ -2238,7 +2355,7 @@ public struct Google_Protobuf_GeneratedCodeInfo {
         get
       }
       public typealias AllCases = [VideoSDKRTC.Google_Protobuf_GeneratedCodeInfo.Annotation.Semantic]
-      public static var allCases: [VideoSDKRTC.Google_Protobuf_GeneratedCodeInfo.Annotation.Semantic] {
+      nonisolated public static var allCases: [VideoSDKRTC.Google_Protobuf_GeneratedCodeInfo.Annotation.Semantic] {
         get
       }
     }
@@ -3750,6 +3867,27 @@ public enum ConfigOrientation : Swift.String {
     get
   }
 }
+public class TranscriptionConfig {
+  public var webHookUrl: Swift.String
+  public var summary: VideoSDKRTC.SummaryConfig?
+  public init(webHookUrl: Swift.String? = nil, summary: VideoSDKRTC.SummaryConfig? = nil)
+  public func toJson() -> [Swift.String : Any]
+  @objc deinit
+}
+public class PostTranscriptionConfig {
+  public var enabled: Swift.Bool
+  public var summary: VideoSDKRTC.SummaryConfig?
+  public init(enabled: Swift.Bool, summary: VideoSDKRTC.SummaryConfig? = nil)
+  public func toJson() -> [Swift.String : Any]
+  @objc deinit
+}
+public class SummaryConfig {
+  public var enabled: Swift.Bool
+  public var prompt: Swift.String
+  public init(enabled: Swift.Bool, prompt: Swift.String)
+  public func toJson() -> [Swift.String : Any]
+  @objc deinit
+}
 public protocol IdGenerator {
   func generateSpanId() -> VideoSDKRTC.SpanId
   func generateTraceId() -> VideoSDKRTC.TraceId
@@ -3820,7 +3958,7 @@ public enum InstrumentType : Swift.CaseIterable {
   public static func == (a: VideoSDKRTC.InstrumentType, b: VideoSDKRTC.InstrumentType) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public typealias AllCases = [VideoSDKRTC.InstrumentType]
-  public static var allCases: [VideoSDKRTC.InstrumentType] {
+  nonisolated public static var allCases: [VideoSDKRTC.InstrumentType] {
     get
   }
   public var hashValue: Swift.Int {
@@ -4476,6 +4614,9 @@ public enum MediaType : Swift.Equatable {
   public var participants: [Swift.String : VideoSDKRTC.Participant] {
     get
   }
+  public var characters: [Swift.String : VideoSDKRTC.AICharacter] {
+    get
+  }
   public var pinnedParticipants: [Swift.String : VideoSDKRTC.ParticipantPinState] {
     get
   }
@@ -4483,51 +4624,69 @@ public enum MediaType : Swift.Equatable {
   public var hlsState: VideoSDKRTC.HLSState
   public var liveStreamState: VideoSDKRTC.LiveStreamState
   public var recordingState: VideoSDKRTC.RecordingState
+  public var transcriptionState: VideoSDKRTC.TranscriptionState
   public var pubsub: VideoSDKRTC.PubSub {
     get
   }
   public var customVideoMediaStream: VideoSDKRTC.CustomRTCMediaStream? {
     get
   }
+  public var customAudioMediaStream: VideoSDKRTC.CustomRTCMediaStream? {
+    get
+  }
   public var meetingMode: VideoSDKRTC.Mode? {
     get
   }
+  public var preferredProtocol: VideoSDKRTC.PreferredProtocol {
+    get
+  }
+  public var signalingBaseUrl: Swift.String? {
+    get
+  }
+  public var capturedImage: CoreImage.CIImage?
   @objc deinit
 }
 extension VideoSDKRTC.Meeting {
-  public func join(cameraPosition: AVFoundation.AVCaptureDevice.Position)
+  public func join()
   public func leave()
   public func end()
   public func enableWebcam(customVideoStream: VideoSDKRTC.CustomRTCMediaStream? = nil)
   public func disableWebcam()
   public func switchWebcam()
   public func muteMic()
-  public func unmuteMic()
-  public func startRecording(webhookUrl: Swift.String, awsDirPath: Swift.String? = nil, config: VideoSDKRTC.RecordingConfig? = nil)
+  public func unmuteMic(customAudioStream: VideoSDKRTC.CustomRTCMediaStream? = nil)
+  public func startRecording(webhookUrl: Swift.String, awsDirPath: Swift.String? = nil, config: VideoSDKRTC.RecordingConfig? = nil, transcription: VideoSDKRTC.PostTranscriptionConfig? = nil)
   public func stopRecording()
   public func startLivestream(outputs: [VideoSDKRTC.LivestreamOutput])
   public func stopLivestream()
-  public func startHLS(config: VideoSDKRTC.HLSConfig? = nil)
+  public func startHLS(config: VideoSDKRTC.HLSConfig? = nil, transcription: VideoSDKRTC.PostTranscriptionConfig? = nil)
   public func stopHLS()
+  public func startTranscription(config: VideoSDKRTC.TranscriptionConfig? = nil)
+  public func stopTranscription()
   public func changeMode(_ mode: VideoSDKRTC.Mode)
-  #if compiler(>=5.3) && $AsyncAwait
   @available(iOS 13.0.0, *)
   public func enableScreenShare() async
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   @available(iOS 13.0.0, *)
   public func disableScreenShare() async
-  #endif
   public func changeMic(selectedDevice: Swift.String)
   public func getMics() -> [(deviceName: Swift.String, deviceType: Swift.String)]
-  public func removeOberver()
+  public func createCharacter(CharacterConfig: VideoSDKRTC.CharacterConfig) -> VideoSDKRTC.AICharacter
 }
 extension VideoSDKRTC.Meeting {
   public func addEventListener(_ meetingEventListener: any VideoSDKRTC.MeetingEventListener)
   public func removeEventListener(_ meetingEventListener: any VideoSDKRTC.MeetingEventListener)
 }
 extension VideoSDKRTC.Meeting {
+  public func startWhiteboard()
+  public func stopWhiteboard()
+}
+extension VideoSDKRTC.Meeting {
   public static func == (lhs: VideoSDKRTC.Meeting, rhs: VideoSDKRTC.Meeting) -> Swift.Bool
+}
+extension VideoSDKRTC.Meeting {
+  public func uploadBase64File(base64Data: Swift.String, token: Swift.String, fileName: Swift.String, completion: @escaping (Swift.String?) -> Swift.Void)
+  public func fetchBase64File(url: Swift.String, token: Swift.String, completion: @escaping (Swift.String?) -> Swift.Void)
+  public func setVideoProcessor(processor: (any VideoSDKRTC.VideoSDKVideoProcessor)?)
 }
 public protocol MeetingEventListener : AnyObject {
   func onMeetingJoined()
@@ -4546,10 +4705,18 @@ public protocol MeetingEventListener : AnyObject {
   func onError(error: VideoSDKRTC.VideoSDKError)
   func onHlsStateChanged(state: VideoSDKRTC.HLSState, hlsUrl: VideoSDKRTC.HLSUrl?)
   func onLivestreamStateChanged(state: VideoSDKRTC.LiveStreamState)
+  func onTranscriptionStateChanged(state: VideoSDKRTC.TranscriptionState)
+  func onTranscriptionText(_ data: VideoSDKRTC.TranscriptionText)
   func onRecordingStateChanged(state: VideoSDKRTC.RecordingState)
   func onPinStateChanged(participantId: Swift.String, pinType: VideoSDKRTC.PinType)
   func onParticipantModeChanged(participantId: Swift.String, mode: VideoSDKRTC.Mode)
   func onMicChanged(selectedDevice: Swift.String)
+  func onWhiteboardStarted(url: Foundation.URL)
+  func onWhiteboardStopped()
+  func onCharacterJoined(character: VideoSDKRTC.AICharacter)
+  func onCharacterLeft(character: VideoSDKRTC.AICharacter)
+  func onCharacterMessage(message: VideoSDKRTC.CharacterMessage)
+  func onCharacterStateChanged(characterStateChange: VideoSDKRTC.CharacterStateChange)
 }
 extension VideoSDKRTC.MeetingEventListener {
   public func onMeetingJoined()
@@ -4569,12 +4736,20 @@ extension VideoSDKRTC.MeetingEventListener {
   public func onHlsStateChanged(state: VideoSDKRTC.HLSState, hlsUrl: VideoSDKRTC.HLSUrl?)
   public func onLivestreamStateChanged(state: VideoSDKRTC.LiveStreamState)
   public func onRecordingStateChanged(state: VideoSDKRTC.RecordingState)
+  public func onTranscriptionStateChanged(state: VideoSDKRTC.TranscriptionState)
+  public func onTranscriptionText(_ data: VideoSDKRTC.TranscriptionText)
   public func onPinStateChanged(participantId: Swift.String, pinType: VideoSDKRTC.PinType)
   public func onParticipantModeChanged(participantId: Swift.String, mode: VideoSDKRTC.Mode)
   public func onMicChanged(selectedDevice: Swift.String)
+  public func onWhiteboardStarted(url: Foundation.URL)
+  public func onWhiteboardStopped()
+  public func onCharacterJoined(character: VideoSDKRTC.AICharacter)
+  public func onCharacterLeft(character: VideoSDKRTC.AICharacter)
+  public func onCharacterMessage(message: VideoSDKRTC.CharacterMessage)
+  public func onCharacterStateChanged(characterStateChange: VideoSDKRTC.CharacterStateChange)
 }
 public enum MeetingState : Swift.String {
-  case CONNECTING, CONNECTED, CLOSING, CLOSED, CANCELLED
+  case CONNECTING, CONNECTED, CLOSING, CLOSED, CANCELLED, RECONNECTING
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -4608,9 +4783,20 @@ public enum VideoSDKError : Swift.Int {
   case INVALID_LIVESTREAM_CONFIG
   case START_HLS_FAILED
   case STOP_HLS_FAILED
+  case PREV_RECORDING_PROCESSING
+  case PREV_RTMP_RECORDING_PROCESSING
+  case PREV_HLS_STREAMING_PROCESSING
+  case MAX_SPEAKER_LIMIT_REACHED_ON_ORGANIZATION
+  case MAX_VIEWER_LIMIT_REACHED_ON_ORGANIZATION
+  case MAX_RECORDING_LIMIT_REACHED_ON_ORGANIZATION
+  case MAX_HLS_LIMIT_REACHED_ON_ORGANIZATION
+  case MAX_LIVESTREAM_LIMIT_REACHED_ON_ORGANIZATION
+  case START_TRANSCRIPTION_FAILED
+  case STOP_TRANSCRIPTION_FAILED
   case RECORDING_FAILED
   case LIVESTREAM_FAILED
   case HLS_FAILED
+  case TRANSCRIPTION_FAILED
   case ERROR_GET_VIDEO_MEDIA
   case ERROR_GET_AUDIO_MEDIA
   case ERROR_GET_DISPLAY_MEDIA
@@ -4641,6 +4827,38 @@ public enum RecordingState : Swift.String {
 }
 public enum LiveStreamState : Swift.String {
   case LIVESTREAM_STARTED, LIVESTREAM_STARTING, LIVESTREAM_STOPPED, LIVESTREAM_STOPPING
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum TranscriptionState : Swift.String {
+  case TRANSCRIPTION_STARTING, TRANSCRIPTION_STARTED, TRANSCRIPTION_STOPPING, TRANSCRIPTION_STOPPED
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum PreferredProtocol : Swift.String {
+  case UDP_OVER_TCP, UDP_ONLY, TCP_ONLY
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum PreferredCodec : Swift.String {
+  case H264, VP8
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum WhiteBoardState : Swift.String {
+  case WHITEBOARD_STARTED, WHITEBOARD_STOPPED
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -5752,6 +5970,9 @@ public enum OTPCConstants {
   }
   public var pinState: VideoSDKRTC.ParticipantPinState
   public var mode: VideoSDKRTC.Mode
+  public var metaData: [Swift.String : Any]? {
+    get
+  }
   @objc deinit
 }
 extension VideoSDKRTC.Participant {
@@ -5764,6 +5985,8 @@ extension VideoSDKRTC.Participant {
   public func participantModeChanged(mode: VideoSDKRTC.Mode)
   public func getAudioStats() -> [Swift.String : Any]?
   public func getVideoStats() -> [Swift.String : Any]?
+  public func getShareStats() -> [Swift.String : Any]?
+  public func captureImage(height: CoreFoundation.CGFloat? = nil, width: CoreFoundation.CGFloat? = nil, completion: @escaping (Swift.String?) -> Swift.Void)
 }
 extension VideoSDKRTC.Participant {
   public func addStream(_ stream: VideoSDKRTC.MediaStream)
@@ -5855,9 +6078,9 @@ public struct ProxyMeter : VideoSDKRTC.Meter {
   @objc deinit
 }
 extension VideoSDKRTC.PubSub {
-  public func publish(topic: Swift.String, message: Swift.String, options: [Swift.String : Any] = [:])
-  public func subscribe(topic: Swift.String, forListener listener: any VideoSDKRTC.PubSubMessageListener)
-  public func unsubscribe(topic: Swift.String, forListener listener: any VideoSDKRTC.PubSubMessageListener)
+  public func publish(topic: Swift.String, message: Swift.String, options: [Swift.String : Any] = [:], payload: Swift.String? = nil)
+  public func subscribe(topic: Swift.String, forListener listener: any VideoSDKRTC.PubSubMessageListener) async
+  public func unsubscribe(topic: Swift.String, forListener listener: any VideoSDKRTC.PubSubMessageListener) async
   public func getMessagesForTopic(_ topic: Swift.String) -> [VideoSDKRTC.PubSubMessage]
 }
 @objc @_hasMissingDesignatedInitializers public class PubSubMessage : ObjectiveC.NSObject {
@@ -5867,6 +6090,7 @@ extension VideoSDKRTC.PubSub {
   public var senderId: Swift.String
   public var senderName: Swift.String
   public var timestamp: Swift.String
+  public var payload: [Swift.String : Any]
   @objc deinit
 }
 public protocol PubSubMessageListener {
@@ -8184,6 +8408,14 @@ public struct TraceState : Swift.Equatable, Swift.Codable {
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
+@objc @_hasMissingDesignatedInitializers public class TranscriptionText : ObjectiveC.NSObject {
+  public var participantId: Swift.String
+  public var participantName: Swift.String
+  public var text: Swift.String
+  public var timestamp: Swift.Int
+  public var type: Swift.String
+  @objc deinit
+}
 public enum Google_Protobuf_Syntax : VideoSDKRTC.Enum {
   public typealias RawValue = Swift.Int
   case proto2
@@ -8411,7 +8643,7 @@ public enum VideoQuality : Swift.String, Swift.CaseIterable {
   public init?(rawValue: Swift.String)
   public typealias AllCases = [VideoSDKRTC.VideoQuality]
   public typealias RawValue = Swift.String
-  public static var allCases: [VideoSDKRTC.VideoQuality] {
+  nonisolated public static var allCases: [VideoSDKRTC.VideoQuality] {
     get
   }
   public var rawValue: Swift.String {
@@ -8420,8 +8652,9 @@ public enum VideoQuality : Swift.String, Swift.CaseIterable {
 }
 @_hasMissingDesignatedInitializers final public class VideoSDK {
   public static func config(token: Swift.String)
-  public static func initMeeting(meetingId: Swift.String, participantId: Swift.String = "", participantName: Swift.String = "Guest", micEnabled: Swift.Bool = true, webcamEnabled: Swift.Bool = true, customCameraVideoStream: VideoSDKRTC.CustomRTCMediaStream? = nil, mode: VideoSDKRTC.Mode? = .CONFERENCE) -> VideoSDKRTC.Meeting
-  public static func createCameraVideoTrack(encoderConfig: VideoSDKRTC.CustomVideoTrackConfig? = .h360p_w640p, facingMode: AVFoundation.AVCaptureDevice.Position? = .front, multiStream: Swift.Bool? = true) throws -> VideoSDKRTC.CustomRTCMediaStream?
+  public static func initMeeting(meetingId: Swift.String, participantId: Swift.String = "", participantName: Swift.String = "Guest", micEnabled: Swift.Bool = true, webcamEnabled: Swift.Bool = true, customCameraVideoStream: VideoSDKRTC.CustomRTCMediaStream? = nil, customAudioTrack: VideoSDKRTC.CustomRTCMediaStream? = nil, mode: VideoSDKRTC.Mode? = .CONFERENCE, preferredProtocol: VideoSDKRTC.PreferredProtocol? = PreferredProtocol.UDP_OVER_TCP, signalingBaseUrl: Swift.String? = nil, metaData: [Swift.String : Any]? = [:]) -> VideoSDKRTC.Meeting
+  public static func createCameraVideoTrack(encoderConfig: VideoSDKRTC.CustomVideoTrackConfig? = .h360p_w640p, facingMode: AVFoundation.AVCaptureDevice.Position? = .front, multiStream: Swift.Bool? = true, codec: VideoSDKRTC.PreferredCodec? = .VP8) throws -> VideoSDKRTC.CustomRTCMediaStream?
+  public static func createAudioTrack(noiseConfig: VideoSDKRTC.noiseConfig?) throws -> VideoSDKRTC.CustomRTCMediaStream?
   @objc deinit
 }
 extension VideoSDKRTC.VideoSDK {
@@ -8431,6 +8664,15 @@ extension VideoSDKRTC.VideoSDK {
   public static func getVideoPermission()
   public static func getCameras() -> [Swift.String]
   public static func getAudioDevices() -> [Swift.String]
+}
+public protocol VideoSDKVideoProcessor {
+  func onFrameReceived(frame: WebRTC.RTCVideoFrame) -> WebRTC.RTCVideoFrame?
+}
+public class VideoSDKBackgroundProcessor : VideoSDKRTC.VideoSDKVideoProcessor {
+  public init(backgroundSource: Foundation.URL)
+  public func onFrameReceived(frame: WebRTC.RTCVideoFrame) -> WebRTC.RTCVideoFrame?
+  public func changeBackground(backgroundSource: Foundation.URL)
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers public class ViewBuilder {
   public func withName(name: Swift.String) -> Self
@@ -8726,6 +8968,12 @@ extension VideoSDKRTC.BinaryEncodingError : Swift.Hashable {}
 extension VideoSDKRTC.CameraPosition : Swift.Equatable {}
 extension VideoSDKRTC.CameraPosition : Swift.Hashable {}
 extension VideoSDKRTC.CameraPosition : Swift.RawRepresentable {}
+extension VideoSDKRTC.CharacterMode : Swift.Equatable {}
+extension VideoSDKRTC.CharacterMode : Swift.Hashable {}
+extension VideoSDKRTC.CharacterMode : Swift.RawRepresentable {}
+extension VideoSDKRTC.CharacterState : Swift.Equatable {}
+extension VideoSDKRTC.CharacterState : Swift.Hashable {}
+extension VideoSDKRTC.CharacterState : Swift.RawRepresentable {}
 extension VideoSDKRTC.CustomVideoTrackConfig : Swift.Equatable {}
 extension VideoSDKRTC.CustomVideoTrackConfig : Swift.Hashable {}
 extension VideoSDKRTC.EmptyMetricStorage : VideoSDKRTC.MetricStorage {}
@@ -8776,6 +9024,18 @@ extension VideoSDKRTC.RecordingState : Swift.RawRepresentable {}
 extension VideoSDKRTC.LiveStreamState : Swift.Equatable {}
 extension VideoSDKRTC.LiveStreamState : Swift.Hashable {}
 extension VideoSDKRTC.LiveStreamState : Swift.RawRepresentable {}
+extension VideoSDKRTC.TranscriptionState : Swift.Equatable {}
+extension VideoSDKRTC.TranscriptionState : Swift.Hashable {}
+extension VideoSDKRTC.TranscriptionState : Swift.RawRepresentable {}
+extension VideoSDKRTC.PreferredProtocol : Swift.Equatable {}
+extension VideoSDKRTC.PreferredProtocol : Swift.Hashable {}
+extension VideoSDKRTC.PreferredProtocol : Swift.RawRepresentable {}
+extension VideoSDKRTC.PreferredCodec : Swift.Equatable {}
+extension VideoSDKRTC.PreferredCodec : Swift.Hashable {}
+extension VideoSDKRTC.PreferredCodec : Swift.RawRepresentable {}
+extension VideoSDKRTC.WhiteBoardState : Swift.Equatable {}
+extension VideoSDKRTC.WhiteBoardState : Swift.Hashable {}
+extension VideoSDKRTC.WhiteBoardState : Swift.RawRepresentable {}
 extension VideoSDKRTC.MetricExporterResultCode : Swift.Equatable {}
 extension VideoSDKRTC.MetricExporterResultCode : Swift.Hashable {}
 extension VideoSDKRTC.OpenTelemetryContextKeys : Swift.Equatable {}

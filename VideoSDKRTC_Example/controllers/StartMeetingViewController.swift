@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import VideoSDKRTC
 
 class StartMeetingViewController: UIViewController {
     
@@ -44,6 +45,7 @@ class StartMeetingViewController: UIViewController {
     // MARK: Properties
     
     var isJoinMeetingAction = true
+    var isRequestInProgress = false
     
     //Camera Capture requiered properties
     var videoDataOutput: AVCaptureVideoDataOutput!
@@ -56,7 +58,8 @@ class StartMeetingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareUI()
-        
+        VideoSDK.getAudioPermission()
+        self.requestNotificationAuthorization()
         self.serverToken = AUTH_TOKEN
     }
     
@@ -70,7 +73,7 @@ class StartMeetingViewController: UIViewController {
         txtMeetingCodeField.attributedPlaceholder = NSAttributedString(string: "Enter meeting code", attributes: attributes)
         txtEnterNameField.delegate = self
         txtMeetingCodeField.delegate = self
-        txtMeetingCodeField.text = ""
+        txtMeetingCodeField.text = "69du-1cle-wacs"
         
         [viewCameraViewContainer, viewCreateAMeetingButton, viewJoinAMeetingButton, viewTestAudioVideoContainer].forEach {
             $0?.roundCorners(corners: [.allCorners], radius: 12.0)
@@ -123,20 +126,29 @@ class StartMeetingViewController: UIViewController {
     
     
     @IBAction func btnJoinAMeetingTapped(_ sender: Any) {
-        if isJoinMeetingAction {
-            // Join meeting
-            if((txtMeetingCodeField.text ?? "").isEmpty){
-                self.showAlert(title: "Meeting id Required", message: "Please provide meeting id to start the meeting.")
-                txtMeetingCodeField.resignFirstResponder()
-            } else {
-                joinMeeting()
+            // Prevent duplicate requests
+            guard !isRequestInProgress else { return }
+            isRequestInProgress = true
+            
+            defer {
+                // Reset the flag after execution
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.isRequestInProgress = false
+                }
             }
-        } else {
-            // Create meeting
-            Utils.loaderShow(viewControler: self)
-            joinRoom()
+            
+            if isJoinMeetingAction {
+                guard let meetingID = txtMeetingCodeField.text, !meetingID.isEmpty else {
+                    self.showAlert(title: "Meeting ID Required", message: "Please provide a meeting ID to start the meeting.")
+                    txtMeetingCodeField.resignFirstResponder()
+                    return
+                }
+                joinMeeting()
+            } else {
+                Utils.loaderShow(viewControler: self)
+                joinRoom()
+            }
         }
-    }
     
     // MARK: - Custom Function
     
@@ -155,37 +167,37 @@ class StartMeetingViewController: UIViewController {
     }
     
     func joinRoom() {
-        
-        let urlString = "https://api.videosdk.live/v2/rooms"
-        let session = URLSession.shared
-        let url = URL(string: urlString)!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue(self.serverToken, forHTTPHeaderField: "Authorization")
-        
-        session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-            DispatchQueue.main.async {
-                Utils.loaderDismiss(viewControler: self)
-                if let data = data, let utf8Text = String(data: data, encoding: .utf8)
-                {
-                    print("UTF =>=>\(utf8Text)") // original server data as UTF8 string
-                    do{
-                        let dataArray = try JSONDecoder().decode(RoomsStruct.self,from: data)
-                        DispatchQueue.main.async {
-                            self.txtMeetingCodeField.text = dataArray.roomID
+            
+            let urlString = "https://api.videosdk.live/v2/rooms"
+            let session = URLSession.shared
+            let url = URL(string: urlString)!
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.addValue(self.serverToken, forHTTPHeaderField: "Authorization")
+            
+            session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+                DispatchQueue.main.async {
+                    Utils.loaderDismiss(viewControler: self)
+                    if let data = data, let utf8Text = String(data: data, encoding: .utf8)
+                    {
+                        print("UTF =>=>\(utf8Text)") // original server data as UTF8 string
+                        do{
+                            let dataArray = try JSONDecoder().decode(RoomsStruct.self,from: data)
+                            DispatchQueue.main.async {
+                                self.txtMeetingCodeField.text = dataArray.roomID
+                            }
+                            self.joinMeeting()
+                            print(dataArray)
+                        } catch {
+                            print("Error while creating a meeting: \(error)")
+                            self.showToast(message: "Error while creating a meeting: \(error)", font: .systemFont(ofSize: 15.0))
                         }
-                        self.joinMeeting()
-                        print(dataArray)
-                    } catch {
-                        print("Error while creating a meeting: \(error)")
-                        self.showToast(message: "Error while creating a meeting: \(error)", font: .systemFont(ofSize: 15.0))
                     }
                 }
+                
             }
-            
+            ).resume()
         }
-        ).resume()
-    }
     // MARK: - Actions
     
     func joinMeeting() {
@@ -307,6 +319,14 @@ extension StartMeetingViewController: AVCaptureVideoDataOutputSampleBufferDelega
     // clean up AVCapture
     func stopCamera(){
         session.stopRunning()
+    }
+    
+    func requestNotificationAuthorization() {
+        UNUserNotificationCenter.current().requestAuthorization(options: UNAuthorizationOptions.init(arrayLiteral: .alert, .badge, .sound)) { (success, error) in
+            if let error = error {
+                print("requestAuthorization error: ", error)
+            }
+        }
     }
 
 }
