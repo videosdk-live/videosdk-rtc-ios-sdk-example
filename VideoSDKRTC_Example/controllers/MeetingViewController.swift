@@ -344,20 +344,20 @@ extension MeetingViewController: MeetingEventListener {
         updateMenuButton()
     }
     
-    /// Called after livestream starts
-    func onLivestreamStarted() {
-        liveStreamStarted = true
-        updateMenuButton()
-        showAlert(title: "Livestream Started", message: nil, autoDismiss: true)
-    }
-    
-    /// Called after livestream stops
-    func onLivestreamStopped() {
-        print("livestream stopped")
-        liveStreamStarted = false
-        updateMenuButton()
-    }
-    
+//    /// Called after livestream starts
+//    func onLivestreamStarted() {
+//        liveStreamStarted = true
+//        updateMenuButton()
+//        showAlert(title: "Livestream Started", message: nil, autoDismiss: true)
+//    }
+//    
+//    /// Called after livestream stops
+//    func onLivestreamStopped() {
+//        print("livestream stopped")
+//        liveStreamStarted = false
+//        updateMenuButton()
+//    }
+//    
     /// Called when speaker is changed
     /// - Parameter participantId: participant id of the speaker, nil when no one is speaking.
     func onSpeakerChanged(participantId: String?) {
@@ -581,7 +581,7 @@ private extension MeetingViewController {
             menuOptions.append(.raiseHand)
             menuOptions.append(.switchAudioOutput)
             menuOptions.append(!self.recordingStarted ? .startRecording : .stopRecording)
-            menuOptions.append(!self.liveStreamStarted ? .startLivestream : .stopLivestream)
+//            menuOptions.append(!self.liveStreamStarted ? .startLivestream : .stopLivestream)
             menuOptions.append(.startScreenShare)
             menuOptions.append(.stopScreenShare)
             
@@ -594,11 +594,11 @@ private extension MeetingViewController {
                 case .stopRecording:
                     self.meeting?.stopRecording()
 
-                case .startLivestream:
-                    self.performSegue(withIdentifier: addStreamOutputSegueIdentifier, sender: nil)
-                    
-                case .stopLivestream:
-                    self.stopLivestream()
+//                case .startLivestream:
+//                    self.performSegue(withIdentifier: addStreamOutputSegueIdentifier, sender: nil)
+//                    
+//                case .stopLivestream:
+//                    self.stopLivestream()
                     
                 case .switchAudioOutput:
 //                    AVAudioSession.sharedInstance().changeAudioOutput(presenterViewController: self)

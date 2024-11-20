@@ -11,8 +11,8 @@ enum MenuOption: String {
     case switchCamera = "Switch Camera"
     case startRecording = "Start Recording"
     case stopRecording = "Stop Recording"
-    case startLivestream = "Start Livestream"
-    case stopLivestream = "Stop Livestream"
+//    case startLivestream = "Start Livestream"
+//    case stopLivestream = "Stop Livestream"
     case toggleMic = "Toggle Mic"
     case toggleWebcam = "Toggle Webcam"
     case remove = "Remove"
@@ -30,7 +30,7 @@ enum MenuOption: String {
     
     var style: UIAlertAction.Style {
         switch self {
-        case .stopRecording, .stopLivestream, .remove, .endMeeting:
+        case .stopRecording, .remove, .endMeeting:
             return .destructive
         default:
             return .default
