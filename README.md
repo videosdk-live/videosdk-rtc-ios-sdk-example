@@ -168,10 +168,10 @@ VideoSDK
 ---
 ### 1. Create or Join Meeting
 
-#### **[`APIService.swift`](APIService.swift)**
+#### **[`APIService.swift`](./VideoSDKRTC_Example/API/APIService.swift)**
 - **Purpose**: Handles API requests to generate tokens, create meetings, and validate meeting details.
   
-#### **[`StartMeetingViewController.swift`](StartMeetingViewController.swift)**
+#### **[`StartMeetingViewController.swift`](./VideoSDKRTC_Example/controllers/StartMeetingViewController.swift)**
 - **Purpose**: Manages the process of creating or joining a meeting, including setting up audio, video, and navigation.
 - **Key Features**:
   - **Meeting Creation & Joining**: Handles the logic for creating or joining a meeting and validates user input.
@@ -184,7 +184,7 @@ VideoSDK
 
 ### 2. MeetingScreen
 
-#### **[`MeetingViewController.swift`](./MeetingViewController.swift)**
+#### **[`MeetingViewController.swift`](./VideoSDKRTC_Example/controllers/MeetingViewController.swift)**
 **Purpose**: Manages the meeting flow, including audio/video controls, screen sharing, participant management, and interactive features.
 
 ### Key Features
@@ -209,7 +209,7 @@ VideoSDK
 ---
 ### 3. Chat
 
-#### **[`ChatViewController.swift`](./ChatViewController.swift)**
+#### **[`ChatViewController.swift`](./VideoSDKRTC_Example/controllers/ChatViewController.swift)**
 - **Purpose**: Manages the chat interface for the video meeting using the `MessageKit` framework.
 - **Key Features**:
   - **Initialization**: Sets up the meeting and chat topic, and loads initial messages.
@@ -226,7 +226,7 @@ VideoSDK
 
 ### 4. ParticipantList
 
-#### **[`ParticipantViewController.swift`](./ParticipantViewController.swift)**
+#### **[`ParticipantViewController.swift`](./VideoSDKRTC_Example/controllers/ParticipantsViewController.swift)**
 - **Purpose**: Displays a dynamic list of participants in the meeting using a table view.
 - **Key Features**:
   - **Participant List Display**: Displays participants in a table view and updates automatically when the participant list changes.
