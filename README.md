@@ -1,79 +1,152 @@
-# Video SDK for iOS
+# 🚀 Video SDK for iOS
 
 [![Documentation](https://img.shields.io/badge/Read-Documentation-blue)](https://docs.videosdk.live/react-native/guide/video-and-audio-calling-api-sdk/getting-started)
-[![Firebase](https://img.shields.io/badge/Download%20Android-Firebase-green)](https://appdistribution.firebase.dev/i/a4c63049415c4356)
 [![TestFlight](https://img.shields.io/badge/Download%20iOS-TestFlight-blue)](https://testflight.apple.com/join/LYj3QJPx)
 [![Discord](https://img.shields.io/discord/876774498798551130?label=Join%20on%20Discord)](https://discord.gg/bGZtAbwvab)
 [![Register](https://img.shields.io/badge/Contact-Know%20More-blue)](https://app.videosdk.live/signup)
 
-At Video SDK, we’re building tools to help companies create world-class collaborative products with capabilities of live audio/videos, compose cloud recordings/rtmp/hls and interaction APIs
+At Video SDK, we’re building tools to help companies create world-class collaborative products with capabilities for live audio/video, cloud recordings, RTMP/HLS streaming, and interaction APIs.
 
-## Demo App
+### 🥳 Get **10,000 minutes free** every month! **[Try it now!](https://app.videosdk.live/signup)**
 
-📲 Download the Sample iOS app here: https://testflight.apple.com/join/26EBZkcX
 
-<br/>
+## 📚 **Table of Contents**
 
-## Meeting Features
+- [📱 **Demo App**](#-demo-app)
+- [⚡ **Quick Setup**](#-quick-setup)
+- [🔧 **Prerequisites**](#-prerequisites)
+- [📦 **Running the Sample App**](#-running-the-sample-app)
+- [🔥 **Meeting Features**](#-meeting-features)
+- [🧠 **Key Concepts**](#-key-concepts)
+- [🔑 **Token Generation**](#-token-generation)
+- [🧩 **Project OverView**](#-project-overview)
+- [📖 **Examples**](#-examples)
+- [📝 **VideoSDK's Documentation**](#-documentation)
+- [💬 **Join Our Community**](#-join-our-community)
 
-- [x] Real-time video and audio conferencing
-- [x] Enable/disable camera
-- [x] Mute/unmute mic
-- [x] Chat
-- [x] Raise hand
-- [x] Recording
+## 📱 Demo App
 
-<br/>
+📱 Download the Sample iOS app here: https://testflight.apple.com/join/26EBZkcX
 
-## Setup Guide
+## ⚡ Quick Setup
 
-- Sign up on [VideoSDK](https://app.videosdk.live/) and visit [API Keys](https://app.videosdk.live/api-keys) section to get your API key and Secret key.
+1. Sign up on [VideoSDK](https://app.videosdk.live/) to grab your API Key and Secret.
+2. Familiarize yourself with [Token](https://docs.videosdk.live/android/guide/video-and-audio-calling-api-sdk/authentication-and-token)
 
-- Get familiarized with [API key and Secret key](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/signup-and-create-api)
+## 🛠 Prerequisites
 
-- Get familiarized with [Token](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/server-setup)
-
-<br/>
-
-### Prerequisites
-
-- iOS 12.0+
+- iOS 13.0+
 - Xcode 13.0+
 - Swift 5.0+
 - Valid [Video SDK Account](https://app.videosdk.live/signup)
 
-## Run the Sample App
 
-### Step 1: Clone the sample project
-   ```sh
-   git clone https://github.com/videosdk-live/videosdk-rtc-ios-sdk-example.git
-   ```
+## 📦 Running the Sample App
+
+### Step 1: Clone the Repository
+
+Clone the repository to your local environment.
+
+```js
+  git clone https://github.com/videosdk-live/videosdk-rtc-ios-sdk-example.git
+```
 ### Step 2. Install Pods
+
 Run `pod install` in terminal from the Example project directory.
+
 ### Step 3. update `AUTH_TOKEN` in the `Constants.swift` file.
-Generate temporary token from [Video SDK Account](https://app.videosdk.live/signup).
+
+Generate temporary token from  [**Video SDK Account**](https://app.videosdk.live/signup).
    ```
    public let AUTH_TOKEN = "#YOUR_GENERATED_TOKEN"
    ```
 ### Step 4. Run the project.
+
 Run App from Xcode. Please run the app in real device for better experience because audio and video is not supported in simulator.
 
+## 🔥 Meeting Features
+
+Unlock a suite of powerful features to enhance your meetings:
+
+| Feature                        | Documentation                                                                                                                | Description                                                                                                      |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| 📋 **Precall Setup**           | [Setup Precall](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/setup-call/precall)                   | Configure audio, video devices, and other settings before joining the meeting.                                              |
+| 🤝 **Join Meeting**            | [Join Meeting](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/setup-call/join-meeting)                | Allows participants to join a meeting.                                                                 |
+| 🚪 **Leave Meeting**            | [Leave Meeting](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/setup-call/leave-end-meeting)                | Allows participants to leave a meeting.                                                                 |
+| 🎤 **Toggle Mic**         | [Mic Control](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/handling-media/mute-unmute-mic)          | Toggle the microphone on or off during a meeting.                                                                  |
+| 📷 **Toggle Camera**           | [Camera Control](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/handling-media/on-off-camera)         | Turn the video camera on or off during a meeting.                                                                  |
+| 🖥️ **Screen Share**            | [Screen Share](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/handling-media/screen-share)          | Share your screen with other participants during the call.                                                      |
+| 🔊 **Change Audio Device**     | [Switch Audio Device](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/handling-media/change-input-output-device#changing-inputoutput-audio-device) | Select an input-output device for audio during a meeting.                                                                |
+| 🔌 **Change Video Device**     | [Switch Video Device](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/handling-media/change-input-output-device#changing-camera-input-device) | Select an output device for audio during a meeting.                                                                |
+| ⚙️ **Optimize Audio Track**         | [Audio Track Optimization](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/render-media/optimize-audio-track)                                       | Enhance the quality and performance of media tracks.                                                            |
+| ⚙️ **Optimize Video Track**         | [Video Track Optimization](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/render-media/optimize-video-track)                                       | Enhance the quality and performance of media tracks.                                                            |
+| 💬 **Chat**                    | [In-Meeting Chat](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/collaboration-in-meeting/pubsub)      | Exchange messages with participants through a Publish-Subscribe mechanism.                                                   |
+| 📸 **Image Capture**           | [Image Capturer](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/handling-media/image-capturer)        | Capture images of other participant from their video stream, particularly useful for Video KYC and identity verification scenarios.     |
+| 📁 **File Sharing**            | [File Sharing](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/collaboration-in-meeting/upload-fetch-temporary-file) | Share files with participants during the meeting.                                                               |
+| 🖼️ **Virtual Background**        | [Virtual Background](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/render-media/virtual-background)                                       | Add a virtual background or blur effect to your video during the call.                                                            |
+| 📼 **Recording**               | [Recording](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/recording/Overview)                | Record the meeting for future reference.                                                                        |
+| 📡 **RTMP Livestream**         | [RTMP Livestream](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/live-streaming/rtmp-livestream)        | Stream the meeting live to platforms like YouTube or Facebook.                                                  |
+| 📝 **Real-time Transcription**           | [Real-time Transcription](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/transcription-and-summary/realtime-transcribe-meeting) | Generate real-time transcriptions of the meeting.                                                               |
+| 🔇 **Toggle Remote Media**     | [Remote Media Control](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/control-remote-participant/remote-participant-media) | Control the microphone or camera of remote participants.                                                        |
+| 🚫 **Mute All Participants**   | [Mute All](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/control-remote-participant/mute-all-participants) | Mute all participants simultaneously during the call.                                                           |
+| 🗑️ **Remove Participant**      | [Remove Participant](https://docs.videosdk.live/ios/guide/video-and-audio-calling-api-sdk/control-remote-participant/remove-participant) | Eject a participant from the meeting.  |
+
+## 🧠 Key Concepts
+
+Understand the core components of our SDK:
+
+- `Meeting` - A Meeting represents Real-time audio and video communication.
+
+  **` Note: Don't confuse the terms Room and Meeting; both mean the same thing 😃`**
+
+- `Sessions` - A particular duration you spend in a given meeting is referred as a session, you can have multiple sessions of a specific meetingId.
+- `Participant` - A participant refers to anyone attending the meeting session. The `local participant` represents yourself (You), while all other attendees are considered `remote participants`.
+- `Stream` - A stream refers to video or audio media content published by either the `local participant` or `remote participants`.
+
+
+## 🔐 Token Generation
+
+The token is used to create and validate a meeting using API and also initialize a meeting.
+
+🛠️ `Development Environment`:
+
+- You may use a temporary token for development. To create a temporary token, go to VideoSDK's [dashboard](https://app.videosdk.live/api-keys) .
+
+🌐 `Production Environment`:
+
+- You must set up an authentication server to authorize users for production. To set up an authentication server, please take a look at our official example repositories. [videosdk-rtc-api-server-examples](https://github.com/videosdk-live/videosdk-rtc-api-server-examples)
+
+## 🧩 Project Overview
+
+### App Behaviour with Different Meeting Types
+
+- **One-to-One meeting** - The One-to-One meeting allows 2 participants to join a meeting in the app.
+
+## 🏗️ Project Structure
+
+We have separated conrtroller and components in following folder structure:
+
+```
+VideoSDK
+└── view
+    └── ButtonControlsView.swift
+    └── ParticipantCellView.swift
+└── API
+    └── Constants.swift
+    └── APIService.swift
+└── models
+    └── Message.swift
+    └── ChatUser.swift
+    └── MeetingData.swift
+└── controllers
+    └── StartMeetingViewController.swift
+    └── MeetingViewController.swift
+    └── ChatViewController.swift
+```
+
 <br/>
 
-## Key Concepts
-
-- `Meeting` - A Meeting represents Real time audio and video communication.
-
-  **`Note : Don't confuse with Room and Meeting keyword, both are same thing 😃`**
-
-- `Sessions` - A particular duration you spend in a given meeting is a referred as session, you can have multiple session of a particular meetingId.
-- `Participant` - Participant represents someone who is attending the meeting's session, `local partcipant` represents self (You), for this self, other participants are `remote participants`.
-- `Stream` - Stream means video or audio media content that is either published by `local participant` or `remote participants`.
-
-<br/>
-
-## Permissions
-
+## 🔐 App Permission 
 - Your app needs to add permissions to use microphone and camera. Add below code your app's info.plist.
 
 ```swift
@@ -84,21 +157,6 @@ Run App from Xcode. Please run the app in real device for better experience beca
 <string>Allow microphone access to start audio.</string>
 ```
 
-<br/>
-
-## Token Generation
-
-Token is used to create and validate a meeting using API and also initialise a meeting.
-
-🛠️ `Development Environment`:
-
-- You may use a temporary token for development. To create a temporary token, go to VideoSDK [dashboard](https://app.videosdk.live/api-keys) .
-
-🌐 `Production Environment`:
-
-- You must set up an authentication server to authorise users for production. To set up an authentication server, refer to our official example repositories. [videosdk-rtc-api-server-examples](https://github.com/videosdk-live/videosdk-rtc-api-server-examples)
-
-<br/>
 
 ## API: Create and Validate meeting
 
@@ -294,42 +352,8 @@ If you want to learn more about the SDK, read the Complete Documentation of [iOS
 
 <br/>
 
-## Project Description
+## 📖 Examples
 
-<br/>
-
-> **Note :**
->
-> - **main** branch: Better UI with One-to-One and Conference call experience.
-> - **v1-sample-code** branch: Simple UI with Group call experience.
-
-<br/>
-
-## Project Structure
-
-We have separated conrtroller and components in following folder structure:
-
-```
-VideoSDK
-└── view
-    └── ButtonControlsView.swift
-    └── ParticipantCellView.swift
-└── API
-    └── Constants.swift
-    └── APIService.swift
-└── models
-    └── Message.swift
-    └── ChatUser.swift
-    └── MeetingData.swift
-└── controllers
-    └── StartMeetingViewController.swift
-    └── MeetingViewController.swift
-    └── ChatViewController.swift
-```
-
-<br/>
-
-## Examples 
 ### Examples for Conference
 
 - [videosdk-rtc-prebuilt-examples](https://github.com/videosdk-live/videosdk-rtc-prebuilt-examples)
@@ -349,11 +373,12 @@ VideoSDK
 - [videosdk-hls-android-java-example](https://github.com/videosdk-live/videosdk-hls-android-java-example)
 - [videosdk-hls-android-kotlin-example](https://github.com/videosdk-live/videosdk-hls-android-kotlin-example)
 
-## Documentation
 
-[Read the documentation](https://docs.videosdk.live/) to start using Video SDK.
+## 📝 Documentation
 
-## Community
+Explore more and start building with our [**Documentation**](https://docs.videosdk.live/)
 
-- [Discord](https://discord.gg/Gpmj6eCq5u) - To get involved with the Video SDK community, ask questions and share tips.
-- [Twitter](https://twitter.com/video_sdk) - To receive updates, announcements, blog posts, and general Video SDK tips.
+## 🤝 Join Our Community
+
+- **[Discord](https://discord.gg/Gpmj6eCq5u)**: Engage with the Video SDK community, ask questions, and share insights.
+- **[X](https://x.com/video_sdk)**: Stay updated with the latest news, updates, and tips from Video SDK.
