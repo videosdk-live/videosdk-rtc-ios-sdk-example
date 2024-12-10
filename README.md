@@ -157,7 +157,6 @@ VideoSDK
 <string>Allow microphone access to start audio.</string>
 ```
 
-
 ## API: Create and Validate meeting
 
 - `create meeting` - Please refer this [documentation](https://docs.videosdk.live/api-reference/realtime-communication/create-room) to create meeting.
@@ -165,192 +164,86 @@ VideoSDK
 
 <br/>
 
-## [Initialize a Meeting](https://docs.videosdk.live/ios/api/sdk-reference/setup)
+### [Common package]
+---
+### 1. Create or Join Meeting
 
-- You can initialize the meeting using `VideoSDK.initMeeting` method. this method configures meeting with given meeting-id.
+#### **[`APIService.swift`](APIService.swift)**
+- **Purpose**: Handles API requests to generate tokens, create meetings, and validate meeting details.
+  
+#### **[`StartMeetingViewController.swift`](StartMeetingViewController.swift)**
+- **Purpose**: Manages the process of creating or joining a meeting, including setting up audio, video, and navigation.
+- **Key Features**:
+  - **Meeting Creation & Joining**: Handles the logic for creating or joining a meeting and validates user input.
+  - **Camera Setup**: Initializes and manages the camera for video capture.
+  - **Microphone Setup**: Initializes and manages the microphone for audio capture.
+  - **Notifications**: Requests notification permissions for in-app alerts when the app is moved to the background.
+  - **Navigation**: Passes meeting data to `MeetingViewController` when the "join" or "create" button is tapped.
 
-```swift
-    VideoSDK.config(token: "server-token")
+---
 
-    meeting = VideoSDK.initMeeting(
-        meetingId: "meeting-id",
-        participantId: "participant-id"
-        participantName: "participant-name",
-        micEnabled: true,
-        webcamEnabled: true,
-      )
-```
+### 2. MeetingScreen
 
-<br/>
+#### **[`MeetingViewController.swift`](./MeetingViewController.swift)**
+**Purpose**: Manages the meeting flow, including audio/video controls, screen sharing, participant management, and interactive features.
 
-## [Enable/Disable Local Webcam](https://docs.videosdk.live/ios/api/sdk-reference/meeting-class/methods)
+### Key Features
 
-```swift
-    buttonControlsView.onVideoTapped = { on in
-        
-        if !on {
-            self.meeting?.enableWebcam()
-        } else {
-            self.meeting?.disableWebcam()
-        }
-    }
-```
+- **Meeting Initialization**: Initializes the meeting with `VideoSDK.initMeeting` using the meeting ID.
+- **Stream Handling**: Manages local and remote participant video streams and layout.
+- **Real-Time Chat**: Allows participants to send and receive messages.
+- **Raise Hand**: Lets participants raise their hands during the meeting.
+- **Microphone & Camera Controls**: Toggles muting/unmuting and enabling/disabling video.
+- **Recording**: Allows recording of the meeting, available in the developer dashboard.
+- **Interactive Live Streaming**: Hosts can start/stop live streaming (HLS).
+- **Screen Sharing**: Participants can share their screen during the meeting.
+- **Show Participant List**: Displays a list of all active participants.
+- **Audio Output Switching**: Switches audio output between devices (e.g., speaker, Bluetooth).
 
-<br/>
+### Listeners
 
-## [Mute/Unmute Local Audio](https://docs.videosdk.live/ios/api/sdk-reference/meeting-class/methods)
 
-```swift
-    buttonControlsView.onMicTapped = { on in
-        if !on {
-            self.meeting?.unmuteMic()
-        } else {
-            self.meeting?.muteMic()
-        }
-    }
-```
+- **MeetingEventLisetner**: Listens for multiple types of events which can be listened to know the current state of the meeting.
+- **ParticipantEventListener**: Listens for multiple types of events which can be listened to know the about the participants in the meeting.
 
-<br/>
+---
+### 3. Chat
 
-## [Change Local Mic](https://docs.videosdk.live/ios/api/sdk-reference/meeting-class/methods)
-
-```swift
-    AVAudioSession.sharedInstance().changeAudioOutput(presenterViewController: self)
-```
-
-<br/>
-
-## [Chat](https://docs.videosdk.live/ios/api/sdk-reference/meeting-class/pubsub)
-
-- The chat feature allows participants to send and receive messages about specific topics to which they have subscribed.
-
-```swift
-    // listen/subscribe for chat topic
-    meeting?.pubsub.subscribe(topic: CHAT_TOPIC, forListener: self)
+#### **[`ChatViewController.swift`](./ChatViewController.swift)**
+- **Purpose**: Manages the chat interface for the video meeting using the `MessageKit` framework.
+- **Key Features**:
+  - **Initialization**: Sets up the meeting and chat topic, and loads initial messages.
+  - **Message Handling**: Handles adding new messages, reloading the chat, and scrolling to the latest message.
+  - **UI Customization**: Customizes the appearance of the navigation bar, message collection view, and input bar.
+  - **Real-Time Messaging**: Publishes messages in real-time using the meeting's pub/sub system.
     
-    //write this block on click event
-    meeting.pubSub.publish(topic: "CHAT", message: message, options: { persist: true })
-    
-    //unsubscribing messages on topic CHAT
-    meeting.pubSub.unsubscribe("CHAT");
-```
+#### **[`ChatUser.swift`](./ChatUser.swift)**: Represents a chat user with `senderId` and `displayName` conforming to `SenderType`.
 
-<br/>
+#### **[`Message.swift`](./Message.swift)**: Represents a chat message with `sender`, `messageId`, `sentDate`, and `kind` conforming to `MessageType`.
 
-## Raise Hand
 
-- This feature allows participants to raise hand during the meeting.
+---
 
-```swift
-    // listen/subscribe for raise-hand topic
-    meeting?.pubsub.subscribe(topic: RAISE_HAND_TOPIC, forListener: self);
-    
-    // raise hand on click event
-    self.meeting?.pubsub.publish(topic: RAISE_HAND_TOPIC, message: "Raise Hand by Me", options: [:])
-```
+### 4. ParticipantList
 
-<br/>
+#### **[`ParticipantViewController.swift`](./ParticipantViewController.swift)**
+- **Purpose**: Displays a dynamic list of participants in the meeting using a table view.
+- **Key Features**:
+  - **Participant List Display**: Displays participants in a table view and updates automatically when the participant list changes.
+  - **Dynamic Updates**: Automatically updates the participant list when participants join or leave the meeting.
+  - **UI Customization**: Features a modern design with rounded top corners for the main view.
 
-## [Recording](https://docs.videosdk.live/ios/api/sdk-reference/meeting-class/methods)
+- **Methods**:
+  - **notifyParticipants**: Updates the participant list and reloads the table view when a participant joins or leaves.
+  - **btnClose_Clicked**: Dismisses the participant list view.
 
-- Record meeting allows participants to record video & audio during the meeting. The recording files are available in developer dashboard. Any participant can start / stop recording any time during the meeting.
+---
 
-```swift
-    let webhookUrl = "https://webhook.your-api-server.com"
-    
-    // start recording
-    meeting.startRecording(webhookUrl: webhookUrl)
-    
-    // stop recording
-    stopRecording()
-```
+---
 
-<br/>
+### [OneToOneCall package](app/src/main/java/live/videosdk/rtc/android/java/OneToOneCall)
 
-## [Live Streaming](https://docs.videosdk.live/ios/api/sdk-reference/meeting-class/methods)
-
-- Interactive Live Streaming allows participants to to broadcast live streaming to other participants. Host can start / stop HLS any time during the meeting.
-
-```swift
-    // start live streaming
-    startLivestream(outputs: outputs)
-    
-    // stop live streaming
-    stopLivestream()
-```
-
-<br/>
-
-## [Leave or End Meeting](https://docs.videosdk.live/ios/api/sdk-reference/meeting-class/methods)
-
-```swift
-  // Only one participant will leave/exit the meeting; the rest of the participants will remain.
-  meeting?.leave();
-
-  // The meeting will come to an end for each and every participant. So, use this function in accordance with your requirements.
-  meeting?.end();
-```
-
-<br/>
-
-## [Meeting Event callbacks](https://docs.videosdk.live/ios/api/sdk-reference/meeting-class/methods)
-
-By registering callback handlers, VideoSDK sends callbacks to the client app whenever there is a change or update in the meeting after a user joins.
-
-```swift
-func onMeetingJoined() {
-  // This event will be emitted when a localParticipant(you) successfully joined the meeting.
-  print("onMeetingJoined");
-}
-func onMeetingLeft() {
-  // This event will be emitted when a localParticipant(you) left the meeting.
-  print("onMeetingLeft");
-}
-func onParticipantJoined(participant) {
-  // This event will be emitted when a new participant joined the meeting.
-  // [participant]: new participant who joined the meeting
-  print(" onParticipantJoined", participant);
-}
-func onParticipantLeft(participant) {
-  // This event will be emitted when a joined participant left the meeting.
-  // [participantId]: id of participant who left the meeting
-  print(" onParticipantLeft", participant);
-}
-func onSpeakerChanged = (activeSpeakerId) => {
-  // This event will be emitted when any participant starts or stops screen sharing.
-  // [activeSpeakerId]: Id of participant who shares the screen.
-  print(" onSpeakerChanged", activeSpeakerId);
-};
-func onRecordingStarted() {
-  // This event will be emitted when recording of the meeting is started.
-  print(" onRecordingStarted");
-}
-func onRecordingStopped() {
-  // This event will be emitted when recording of the meeting is stopped.
-  print(" onRecordingStopped");
-}
-```
-
-<br/>
-
-## [Participant Events Callback](https://docs.videosdk.live/ios/api/sdk-reference/meeting-class/methods)
-
-By registering callback handlers, VideoSDK sends callbacks to the client app whenever a participant's video, audio, or screen share stream is enabled or disabled.
-
-```swift
-  func onStreamEnabled(stream, participant) {
-    // This event will be triggered whenever a participant's video, audio or screen share stream is enabled.
-    print("onStreamEnabled");
-  }
-  func onStreamDisabled(stream, participant) {
-    // This event will be triggered whenever a participant's video, audio or screen share stream is disabled.
-    print(" onStreamDisabled");
-  }
-```
-
-If you want to learn more about the SDK, read the Complete Documentation of [iOS VideoSDK](https://docs.videosdk.live/ios/api/sdk-reference/setup)
-
-<br/>
+- [`OneToOneCallActivity.java`](app/src/main/java/live/videosdk/rtc/android/java/OneToOneCall/OneToOneCallActivity.java) : `OneToOneCallActivity.java` handles one-on-one video call, providing features like microphone and camera control, screen sharing, and participant management. It supports real-time chat and meeting event listeners for tasks like recording and screen sharing. The activity also displays session elapsed time and handles permissions for audio, video, and screen sharing.
 
 ## 📖 Examples
 
