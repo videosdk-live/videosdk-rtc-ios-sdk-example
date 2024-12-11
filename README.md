@@ -254,15 +254,18 @@ VideoSDK
 
 ---
 
----
-
 ### [OneToOneCall]
 
 - This project handles one-on-one video call, providing features like microphone and camera control, screen sharing, and participant management. It supports real-time chat and meeting event listeners for tasks like recording and screen sharing.and handles permissions for audio, video, and screen sharing.
 
+### [GroupCall]
+
+ - **v1-sample-code** branch: Simple UI with Group call experience.
+    
+--- 
 ## 📖 Examples
 
-### Examples for Conference
+### Examples for Conferenc
 
 - [videosdk-rtc-prebuilt-examples](https://github.com/videosdk-live/videosdk-rtc-prebuilt-examples)
 - [videosdk-rtc-javascript-sdk-example](https://github.com/videosdk-live/videosdk-rtc-javascript-sdk-example)
