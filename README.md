@@ -180,6 +180,10 @@ VideoSDK
   - **Notifications**: Requests notification permissions for in-app alerts when the app is moved to the background.
   - **Navigation**: Passes meeting data to `MeetingViewController` when the "join" or "create" button is tapped.
 
+<p align="center">
+<img width="300" src="https://cdn.videosdk.live/docs/github/ios_sdk_example/pre_screen.gif"/>
+</p>
+
 ---
 
 ### 2. MeetingScreen
@@ -206,6 +210,10 @@ VideoSDK
 - **MeetingEventLisetner**: Listens for multiple types of events which can be listened to know the current state of the meeting.
 - **ParticipantEventListener**: Listens for multiple types of events which can be listened to know the about the participants in the meeting.
 
+<p align="center">
+<img width="300" src="https://cdn.videosdk.live/docs/github/ios_sdk_example/join_meeting.gif"/>
+</p>
+
 ---
 ### 3. Chat
 
@@ -221,6 +229,9 @@ VideoSDK
 
 #### **[`Message.swift`](./Message.swift)**: Represents a chat message with `sender`, `messageId`, `sentDate`, and `kind` conforming to `MessageType`.
 
+<p align="center">
+<img width="300" src="https://cdn.videosdk.live/docs/github/ios_sdk_example/chat_view.gif"/>
+</p>
 
 ---
 
@@ -237,13 +248,17 @@ VideoSDK
   - **notifyParticipants**: Updates the participant list and reloads the table view when a participant joins or leaves.
   - **btnClose_Clicked**: Dismisses the participant list view.
 
----
+<p align="center">
+<img width="300" src="https://cdn.videosdk.live/docs/github/ios_sdk_example/participant_list.gif"/>
+</p>
 
 ---
 
-### [OneToOneCall package](app/src/main/java/live/videosdk/rtc/android/java/OneToOneCall)
+---
 
-- [`OneToOneCallActivity.java`](app/src/main/java/live/videosdk/rtc/android/java/OneToOneCall/OneToOneCallActivity.java) : `OneToOneCallActivity.java` handles one-on-one video call, providing features like microphone and camera control, screen sharing, and participant management. It supports real-time chat and meeting event listeners for tasks like recording and screen sharing. The activity also displays session elapsed time and handles permissions for audio, video, and screen sharing.
+### [OneToOneCall]
+
+- This project handles one-on-one video call, providing features like microphone and camera control, screen sharing, and participant management. It supports real-time chat and meeting event listeners for tasks like recording and screen sharing.and handles permissions for audio, video, and screen sharing.
 
 ## 📖 Examples
 
