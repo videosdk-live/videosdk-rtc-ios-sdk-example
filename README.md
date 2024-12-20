@@ -166,7 +166,21 @@ VideoSDK
 
 ### [Common package]
 ---
-### 1. Create or Join Meeting
+### 1. Pre-Call Setup on Join Screen
+
+#### **[`StartMeetingViewController.swift`](./VideoSDKRTC_Example/controllers/StartMeetingViewController.swift)**
+
+- **Purpose**: The Pre-Call Setup screen allows participants to configure their video and audio settings before joining or creating a meeting.
+- **Key Features**:
+  - **Camera Selection**: Toggle between front and back cameras using an action sheet, and pass the selected camera orientation to the meeting.
+  - **Microphone Selection**: Choose a preferred microphone from the list of available devices using `VideoSDK.getAudioDevices()` for audio input and output during the meeting.
+<p align="center">
+<img width="300" src="https://cdn.videosdk.live/docs/github/ios_sdk_example/pre_call_screen.gif"/>
+</p>
+
+---
+
+### 2. Create or Join Meeting
 
 #### **[`APIService.swift`](./VideoSDKRTC_Example/API/APIService.swift)**
 - **Purpose**: Handles API requests to generate tokens, create meetings, and validate meeting details.
@@ -186,7 +200,7 @@ VideoSDK
 
 ---
 
-### 2. MeetingScreen
+### 3. MeetingScreen
 
 #### **[`MeetingViewController.swift`](./VideoSDKRTC_Example/controllers/MeetingViewController.swift)**
 **Purpose**: Manages the meeting flow, including audio/video controls, screen sharing, participant management, and interactive features.
@@ -215,7 +229,7 @@ VideoSDK
 </p>
 
 ---
-### 3. Chat
+### 4. Chat
 
 #### **[`ChatViewController.swift`](./VideoSDKRTC_Example/controllers/ChatViewController.swift)**
 - **Purpose**: Manages the chat interface for the video meeting using the `MessageKit` framework.
@@ -235,7 +249,7 @@ VideoSDK
 
 ---
 
-### 4. ParticipantList
+### 5. ParticipantList
 
 #### **[`ParticipantViewController.swift`](./VideoSDKRTC_Example/controllers/ParticipantsViewController.swift)**
 - **Purpose**: Displays a dynamic list of participants in the meeting using a table view.
@@ -265,7 +279,7 @@ VideoSDK
 --- 
 ## 📖 Examples
 
-### Examples for Conferenc
+### Examples for Conference
 
 - [videosdk-rtc-prebuilt-examples](https://github.com/videosdk-live/videosdk-rtc-prebuilt-examples)
 - [videosdk-rtc-javascript-sdk-example](https://github.com/videosdk-live/videosdk-rtc-javascript-sdk-example)
