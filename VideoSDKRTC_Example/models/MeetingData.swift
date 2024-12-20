@@ -13,4 +13,7 @@ struct MeetingData {
     let meetingId: String
     let micEnabled: Bool
     let cameraEnabled: Bool
+    let videoDevice: String?
+    let audioDevice: String?  
+
 }

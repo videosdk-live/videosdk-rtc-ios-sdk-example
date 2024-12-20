@@ -6,7 +6,7 @@ target 'VideoSDKRTC_Example' do
   use_frameworks!
 
   # Pods for VideoSDKRTC_Example
-  pod 'VideoSDKRTC', :git => 'https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git'
+  pod 'VideoSDKRTC'
   pod 'MessageKit'
   pod 'IQKeyboardManagerSwift'
 

@@ -86,6 +86,9 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate 
 
     var participantIsSharingScreen: Bool = false
     
+    var valueOfVideoDevice: String?
+    var valueOfAudioDevice: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -184,12 +187,22 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate 
     
     // MARK: - Meeting
     
-    private func initializeMeeting() {
-        
-        // for custom Video Track
-        guard let customVideoStream = try? VideoSDK.createCameraVideoTrack(encoderConfig: .h360p_w640p, facingMode: .front, multiStream: true) else { return }
-        
-        // initialize
+    func initializeMeeting() {
+        guard let videoDevice = meetingData?.videoDevice else { return }
+
+        let facingMode = getSelectedCameraPosition(for: videoDevice)
+
+        // Create the custom video track using the selected camera
+        guard let customVideoStream = try? VideoSDK.createCameraVideoTrack(
+            encoderConfig: .h360p_w640p,
+            facingMode: facingMode,
+            multiStream: true
+        ) else {
+            print("Failed to create custom video stream")
+            return
+        }
+
+        // Initialize the meeting with the custom video stream
         meeting = VideoSDK.initMeeting(
             meetingId: meetingData.meetingId,
             participantName: meetingData.name,
@@ -197,22 +210,23 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate 
             webcamEnabled: meetingData.cameraEnabled,
             customCameraVideoStream: customVideoStream
         )
-        
-        // without customVideoTrack
-        
-        /*meeting = VideoSDK.initMeeting(
-            meetingId: meetingData.meetingId,
-            participantName: meetingData.name,
-            micEnabled: meetingData.micEnabled,
-            webcamEnabled: meetingData.cameraEnabled,
-        )*/
-        
-        // listener
+
+        // Add event listeners and join the meeting
         meeting?.addEventListener(self)
-        
-        // join
         meeting?.join()
     }
+
+    private func getSelectedCameraPosition(for device: String) -> AVCaptureDevice.Position {
+        switch device {
+        case "Front Camera":
+            return .front
+        case "Back Camera":
+            return .back
+        default:
+            return .front
+        }
+    }
+
     
     
     @IBAction func btnRotateCameraTapped(_ sender: Any) {
@@ -229,6 +243,12 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate 
         
         UIPasteboard.general.string = meetingLink
         self.showAlert(title: "MeetingId Copied", message: nil, autoDismiss: true)
+    }
+    
+    func audioSetupForPrecall() {
+        if let audio = meetingData?.audioDevice {
+            meeting?.changeMic(selectedDevice: audio)
+        }
     }
 }
 
@@ -257,6 +277,11 @@ extension MeetingViewController: MeetingEventListener {
                 await meeting?.pubsub.subscribe(topic: CHAT_TOPIC, forListener: self)
                 await meeting?.pubsub.subscribe(topic: RAISE_HAND_TOPIC, forListener: self)
             }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.audioSetupForPrecall()
+            }
+            
         } else {
             //Navigate to error screen
         }

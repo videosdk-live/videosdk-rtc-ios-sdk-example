@@ -53,7 +53,7 @@ PODS:
 DEPENDENCIES:
   - IQKeyboardManagerSwift
   - MessageKit
-  - VideoSDKRTC (from `https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git`)
+  - VideoSDKRTC
 
 SPEC REPOS:
   trunk:
@@ -69,15 +69,7 @@ SPEC REPOS:
     - MessageKit
     - Socket.IO-Client-Swift
     - Starscream
-
-EXTERNAL SOURCES:
-  VideoSDKRTC:
-    :git: https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git
-
-CHECKOUT OPTIONS:
-  VideoSDKRTC:
-    :commit: aedc4a2ca0407d35961be509309e45e6b7aa8ea9
-    :git: https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git
+    - VideoSDKRTC
 
 SPEC CHECKSUMS:
   InputBarAccessoryView: 1d7b0a672b36e370f01f264b3907ef39d03328e3
@@ -94,6 +86,6 @@ SPEC CHECKSUMS:
   Starscream: 19b5533ddb925208db698f0ac508a100b884a1b9
   VideoSDKRTC: 679cdce8548a9de7b8328fc4d880102f29c31057
 
-PODFILE CHECKSUM: 1014d5c5fdb18889deee645f7a165d4898c12f61
+PODFILE CHECKSUM: 5f77e138decf4c3801a8849a4499ccba8e2e880c
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

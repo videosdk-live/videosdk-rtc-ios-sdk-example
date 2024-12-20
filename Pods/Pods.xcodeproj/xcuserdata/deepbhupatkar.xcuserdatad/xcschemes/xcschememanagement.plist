@@ -4,121 +4,123 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>IQKeyboardCore-IQKeyboardCore.xcscheme_^#shared#^_</key>
+		<key>IQKeyboardCore-IQKeyboardCore.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>21</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>IQKeyboardCore.xcscheme_^#shared#^_</key>
+		<key>IQKeyboardCore.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>16</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>IQKeyboardManagerSwift-IQKeyboardManagerSwift.xcscheme_^#shared#^_</key>
+		<key>IQKeyboardManagerSwift-IQKeyboardManagerSwift.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>15</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>IQKeyboardManagerSwift.xcscheme_^#shared#^_</key>
+		<key>IQKeyboardManagerSwift.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>23</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>IQKeyboardNotification-IQKeyboardNotification.xcscheme_^#shared#^_</key>
+		<key>IQKeyboardNotification-IQKeyboardNotification.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>9</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>IQKeyboardNotification.xcscheme_^#shared#^_</key>
+		<key>IQKeyboardNotification.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>12</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>IQKeyboardReturnManager-IQKeyboardReturnManager.xcscheme_^#shared#^_</key>
+		<key>IQKeyboardReturnManager-IQKeyboardReturnManager.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>IQKeyboardReturnManager.xcscheme_^#shared#^_</key>
+		<key>IQKeyboardReturnManager.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>13</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>IQKeyboardToolbar-IQKeyboardToolbar.xcscheme_^#shared#^_</key>
+		<key>IQKeyboardToolbar-IQKeyboardToolbar.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>IQKeyboardToolbar.xcscheme_^#shared#^_</key>
+		<key>IQKeyboardToolbar.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>14</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>IQKeyboardToolbarManager-IQKeyboardToolbarManager.xcscheme_^#shared#^_</key>
+		<key>IQKeyboardToolbarManager-IQKeyboardToolbarManager.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>18</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>IQKeyboardToolbarManager.xcscheme_^#shared#^_</key>
+		<key>IQKeyboardToolbarManager.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>17</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>IQTextInputViewNotification-IQTextInputViewNotification.xcscheme_^#shared#^_</key>
+		<key>IQTextInputViewNotification-IQTextInputViewNotification.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>IQTextInputViewNotification.xcscheme_^#shared#^_</key>
+		<key>IQTextInputViewNotification.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>IQTextView-IQTextView.xcscheme_^#shared#^_</key>
+		<key>IQTextView-IQTextView.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>11</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>IQTextView.xcscheme_^#shared#^_</key>
+		<key>IQTextView.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>24</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>InputBarAccessoryView.xcscheme_^#shared#^_</key>
+		<key>InputBarAccessoryView.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>22</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>MessageKit.xcscheme_^#shared#^_</key>
+		<key>MessageKit.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>10</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>Pods-VideoSDKRTC_Example.xcscheme_^#shared#^_</key>
+		<key>Pods-VideoSDKRTC_Example.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>Socket.IO-Client-Swift.xcscheme_^#shared#^_</key>
+		<key>Socket.IO-Client-Swift.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>19</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>Starscream-Starscream_Privacy.xcscheme_^#shared#^_</key>
+		<key>Starscream-Starscream_Privacy.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>20</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>Starscream.xcscheme_^#shared#^_</key>
+		<key>Starscream.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>VideoSDKRTC.xcscheme_^#shared#^_</key>
+		<key>VideoSDKRTC.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict/>
 </dict>
 </plist>
