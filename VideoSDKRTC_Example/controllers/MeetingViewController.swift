@@ -363,7 +363,6 @@ extension MeetingViewController: MeetingEventListener {
     
     /// Caled after recording stops
     func onRecordingStoppped() {
-        print("meeting recording stopped")
         self.ivIsRecording.isHidden = true
         recordingStarted = false
         updateMenuButton()
@@ -510,7 +509,6 @@ extension MeetingViewController: ParticipantEventListener {
 extension MeetingViewController: PubSubMessageListener {
     
     func onMessageReceived(_ message: PubSubMessage) {
-        print("Message Received:= " + message.message)
         let localParticipantID = participants.first(where: { $0.isLocal == true })?.id
         if(message.topic == RAISE_HAND_TOPIC){
             
@@ -767,23 +765,19 @@ private extension MeetingViewController {
                             if participant.isLocal {
                                 self.localScreenSharedView.isHidden = true
                             }
-                            print("here1")
                             if self.participants.count > 1 {
                                 shareTrack.remove(self.remoteParticipantVideoContainer)
                                 if let videoStream = self.participants.first(where: {!$0.isLocal})?.streams.first(where: { $1.kind == .state(value: .video) })?.value.track as? RTCVideoTrack {
-                                    print("here2")
                                     //                                videoStream.remove(self.localParticipantViewVideoContainer)
                                     videoStream.add(self.remoteParticipantVideoContainer)
                                     self.remoteParticipantVideoContainer.videoContentMode = .scaleAspectFill
                                     self.remoteParticipantVideoContainer.isHidden = false
                                     self.remoteParticipantNameContainer.isHidden = true
                                 } else {
-                                    print("here")
                                     self.remoteParticipantVideoContainer.isHidden = true
                                     self.remoteParticipantNameContainer.isHidden = false
                                 }
                                 if let localVideoStream = self.participants.first(where: { $0.isLocal })?.streams.first(where: { $1.kind == .state(value: .video)})?.value.track as? RTCVideoTrack {
-                                    print("here3")
                                     localVideoStream.add(self.localParticipantViewVideoContainer)
                                     self.localParticipantViewContainer.isHidden = false
                                     self.localParticipantViewVideoContainer.isHidden = false

@@ -76,7 +76,6 @@ class StartMeetingViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         valueOfVideoDevice = "Front Camera"
         valueOfAudioDevice = "Speaker"
-        print(valueOfAudioDevice, valueOfVideoDevice)
     }
     
     func prepareUI() {
@@ -89,7 +88,7 @@ class StartMeetingViewController: UIViewController {
         txtMeetingCodeField.attributedPlaceholder = NSAttributedString(string: "Enter meeting code", attributes: attributes)
         txtEnterNameField.delegate = self
         txtMeetingCodeField.delegate = self
-        txtMeetingCodeField.text = "69du-1cle-wacs"
+        txtMeetingCodeField.text = ""
         
         [viewCameraViewContainer, viewCreateAMeetingButton, viewJoinAMeetingButton, viewTestAudioVideoContainer].forEach {
             $0?.roundCorners(corners: [.allCorners], radius: 12.0)
@@ -168,13 +167,11 @@ class StartMeetingViewController: UIViewController {
     
     // MARK: - Actions
    @objc private func flipCameraAction() {
-        print("Flip Camera Button Tapped")
         showCameraOptions()
     }
 
         
    @objc private func switchAudioAction() {
-        print("Switch Audio Output Button Tapped")
         getAudioDeviceList()
     }
     
@@ -188,7 +185,6 @@ class StartMeetingViewController: UIViewController {
                 self?.showDeviceSelectionAlert(devices: cameras,
                                                deviceType: "Camera",
                                                selectedDevice: self?.valueOfVideoDevice) { selectedCamera in
-                    print("Selected Camera: \(selectedCamera)")
                     self?.valueOfVideoDevice = selectedCamera
                     self?.setupAVCapture()
                     self?.startCamera()
@@ -301,7 +297,6 @@ class StartMeetingViewController: UIViewController {
                     Utils.loaderDismiss(viewControler: self)
                     if let data = data, let utf8Text = String(data: data, encoding: .utf8)
                     {
-                        print("UTF =>=>\(utf8Text)") // original server data as UTF8 string
                         do{
                             let dataArray = try JSONDecoder().decode(RoomsStruct.self,from: data)
                             DispatchQueue.main.async {
@@ -402,7 +397,6 @@ extension StartMeetingViewController: AVCaptureVideoDataOutputSampleBufferDelega
             for: .video,
             position: facingMode
         ) else {
-            print("Failed to get camera device")
             return
         }
 

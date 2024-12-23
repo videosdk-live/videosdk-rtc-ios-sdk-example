@@ -16,7 +16,6 @@ class Utils: NSObject
     class func loaderShow(viewControler: UIViewController) {
         DispatchQueue.main.async {
             if viewControler.presentedViewController is UIAlertController {
-                print("Loader already presented, skipping")
                 return
             }
             let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
@@ -26,7 +25,6 @@ class Utils: NSObject
             loadingIndicator.startAnimating()
             alert.view.addSubview(loadingIndicator)
             viewControler.present(alert, animated: true) {
-                print("Loader presented successfully")
             }
         }
     }
@@ -34,12 +32,9 @@ class Utils: NSObject
     class func loaderDismiss(viewControler: UIViewController) {
         DispatchQueue.main.async {
             guard let presentedVC = viewControler.presentedViewController as? UIAlertController else {
-                print("No loader to dismiss")
                 return
             }
-            print("Dismissing loader: \(presentedVC)")
             presentedVC.dismiss(animated: true) {
-                print("Loader dismissed successfully")
             }
         }
     }
