@@ -7,11 +7,13 @@
 
 import UIKit
 import AVFoundation
+import VideoSDKRTC
 
 class StartMeetingViewController: UIViewController {
     
     // MARK: - Properties
-    
+    let meetingVC = MeetingViewController()
+
     private var serverToken = ""
     var micEnabled: Bool = false
     var webCamEnabled: Bool = false
@@ -44,6 +46,7 @@ class StartMeetingViewController: UIViewController {
     // MARK: Properties
     
     var isJoinMeetingAction = true
+    var isRequestInProgress = false
     
     //Camera Capture requiered properties
     var videoDataOutput: AVCaptureVideoDataOutput!
@@ -52,12 +55,27 @@ class StartMeetingViewController: UIViewController {
     var captureDevice: AVCaptureDevice!
     var rootLayer: CALayer!
     let session = AVCaptureSession()
+    
+    // MARK: - UI Elements
+    let flipCameraButton = UIButton(type: .system)
+    let switchAudioButton = UIButton(type: .system)
 
+    @Published var valueOfVideoDevice: String? = "Front Camera"
+    @Published var valueOfAudioDevice: String? = "Speaker"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareUI()
-        
+        VideoSDK.getAudioPermission()
+        self.requestNotificationAuthorization()
         self.serverToken = AUTH_TOKEN
+        previewLayer.isHidden = !self.webCamEnabled
+
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        valueOfVideoDevice = "Front Camera"
+        valueOfAudioDevice = "Speaker"
     }
     
     func prepareUI() {
@@ -88,6 +106,8 @@ class StartMeetingViewController: UIViewController {
         }
         
         setupAVCapture()
+        configureCameraControls()
+  
         updateVideoButton(status: self.webCamEnabled)
         updateAudioButton(status: self.micEnabled)
         
@@ -117,28 +137,137 @@ class StartMeetingViewController: UIViewController {
         self.joinAMeetingStackView.isHidden = false
         self.viewMeetingCodeFieldContainer.isHidden = true
         self.isJoinMeetingAction = false
-        
         self.txtEnterNameField.becomeFirstResponder()
     }
     
     
     @IBAction func btnJoinAMeetingTapped(_ sender: Any) {
-        if isJoinMeetingAction {
-            // Join meeting
-            if((txtMeetingCodeField.text ?? "").isEmpty){
-                self.showAlert(title: "Meeting id Required", message: "Please provide meeting id to start the meeting.")
-                txtMeetingCodeField.resignFirstResponder()
-            } else {
-                joinMeeting()
+        stopCamera()
+            guard !isRequestInProgress else { return }
+            isRequestInProgress = true
+            
+            defer {
+                // Reset the flag after execution
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.isRequestInProgress = false
+                }
             }
-        } else {
-            // Create meeting
-            Utils.loaderShow(viewControler: self)
-            joinRoom()
+            if isJoinMeetingAction {
+                guard let meetingID = txtMeetingCodeField.text, !meetingID.isEmpty else {
+                    self.showAlert(title: "Meeting ID Required", message: "Please provide a meeting ID to start the meeting.")
+                    txtMeetingCodeField.resignFirstResponder()
+                    return
+                }
+                joinMeeting()
+            } else {
+                Utils.loaderShow(viewControler: self)
+                joinRoom()
+            }
         }
+    
+    // MARK: - Actions
+   @objc private func flipCameraAction() {
+        showCameraOptions()
+    }
+
+        
+   @objc private func switchAudioAction() {
+        getAudioDeviceList()
     }
     
-    // MARK: - Custom Function
+    func showCameraOptions() {
+        if webCamEnabled == true {
+            
+            
+            let cameras = ["Front Camera", "Back Camera"] // Predefined options
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.showDeviceSelectionAlert(devices: cameras,
+                                               deviceType: "Camera",
+                                               selectedDevice: self?.valueOfVideoDevice) { selectedCamera in
+                    self?.valueOfVideoDevice = selectedCamera
+                    self?.setupAVCapture()
+                    self?.startCamera()
+                }
+            }
+        }
+        else
+        {
+            showAlert(title: "VideoSDKExample", message: "Turn on Camera first", autoDismiss: true)
+        }
+    }
+
+        // MARK: - Get Audio Device List
+        func getAudioDeviceList() {
+            let audioDevices = VideoSDK.getAudioDevices()
+            showDeviceSelectionAlert(devices: audioDevices,
+                                    deviceType: "Audio Device",
+                                    selectedDevice: valueOfAudioDevice) { selectedAudioDevice in
+                self.valueOfAudioDevice = selectedAudioDevice
+            }
+
+        }
+
+        // MARK: - Show Device Selection Alert
+    func showDeviceSelectionAlert(devices: [String], deviceType: String, selectedDevice: String?, completion: @escaping (String) -> Void) {
+        let alertController = UIAlertController(title: "Select \(deviceType)", message: nil, preferredStyle: .actionSheet)
+        
+        for device in devices {
+            let action = UIAlertAction(title: device, style: .default) { _ in
+                completion(device)
+            }
+            action.setValue(device == selectedDevice, forKey: "checked")
+            alertController.addAction(action)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+
+    func configureCameraControls() {
+        
+        // Add Flip Camera Button
+        flipCameraButton.setImage(UIImage(systemName: "camera.rotate"), for: .normal)
+        flipCameraButton.tintColor = .systemBlue
+        flipCameraButton.addTarget(self, action: #selector(flipCameraAction), for: .touchUpInside)
+        flipCameraButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(flipCameraButton) // Add to the main view, outside of the preview container
+        
+        // Add Switch Audio Button
+        switchAudioButton.setImage(UIImage(systemName: "speaker.wave.2"), for: .normal)
+        switchAudioButton.tintColor = .systemBlue
+        switchAudioButton.addTarget(self, action: #selector(switchAudioAction), for: .touchUpInside)
+        switchAudioButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(switchAudioButton) // Add to the main view, outside of the preview container
+        
+        // Apply Auto Layout Constraints
+        NSLayoutConstraint.activate([
+            // Flip Camera Button Constraints (Outside of the preview container)
+            flipCameraButton.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
+            flipCameraButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
+            flipCameraButton.widthAnchor.constraint(equalToConstant: 40),
+            flipCameraButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            // Switch Audio Button Constraints (Outside of the preview container)
+            switchAudioButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -19),
+            switchAudioButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
+            switchAudioButton.widthAnchor.constraint(equalToConstant: 40),
+            switchAudioButton.heightAnchor.constraint(equalToConstant: 40),
+        ])
+    }
+
+    private func getSelectedCameraPosition() -> AVCaptureDevice.Position? {
+        switch valueOfVideoDevice {
+        case "Front Camera":
+            return .front
+        case "Back Camera":
+            return .back
+        default:
+            return .front
+        }
+    }
     
     func updateAudioButton(status: Bool) {
         self.viewAudioButton.backgroundColor = status ? UIColor.white : UIColor.red
@@ -155,37 +284,36 @@ class StartMeetingViewController: UIViewController {
     }
     
     func joinRoom() {
-        
-        let urlString = "https://api.videosdk.live/v2/rooms"
-        let session = URLSession.shared
-        let url = URL(string: urlString)!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue(self.serverToken, forHTTPHeaderField: "Authorization")
-        
-        session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-            DispatchQueue.main.async {
-                Utils.loaderDismiss(viewControler: self)
-                if let data = data, let utf8Text = String(data: data, encoding: .utf8)
-                {
-                    print("UTF =>=>\(utf8Text)") // original server data as UTF8 string
-                    do{
-                        let dataArray = try JSONDecoder().decode(RoomsStruct.self,from: data)
-                        DispatchQueue.main.async {
-                            self.txtMeetingCodeField.text = dataArray.roomID
+            
+            let urlString = "https://api.videosdk.live/v2/rooms"
+            let session = URLSession.shared
+            let url = URL(string: urlString)!
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.addValue(self.serverToken, forHTTPHeaderField: "Authorization")
+            
+            session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+                DispatchQueue.main.async {
+                    Utils.loaderDismiss(viewControler: self)
+                    if let data = data, let utf8Text = String(data: data, encoding: .utf8)
+                    {
+                        do{
+                            let dataArray = try JSONDecoder().decode(RoomsStruct.self,from: data)
+                            DispatchQueue.main.async {
+                                self.txtMeetingCodeField.text = dataArray.roomID
+                            }
+                            self.joinMeeting()
+                            print(dataArray)
+                        } catch {
+                            print("Error while creating a meeting: \(error)")
+                            self.showToast(message: "Error while creating a meeting: \(error)", font: .systemFont(ofSize: 15.0))
                         }
-                        self.joinMeeting()
-                        print(dataArray)
-                    } catch {
-                        print("Error while creating a meeting: \(error)")
-                        self.showToast(message: "Error while creating a meeting: \(error)", font: .systemFont(ofSize: 15.0))
                     }
                 }
+                
             }
-            
+            ).resume()
         }
-        ).resume()
-    }
     // MARK: - Actions
     
     func joinMeeting() {
@@ -221,7 +349,6 @@ class StartMeetingViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         guard let navigation = segue.destination as? UINavigationController,
               let meetingViewController = navigation.topViewController as? MeetingViewController else {
               return
@@ -232,7 +359,10 @@ class StartMeetingViewController: UIViewController {
             name: txtEnterNameField.text ?? "Guest",
             meetingId: txtMeetingCodeField.text ?? "",
             micEnabled: true,
-            cameraEnabled: true
+            cameraEnabled: true,
+            videoDevice: valueOfVideoDevice,     // Pass the selected video device
+            audioDevice: valueOfAudioDevice      // Pass the selected audio device
+
         )
     }
     
@@ -252,14 +382,28 @@ extension StartMeetingViewController: UITextFieldDelegate {
 
 
 extension StartMeetingViewController: AVCaptureVideoDataOutputSampleBufferDelegate{
-     func setupAVCapture(){
-        session.sessionPreset = AVCaptureSession.Preset.vga640x480
-        guard let device = AVCaptureDevice
-        .default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: .video, position: AVCaptureDevice.Position.front)
-         else { return }
+    
+    func setupAVCapture() {
+        session.stopRunning() // Stop the current session before reconfiguration
+        
+        // Remove all existing inputs and outputs
+        session.inputs.forEach { session.removeInput($0) }
+        session.outputs.forEach { session.removeOutput($0) }
+        
+        guard let facingMode = getSelectedCameraPosition() else { return }
+
+        guard let device = AVCaptureDevice.default(
+            .builtInWideAngleCamera,
+            for: .video,
+            position: facingMode
+        ) else {
+            return
+        }
+
         captureDevice = device
         beginSession()
     }
+
 
     func beginSession(){
         var deviceInput: AVCaptureDeviceInput!
@@ -298,15 +442,31 @@ extension StartMeetingViewController: AVCaptureVideoDataOutputSampleBufferDelega
     }
     
     func startCamera() {
-        session.startRunning()
-        [viewVideoButton, viewAudioButton].forEach {
-            self.viewCameraViewContainer.bringSubviewToFront($0)
+        // Start the camera session on a background thread
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            self?.session.startRunning()
+        }
+            [viewVideoButton, viewAudioButton].forEach {
+                       viewCameraViewContainer.bringSubviewToFront($0)
         }
     }
 
     // clean up AVCapture
     func stopCamera(){
-        session.stopRunning()
+        if session.isRunning {
+               session.stopRunning()
+            previewLayer.isHidden = true
+            updateVideoButton(status: false)
+                
+           }
+    }
+    
+    func requestNotificationAuthorization() {
+        UNUserNotificationCenter.current().requestAuthorization(options: UNAuthorizationOptions.init(arrayLiteral: .alert, .badge, .sound)) { (success, error) in
+            if let error = error {
+                print("requestAuthorization error: ", error)
+            }
+        }
     }
 
 }

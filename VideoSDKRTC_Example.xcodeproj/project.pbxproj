@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		40CEA634E8DF618A5BD0D6F7 /* Pods_VideoSDKRTC_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB1FDFBC9A306BDF5A4BFFD7 /* Pods_VideoSDKRTC_Example.framework */; };
+		427CD7ED3BAA6B389113FF47 /* Pods_VideoSDKRTC_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19DB87EFEBAFFED77599D31 /* Pods_VideoSDKRTC_Example.framework */; };
 		6BA151E32BC902BB00D9FC4B /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA151E22BC902BB00D9FC4B /* ReplayKit.framework */; };
 		6BA151EA2BC902BB00D9FC4B /* VideoSDKScreenShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6BA151E12BC902BB00D9FC4B /* VideoSDKScreenShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6BA151F52BC9034000D9FC4B /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA151F02BC9034000D9FC4B /* SampleHandler.swift */; };
@@ -71,8 +71,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1024F6C02786C91AD0868289 /* Pods-VideoSDKRTC_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoSDKRTC_Example.debug.xcconfig"; path = "Target Support Files/Pods-VideoSDKRTC_Example/Pods-VideoSDKRTC_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		42289B3ED1DE1946FDD7A0BD /* Pods-VideoSDKRTC_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoSDKRTC_Example.release.xcconfig"; path = "Target Support Files/Pods-VideoSDKRTC_Example/Pods-VideoSDKRTC_Example.release.xcconfig"; sourceTree = "<group>"; };
 		6BA151E12BC902BB00D9FC4B /* VideoSDKScreenShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VideoSDKScreenShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BA151E22BC902BB00D9FC4B /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
 		6BA151E72BC902BB00D9FC4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,6 +81,7 @@
 		6BA151F42BC9034000D9FC4B /* SocketConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketConnection.swift; sourceTree = "<group>"; };
 		6BA151FA2BC903A100D9FC4B /* VideoSDKRTC_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VideoSDKRTC_Example.entitlements; sourceTree = "<group>"; };
 		6BA151FB2BC903B600D9FC4B /* VideoSDKScreenShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VideoSDKScreenShare.entitlements; sourceTree = "<group>"; };
+		A19DB87EFEBAFFED77599D31 /* Pods_VideoSDKRTC_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoSDKRTC_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B21ECEB9296EEF6000A48C5B /* VideoSDKRTC_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoSDKRTC_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B21ECEBC296EEF6000A48C5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B21ECEBE296EEF6000A48C5B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,7 +113,8 @@
 		B2EC5047298299C3009B612F /* AVAudioSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAudioSession+Extension.swift"; sourceTree = "<group>"; };
 		B2F7E4FD298458BF00F21FDA /* ButtonControlsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonControlsView.swift; sourceTree = "<group>"; };
 		B2F7E4FF29845C7200F21FDA /* ButtonControlsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonControlsView.xib; sourceTree = "<group>"; };
-		EB1FDFBC9A306BDF5A4BFFD7 /* Pods_VideoSDKRTC_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoSDKRTC_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8811F69CAC8ED09DEFB8DEF /* Pods-VideoSDKRTC_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoSDKRTC_Example.debug.xcconfig"; path = "Target Support Files/Pods-VideoSDKRTC_Example/Pods-VideoSDKRTC_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		F902D9E88A5CE5BDEE5ACBC5 /* Pods-VideoSDKRTC_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoSDKRTC_Example.release.xcconfig"; path = "Target Support Files/Pods-VideoSDKRTC_Example/Pods-VideoSDKRTC_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,7 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40CEA634E8DF618A5BD0D6F7 /* Pods_VideoSDKRTC_Example.framework in Frameworks */,
+				427CD7ED3BAA6B389113FF47 /* Pods_VideoSDKRTC_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,8 +140,8 @@
 		620C3FBF9C762544E88400A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EB1FDFBC9A306BDF5A4BFFD7 /* Pods_VideoSDKRTC_Example.framework */,
 				6BA151E22BC902BB00D9FC4B /* ReplayKit.framework */,
+				A19DB87EFEBAFFED77599D31 /* Pods_VideoSDKRTC_Example.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -269,8 +269,8 @@
 		C5753D31BB2782FAC5FD3B3B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1024F6C02786C91AD0868289 /* Pods-VideoSDKRTC_Example.debug.xcconfig */,
-				42289B3ED1DE1946FDD7A0BD /* Pods-VideoSDKRTC_Example.release.xcconfig */,
+				D8811F69CAC8ED09DEFB8DEF /* Pods-VideoSDKRTC_Example.debug.xcconfig */,
+				F902D9E88A5CE5BDEE5ACBC5 /* Pods-VideoSDKRTC_Example.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -299,12 +299,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B21ECECD296EEF6100A48C5B /* Build configuration list for PBXNativeTarget "VideoSDKRTC_Example" */;
 			buildPhases = (
-				BAC860ACD8C7E125C52D7023 /* [CP] Check Pods Manifest.lock */,
+				220821A6A0839D910E2B5ADF /* [CP] Check Pods Manifest.lock */,
 				B21ECEB5296EEF6000A48C5B /* Sources */,
 				B21ECEB6296EEF6000A48C5B /* Frameworks */,
 				B21ECEB7296EEF6000A48C5B /* Resources */,
-				D8CF325BF28B2FCA2B3F1A51 /* [CP] Embed Pods Frameworks */,
 				6BA151EB2BC902BB00D9FC4B /* Embed Foundation Extensions */,
+				F57BA2F39792EB5857F9617C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -377,7 +377,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		BAC860ACD8C7E125C52D7023 /* [CP] Check Pods Manifest.lock */ = {
+		220821A6A0839D910E2B5ADF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -399,7 +399,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D8CF325BF28B2FCA2B3F1A51 /* [CP] Embed Pods Frameworks */ = {
+		F57BA2F39792EB5857F9617C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -595,7 +595,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -678,7 +678,7 @@
 		};
 		B21ECECE296EEF6100A48C5B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1024F6C02786C91AD0868289 /* Pods-VideoSDKRTC_Example.debug.xcconfig */;
+			baseConfigurationReference = D8811F69CAC8ED09DEFB8DEF /* Pods-VideoSDKRTC_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -687,6 +687,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 9;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 8GZ776NSU2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VideoSDKRTC_Example/Info.plist;
@@ -704,7 +705,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.9;
+				MARKETING_VERSION = 1.3.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zujo.videosdk.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -716,7 +717,7 @@
 		};
 		B21ECECF296EEF6100A48C5B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 42289B3ED1DE1946FDD7A0BD /* Pods-VideoSDKRTC_Example.release.xcconfig */;
+			baseConfigurationReference = F902D9E88A5CE5BDEE5ACBC5 /* Pods-VideoSDKRTC_Example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -742,7 +743,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.9;
+				MARKETING_VERSION = 1.3.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zujo.videosdk.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

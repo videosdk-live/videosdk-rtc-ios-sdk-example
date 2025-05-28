@@ -42,7 +42,7 @@ class ParticipantCellView: UITableViewCell {
         let nameComponents = self.participant?.displayName.components(separatedBy: " ")
         cellParticipantName?.text = nameComponents?.first
         
-        cellParticipantIsHost?.text = self.participant?.isLocal ?? false ? "Host" : ""
+//        cellParticipantIsHost?.text = self.participant?.isLocal ?? false ? "Host" : ""
         
         cellParticipantIsHost?.isHidden = self.participant?.isLocal ?? false ? false : true
         
