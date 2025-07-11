@@ -6,7 +6,7 @@ target 'VideoSDKRTC_Example' do
   use_frameworks!
 
   # Pods for VideoSDKRTC_Example
-  pod 'VideoSDKRTC'
+  pod 'VideoSDKRTC', '>= 2.2.2'
   pod 'MessageKit'
   pod 'IQKeyboardManagerSwift'
 
