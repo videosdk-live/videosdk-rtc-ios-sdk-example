@@ -12,9 +12,9 @@ class ReceiveTransportListenerAdapter;
 #endif
 
 @class ConsumerWrapper;
+@class DataConsumerWrapper;
 @class RTCPeerConnectionFactory;
 @protocol ReceiveTransportWrapperDelegate;
-typedef NS_ENUM(NSInteger, RTCIceTransportPolicy);
 
 
 @interface ReceiveTransportWrapper : NSObject
@@ -42,14 +42,18 @@ typedef NS_ENUM(NSInteger, RTCIceTransportPolicy);
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error
 	__attribute__((swift_error(nonnull_error)));
 
-- (void)updateICETransportPolicy:(RTCIceTransportPolicy)iceTransportPolicy
-	error:(out NSError *__autoreleasing _Nullable *_Nullable)error
-	__attribute__((swift_error(nonnull_error)));
-
 - (ConsumerWrapper *_Nullable)createConsumerWithId:(NSString *_Nonnull)consumerId
 	producerId:(NSString *_Nonnull)producerId
 	kind:(MediasoupClientMediaKind _Nonnull)kind
 	rtpParameters:(NSString *_Nonnull)rtpParameters
+	appData:(NSString *_Nullable)appData
+	error:(out NSError *__autoreleasing _Nullable *_Nullable)error;
+
+- (DataConsumerWrapper *_Nullable)createDataConsumerWithId:(NSString *_Nonnull)consumerId
+	producerId:(NSString *_Nonnull)producerId
+	streamId:(UInt16)streamId
+	label:(NSString *_Nonnull)label
+	protocol:(NSString *_Nullable)protocol
 	appData:(NSString *_Nullable)appData
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error;
 

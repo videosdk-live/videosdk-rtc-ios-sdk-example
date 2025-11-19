@@ -4,7 +4,11 @@ PODS:
   - InputBarAccessoryView/Core (5.1.0)
   - MessageKit (3.3.0):
     - InputBarAccessoryView (~> 5.1.0)
-  - VideoSDKRTC (2.0.13)
+  - Socket.IO-Client-Swift (16.1.1):
+    - Starscream (~> 4.0.8)
+  - Starscream (4.0.8)
+  - VideoSDKRTC (2.2.9):
+    - Socket.IO-Client-Swift (= 16.1.1)
 
 DEPENDENCIES:
   - MessageKit (~> 3.3.0)
@@ -14,6 +18,8 @@ SPEC REPOS:
   trunk:
     - InputBarAccessoryView
     - MessageKit
+    - Socket.IO-Client-Swift
+    - Starscream
 
 EXTERNAL SOURCES:
   VideoSDKRTC:
@@ -21,14 +27,16 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   VideoSDKRTC:
-    :commit: 1690b6af76c0f7da3f68a8f0a52ce94b34f9662b
+    :commit: 2d7cb8bd21d096c6842d537cc9a173bd4ba4a496
     :git: https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git
 
 SPEC CHECKSUMS:
   InputBarAccessoryView: 19953f486a23e846e9487099f92bbe3456e46ce5
   MessageKit: 1f07618183be6d92b648ba7a384aafa097362a00
-  VideoSDKRTC: 9565f86deed20b49866bf4563a69e9ad871921e4
+  Socket.IO-Client-Swift: 3614bea82ba005df1c2ff01154f4004993e05ad7
+  Starscream: 19b5533ddb925208db698f0ac508a100b884a1b9
+  VideoSDKRTC: ffa4f2ff4ae4bdd94f0862d7e3298baa7ea735d3
 
-PODFILE CHECKSUM: 2ab8249185a34d5b257fcd0d7450ee1cbb8b9527
+PODFILE CHECKSUM: 220f3f954b873510b7a8f41aaa43a30ae6ca8e31
 
-COCOAPODS: 1.12.0
+COCOAPODS: 1.16.2

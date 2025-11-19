@@ -1,5 +1,5 @@
 /*
- *  Copyright 2022 The WebRTC project authors. All Rights Reserved.
+ *  Copyright 2025 The WebRTC project authors. All Rights Reserved.
  *
  *  Use of this source code is governed by a BSD-style license
  *  that can be found in the LICENSE file in the root of the source
@@ -15,6 +15,7 @@
 #import <WebRTC/RTCMacros.h>
 #import <WebRTC/RTCMutableI420Buffer.h>
 #import <WebRTC/RTCMutableYUVPlanarBuffer.h>
+#import <WebRTC/RTCSSLCertificateVerifier.h>
 #import <WebRTC/RTCVideoCapturer.h>
 #import <WebRTC/RTCVideoCodecInfo.h>
 #import <WebRTC/RTCVideoDecoder.h>
@@ -26,13 +27,14 @@
 #import <WebRTC/RTCVideoFrame.h>
 #import <WebRTC/RTCVideoFrameBuffer.h>
 #import <WebRTC/RTCVideoRenderer.h>
+#import <WebRTC/RTCAudioRenderer.h>
 #import <WebRTC/RTCYUVPlanarBuffer.h>
+#import <WebRTC/RTCAudioDevice.h>
 #import <WebRTC/RTCAudioSession.h>
 #import <WebRTC/RTCAudioSessionConfiguration.h>
 #import <WebRTC/RTCCameraVideoCapturer.h>
 #import <WebRTC/RTCFileVideoCapturer.h>
 #import <WebRTC/RTCNetworkMonitor.h>
-#import <WebRTC/RTCMTLVideoView.h>
 #import <WebRTC/RTCEAGLVideoView.h>
 #import <WebRTC/RTCVideoViewShading.h>
 #import <WebRTC/RTCCodecSpecificInfoH264.h>
@@ -44,16 +46,21 @@
 #import <WebRTC/RTCVideoEncoderFactoryH264.h>
 #import <WebRTC/RTCVideoEncoderH264.h>
 #import <WebRTC/RTCCVPixelBuffer.h>
-#import <WebRTC/RTCCameraPreviewView.h>
 #import <WebRTC/RTCDispatcher.h>
+#import <WebRTC/RTCYUVHelper.h>
 #import <WebRTC/UIDevice+RTCDevice.h>
+#import <WebRTC/RTCAudioDeviceModule.h>
+#import <WebRTC/RTCIODevice.h>
 #import <WebRTC/RTCAudioSource.h>
 #import <WebRTC/RTCAudioTrack.h>
 #import <WebRTC/RTCConfiguration.h>
 #import <WebRTC/RTCDataChannel.h>
 #import <WebRTC/RTCDataChannelConfiguration.h>
+#import <WebRTC/RTCFrameCryptor.h>
+#import <WebRTC/RTCFrameCryptorKeyProvider.h>
 #import <WebRTC/RTCFieldTrials.h>
 #import <WebRTC/RTCIceCandidate.h>
+#import <WebRTC/RTCIceCandidateErrorEvent.h>
 #import <WebRTC/RTCIceServer.h>
 #import <WebRTC/RTCLegacyStatsReport.h>
 #import <WebRTC/RTCMediaConstraints.h>
@@ -66,9 +73,12 @@
 #import <WebRTC/RTCPeerConnectionFactory.h>
 #import <WebRTC/RTCPeerConnectionFactoryOptions.h>
 #import <WebRTC/RTCRtcpParameters.h>
+#import <WebRTC/RTCRtpCapabilities.h>
+#import <WebRTC/RTCRtpCodecCapability.h>
 #import <WebRTC/RTCRtpCodecParameters.h>
 #import <WebRTC/RTCRtpEncodingParameters.h>
 #import <WebRTC/RTCRtpHeaderExtension.h>
+#import <WebRTC/RTCRtpHeaderExtensionCapability.h>
 #import <WebRTC/RTCRtpParameters.h>
 #import <WebRTC/RTCRtpReceiver.h>
 #import <WebRTC/RTCRtpSender.h>
@@ -91,5 +101,13 @@
 #import <WebRTC/RTCVideoEncoderAV1.h>
 #import <WebRTC/RTCNativeI420Buffer.h>
 #import <WebRTC/RTCNativeMutableI420Buffer.h>
+#import <WebRTC/RTCVideoEncoderFactorySimulcast.h>
+#import <WebRTC/RTCVideoEncoderSimulcast.h>
+#import <WebRTC/RTCAudioBuffer.h>
+#import <WebRTC/RTCAudioProcessingModule.h>
+#import <WebRTC/RTCDefaultAudioProcessingModule.h>
+#import <WebRTC/RTCAudioCustomProcessingDelegate.h>
+#import <WebRTC/RTCCameraPreviewView.h>
+#import <WebRTC/RTCMTLVideoView.h>
 #import <WebRTC/RTCCallbackLogger.h>
 #import <WebRTC/RTCFileLogger.h>

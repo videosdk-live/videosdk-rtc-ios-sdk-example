@@ -169,7 +169,11 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
     private func initializeMeeting() {
         
         // MARK :- With CustomVideoTrack with multiStream `true`
-        guard let customVideoStream = try? VideoSDK.createCameraVideoTrack(encoderConfig: .h1080p_w1440p, facingMode: .front, multiStream: true) else { return }
+        guard let customVideoStream = try? VideoSDK.createCameraVideoTrack(encoderConfig: .h1080p_w1440p,
+                                                                           facingMode: .front,
+                                                                           multiStream: true,
+                                                                           bitrateMode: .HIGH_QUALITY
+        ) else { return }
         
         // initialize
         meeting = VideoSDK.initMeeting(
@@ -178,7 +182,7 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
             micEnabled: meetingData.micEnabled,
             webcamEnabled: meetingData.cameraEnabled,
             customCameraVideoStream: customVideoStream,
-            mode: .CONFERENCE
+            mode: .SEND_AND_RECV
         )
         
         // MARK :- Without CustomVideoTrack
@@ -193,7 +197,7 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
         meeting?.addEventListener(self)
         
         // join
-        meeting?.join(cameraPosition: .front)
+        meeting?.join()
     }
     
     // MARK: UICollectionViewDataSource
@@ -317,7 +321,7 @@ extension MeetingViewController: MeetingEventListener {
         // handle local participant on start
         guard let localParticipant = self.meeting?.localParticipant else { return }
         
-        if localParticipant.mode == .CONFERENCE {
+        if localParticipant.mode == .SEND_AND_RECV {
             localParticipant.pin()
         }
         
@@ -331,10 +335,14 @@ extension MeetingViewController: MeetingEventListener {
         addParticipantToGridView()
         
         // listen/subscribe for chat topic
-        meeting?.pubsub.subscribe(topic: CHAT_TOPIC, forListener: self)
+        Task {
+            await meeting?.pubsub.subscribe(topic: CHAT_TOPIC, forListener: self)
+        }
         
         // listen/subscribe for raise-hand topic
-        meeting?.pubsub.subscribe(topic: RAISE_HAND_TOPIC, forListener: self)
+        Task {
+            await meeting?.pubsub.subscribe(topic: RAISE_HAND_TOPIC, forListener: self)
+        }
         
         Utils.loaderDismiss(viewControler: self)
     }
@@ -477,14 +485,11 @@ extension MeetingViewController: MeetingEventListener {
             case .CONNECTED:
                 print("Meeting connected")
                 
-            case .CLOSING:
-                print("Meeting is closing")
+            case .DISCONNECTED:
+                print("Meeting is disconnected")
                 
-            case .CLOSED:
-                print("Meeting is closed")
-                
-            case .CANCELLED:
-                print("Meeting is cancelled")
+            case .RECONNECTING:
+                print("Meeting is reconnecting")
         }
     }
     
@@ -543,6 +548,28 @@ extension MeetingViewController: MeetingEventListener {
             case .ERROR_GET_DISPLAY_MEDIA_PERMISSION_DENIED: print("Permission denied while getting display media permission")
             
             case .UNKNOWN_ERROR: print("Unknown Error")
+        case .PREV_RECORDING_PROCESSING:
+            print("Prev recording processing")
+        case .PREV_RTMP_RECORDING_PROCESSING:
+            print("Prev RTMP recording processing")
+        case .PREV_HLS_STREAMING_PROCESSING:
+            print("Prev HLS streaming processing")
+        case .MAX_SPEAKER_LIMIT_REACHED_ON_ORGANIZATION:
+            print("Max Speaker limit reached")
+        case .MAX_VIEWER_LIMIT_REACHED_ON_ORGANIZATION:
+            print("Max viewer limit reached")
+        case .MAX_RECORDING_LIMIT_REACHED_ON_ORGANIZATION:
+            print("Max recording limit reached")
+        case .MAX_HLS_LIMIT_REACHED_ON_ORGANIZATION:
+            print("Max HLS limit reached")
+        case .MAX_LIVESTREAM_LIMIT_REACHED_ON_ORGANIZATION:
+            print("Max LiveStream limit reached")
+        case .START_TRANSCRIPTION_FAILED:
+            print("Start transcription failed")
+        case .STOP_TRANSCRIPTION_FAILED:
+            print("Stop transcription failed")
+        case .TRANSCRIPTION_FAILED:
+            print("transcription failed")
         }
     }
     
@@ -827,9 +854,13 @@ private extension MeetingViewController {
                     
                 case .changeMode:
                     if isConference {
-                        self.meeting?.changeMode(.VIEWER)
+                        Task {
+                            await self.meeting?.changeMode(.SIGNALLING_ONLY)
+                        }
                     } else {
-                        self.meeting?.changeMode(.CONFERENCE)
+                        Task {
+                            await self.meeting?.changeMode(.SEND_AND_RECV)
+                        }
                     }
                     isConference = !isConference
                     
