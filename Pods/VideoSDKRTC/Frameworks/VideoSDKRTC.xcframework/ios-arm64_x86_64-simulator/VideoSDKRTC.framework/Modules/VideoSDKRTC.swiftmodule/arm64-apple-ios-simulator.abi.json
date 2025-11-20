@@ -130941,6 +130941,220 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "EncodingLayer",
+        "printedName": "EncodingLayer",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "MAX_LAYER_2",
+            "printedName": "MAX_LAYER_2",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.EncodingLayer.Type) -> VideoSDKRTC.EncodingLayer",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "EncodingLayer",
+                    "printedName": "VideoSDKRTC.EncodingLayer",
+                    "usr": "s:11VideoSDKRTC13EncodingLayerO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.EncodingLayer.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "EncodingLayer",
+                        "printedName": "VideoSDKRTC.EncodingLayer",
+                        "usr": "s:11VideoSDKRTC13EncodingLayerO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC13EncodingLayerO11MAX_LAYER_2yA2CmF",
+            "mangledName": "$s11VideoSDKRTC13EncodingLayerO11MAX_LAYER_2yA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "MAX_LAYER_3",
+            "printedName": "MAX_LAYER_3",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.EncodingLayer.Type) -> VideoSDKRTC.EncodingLayer",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "EncodingLayer",
+                    "printedName": "VideoSDKRTC.EncodingLayer",
+                    "usr": "s:11VideoSDKRTC13EncodingLayerO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.EncodingLayer.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "EncodingLayer",
+                        "printedName": "VideoSDKRTC.EncodingLayer",
+                        "usr": "s:11VideoSDKRTC13EncodingLayerO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC13EncodingLayerO11MAX_LAYER_3yA2CmF",
+            "mangledName": "$s11VideoSDKRTC13EncodingLayerO11MAX_LAYER_3yA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "VideoSDKRTC.EncodingLayer?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "EncodingLayer",
+                    "printedName": "VideoSDKRTC.EncodingLayer",
+                    "usr": "s:11VideoSDKRTC13EncodingLayerO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11VideoSDKRTC13EncodingLayerO8rawValueACSgSi_tcfc",
+            "mangledName": "$s11VideoSDKRTC13EncodingLayerO8rawValueACSgSi_tcfc",
+            "moduleName": "VideoSDKRTC",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11VideoSDKRTC13EncodingLayerO8rawValueSivp",
+            "mangledName": "$s11VideoSDKRTC13EncodingLayerO8rawValueSivp",
+            "moduleName": "VideoSDKRTC",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11VideoSDKRTC13EncodingLayerO8rawValueSivg",
+                "mangledName": "$s11VideoSDKRTC13EncodingLayerO8rawValueSivg",
+                "moduleName": "VideoSDKRTC",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:11VideoSDKRTC13EncodingLayerO",
+        "mangledName": "$s11VideoSDKRTC13EncodingLayerO",
+        "moduleName": "VideoSDKRTC",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "enumRawTypeName": "Int",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "Message",
         "printedName": "Message",
         "children": [
@@ -167697,13 +167911,14 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:11VideoSDKRTC6PubSubC7publish5topic7message7options7payloadySS_SSSDySSypGSSSgtF",
-            "mangledName": "$s11VideoSDKRTC6PubSubC7publish5topic7message7options7payloadySS_SSSDySSypGSSSgtF",
+            "usr": "s:11VideoSDKRTC6PubSubC7publish5topic7message7options7payloadySS_SSSDySSypGSSSgtYaKF",
+            "mangledName": "$s11VideoSDKRTC6PubSubC7publish5topic7message7options7payloadySS_SSSDySSypGSSSgtYaKF",
             "moduleName": "VideoSDKRTC",
             "declAttributes": [
               "RawDocComment"
             ],
             "isFromExtension": true,
+            "throwing": true,
             "funcSelfKind": "NonMutating"
           },
           {
@@ -248987,6 +249202,106 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "maxLayer",
+            "printedName": "maxLayer",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "EncodingLayer",
+                "printedName": "VideoSDKRTC.EncodingLayer",
+                "usr": "s:11VideoSDKRTC13EncodingLayerO"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11VideoSDKRTC0A3SDKC8maxLayerAA08EncodingE0OvpZ",
+            "mangledName": "$s11VideoSDKRTC0A3SDKC8maxLayerAA08EncodingE0OvpZ",
+            "moduleName": "VideoSDKRTC",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "EncodingLayer",
+                    "printedName": "VideoSDKRTC.EncodingLayer",
+                    "usr": "s:11VideoSDKRTC13EncodingLayerO"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11VideoSDKRTC0A3SDKC8maxLayerAA08EncodingE0OvgZ",
+                "mangledName": "$s11VideoSDKRTC0A3SDKC8maxLayerAA08EncodingE0OvgZ",
+                "moduleName": "VideoSDKRTC",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "EncodingLayer",
+                    "printedName": "VideoSDKRTC.EncodingLayer",
+                    "usr": "s:11VideoSDKRTC13EncodingLayerO"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11VideoSDKRTC0A3SDKC8maxLayerAA08EncodingE0OvsZ",
+                "mangledName": "$s11VideoSDKRTC0A3SDKC8maxLayerAA08EncodingE0OvsZ",
+                "moduleName": "VideoSDKRTC",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11VideoSDKRTC0A3SDKC8maxLayerAA08EncodingE0OvMZ",
+                "mangledName": "$s11VideoSDKRTC0A3SDKC8maxLayerAA08EncodingE0OvMZ",
+                "moduleName": "VideoSDKRTC",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
             "kind": "Function",
             "name": "config",
             "printedName": "config(token:)",
@@ -249238,7 +249553,7 @@
           {
             "kind": "Function",
             "name": "createCameraVideoTrack",
-            "printedName": "createCameraVideoTrack(encoderConfig:facingMode:multiStream:codec:bitrateMode:)",
+            "printedName": "createCameraVideoTrack(encoderConfig:facingMode:multiStream:codec:bitrateMode:maxLayer:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -249328,11 +249643,26 @@
                 ],
                 "hasDefaultArg": true,
                 "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "VideoSDKRTC.EncodingLayer?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "EncodingLayer",
+                    "printedName": "VideoSDKRTC.EncodingLayer",
+                    "usr": "s:11VideoSDKRTC13EncodingLayerO"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Func",
-            "usr": "s:11VideoSDKRTC0A3SDKC012createCameraA5Track13encoderConfig10facingMode11multiStream5codec07bitrateJ0AA014CustomRTCMediaL0CSgAA0oafH0OSg_So23AVCaptureDevicePositionVSgSbSgAA14PreferredCodecOSgAA07BitrateJ0OSgtKFZ",
-            "mangledName": "$s11VideoSDKRTC0A3SDKC012createCameraA5Track13encoderConfig10facingMode11multiStream5codec07bitrateJ0AA014CustomRTCMediaL0CSgAA0oafH0OSg_So23AVCaptureDevicePositionVSgSbSgAA14PreferredCodecOSgAA07BitrateJ0OSgtKFZ",
+            "usr": "s:11VideoSDKRTC0A3SDKC012createCameraA5Track13encoderConfig10facingMode11multiStream5codec07bitrateJ08maxLayerAA014CustomRTCMediaL0CSgAA0qafH0OSg_So23AVCaptureDevicePositionVSgSbSgAA14PreferredCodecOSgAA07BitrateJ0OSgAA08EncodingP0OSgtKFZ",
+            "mangledName": "$s11VideoSDKRTC0A3SDKC012createCameraA5Track13encoderConfig10facingMode11multiStream5codec07bitrateJ08maxLayerAA014CustomRTCMediaL0CSgAA0qafH0OSg_So23AVCaptureDevicePositionVSgSbSgAA14PreferredCodecOSgAA07BitrateJ0OSgAA08EncodingP0OSgtKFZ",
             "moduleName": "VideoSDKRTC",
             "static": true,
             "declAttributes": [
@@ -274251,6 +274581,20 @@
       "value": "\"HIGH_QUALITY\""
     },
     {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4335,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4338,
+      "length": 11,
+      "value": "3"
+    },
+    {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/OpenTelemetrySwift\/SwiftProtobuf\/Message+BinaryAdditions.swift",
       "kind": "BooleanLiteral",
       "offset": 1359,
@@ -276059,7 +276403,7 @@
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/Classes\/PubSub.swift",
       "kind": "Dictionary",
-      "offset": 845,
+      "offset": 936,
       "length": 3,
       "value": "[]"
     },
@@ -277431,14 +277775,14 @@
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
       "kind": "Dictionary",
-      "offset": 36583,
+      "offset": 36861,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 68018,
+      "offset": 69855,
       "length": 5,
       "value": "false"
     },
@@ -277466,140 +277810,140 @@
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "Array",
-      "offset": 5535,
+      "offset": 6140,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "StringLiteral",
-      "offset": 5585,
+      "offset": 6190,
       "length": 8,
       "value": "\"height\""
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "IntegerLiteral",
-      "offset": 5606,
+      "offset": 6211,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "StringLiteral",
-      "offset": 5661,
+      "offset": 6266,
       "length": 7,
       "value": "\"width\""
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "StringLiteral",
-      "offset": 5689,
+      "offset": 6294,
       "length": 8,
       "value": "\"height\""
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "StringLiteral",
-      "offset": 5735,
+      "offset": 6340,
       "length": 7,
       "value": "\"width\""
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "StringLiteral",
-      "offset": 5771,
+      "offset": 6376,
       "length": 8,
       "value": "\"height\""
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "StringLiteral",
-      "offset": 5818,
+      "offset": 6423,
       "length": 8,
       "value": "\"height\""
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "StringLiteral",
-      "offset": 5855,
+      "offset": 6460,
       "length": 7,
       "value": "\"width\""
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "FloatLiteral",
-      "offset": 5904,
+      "offset": 6509,
       "length": 4,
       "value": "16.0"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "IntegerLiteral",
-      "offset": 5911,
+      "offset": 6516,
       "length": 1,
       "value": "9"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "FloatLiteral",
-      "offset": 5936,
+      "offset": 6541,
       "length": 3,
       "value": "4.0"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "IntegerLiteral",
-      "offset": 5942,
+      "offset": 6547,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "IntegerLiteral",
-      "offset": 6025,
+      "offset": 6630,
       "length": 4,
       "value": "1080"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "IntegerLiteral",
-      "offset": 6516,
+      "offset": 7121,
       "length": 4,
       "value": "1080"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "FloatLiteral",
-      "offset": 7835,
+      "offset": 8440,
       "length": 4,
       "value": "16.0"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "FloatLiteral",
-      "offset": 7842,
+      "offset": 8447,
       "length": 3,
       "value": "9.0"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "FloatLiteral",
-      "offset": 7867,
+      "offset": 8472,
       "length": 3,
       "value": "4.0"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "FloatLiteral",
-      "offset": 7873,
+      "offset": 8478,
       "length": 3,
       "value": "3.0"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SdkCapabilities.swift",
       "kind": "BooleanLiteral",
-      "offset": 10603,
+      "offset": 11208,
       "length": 4,
       "value": "true"
     },
@@ -277615,7 +277959,7 @@
       "kind": "StringLiteral",
       "offset": 297,
       "length": 7,
-      "value": "\"2.2.9\""
+      "value": "\"2.3.0\""
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SDKConfig.swift",
@@ -280420,14 +280764,14 @@
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/SocketRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 12042,
+      "offset": 12041,
       "length": 4,
       "value": "\"v2\""
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/SocketRequestHandler.swift",
       "kind": "Dictionary",
-      "offset": 18577,
+      "offset": 18576,
       "length": 3,
       "value": "[]"
     },
@@ -283528,49 +283872,49 @@
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/VideoSDK.swift",
       "kind": "StringLiteral",
-      "offset": 1187,
+      "offset": 1266,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/VideoSDK.swift",
       "kind": "StringLiteral",
-      "offset": 1225,
+      "offset": 1304,
       "length": 7,
       "value": "\"Guest\""
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/VideoSDK.swift",
       "kind": "BooleanLiteral",
-      "offset": 1261,
+      "offset": 1340,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/VideoSDK.swift",
       "kind": "BooleanLiteral",
-      "offset": 1297,
+      "offset": 1376,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/VideoSDK.swift",
       "kind": "BooleanLiteral",
-      "offset": 1449,
+      "offset": 1528,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/VideoSDK.swift",
       "kind": "Dictionary",
-      "offset": 1651,
+      "offset": 1730,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/VideoSDK.swift",
       "kind": "BooleanLiteral",
-      "offset": 3086,
+      "offset": 3165,
       "length": 4,
       "value": "true"
     },

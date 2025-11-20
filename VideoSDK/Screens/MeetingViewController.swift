@@ -172,7 +172,8 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
         guard let customVideoStream = try? VideoSDK.createCameraVideoTrack(encoderConfig: .h1080p_w1440p,
                                                                            facingMode: .front,
                                                                            multiStream: true,
-                                                                           bitrateMode: .HIGH_QUALITY
+                                                                           bitrateMode: .HIGH_QUALITY,
+                                                                           maxLayer: .MAX_LAYER_2
         ) else { return }
         
         // initialize
@@ -850,7 +851,10 @@ private extension MeetingViewController {
                     self.present(participantsViewController, animated: true, completion: nil)
                     
                 case .raiseHand:
-                    self.meeting?.pubsub.publish(topic: RAISE_HAND_TOPIC, message: "Raise Hand by Me", options: [:])
+                    Task {
+                        try await self.meeting?.pubsub.publish(topic: RAISE_HAND_TOPIC, message: "Raise Hand by Me", options: [:])
+                    }
+                    
                     
                 case .changeMode:
                     if isConference {

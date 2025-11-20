@@ -164,8 +164,18 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         // send (publish) message
-        meeting.pubsub.publish(topic: topic, message: text, options: ["persist": true])
-        
+        Task {
+            do {
+                try await meeting.pubsub.publish(
+                    topic: topic,
+                    message: text,
+                    options: ["persist": true]
+                )
+            } catch {
+                print("Error while sending message: \(error.localizedDescription)")
+            }
+        }
+    
         // reset textView
         messageInputBar.inputTextView.text = String()
         messageInputBar.invalidatePlugins()
