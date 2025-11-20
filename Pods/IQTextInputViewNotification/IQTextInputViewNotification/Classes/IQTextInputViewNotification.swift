@@ -23,7 +23,7 @@
 
 import UIKit
 import Combine
-import IQKeyboardCore
+public import IQKeyboardCore
 
 @available(iOSApplicationExtension, unavailable)
 @MainActor
@@ -86,6 +86,7 @@ import IQKeyboardCore
 
     private func didBeginEditing(info: IQTextInputViewInfo) {
 
+#if compiler(>=5.7)    // Xcode 14
         if #available(iOS 16.0, *),
            let findInteractionTextInputViewInfo = findInteractionTextInputViewInfo,
            findInteractionTextInputViewInfo.textInputView.iqFindInteraction?.isFindNavigatorVisible == true {
@@ -99,17 +100,30 @@ import IQKeyboardCore
         } else {
             findInteractionTextInputViewInfo = nil
         }
+#else
+        if textInputViewInfo != info {
+            textInputViewInfo = info
+            findInteractionTextInputViewInfo = nil
+            sendEvent(info: info)
+        } else {
+            findInteractionTextInputViewInfo = nil
+        }
+#endif
     }
 
     private func didEndEditing(info: IQTextInputViewInfo) {
 
         if textInputViewInfo != info {
+#if compiler(>=5.7)    // Xcode 14
             if #available(iOS 16.0, *),
                info.textInputView.iqIsFindInteractionEnabled {
                 findInteractionTextInputViewInfo = textInputViewInfo
             } else {
                 findInteractionTextInputViewInfo = nil
             }
+#else
+            findInteractionTextInputViewInfo = nil
+#endif
             textInputViewInfo = info
             sendEvent(info: info)
             textInputViewInfo = nil

@@ -196,7 +196,9 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate 
         guard let customVideoStream = try? VideoSDK.createCameraVideoTrack(
             encoderConfig: .h360p_w640p,
             facingMode: facingMode,
-            multiStream: true
+            multiStream: true,
+            bitrateMode: .BANDWIDTH_OPTIMIZED,
+            maxLayer: .MAX_LAYER_2
         ) else {
             print("Failed to create custom video stream")
             return
@@ -634,7 +636,10 @@ private extension MeetingViewController {
                     self.present(participantsViewController, animated: true, completion: nil)
                     
                 case .raiseHand:
-                    self.meeting?.pubsub.publish(topic: RAISE_HAND_TOPIC, message: "Raise Hand by Me", options: [:])
+                    Task {
+                        try await self.meeting?.pubsub.publish(topic: RAISE_HAND_TOPIC, message: "Raise Hand by Me", options: [:], payload: ["generated_by", "Application"].toJSONString())
+                    }
+                    
                     
                 case .startScreenShare:
                     Task {

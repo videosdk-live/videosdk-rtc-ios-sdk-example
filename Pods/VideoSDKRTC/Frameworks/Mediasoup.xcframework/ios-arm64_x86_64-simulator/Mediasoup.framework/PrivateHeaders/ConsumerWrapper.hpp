@@ -12,7 +12,7 @@ class ConsumerListenerAdapter;
 
 @class RTCMediaStreamTrack;
 @protocol ConsumerWrapperDelegate;
-
+@class RTCRtpReceiver;
 
 @interface ConsumerWrapper : NSObject
 
@@ -27,13 +27,14 @@ class ConsumerListenerAdapter;
 @property(nonatomic, nonnull, readonly, getter = appData) NSString *appData;
 @property(nonatomic, nonnull, readonly, getter = rtpParameters) NSString *rtpParameters;
 @property(nonatomic, nonnull, readonly, getter = stats) NSString *stats;
+@property(nonatomic, nonnull, readonly) RTCRtpReceiver *rtpReceiver;
 
 #ifdef __cplusplus
-- (instancetype _Nullable)initWithConsumer:(mediasoupclient::Consumer *_Nonnull)consumer
-	track:(RTCMediaStreamTrack *_Nonnull)track
-	listenerAdapter:(ConsumerListenerAdapter *_Nonnull)listenerAdapter;
+- (instancetype _Nullable )initWithConsumer:(mediasoupclient::Consumer *_Nonnull)consumer
+mediaStreamTrack:(RTCMediaStreamTrack *_Nonnull)track
+rtpReceiver:(RTCRtpReceiver *_Nonnull)receiver
+listenerAdapter:(ConsumerListenerAdapter *_Nonnull)listenerAdapter;
 #endif
-
 
 - (void)pause;
 

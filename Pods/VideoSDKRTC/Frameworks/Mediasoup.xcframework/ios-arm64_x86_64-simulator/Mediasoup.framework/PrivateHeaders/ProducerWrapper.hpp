@@ -10,8 +10,10 @@ namespace mediasoupclient {
 class ProducerListenerAdapter;
 #endif
 
+@class WrappedRTPParameters;
 @class RTCMediaStreamTrack;
 @protocol ProducerWrapperDelegate;
+@class RTCRtpSender;
 
 
 @interface ProducerWrapper : NSObject
@@ -27,10 +29,12 @@ class ProducerListenerAdapter;
 @property(nonatomic, nonnull, readonly, getter = appData) NSString *appData;
 @property(nonatomic, nonnull, readonly, getter = rtpParameters) NSString *rtpParameters;
 @property(nonatomic, nonnull, readonly, getter = stats) NSString *stats;
+@property(nonatomic, strong, readonly) RTCRtpSender *rtpSender;
 
 #ifdef __cplusplus
 - (instancetype _Nullable)initWithProducer:(mediasoupclient::Producer *_Nonnull)producer
 	mediaStreamTrack:(RTCMediaStreamTrack *_Nonnull)track
+	rtpSender:(RTCRtpSender *_Nonnull)sender
 	listenerAdapter:(ProducerListenerAdapter *_Nonnull)listenerAdapter;
 #endif
 
@@ -44,6 +48,8 @@ class ProducerListenerAdapter;
 - (void)setMaxSpatialLayer:(UInt8)layer
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error
 	__attribute__((swift_error(nonnull_error)));
+
+- (void)updateRTPParameters:(WrappedRTPParameters *_Nonnull(^_Nonnull)(WrappedRTPParameters *_Nonnull))updater;
 
 - (void)replaceTrack:(RTCMediaStreamTrack *_Nonnull)track
 	error:(out NSError *__autoreleasing _Nullable *_Nullable)error

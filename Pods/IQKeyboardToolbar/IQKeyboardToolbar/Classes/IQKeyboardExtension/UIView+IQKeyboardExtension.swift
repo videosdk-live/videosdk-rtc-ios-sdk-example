@@ -54,7 +54,18 @@ public extension IQKeyboardExtension where Base: IQTextInputView {
 
             let width: CGFloat = base?.window?.windowScene?.screen.bounds.width ?? 0
 
-            let frame = CGRect(origin: .zero, size: .init(width: width, height: 44))
+            let height: CGFloat
+#if compiler(>=6.2) // Xcode 26
+            if #available(iOS 26.0, *) {
+                height = 58
+            } else {
+                height = 44
+            }
+#else
+            height = 44
+#endif
+
+            let frame = CGRect(origin: .zero, size: .init(width: width, height: height))
             let newToolbar = IQKeyboardToolbar(frame: frame)
 
             if let base = base {
@@ -184,7 +195,16 @@ public extension IQKeyboardExtension where Base: IQTextInputView {
                  action: Selector,
                  title: String?, titleAccessibilityLabel: String? = nil) {
 
-        let rightConfiguration = IQBarButtonItemConfiguration(systemItem: .done, action: action)
+        let rightConfiguration: IQBarButtonItemConfiguration
+#if compiler(>=6.2) // Xcode 26
+        if #available(iOS 26.0, *) {
+            rightConfiguration = IQBarButtonItemConfiguration(image: UIImage(systemName: "checkmark")!, action: action)
+        } else {
+            rightConfiguration = IQBarButtonItemConfiguration(systemItem: .done, action: action)
+        }
+#else
+        rightConfiguration = IQBarButtonItemConfiguration(systemItem: .done, action: action)
+#endif
 
         addToolbar(target: target, rightConfiguration: rightConfiguration,
                    title: title, titleAccessibilityLabel: titleAccessibilityLabel)
@@ -269,8 +289,16 @@ public extension IQKeyboardExtension where Base: IQTextInputView {
                                                                  action: previousAction)
         let nextConfiguration = IQBarButtonItemConfiguration(image: chevronDown,
                                                              action: nextAction)
-        let rightConfiguration = IQBarButtonItemConfiguration(systemItem: .done,
-                                                              action: doneAction)
+        let rightConfiguration: IQBarButtonItemConfiguration
+#if compiler(>=6.2) // Xcode 26
+        if #available(iOS 26.0, *) {
+            rightConfiguration = IQBarButtonItemConfiguration(image: UIImage(systemName: "checkmark")!, action: doneAction)
+        } else {
+            rightConfiguration = IQBarButtonItemConfiguration(systemItem: .done, action: doneAction)
+        }
+#else
+        rightConfiguration = IQBarButtonItemConfiguration(systemItem: .done, action: doneAction)
+#endif
 
         addToolbar(target: target, previousConfiguration: previousConfiguration,
                    nextConfiguration: nextConfiguration, rightConfiguration: rightConfiguration,
@@ -291,54 +319,68 @@ private extension IQKeyboardExtension where Base: IQTextInputView {
                                                 titleAccessibilityLabel: String? = nil) -> [UIBarButtonItem] {
         var items: [UIBarButtonItem] = []
 
-        if let previousConfiguration: IQBarButtonItemConfiguration = previousConfiguration {
-            let prev: IQBarButtonItem = previousConfiguration.apply(on: toolbar.previousBarButton, target: target)
-            toolbar.previousBarButton = prev
-            items.append(prev)
-        }
-
-        if previousConfiguration != nil, nextConfiguration != nil {
-            items.append(toolbar.fixedSpaceBarButton)
-        }
-
-        if let nextConfiguration: IQBarButtonItemConfiguration = nextConfiguration {
-            let next: IQBarButtonItem = nextConfiguration.apply(on: toolbar.nextBarButton, target: target)
-            toolbar.nextBarButton = next
-            items.append(next)
-        }
-
-        if !toolbar.additionalLeadingItems.isEmpty {
-            items.append(contentsOf: toolbar.additionalLeadingItems)
-        }
-
-        // Title bar button item
+        // Leading group
         do {
-            // Flexible space
-            items.append(IQBarButtonItem.flexibleBarButtonItem)
+            if let previousConfiguration: IQBarButtonItemConfiguration = previousConfiguration {
+                let prev: IQBarButtonItem = previousConfiguration.apply(on: toolbar.previousBarButton, target: target)
+                toolbar.previousBarButton = prev
+                items.append(prev)
+            }
 
+            if previousConfiguration != nil, nextConfiguration != nil {
+                items.append(IQBarButtonItem.fixedSpaceBarButton)
+            }
+
+            if let nextConfiguration: IQBarButtonItemConfiguration = nextConfiguration {
+                let next: IQBarButtonItem = nextConfiguration.apply(on: toolbar.nextBarButton, target: target)
+                toolbar.nextBarButton = next
+                items.append(next)
+            }
+
+            if !toolbar.additionalLeadingItems.isEmpty {
+                items.append(contentsOf: toolbar.additionalLeadingItems)
+            }
+        }
+
+        // Center Title bar button item
+        if let title = title, !title.isEmpty {
             // Title button
             toolbar.titleBarButton.title = title
             toolbar.titleBarButton.accessibilityLabel = titleAccessibilityLabel
             toolbar.titleBarButton.accessibilityIdentifier = titleAccessibilityLabel
-
             toolbar.titleBarButton.customView?.frame = .zero
 
-            items.append(toolbar.titleBarButton)
-
-            // Flexible space
+#if compiler(>=6.2) // Xcode 26
+            if #available(iOS 26.0, *) {
+                if !items.isEmpty {
+                    items.append(IQBarButtonItem.flexibleBarButtonItem)
+                }
+            } else {
+                items.append(IQBarButtonItem.flexibleBarButtonItem)
+            }
+#else
             items.append(IQBarButtonItem.flexibleBarButtonItem)
+#endif
+            items.append(toolbar.titleBarButton)
         }
 
-        if !toolbar.additionalTrailingItems.isEmpty {
-            items.append(contentsOf: toolbar.additionalTrailingItems)
+        // Flexible space
+        items.append(IQBarButtonItem.flexibleBarButtonItem)
+
+        // Trailing group
+        do {
+            if !toolbar.additionalTrailingItems.isEmpty {
+                items.append(contentsOf: toolbar.additionalTrailingItems)
+            }
+
+            if let rightConfiguration: IQBarButtonItemConfiguration = rightConfiguration {
+
+                let done: IQBarButtonItem = rightConfiguration.apply(on: toolbar.doneBarButton, target: target)
+                toolbar.doneBarButton = done
+                items.append(done)
+            }
         }
 
-        if let rightConfiguration: IQBarButtonItemConfiguration = rightConfiguration {
-
-            let done: IQBarButtonItem = rightConfiguration.apply(on: toolbar.doneBarButton, target: target)
-            toolbar.doneBarButton = done
-            items.append(done)
-        }
         return items
     }
 }

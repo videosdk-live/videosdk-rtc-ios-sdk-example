@@ -31,16 +31,16 @@ import UIKit
 
         didSet {
             if let titleFont: UIFont = titleFont {
-                titleButton?.titleLabel?.font = titleFont
+                titleButton.titleLabel?.font = titleFont
             } else {
-                titleButton?.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+                titleButton.titleLabel?.font = UIFont.systemFont(ofSize: 13)
             }
         }
     }
 
     override open var title: String? {
         didSet {
-            titleButton?.setTitle(title, for: .normal)
+            titleButton.setTitle(title, for: .normal)
             updateAccessibility()
         }
     }
@@ -53,9 +53,9 @@ import UIKit
         didSet {
 
             if let titleColor: UIColor = titleColor {
-                titleButton?.setTitleColor(titleColor, for: .disabled)
+                titleButton.setTitleColor(titleColor, for: .disabled)
             } else {
-                titleButton?.setTitleColor(UIColor.lightGray, for: .disabled)
+                titleButton.setTitleColor(UIColor.lightGray, for: .disabled)
             }
         }
     }
@@ -68,17 +68,17 @@ import UIKit
         didSet {
 
             if let selectableTitleColor: UIColor = selectableTitleColor {
-                titleButton?.setTitleColor(selectableTitleColor, for: .normal)
+                titleButton.setTitleColor(selectableTitleColor, for: .normal)
             } else {
-                titleButton?.setTitleColor(UIColor.systemBlue, for: .normal)
+                titleButton.setTitleColor(UIColor.systemBlue, for: .normal)
             }
         }
     }
 
-    internal var titleButton: UIButton?
-    private var _titleView: UIView?
+    internal let titleButton: UIButton = UIButton(type: .system)
+    private let _titleView: UIView = UIView()
 
-    override init() {
+    private override init() {
         super.init()
     }
 
@@ -86,55 +86,53 @@ import UIKit
 
         self.init(title: nil, style: .plain, target: nil, action: nil)
 
-        _titleView = UIView()
-        _titleView?.backgroundColor = UIColor.clear
+        _titleView.backgroundColor = UIColor.clear
 
-        titleButton = UIButton(type: .system)
-        titleButton?.isAccessibilityElement = false
-        titleButton?.isEnabled = false
-        titleButton?.titleLabel?.numberOfLines = 3
-        titleButton?.setTitleColor(UIColor.lightGray, for: .disabled)
-        titleButton?.setTitleColor(UIColor.systemBlue, for: .normal)
-        titleButton?.backgroundColor = UIColor.clear
-        titleButton?.titleLabel?.textAlignment = .center
-        titleButton?.setTitle(title, for: .normal)
+        titleButton.isAccessibilityElement = false
+        titleButton.isEnabled = false
+        titleButton.titleLabel?.numberOfLines = 3
+        titleButton.setTitleColor(UIColor.lightGray, for: .disabled)
+        titleButton.setTitleColor(UIColor.systemBlue, for: .normal)
+        titleButton.backgroundColor = UIColor.clear
+        titleButton.titleLabel?.textAlignment = .center
+        titleButton.setTitle(title, for: .normal)
         titleFont = UIFont.systemFont(ofSize: 13.0)
-        titleButton?.titleLabel?.font = self.titleFont
-        _titleView?.addSubview(titleButton!)
+        titleButton.titleLabel?.font = self.titleFont
+        _titleView.addSubview(titleButton)
 
         let lowPriority: UILayoutPriority = UILayoutPriority(rawValue: UILayoutPriority.defaultLow.rawValue-1)
         let highPriority: UILayoutPriority = UILayoutPriority(rawValue: UILayoutPriority.defaultHigh.rawValue-1)
 
-        _titleView?.translatesAutoresizingMaskIntoConstraints = false
-        _titleView?.setContentHuggingPriority(lowPriority, for: .vertical)
-        _titleView?.setContentHuggingPriority(lowPriority, for: .horizontal)
-        _titleView?.setContentCompressionResistancePriority(highPriority, for: .vertical)
-        _titleView?.setContentCompressionResistancePriority(highPriority, for: .horizontal)
+        _titleView.translatesAutoresizingMaskIntoConstraints = false
+        _titleView.setContentHuggingPriority(lowPriority, for: .vertical)
+        _titleView.setContentHuggingPriority(lowPriority, for: .horizontal)
+        _titleView.setContentCompressionResistancePriority(highPriority, for: .vertical)
+        _titleView.setContentCompressionResistancePriority(highPriority, for: .horizontal)
 
-        titleButton?.translatesAutoresizingMaskIntoConstraints = false
-        titleButton?.setContentHuggingPriority(lowPriority, for: .vertical)
-        titleButton?.setContentHuggingPriority(lowPriority, for: .horizontal)
-        titleButton?.setContentCompressionResistancePriority(highPriority, for: .vertical)
-        titleButton?.setContentCompressionResistancePriority(highPriority, for: .horizontal)
+        titleButton.translatesAutoresizingMaskIntoConstraints = false
+        titleButton.setContentHuggingPriority(lowPriority, for: .vertical)
+        titleButton.setContentHuggingPriority(lowPriority, for: .horizontal)
+        titleButton.setContentCompressionResistancePriority(highPriority, for: .vertical)
+        titleButton.setContentCompressionResistancePriority(highPriority, for: .horizontal)
 
-        let top: NSLayoutConstraint = NSLayoutConstraint(item: titleButton!, attribute: .top,
+        let top: NSLayoutConstraint = NSLayoutConstraint(item: titleButton, attribute: .top,
                                                          relatedBy: .equal,
                                                          toItem: _titleView, attribute: .top,
                                                          multiplier: 1, constant: 0)
-        let bottom: NSLayoutConstraint = NSLayoutConstraint(item: titleButton!, attribute: .bottom,
+        let bottom: NSLayoutConstraint = NSLayoutConstraint(item: titleButton, attribute: .bottom,
                                                             relatedBy: .equal,
                                                             toItem: _titleView, attribute: .bottom,
                                                             multiplier: 1, constant: 0)
-        let leading: NSLayoutConstraint = NSLayoutConstraint(item: titleButton!, attribute: .leading,
+        let leading: NSLayoutConstraint = NSLayoutConstraint(item: titleButton, attribute: .leading,
                                                              relatedBy: .equal,
                                                              toItem: _titleView, attribute: .leading,
                                                              multiplier: 1, constant: 0)
-        let trailing: NSLayoutConstraint = NSLayoutConstraint(item: titleButton!, attribute: .trailing,
+        let trailing: NSLayoutConstraint = NSLayoutConstraint(item: titleButton, attribute: .trailing,
                                                               relatedBy: .equal,
                                                               toItem: _titleView, attribute: .trailing,
                                                               multiplier: 1, constant: 0)
 
-        _titleView?.addConstraints([top, bottom, leading, trailing])
+        _titleView.addConstraints([top, bottom, leading, trailing])
 
         customView = _titleView
     }
@@ -150,7 +148,7 @@ import UIKit
             // is not concurrency-safe because it involves shared mutable state
 //            accessibilityTraits = .none
             accessibilityTraits = .init(rawValue: 0)
-        } else if titleButton?.isEnabled == true {
+        } else if titleButton.isEnabled == true {
             isAccessibilityElement = true
             // Swift 6: Reference to static property 'button'
             // is not concurrency-safe because it involves shared mutable state

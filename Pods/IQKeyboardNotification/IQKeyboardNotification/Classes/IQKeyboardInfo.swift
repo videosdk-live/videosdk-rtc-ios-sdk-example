@@ -122,11 +122,27 @@ public struct IQKeyboardInfo: Equatable {
                 beginFrame = CGRect(x: 0, y: screenBounds.height, width: screenBounds.width, height: 0)
             }
 
+            var endFrame: CGRect
             if let endKeyboardFrame: CGRect = info[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
                 endFrame = Self.getKeyboardFrame(of: endKeyboardFrame, inScreenBounds: screenBounds)
             } else {
                 endFrame = CGRect(x: 0, y: screenBounds.height, width: screenBounds.width, height: 0)
             }
+
+            // With iOS 26, the endFrame returns height equal to the input accessory view height even when keyboard is dismissed.
+            // Unfortunately we have to assume this hack for iOS 26.
+    #if compiler(>=6.2) // Xcode 26
+            if #available(iOS 26.0, *) {
+                switch event {
+                case .willHide, .didHide:
+                    endFrame.origin.y += endFrame.size.height
+                    endFrame.size.height = 0
+                case .willShow, .didShow, .willChangeFrame, .didChangeFrame:
+                    break
+                }
+            }
+    #endif
+            self.endFrame = endFrame
         } else {
             isLocal = true
             animationCurve = .easeOut
@@ -139,19 +155,6 @@ public struct IQKeyboardInfo: Equatable {
     @MainActor
     public func animate(alongsideTransition transition: @escaping () -> Void, completion: (() -> Void)? = nil) {
 
-        /* ******* */
-//        UIView.beginAnimations(nil, context: nil)
-//        UIView.setAnimationDuration(duration)
-//        UIView.setAnimationCurve(curve)
-//        UIView.setAnimationBeginsFromCurrentState(true)
-//        UIView.setAnimationDelegate(self)
-//        UIView.setAnimationDidStop(#selector(UIViewController.keyboardAnimationDidStop(_:finished:context:)))
-//
-//        keyboardStateDelegate?.keyboardTransitionAnimation(state)
-//
-//        UIView.commitAnimations()
-
-        /* ******* */
 //        if let timing = UIView.AnimationCurve.RawValue(exactly: animationCurve.rawValue),
 //           let curve = UIView.AnimationCurve(rawValue: timing) {
 //            let animator = UIViewPropertyAnimator(duration: animationDuration, curve: curve) {
@@ -178,6 +181,7 @@ public struct IQKeyboardInfo: Equatable {
 
 @available(iOSApplicationExtension, unavailable)
 private extension IQKeyboardInfo {
+
     static func getKeyboardFrame(of rect: CGRect, inScreenBounds screenBounds: CGRect) -> CGRect {
         var finalFrame: CGRect = rect
         // If this is floating keyboard
@@ -225,3 +229,15 @@ private extension IQKeyboardInfo {
         wrappedValue.animate(alongsideTransition: transition, completion: completion)
     }
 }
+
+// MARK: Deprecated
+@available(iOSApplicationExtension, unavailable)
+public extension IQKeyboardInfo {
+
+    @available(*, unavailable, renamed: "event")
+    var name: Event { event }
+
+    @available(*, unavailable, renamed: "isVisible")
+    var keyboardShowing: Bool { isVisible }
+}
+

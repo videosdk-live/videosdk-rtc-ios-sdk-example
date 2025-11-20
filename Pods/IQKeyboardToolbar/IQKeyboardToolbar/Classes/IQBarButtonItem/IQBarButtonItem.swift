@@ -27,8 +27,36 @@ import UIKit
 @MainActor
 @objcMembers open class IQBarButtonItem: UIBarButtonItem {
 
-    internal static let flexibleBarButtonItem: IQBarButtonItem = IQBarButtonItem(barButtonSystemItem: .flexibleSpace,
-                                                                                 target: nil, action: nil)
+    internal static let flexibleBarButtonItem: IQBarButtonItem = {
+        let barButton = IQBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                     target: nil, action: nil)
+#if compiler(>=6.2) // Xcode 26
+        if #available(iOS 26.0, *) {
+            barButton.hidesSharedBackground = false
+        }
+#endif
+        return barButton
+    }()
+
+    /**
+     Fixed space bar button of toolbar.
+     */
+    internal static let fixedSpaceBarButton: IQBarButtonItem = {
+        let barButton = IQBarButtonItem(barButtonSystemItem: .fixedSpace,
+                                        target: nil, action: nil)
+        barButton.isSystemItem = true
+#if compiler(>=6.2) // Xcode 26
+        if #available(iOS 26.0, *) {
+            barButton.hidesSharedBackground = false
+        } else {
+            barButton.width = 6
+        }
+#else
+        barButton.width = 6
+#endif
+        return barButton
+    }()
+
 
     public override init() {
         super.init()
@@ -107,12 +135,12 @@ import UIKit
 
                 if let target = invocation?.target, let action = invocation?.action {
                     titleBarButton.isEnabled = true
-                    titleBarButton.titleButton?.isEnabled = true
-                    titleBarButton.titleButton?.addTarget(target, action: action, for: .touchUpInside)
+                    titleBarButton.titleButton.isEnabled = true
+                    titleBarButton.titleButton.addTarget(target, action: action, for: .touchUpInside)
                 } else {
                     titleBarButton.isEnabled = false
-                    titleBarButton.titleButton?.isEnabled = false
-                    titleBarButton.titleButton?.removeTarget(nil, action: nil, for: .touchUpInside)
+                    titleBarButton.titleButton.isEnabled = false
+                    titleBarButton.titleButton.removeTarget(nil, action: nil, for: .touchUpInside)
                 }
             }
         }

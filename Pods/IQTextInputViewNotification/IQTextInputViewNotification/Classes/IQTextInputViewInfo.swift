@@ -22,7 +22,7 @@
 //  THE SOFTWARE.
 
 import UIKit
-import IQKeyboardCore
+public import IQKeyboardCore
 
 @available(iOSApplicationExtension, unavailable)
 @MainActor

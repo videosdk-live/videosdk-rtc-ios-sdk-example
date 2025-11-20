@@ -23,6 +23,36 @@ it, simply add the following line to your Podfile:
 pod 'IQKeyboardNotification'
 ```
 
+## Usage
+
+To observe keyboard events, subscribe to the keyboard events:-
+
+```swift
+import IQKeyboardNotification
+
+class ViewController: UIViewController {
+
+    private let keyboard: IQKeyboardNotification = .init()
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // Subscribe
+        keyboard.subscribe(identifier: "YOUR_UNIQUE_IDENTIFIER") { event, frame in
+            print(frame)
+            // Write your own logic here based on event and keyboard frame
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        // Unsubscribe
+        keyboard.unsubscribe(identifier: "YOUR_UNIQUE_IDENTIFIER")
+    }
+}
+```
+
 ## Author
 
 Iftekhar Qurashi hack.iftekhar@gmail.com

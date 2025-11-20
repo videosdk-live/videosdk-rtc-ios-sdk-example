@@ -147,3 +147,24 @@ public extension IQKeyboardNotification {
         isSubscribed(for: nil, identifier: identifier)
     }
 }
+
+// MARK: Deprecated
+@available(iOSApplicationExtension, unavailable)
+@objc public extension IQKeyboardNotification {
+
+    // MARK: Deprecated
+
+    @available(*, unavailable, renamed: "isVisible")
+    var keyboardShowing: Bool { isVisible }
+
+    @available(*, unavailable, renamed: "subscribe(identifier:changeHandler:)")
+    func registerSizeChange(identifier: AnyHashable, changeHandler: @escaping SizeCompletion) {
+        subscribe(identifier: identifier, changeHandler: changeHandler)
+    }
+
+    @available(*, unavailable, renamed: "unsubscribe(identifier:)")
+    func unregisterSizeChange(identifier: AnyHashable) {
+        unsubscribe(identifier: identifier)
+    }
+}
+
