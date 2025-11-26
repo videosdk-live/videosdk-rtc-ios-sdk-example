@@ -92,7 +92,9 @@ class ParticipantViewCell: UICollectionViewCell {
                 if enabled {
                     // show video
                     videotrack.add(videoView)
-                    showVideoView(true)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                        self.showVideoView(true)
+                    }
                 } else {
                     // hide video
                     videotrack.remove(videoView)
