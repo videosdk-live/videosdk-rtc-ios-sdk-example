@@ -821,33 +821,44 @@ private extension MeetingViewController {
                     if hasShareStream ?? false {
                         if let currentVideoTrack = self.participants.first(where: { !$0.isLocal })?.streams.first(where: {$1.kind == .state(value: .video)})?.value.track as? RTCVideoTrack {
                             currentVideoTrack.add(self.localParticipantViewVideoContainer)
-                            self.localParticipantViewVideoContainer.isHidden = false
-                            self.localParticipantViewNameContainer.isHidden = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                                self.localParticipantViewVideoContainer.isHidden = false
+                                self.localParticipantViewNameContainer.isHidden = true
+                            }
                         }
                     } else {
                         stream.add(participant.isLocal ? self.localParticipantViewVideoContainer : self.remoteParticipantVideoContainer)
                         
-                        if participant.isLocal {
-                            self.localParticipantViewVideoContainer.isHidden = false
-                            self.localParticipantViewNameContainer.isHidden = true
-                            self.localParticipantViewContainer.isHidden = false
-                        } else {
-                            self.remoteParticipantVideoContainer.isHidden = false
-                            self.remoteParticipantNameContainer.isHidden = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                            if participant.isLocal {
+                                self.localParticipantViewVideoContainer.isHidden = false
+                                self.localParticipantViewNameContainer.isHidden = true
+                                self.localParticipantViewContainer.isHidden = false
+                            } else {
+                                self.remoteParticipantVideoContainer.isHidden = false
+                                self.remoteParticipantNameContainer.isHidden = true
+                            }
                         }
                         if let localParticipantVideoStream = self.participants.first(where: { $0.isLocal })?.streams.first(where: {$1.kind == .state(value: .video )})?.value.track as? RTCVideoTrack {
                             localParticipantVideoStream.add(self.localParticipantViewVideoContainer)
-                            self.localParticipantViewVideoContainer.isHidden = false
-                            self.localParticipantViewNameContainer.isHidden = true
-                            self.localParticipantViewContainer.isHidden = false
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                                self.localParticipantViewVideoContainer.isHidden = false
+                                self.localParticipantViewNameContainer.isHidden = true
+                                self.localParticipantViewContainer.isHidden = false
+                            }
                         }
                         
                     }
                 } else {
-                    stream.add(self.remoteParticipantVideoContainer)
-                    self.remoteParticipantVideoContainer.videoContentMode = .scaleAspectFit
-                    self.remoteParticipantVideoContainer.isHidden = false
-                    self.remoteParticipantNameContainer.isHidden = true
+                    DispatchQueue.main.async {
+                        stream.add(self.remoteParticipantVideoContainer)
+                        self.remoteParticipantVideoContainer.videoContentMode = .scaleAspectFit
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                            self.remoteParticipantVideoContainer.isHidden = false
+                            self.remoteParticipantNameContainer.isHidden = true
+                        }
+                        
+                    }
                 }
             }
         }
