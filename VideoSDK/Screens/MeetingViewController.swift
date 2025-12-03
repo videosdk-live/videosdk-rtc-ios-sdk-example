@@ -359,6 +359,11 @@ extension MeetingViewController: MeetingEventListener {
         dismiss(animated: true, completion: nil)
     }
     
+    func onMeetingLeft(reason: LeaveReason) {
+        print("Meeting left with reason: \(reason.message)")
+        self.onMeetingLeft()
+    }
+    
     /// A new participant joined
     func onParticipantJoined(_ participant: Participant) {
         
@@ -395,6 +400,11 @@ extension MeetingViewController: MeetingEventListener {
         
         //notification to participants via sharing participants
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "shareParticipants"), object: nil, userInfo: ["participants": participants])
+    }
+    
+    func onParticipantLeft(_ participant: Participant, reason: LeaveReason) {
+        print("Participant \(participant.displayName) left with reason: \(reason.message)")
+        self.onParticipantLeft(participant)
     }
     
     /// Called after recording starts
@@ -639,6 +649,9 @@ extension MeetingViewController: MeetingEventListener {
         print("Participant \(self.participants.first(where: { $0.id == participantId })?.displayName ?? "") mode changed to \(mode.rawValue)")
     }
     
+    func onQualityLimitation(type: QualityLimitationType, state: QualityLimitationState, timestamp: String) {
+        print("type: \(type.rawValue) || state: \(state.rawValue) || timestamp: \(timestamp)")
+    }
 }
 
 // MARK: - ParticipantEventListener

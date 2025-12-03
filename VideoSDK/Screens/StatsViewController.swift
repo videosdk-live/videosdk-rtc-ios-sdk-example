@@ -33,8 +33,8 @@ class StatsViewController: UIViewController {
     }
     
     @objc func calculateStats() {
-        audioStats = participant?.getAudioStats() ?? [:]
-        videoStats = participant?.getVideoStats() ?? [:]
+        audioStats = (participant?.isLocal ?? false) ? (participant?.getAudioStats() as? [String: Any] ?? [:]) : (participant?.getAudioStats() as? [[String: Any]] ?? [[:]]).first ?? [:]
+        videoStats = (participant?.isLocal ?? false) ? (participant?.getVideoStats() as? [String: Any] ?? [:]) : (participant?.getVideoStats() as? [[String: Any]] ?? [[:]]).first ?? [:]
         print("audioStats: \(audioStats)")
         print("videoStats: \(videoStats)")
         statsCollection?.removeAll()

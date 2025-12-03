@@ -4061,6 +4061,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -4385,6 +4392,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -5517,6 +5531,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -6572,6 +6593,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -7165,6 +7193,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -8699,6 +8734,13 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
               }
             ]
           },
@@ -8813,6 +8855,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -13089,6 +13138,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -13322,6 +13378,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -13689,6 +13752,13 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
               }
             ]
           },
@@ -14180,6 +14250,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -18845,6 +18922,13 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
               }
             ]
           },
@@ -19134,6 +19218,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -19670,6 +19761,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -20200,6 +20298,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -20853,6 +20958,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -21645,6 +21757,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -26670,6 +26789,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -28774,6 +28900,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -30935,6 +31068,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "Message",
                 "printedName": "Message",
                 "usr": "s:11VideoSDKRTC7MessageP",
@@ -31647,6 +31787,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "Message",
                 "printedName": "Message",
                 "usr": "s:11VideoSDKRTC7MessageP",
@@ -32017,6 +32164,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -33059,6 +33213,13 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
               },
               {
                 "kind": "Conformance",
@@ -34173,6 +34334,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "Message",
                 "printedName": "Message",
                 "usr": "s:11VideoSDKRTC7MessageP",
@@ -34635,6 +34803,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -37399,6 +37574,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "_ProtoNameProviding",
                 "printedName": "_ProtoNameProviding",
                 "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -37842,6 +38024,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "_ProtoNameProviding",
                 "printedName": "_ProtoNameProviding",
                 "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -38177,6 +38366,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -38930,6 +39126,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -40357,6 +40560,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "Message",
                 "printedName": "Message",
                 "usr": "s:11VideoSDKRTC7MessageP",
@@ -40727,6 +40937,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -41627,6 +41844,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -42487,6 +42711,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -43819,6 +44050,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -47539,6 +47777,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "_ProtoNameProviding",
                 "printedName": "_ProtoNameProviding",
                 "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -47966,6 +48211,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -49503,6 +49755,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -51855,6 +52114,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "_ProtoNameProviding",
                 "printedName": "_ProtoNameProviding",
                 "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -52298,6 +52564,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "_ProtoNameProviding",
                 "printedName": "_ProtoNameProviding",
                 "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -52736,6 +53009,13 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
               },
               {
                 "kind": "Conformance",
@@ -53460,6 +53740,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "_ProtoNameProviding",
                 "printedName": "_ProtoNameProviding",
                 "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -54136,6 +54423,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "Message",
                 "printedName": "Message",
                 "usr": "s:11VideoSDKRTC7MessageP",
@@ -54598,6 +54892,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -55410,6 +55711,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -56660,6 +56968,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -57762,6 +58077,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -58716,6 +59038,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -59831,6 +60160,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "_ProtoNameProviding",
                 "printedName": "_ProtoNameProviding",
                 "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -60258,6 +60594,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -62081,6 +62424,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "Message",
                 "printedName": "Message",
                 "usr": "s:11VideoSDKRTC7MessageP",
@@ -62451,6 +62801,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -64069,6 +64426,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "_ProtoNameProviding",
                 "printedName": "_ProtoNameProviding",
                 "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -64509,6 +64873,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "_ProtoNameProviding",
                 "printedName": "_ProtoNameProviding",
                 "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -64946,6 +65317,13 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
               },
               {
                 "kind": "Conformance",
@@ -65429,6 +65807,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "_ProtoNameProviding",
                 "printedName": "_ProtoNameProviding",
                 "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -65866,6 +66251,13 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
               },
               {
                 "kind": "Conformance",
@@ -66309,6 +66701,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "_ProtoNameProviding",
                 "printedName": "_ProtoNameProviding",
                 "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -66737,6 +67136,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -67984,6 +68390,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "Message",
                 "printedName": "Message",
                 "usr": "s:11VideoSDKRTC7MessageP",
@@ -68312,6 +68725,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -69777,6 +70197,13 @@
                   },
                   {
                     "kind": "Conformance",
+                    "name": "SendableMetatype",
+                    "printedName": "SendableMetatype",
+                    "usr": "s:s16SendableMetatypeP",
+                    "mangledName": "$ss16SendableMetatypeP"
+                  },
+                  {
+                    "kind": "Conformance",
                     "name": "_ProtoNameProviding",
                     "printedName": "_ProtoNameProviding",
                     "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -70069,6 +70496,13 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
               },
               {
                 "kind": "Conformance",
@@ -70400,6 +70834,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -70888,6 +71329,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -74369,6 +74817,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -74838,6 +75293,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -76440,6 +76902,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -80246,6 +80715,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -87269,6 +87745,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -87899,6 +88382,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -103546,6 +104036,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -103779,6 +104276,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -104224,6 +104728,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -104544,6 +105055,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -105369,6 +105887,13 @@
             "printedName": "CustomDebugStringConvertible",
             "usr": "s:s28CustomDebugStringConvertibleP",
             "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -110315,6 +110840,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "_ProtoNameProviding",
             "printedName": "_ProtoNameProviding",
             "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -110830,6 +111362,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "_ProtoNameProviding",
             "printedName": "_ProtoNameProviding",
             "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -111325,6 +111864,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -112093,6 +112639,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -112855,6 +113408,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -114231,6 +114791,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -114770,6 +115337,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -115336,6 +115910,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -115931,6 +116512,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -120598,6 +121186,36 @@
           },
           {
             "kind": "Function",
+            "name": "handleStreamStateChanged",
+            "printedName": "handleStreamStateChanged(state:streamId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StreamState",
+                "printedName": "VideoSDKRTC.StreamState",
+                "usr": "s:11VideoSDKRTC11StreamStateO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11VideoSDKRTC11MediaStreamC06handleD12StateChanged5state8streamIdyAA0dF0O_SStF",
+            "mangledName": "$s11VideoSDKRTC11MediaStreamC06handleD12StateChanged5state8streamIdyAA0dF0O_SStF",
+            "moduleName": "VideoSDKRTC",
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "==",
             "printedName": "==(_:_:)",
             "children": [
@@ -122330,17 +122948,24 @@
           {
             "kind": "Function",
             "name": "leave",
-            "printedName": "leave()",
+            "printedName": "leave(reason:)",
             "children": [
               {
                 "kind": "TypeNominal",
                 "name": "Void",
                 "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LeaveReason",
+                "printedName": "VideoSDKRTC.LeaveReason",
+                "hasDefaultArg": true,
+                "usr": "s:11VideoSDKRTC11LeaveReasonO"
               }
             ],
             "declKind": "Func",
-            "usr": "s:11VideoSDKRTC7MeetingC5leaveyyF",
-            "mangledName": "$s11VideoSDKRTC7MeetingC5leaveyyF",
+            "usr": "s:11VideoSDKRTC7MeetingC5leave6reasonyAA11LeaveReasonO_tF",
+            "mangledName": "$s11VideoSDKRTC7MeetingC5leave6reasonyAA11LeaveReasonO_tF",
             "moduleName": "VideoSDKRTC",
             "declAttributes": [
               "RawDocComment"
@@ -123680,6 +124305,36 @@
           },
           {
             "kind": "Function",
+            "name": "onMeetingLeft",
+            "printedName": "onMeetingLeft(reason:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LeaveReason",
+                "printedName": "VideoSDKRTC.LeaveReason",
+                "usr": "s:11VideoSDKRTC11LeaveReasonO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11VideoSDKRTC20MeetingEventListenerP02onC4Left6reasonyAA11LeaveReasonO_tF",
+            "mangledName": "$s11VideoSDKRTC20MeetingEventListenerP02onC4Left6reasonyAA11LeaveReasonO_tF",
+            "moduleName": "VideoSDKRTC",
+            "genericSig": "<τ_0_0 where τ_0_0 : VideoSDKRTC.MeetingEventListener>",
+            "sugared_genericSig": "<Self where Self : VideoSDKRTC.MeetingEventListener>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "onParticipantJoined",
             "printedName": "onParticipantJoined(_:)",
             "children": [
@@ -123728,6 +124383,42 @@
             "declKind": "Func",
             "usr": "s:11VideoSDKRTC20MeetingEventListenerP17onParticipantLeftyyAA0G0CF",
             "mangledName": "$s11VideoSDKRTC20MeetingEventListenerP17onParticipantLeftyyAA0G0CF",
+            "moduleName": "VideoSDKRTC",
+            "genericSig": "<τ_0_0 where τ_0_0 : VideoSDKRTC.MeetingEventListener>",
+            "sugared_genericSig": "<Self where Self : VideoSDKRTC.MeetingEventListener>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onParticipantLeft",
+            "printedName": "onParticipantLeft(_:reason:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Participant",
+                "printedName": "VideoSDKRTC.Participant",
+                "usr": "s:11VideoSDKRTC11ParticipantC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LeaveReason",
+                "printedName": "VideoSDKRTC.LeaveReason",
+                "usr": "s:11VideoSDKRTC11LeaveReasonO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11VideoSDKRTC20MeetingEventListenerP17onParticipantLeft_6reasonyAA0G0C_AA11LeaveReasonOtF",
+            "mangledName": "$s11VideoSDKRTC20MeetingEventListenerP17onParticipantLeft_6reasonyAA0G0C_AA11LeaveReasonOtF",
             "moduleName": "VideoSDKRTC",
             "genericSig": "<τ_0_0 where τ_0_0 : VideoSDKRTC.MeetingEventListener>",
             "sugared_genericSig": "<Self where Self : VideoSDKRTC.MeetingEventListener>",
@@ -125015,6 +125706,48 @@
           },
           {
             "kind": "Function",
+            "name": "onQualityLimitation",
+            "printedName": "onQualityLimitation(type:state:timestamp:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "QualityLimitationType",
+                "printedName": "VideoSDKRTC.QualityLimitationType",
+                "usr": "s:11VideoSDKRTC21QualityLimitationTypeO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "QualityLimitationState",
+                "printedName": "VideoSDKRTC.QualityLimitationState",
+                "usr": "s:11VideoSDKRTC22QualityLimitationStateO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11VideoSDKRTC20MeetingEventListenerP19onQualityLimitation4type5state9timestampyAA0gH4TypeO_AA0gH5StateOSStF",
+            "mangledName": "$s11VideoSDKRTC20MeetingEventListenerP19onQualityLimitation4type5state9timestampyAA0gH4TypeO_AA0gH5StateOSStF",
+            "moduleName": "VideoSDKRTC",
+            "genericSig": "<τ_0_0 where τ_0_0 : VideoSDKRTC.MeetingEventListener>",
+            "sugared_genericSig": "<Self where Self : VideoSDKRTC.MeetingEventListener>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "onMeetingJoined",
             "printedName": "onMeetingJoined()",
             "children": [
@@ -125047,6 +125780,32 @@
             "declKind": "Func",
             "usr": "s:11VideoSDKRTC20MeetingEventListenerPAAE02onC4LeftyyF",
             "mangledName": "$s11VideoSDKRTC20MeetingEventListenerPAAE02onC4LeftyyF",
+            "moduleName": "VideoSDKRTC",
+            "genericSig": "<τ_0_0 where τ_0_0 : VideoSDKRTC.MeetingEventListener>",
+            "sugared_genericSig": "<Self where Self : VideoSDKRTC.MeetingEventListener>",
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onMeetingLeft",
+            "printedName": "onMeetingLeft(reason:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LeaveReason",
+                "printedName": "VideoSDKRTC.LeaveReason",
+                "usr": "s:11VideoSDKRTC11LeaveReasonO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11VideoSDKRTC20MeetingEventListenerPAAE02onC4Left6reasonyAA11LeaveReasonO_tF",
+            "mangledName": "$s11VideoSDKRTC20MeetingEventListenerPAAE02onC4Left6reasonyAA11LeaveReasonO_tF",
             "moduleName": "VideoSDKRTC",
             "genericSig": "<τ_0_0 where τ_0_0 : VideoSDKRTC.MeetingEventListener>",
             "sugared_genericSig": "<Self where Self : VideoSDKRTC.MeetingEventListener>",
@@ -125099,6 +125858,38 @@
             "declKind": "Func",
             "usr": "s:11VideoSDKRTC20MeetingEventListenerPAAE17onParticipantLeftyyAA0G0CF",
             "mangledName": "$s11VideoSDKRTC20MeetingEventListenerPAAE17onParticipantLeftyyAA0G0CF",
+            "moduleName": "VideoSDKRTC",
+            "genericSig": "<τ_0_0 where τ_0_0 : VideoSDKRTC.MeetingEventListener>",
+            "sugared_genericSig": "<Self where Self : VideoSDKRTC.MeetingEventListener>",
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onParticipantLeft",
+            "printedName": "onParticipantLeft(_:reason:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Participant",
+                "printedName": "VideoSDKRTC.Participant",
+                "usr": "s:11VideoSDKRTC11ParticipantC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "LeaveReason",
+                "printedName": "VideoSDKRTC.LeaveReason",
+                "usr": "s:11VideoSDKRTC11LeaveReasonO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11VideoSDKRTC20MeetingEventListenerPAAE17onParticipantLeft_6reasonyAA0G0C_AA11LeaveReasonOtF",
+            "mangledName": "$s11VideoSDKRTC20MeetingEventListenerPAAE17onParticipantLeft_6reasonyAA0G0C_AA11LeaveReasonOtF",
             "moduleName": "VideoSDKRTC",
             "genericSig": "<τ_0_0 where τ_0_0 : VideoSDKRTC.MeetingEventListener>",
             "sugared_genericSig": "<Self where Self : VideoSDKRTC.MeetingEventListener>",
@@ -126265,6 +127056,47 @@
             "moduleName": "VideoSDKRTC",
             "genericSig": "<τ_0_0 where τ_0_0 : VideoSDKRTC.MeetingEventListener>",
             "sugared_genericSig": "<Self where Self : VideoSDKRTC.MeetingEventListener>",
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onQualityLimitation",
+            "printedName": "onQualityLimitation(type:state:timestamp:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "QualityLimitationType",
+                "printedName": "VideoSDKRTC.QualityLimitationType",
+                "usr": "s:11VideoSDKRTC21QualityLimitationTypeO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "QualityLimitationState",
+                "printedName": "VideoSDKRTC.QualityLimitationState",
+                "usr": "s:11VideoSDKRTC22QualityLimitationStateO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11VideoSDKRTC20MeetingEventListenerPAAE19onQualityLimitation4type5state9timestampyAA0gH4TypeO_AA0gH5StateOSStF",
+            "mangledName": "$s11VideoSDKRTC20MeetingEventListenerPAAE19onQualityLimitation4type5state9timestampyAA0gH4TypeO_AA0gH5StateOSStF",
+            "moduleName": "VideoSDKRTC",
+            "genericSig": "<τ_0_0 where τ_0_0 : VideoSDKRTC.MeetingEventListener>",
+            "sugared_genericSig": "<Self where Self : VideoSDKRTC.MeetingEventListener>",
+            "declAttributes": [
+              "RawDocComment"
+            ],
             "isFromExtension": true,
             "funcSelfKind": "NonMutating"
           }
@@ -131155,6 +131987,1662 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "StreamState",
+        "printedName": "StreamState",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "FREEZE_DETECTED",
+            "printedName": "FREEZE_DETECTED",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.StreamState.Type) -> VideoSDKRTC.StreamState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "StreamState",
+                    "printedName": "VideoSDKRTC.StreamState",
+                    "usr": "s:11VideoSDKRTC11StreamStateO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.StreamState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "StreamState",
+                        "printedName": "VideoSDKRTC.StreamState",
+                        "usr": "s:11VideoSDKRTC11StreamStateO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11StreamStateO15FREEZE_DETECTEDyA2CmF",
+            "mangledName": "$s11VideoSDKRTC11StreamStateO15FREEZE_DETECTEDyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "FREEZE_RESOLVED",
+            "printedName": "FREEZE_RESOLVED",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.StreamState.Type) -> VideoSDKRTC.StreamState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "StreamState",
+                    "printedName": "VideoSDKRTC.StreamState",
+                    "usr": "s:11VideoSDKRTC11StreamStateO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.StreamState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "StreamState",
+                        "printedName": "VideoSDKRTC.StreamState",
+                        "usr": "s:11VideoSDKRTC11StreamStateO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11StreamStateO15FREEZE_RESOLVEDyA2CmF",
+            "mangledName": "$s11VideoSDKRTC11StreamStateO15FREEZE_RESOLVEDyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "ACTIVE",
+            "printedName": "ACTIVE",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.StreamState.Type) -> VideoSDKRTC.StreamState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "StreamState",
+                    "printedName": "VideoSDKRTC.StreamState",
+                    "usr": "s:11VideoSDKRTC11StreamStateO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.StreamState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "StreamState",
+                        "printedName": "VideoSDKRTC.StreamState",
+                        "usr": "s:11VideoSDKRTC11StreamStateO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11StreamStateO6ACTIVEyA2CmF",
+            "mangledName": "$s11VideoSDKRTC11StreamStateO6ACTIVEyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "ENDED",
+            "printedName": "ENDED",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.StreamState.Type) -> VideoSDKRTC.StreamState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "StreamState",
+                    "printedName": "VideoSDKRTC.StreamState",
+                    "usr": "s:11VideoSDKRTC11StreamStateO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.StreamState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "StreamState",
+                        "printedName": "VideoSDKRTC.StreamState",
+                        "usr": "s:11VideoSDKRTC11StreamStateO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11StreamStateO5ENDEDyA2CmF",
+            "mangledName": "$s11VideoSDKRTC11StreamStateO5ENDEDyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "STUCK",
+            "printedName": "STUCK",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.StreamState.Type) -> VideoSDKRTC.StreamState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "StreamState",
+                    "printedName": "VideoSDKRTC.StreamState",
+                    "usr": "s:11VideoSDKRTC11StreamStateO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.StreamState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "StreamState",
+                        "printedName": "VideoSDKRTC.StreamState",
+                        "usr": "s:11VideoSDKRTC11StreamStateO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11StreamStateO5STUCKyA2CmF",
+            "mangledName": "$s11VideoSDKRTC11StreamStateO5STUCKyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "VideoSDKRTC.StreamState?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "StreamState",
+                    "printedName": "VideoSDKRTC.StreamState",
+                    "usr": "s:11VideoSDKRTC11StreamStateO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11VideoSDKRTC11StreamStateO8rawValueACSgSS_tcfc",
+            "mangledName": "$s11VideoSDKRTC11StreamStateO8rawValueACSgSS_tcfc",
+            "moduleName": "VideoSDKRTC",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11VideoSDKRTC11StreamStateO8rawValueSSvp",
+            "mangledName": "$s11VideoSDKRTC11StreamStateO8rawValueSSvp",
+            "moduleName": "VideoSDKRTC",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11VideoSDKRTC11StreamStateO8rawValueSSvg",
+                "mangledName": "$s11VideoSDKRTC11StreamStateO8rawValueSSvg",
+                "moduleName": "VideoSDKRTC",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:11VideoSDKRTC11StreamStateO",
+        "mangledName": "$s11VideoSDKRTC11StreamStateO",
+        "moduleName": "VideoSDKRTC",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "enumRawTypeName": "String",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "QualityLimitationType",
+        "printedName": "QualityLimitationType",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "CPU",
+            "printedName": "CPU",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.QualityLimitationType.Type) -> VideoSDKRTC.QualityLimitationType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "QualityLimitationType",
+                    "printedName": "VideoSDKRTC.QualityLimitationType",
+                    "usr": "s:11VideoSDKRTC21QualityLimitationTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.QualityLimitationType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "QualityLimitationType",
+                        "printedName": "VideoSDKRTC.QualityLimitationType",
+                        "usr": "s:11VideoSDKRTC21QualityLimitationTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC21QualityLimitationTypeO3CPUyA2CmF",
+            "mangledName": "$s11VideoSDKRTC21QualityLimitationTypeO3CPUyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "BANDWIDTH",
+            "printedName": "BANDWIDTH",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.QualityLimitationType.Type) -> VideoSDKRTC.QualityLimitationType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "QualityLimitationType",
+                    "printedName": "VideoSDKRTC.QualityLimitationType",
+                    "usr": "s:11VideoSDKRTC21QualityLimitationTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.QualityLimitationType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "QualityLimitationType",
+                        "printedName": "VideoSDKRTC.QualityLimitationType",
+                        "usr": "s:11VideoSDKRTC21QualityLimitationTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC21QualityLimitationTypeO9BANDWIDTHyA2CmF",
+            "mangledName": "$s11VideoSDKRTC21QualityLimitationTypeO9BANDWIDTHyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "CONGESTION",
+            "printedName": "CONGESTION",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.QualityLimitationType.Type) -> VideoSDKRTC.QualityLimitationType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "QualityLimitationType",
+                    "printedName": "VideoSDKRTC.QualityLimitationType",
+                    "usr": "s:11VideoSDKRTC21QualityLimitationTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.QualityLimitationType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "QualityLimitationType",
+                        "printedName": "VideoSDKRTC.QualityLimitationType",
+                        "usr": "s:11VideoSDKRTC21QualityLimitationTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC21QualityLimitationTypeO10CONGESTIONyA2CmF",
+            "mangledName": "$s11VideoSDKRTC21QualityLimitationTypeO10CONGESTIONyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "VideoSDKRTC.QualityLimitationType?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "QualityLimitationType",
+                    "printedName": "VideoSDKRTC.QualityLimitationType",
+                    "usr": "s:11VideoSDKRTC21QualityLimitationTypeO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11VideoSDKRTC21QualityLimitationTypeO8rawValueACSgSS_tcfc",
+            "mangledName": "$s11VideoSDKRTC21QualityLimitationTypeO8rawValueACSgSS_tcfc",
+            "moduleName": "VideoSDKRTC",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11VideoSDKRTC21QualityLimitationTypeO8rawValueSSvp",
+            "mangledName": "$s11VideoSDKRTC21QualityLimitationTypeO8rawValueSSvp",
+            "moduleName": "VideoSDKRTC",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11VideoSDKRTC21QualityLimitationTypeO8rawValueSSvg",
+                "mangledName": "$s11VideoSDKRTC21QualityLimitationTypeO8rawValueSSvg",
+                "moduleName": "VideoSDKRTC",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:11VideoSDKRTC21QualityLimitationTypeO",
+        "mangledName": "$s11VideoSDKRTC21QualityLimitationTypeO",
+        "moduleName": "VideoSDKRTC",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "enumRawTypeName": "String",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "QualityLimitationState",
+        "printedName": "QualityLimitationState",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "DETECTED",
+            "printedName": "DETECTED",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.QualityLimitationState.Type) -> VideoSDKRTC.QualityLimitationState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "QualityLimitationState",
+                    "printedName": "VideoSDKRTC.QualityLimitationState",
+                    "usr": "s:11VideoSDKRTC22QualityLimitationStateO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.QualityLimitationState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "QualityLimitationState",
+                        "printedName": "VideoSDKRTC.QualityLimitationState",
+                        "usr": "s:11VideoSDKRTC22QualityLimitationStateO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC22QualityLimitationStateO8DETECTEDyA2CmF",
+            "mangledName": "$s11VideoSDKRTC22QualityLimitationStateO8DETECTEDyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "RESOLVED",
+            "printedName": "RESOLVED",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.QualityLimitationState.Type) -> VideoSDKRTC.QualityLimitationState",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "QualityLimitationState",
+                    "printedName": "VideoSDKRTC.QualityLimitationState",
+                    "usr": "s:11VideoSDKRTC22QualityLimitationStateO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.QualityLimitationState.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "QualityLimitationState",
+                        "printedName": "VideoSDKRTC.QualityLimitationState",
+                        "usr": "s:11VideoSDKRTC22QualityLimitationStateO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC22QualityLimitationStateO8RESOLVEDyA2CmF",
+            "mangledName": "$s11VideoSDKRTC22QualityLimitationStateO8RESOLVEDyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "VideoSDKRTC.QualityLimitationState?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "QualityLimitationState",
+                    "printedName": "VideoSDKRTC.QualityLimitationState",
+                    "usr": "s:11VideoSDKRTC22QualityLimitationStateO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11VideoSDKRTC22QualityLimitationStateO8rawValueACSgSS_tcfc",
+            "mangledName": "$s11VideoSDKRTC22QualityLimitationStateO8rawValueACSgSS_tcfc",
+            "moduleName": "VideoSDKRTC",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11VideoSDKRTC22QualityLimitationStateO8rawValueSSvp",
+            "mangledName": "$s11VideoSDKRTC22QualityLimitationStateO8rawValueSSvp",
+            "moduleName": "VideoSDKRTC",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11VideoSDKRTC22QualityLimitationStateO8rawValueSSvg",
+                "mangledName": "$s11VideoSDKRTC22QualityLimitationStateO8rawValueSSvg",
+                "moduleName": "VideoSDKRTC",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:11VideoSDKRTC22QualityLimitationStateO",
+        "mangledName": "$s11VideoSDKRTC22QualityLimitationStateO",
+        "moduleName": "VideoSDKRTC",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "enumRawTypeName": "String",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "LeaveReason",
+        "printedName": "LeaveReason",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "websocketDisconnected",
+            "printedName": "websocketDisconnected",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.LeaveReason.Type) -> VideoSDKRTC.LeaveReason",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LeaveReason",
+                    "printedName": "VideoSDKRTC.LeaveReason",
+                    "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.LeaveReason.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LeaveReason",
+                        "printedName": "VideoSDKRTC.LeaveReason",
+                        "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO21websocketDisconnectedyA2CmF",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO21websocketDisconnectedyA2CmF",
+            "moduleName": "VideoSDKRTC",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "removePeer",
+            "printedName": "removePeer",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.LeaveReason.Type) -> VideoSDKRTC.LeaveReason",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LeaveReason",
+                    "printedName": "VideoSDKRTC.LeaveReason",
+                    "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.LeaveReason.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LeaveReason",
+                        "printedName": "VideoSDKRTC.LeaveReason",
+                        "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO10removePeeryA2CmF",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO10removePeeryA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "removePeerViewerModeChanged",
+            "printedName": "removePeerViewerModeChanged",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.LeaveReason.Type) -> VideoSDKRTC.LeaveReason",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LeaveReason",
+                    "printedName": "VideoSDKRTC.LeaveReason",
+                    "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.LeaveReason.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LeaveReason",
+                        "printedName": "VideoSDKRTC.LeaveReason",
+                        "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO27removePeerViewerModeChangedyA2CmF",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO27removePeerViewerModeChangedyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "removePeerMediaRelayStop",
+            "printedName": "removePeerMediaRelayStop",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.LeaveReason.Type) -> VideoSDKRTC.LeaveReason",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LeaveReason",
+                    "printedName": "VideoSDKRTC.LeaveReason",
+                    "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.LeaveReason.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LeaveReason",
+                        "printedName": "VideoSDKRTC.LeaveReason",
+                        "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO24removePeerMediaRelayStopyA2CmF",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO24removePeerMediaRelayStopyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "switchRoom",
+            "printedName": "switchRoom",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.LeaveReason.Type) -> VideoSDKRTC.LeaveReason",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LeaveReason",
+                    "printedName": "VideoSDKRTC.LeaveReason",
+                    "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.LeaveReason.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LeaveReason",
+                        "printedName": "VideoSDKRTC.LeaveReason",
+                        "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO10switchRoomyA2CmF",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO10switchRoomyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "roomClose",
+            "printedName": "roomClose",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.LeaveReason.Type) -> VideoSDKRTC.LeaveReason",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LeaveReason",
+                    "printedName": "VideoSDKRTC.LeaveReason",
+                    "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.LeaveReason.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LeaveReason",
+                        "printedName": "VideoSDKRTC.LeaveReason",
+                        "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO9roomCloseyA2CmF",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO9roomCloseyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "unknown",
+            "printedName": "unknown",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.LeaveReason.Type) -> VideoSDKRTC.LeaveReason",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LeaveReason",
+                    "printedName": "VideoSDKRTC.LeaveReason",
+                    "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.LeaveReason.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LeaveReason",
+                        "printedName": "VideoSDKRTC.LeaveReason",
+                        "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO7unknownyA2CmF",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO7unknownyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "removeAll",
+            "printedName": "removeAll",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.LeaveReason.Type) -> VideoSDKRTC.LeaveReason",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LeaveReason",
+                    "printedName": "VideoSDKRTC.LeaveReason",
+                    "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.LeaveReason.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LeaveReason",
+                        "printedName": "VideoSDKRTC.LeaveReason",
+                        "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO9removeAllyA2CmF",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO9removeAllyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "meetingEndApi",
+            "printedName": "meetingEndApi",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.LeaveReason.Type) -> VideoSDKRTC.LeaveReason",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LeaveReason",
+                    "printedName": "VideoSDKRTC.LeaveReason",
+                    "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.LeaveReason.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LeaveReason",
+                        "printedName": "VideoSDKRTC.LeaveReason",
+                        "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO13meetingEndApiyA2CmF",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO13meetingEndApiyA2CmF",
+            "moduleName": "VideoSDKRTC",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "removePeerApi",
+            "printedName": "removePeerApi",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.LeaveReason.Type) -> VideoSDKRTC.LeaveReason",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LeaveReason",
+                    "printedName": "VideoSDKRTC.LeaveReason",
+                    "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.LeaveReason.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LeaveReason",
+                        "printedName": "VideoSDKRTC.LeaveReason",
+                        "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO13removePeerApiyA2CmF",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO13removePeerApiyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "duplicateParticipant",
+            "printedName": "duplicateParticipant",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.LeaveReason.Type) -> VideoSDKRTC.LeaveReason",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LeaveReason",
+                    "printedName": "VideoSDKRTC.LeaveReason",
+                    "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.LeaveReason.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LeaveReason",
+                        "printedName": "VideoSDKRTC.LeaveReason",
+                        "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO20duplicateParticipantyA2CmF",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO20duplicateParticipantyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "manualLeaveCalled",
+            "printedName": "manualLeaveCalled",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.LeaveReason.Type) -> VideoSDKRTC.LeaveReason",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LeaveReason",
+                    "printedName": "VideoSDKRTC.LeaveReason",
+                    "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.LeaveReason.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LeaveReason",
+                        "printedName": "VideoSDKRTC.LeaveReason",
+                        "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO06manualC6CalledyA2CmF",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO06manualC6CalledyA2CmF",
+            "moduleName": "VideoSDKRTC",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "websocketConnectionAttemptsExhausted",
+            "printedName": "websocketConnectionAttemptsExhausted",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.LeaveReason.Type) -> VideoSDKRTC.LeaveReason",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LeaveReason",
+                    "printedName": "VideoSDKRTC.LeaveReason",
+                    "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.LeaveReason.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LeaveReason",
+                        "printedName": "VideoSDKRTC.LeaveReason",
+                        "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO36websocketConnectionAttemptsExhaustedyA2CmF",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO36websocketConnectionAttemptsExhaustedyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "joinRoomFailed",
+            "printedName": "joinRoomFailed",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.LeaveReason.Type) -> VideoSDKRTC.LeaveReason",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LeaveReason",
+                    "printedName": "VideoSDKRTC.LeaveReason",
+                    "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.LeaveReason.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LeaveReason",
+                        "printedName": "VideoSDKRTC.LeaveReason",
+                        "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO14joinRoomFailedyA2CmF",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO14joinRoomFailedyA2CmF",
+            "moduleName": "VideoSDKRTC",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "switchRoomFailed",
+            "printedName": "switchRoomFailed",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VideoSDKRTC.LeaveReason.Type) -> VideoSDKRTC.LeaveReason",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LeaveReason",
+                    "printedName": "VideoSDKRTC.LeaveReason",
+                    "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VideoSDKRTC.LeaveReason.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LeaveReason",
+                        "printedName": "VideoSDKRTC.LeaveReason",
+                        "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO16switchRoomFailedyA2CmF",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO16switchRoomFailedyA2CmF",
+            "moduleName": "VideoSDKRTC"
+          },
+          {
+            "kind": "Var",
+            "name": "message",
+            "printedName": "message",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO7messageSSvp",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO7messageSSvp",
+            "moduleName": "VideoSDKRTC",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11VideoSDKRTC11LeaveReasonO7messageSSvg",
+                "mangledName": "$s11VideoSDKRTC11LeaveReasonO7messageSSvg",
+                "moduleName": "VideoSDKRTC",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "from",
+            "printedName": "from(code:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "LeaveReason",
+                "printedName": "VideoSDKRTC.LeaveReason",
+                "usr": "s:11VideoSDKRTC11LeaveReasonO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO4from4codeACSi_tFZ",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO4from4codeACSi_tFZ",
+            "moduleName": "VideoSDKRTC",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "VideoSDKRTC.LeaveReason?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LeaveReason",
+                    "printedName": "VideoSDKRTC.LeaveReason",
+                    "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO8rawValueACSgSi_tcfc",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO8rawValueACSgSi_tcfc",
+            "moduleName": "VideoSDKRTC",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO8rawValueSivp",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO8rawValueSivp",
+            "moduleName": "VideoSDKRTC",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11VideoSDKRTC11LeaveReasonO8rawValueSivg",
+                "mangledName": "$s11VideoSDKRTC11LeaveReasonO8rawValueSivg",
+                "moduleName": "VideoSDKRTC",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "allCases",
+            "printedName": "allCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[VideoSDKRTC.LeaveReason]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LeaveReason",
+                    "printedName": "VideoSDKRTC.LeaveReason",
+                    "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11VideoSDKRTC11LeaveReasonO8allCasesSayACGvpZ",
+            "mangledName": "$s11VideoSDKRTC11LeaveReasonO8allCasesSayACGvpZ",
+            "moduleName": "VideoSDKRTC",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Nonisolated"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[VideoSDKRTC.LeaveReason]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LeaveReason",
+                        "printedName": "VideoSDKRTC.LeaveReason",
+                        "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11VideoSDKRTC11LeaveReasonO8allCasesSayACGvgZ",
+                "mangledName": "$s11VideoSDKRTC11LeaveReasonO8allCasesSayACGvgZ",
+                "moduleName": "VideoSDKRTC",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:11VideoSDKRTC11LeaveReasonO",
+        "mangledName": "$s11VideoSDKRTC11LeaveReasonO",
+        "moduleName": "VideoSDKRTC",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "enumRawTypeName": "Int",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CaseIterable",
+            "printedName": "CaseIterable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AllCases",
+                "printedName": "AllCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[VideoSDKRTC.LeaveReason]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LeaveReason",
+                        "printedName": "VideoSDKRTC.LeaveReason",
+                        "usr": "s:11VideoSDKRTC11LeaveReasonO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12CaseIterableP",
+            "mangledName": "$ss12CaseIterableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "Message",
         "printedName": "Message",
         "children": [
@@ -132971,6 +135459,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -133008,6 +135503,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -133202,6 +135704,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -133489,6 +135998,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -133787,6 +136303,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -141328,6 +143851,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "_ProtoNameProviding",
             "printedName": "_ProtoNameProviding",
             "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -141843,6 +144373,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "_ProtoNameProviding",
             "printedName": "_ProtoNameProviding",
             "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -142338,6 +144875,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -143106,6 +145650,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -143868,6 +146419,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -145105,6 +147663,13 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
               }
             ]
           },
@@ -145394,6 +147959,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -145927,6 +148499,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -146637,6 +149216,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -147254,6 +149840,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -147877,6 +150470,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -148407,6 +151007,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -149473,6 +152080,13 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
               }
             ]
           },
@@ -149762,6 +152376,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -151411,6 +154032,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -153681,6 +156309,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "Message",
                 "printedName": "Message",
                 "usr": "s:11VideoSDKRTC7MessageP",
@@ -154009,6 +156644,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -155356,6 +157998,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "Message",
                 "printedName": "Message",
                 "usr": "s:11VideoSDKRTC7MessageP",
@@ -155684,6 +158333,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -156639,6 +159295,13 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
               }
             ]
           },
@@ -156928,6 +159591,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -157470,6 +160140,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -158036,6 +160713,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -158631,6 +161315,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -164935,34 +167626,20 @@
               {
                 "kind": "TypeNominal",
                 "name": "Optional",
-                "printedName": "[Swift.String : Any]?",
+                "printedName": "Any?",
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "Dictionary",
-                    "printedName": "[Swift.String : Any]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "ProtocolComposition",
-                        "printedName": "Any"
-                      }
-                    ],
-                    "usr": "s:SD"
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
                   }
                 ],
                 "usr": "s:Sq"
               }
             ],
             "declKind": "Func",
-            "usr": "s:11VideoSDKRTC11ParticipantC13getAudioStatsSDySSypGSgyF",
-            "mangledName": "$s11VideoSDKRTC11ParticipantC13getAudioStatsSDySSypGSgyF",
+            "usr": "s:11VideoSDKRTC11ParticipantC13getAudioStatsypSgyF",
+            "mangledName": "$s11VideoSDKRTC11ParticipantC13getAudioStatsypSgyF",
             "moduleName": "VideoSDKRTC",
             "isFromExtension": true,
             "funcSelfKind": "NonMutating"
@@ -164975,34 +167652,20 @@
               {
                 "kind": "TypeNominal",
                 "name": "Optional",
-                "printedName": "[Swift.String : Any]?",
+                "printedName": "Any?",
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "Dictionary",
-                    "printedName": "[Swift.String : Any]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "ProtocolComposition",
-                        "printedName": "Any"
-                      }
-                    ],
-                    "usr": "s:SD"
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
                   }
                 ],
                 "usr": "s:Sq"
               }
             ],
             "declKind": "Func",
-            "usr": "s:11VideoSDKRTC11ParticipantC03getA5StatsSDySSypGSgyF",
-            "mangledName": "$s11VideoSDKRTC11ParticipantC03getA5StatsSDySSypGSgyF",
+            "usr": "s:11VideoSDKRTC11ParticipantC03getA5StatsypSgyF",
+            "mangledName": "$s11VideoSDKRTC11ParticipantC03getA5StatsypSgyF",
             "moduleName": "VideoSDKRTC",
             "isFromExtension": true,
             "funcSelfKind": "NonMutating"
@@ -165015,34 +167678,20 @@
               {
                 "kind": "TypeNominal",
                 "name": "Optional",
-                "printedName": "[Swift.String : Any]?",
+                "printedName": "Any?",
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "Dictionary",
-                    "printedName": "[Swift.String : Any]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "ProtocolComposition",
-                        "printedName": "Any"
-                      }
-                    ],
-                    "usr": "s:SD"
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
                   }
                 ],
                 "usr": "s:Sq"
               }
             ],
             "declKind": "Func",
-            "usr": "s:11VideoSDKRTC11ParticipantC13getShareStatsSDySSypGSgyF",
-            "mangledName": "$s11VideoSDKRTC11ParticipantC13getShareStatsSDySSypGSgyF",
+            "usr": "s:11VideoSDKRTC11ParticipantC13getShareStatsypSgyF",
+            "mangledName": "$s11VideoSDKRTC11ParticipantC13getShareStatsypSgyF",
             "moduleName": "VideoSDKRTC",
             "isFromExtension": true,
             "funcSelfKind": "NonMutating"
@@ -165427,6 +168076,42 @@
             "declKind": "Func",
             "usr": "s:11VideoSDKRTC11ParticipantC06handleC6Resume4dataySDySSypG_tF",
             "mangledName": "$s11VideoSDKRTC11ParticipantC06handleC6Resume4dataySDySSypG_tF",
+            "moduleName": "VideoSDKRTC",
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "handleStreamStateChanged",
+            "printedName": "handleStreamStateChanged(state:peerId:streamId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StreamState",
+                "printedName": "VideoSDKRTC.StreamState",
+                "usr": "s:11VideoSDKRTC11StreamStateO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11VideoSDKRTC11ParticipantC24handleStreamStateChanged5state6peerId06streamJ0yAA0eF0O_S2StF",
+            "mangledName": "$s11VideoSDKRTC11ParticipantC24handleStreamStateChanged5state6peerId06streamJ0yAA0eF0O_S2StF",
             "moduleName": "VideoSDKRTC",
             "isFromExtension": true,
             "funcSelfKind": "NonMutating"
@@ -167897,13 +170582,26 @@
               {
                 "kind": "TypeNominal",
                 "name": "Optional",
-                "printedName": "Swift.String?",
+                "printedName": "[Swift.String : Any]?",
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
                   }
                 ],
                 "hasDefaultArg": true,
@@ -167911,8 +170609,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:11VideoSDKRTC6PubSubC7publish5topic7message7options7payloadySS_SSSDySSypGSSSgtYaKF",
-            "mangledName": "$s11VideoSDKRTC6PubSubC7publish5topic7message7options7payloadySS_SSSDySSypGSSSgtYaKF",
+            "usr": "s:11VideoSDKRTC6PubSubC7publish5topic7message7options7payloadySS_SSSDySSypGAISgtYaKF",
+            "mangledName": "$s11VideoSDKRTC6PubSubC7publish5topic7message7options7payloadySS_SSSDySSypGAISgtYaKF",
             "moduleName": "VideoSDKRTC",
             "declAttributes": [
               "RawDocComment"
@@ -172249,6 +174947,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -175951,6 +178656,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -183900,13 +186612,6 @@
       },
       {
         "kind": "Import",
-        "name": "WebRTC",
-        "printedName": "WebRTC",
-        "declKind": "Import",
-        "moduleName": "VideoSDKRTC"
-      },
-      {
-        "kind": "Import",
         "name": "Mediasoup",
         "printedName": "Mediasoup",
         "declKind": "Import",
@@ -183916,6 +186621,13 @@
         "kind": "Import",
         "name": "UIKit",
         "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "VideoSDKRTC"
+      },
+      {
+        "kind": "Import",
+        "name": "WebRTC",
+        "printedName": "WebRTC",
         "declKind": "Import",
         "moduleName": "VideoSDKRTC"
       },
@@ -204597,6 +207309,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -205564,6 +208283,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -216379,6 +219105,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -220604,6 +223337,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "_ProtoNameProviding",
             "printedName": "_ProtoNameProviding",
             "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -221379,6 +224119,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -222510,6 +225257,13 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
               }
             ]
           },
@@ -223288,6 +226042,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -224024,6 +226785,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -225813,6 +228581,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -225959,6 +228734,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -226115,6 +228897,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -227571,6 +230360,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -228111,6 +230907,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -228879,6 +231682,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -229641,6 +232451,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -231880,6 +234697,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "_ProtoNameProviding",
                 "printedName": "_ProtoNameProviding",
                 "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -232636,6 +235460,13 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
               },
               {
                 "kind": "Conformance",
@@ -233520,6 +236351,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "Message",
                 "printedName": "Message",
                 "usr": "s:11VideoSDKRTC7MessageP",
@@ -233848,6 +236686,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -234706,6 +237551,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "_ProtoNameProviding",
                 "printedName": "_ProtoNameProviding",
                 "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -234999,6 +237851,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -235541,6 +238400,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -236107,6 +238973,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -236702,6 +239575,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -241376,6 +244256,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "_ProtoNameProviding",
             "printedName": "_ProtoNameProviding",
             "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -242499,6 +245386,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -244662,6 +247556,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "_ProtoNameProviding",
                 "printedName": "_ProtoNameProviding",
                 "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -245202,6 +248103,13 @@
               },
               {
                 "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
+              },
+              {
+                "kind": "Conformance",
                 "name": "_ProtoNameProviding",
                 "printedName": "_ProtoNameProviding",
                 "usr": "s:11VideoSDKRTC19_ProtoNameProvidingP",
@@ -245495,6 +248403,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -246548,6 +249463,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -247255,6 +250177,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -247909,6 +250838,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -248257,6 +251193,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -255826,6 +258769,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -256410,6 +259360,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -257000,6 +259957,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -257584,6 +260548,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -258174,6 +261145,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -258761,6 +261739,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -259345,6 +262330,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -260035,6 +263027,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -260572,6 +263571,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Message",
             "printedName": "Message",
             "usr": "s:11VideoSDKRTC7MessageP",
@@ -260835,6 +263841,7 @@
         "intro_tvOS": "9.0",
         "intro_watchOS": "2.0",
         "declAttributes": [
+          "AddressableForDependencies",
           "Frozen",
           "Available",
           "Available",
@@ -261200,6 +264207,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Sequence",
             "printedName": "Sequence",
             "children": [
@@ -261410,6 +264424,54 @@
             ],
             "isFromExtension": true,
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "toJSONArrayOfDictionary",
+            "printedName": "toJSONArrayOfDictionary()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[[Swift.String : Any]]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[[Swift.String : Any]]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.String : Any]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ProtocolComposition",
+                            "printedName": "Any"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:SS11VideoSDKRTCE23toJSONArrayOfDictionarySaySDySSypGGSgyF",
+            "mangledName": "$sSS11VideoSDKRTCE23toJSONArrayOfDictionarySaySDySSypGGSgyF",
+            "moduleName": "VideoSDKRTC",
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
           }
         ],
         "declKind": "Struct",
@@ -261505,6 +264567,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -262318,6 +265387,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "_ObjectiveCBridgeable",
             "printedName": "_ObjectiveCBridgeable",
             "children": [
@@ -262910,6 +265986,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Encodable",
             "printedName": "Encodable",
             "usr": "s:SE",
@@ -262928,35 +266011,6 @@
             "printedName": "_HasContiguousBytes",
             "usr": "s:s19_HasContiguousBytesP",
             "mangledName": "$ss19_HasContiguousBytesP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "_ObjectiveCBridgeable",
-            "printedName": "_ObjectiveCBridgeable",
-            "children": [
-              {
-                "kind": "TypeWitness",
-                "name": "_ObjectiveCType",
-                "printedName": "_ObjectiveCType",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "NSArray",
-                    "printedName": "Foundation.NSArray",
-                    "usr": "c:objc(cs)NSArray"
-                  }
-                ]
-              }
-            ],
-            "usr": "s:s21_ObjectiveCBridgeableP",
-            "mangledName": "$ss21_ObjectiveCBridgeableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CVarArg",
-            "printedName": "CVarArg",
-            "usr": "s:s7CVarArgP",
-            "mangledName": "$ss7CVarArgP"
           },
           {
             "kind": "Conformance",
@@ -263054,25 +266108,46 @@
           },
           {
             "kind": "Conformance",
-            "name": "AppExtensionScene",
-            "printedName": "AppExtensionScene",
+            "name": "_ObjectiveCBridgeable",
+            "printedName": "_ObjectiveCBridgeable",
             "children": [
               {
                 "kind": "TypeWitness",
-                "name": "Body",
-                "printedName": "Body",
+                "name": "_ObjectiveCType",
+                "printedName": "_ObjectiveCType",
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "Never",
-                    "printedName": "Swift.Never",
-                    "usr": "s:s5NeverO"
+                    "name": "NSArray",
+                    "printedName": "Foundation.NSArray",
+                    "usr": "c:objc(cs)NSArray"
                   }
                 ]
               }
             ],
-            "usr": "s:12ExtensionKit03AppA5SceneP",
-            "mangledName": "$s12ExtensionKit03AppA5SceneP"
+            "usr": "s:s21_ObjectiveCBridgeableP",
+            "mangledName": "$ss21_ObjectiveCBridgeableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Content",
+            "printedName": "Content",
+            "usr": "s:So17CMSampleBufferRefa9CoreMediaE7ContentP",
+            "mangledName": "$sSo17CMSampleBufferRefa9CoreMediaE7ContentP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ContentWithFormatDescription",
+            "printedName": "ContentWithFormatDescription",
+            "usr": "s:So17CMSampleBufferRefa9CoreMediaE28ContentWithFormatDescriptionP",
+            "mangledName": "$sSo17CMSampleBufferRefa9CoreMediaE28ContentWithFormatDescriptionP"
           },
           {
             "kind": "Conformance",
@@ -263101,6 +266176,27 @@
             ],
             "usr": "s:10Accelerate0A6BufferP",
             "mangledName": "$s10Accelerate0A6BufferP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "OperationParameter",
+            "printedName": "OperationParameter",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Element",
+                "printedName": "Element",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:10Accelerate9BNNSGraphO7BuilderV18OperationParameterP",
+            "mangledName": "$s10Accelerate9BNNSGraphO7BuilderV18OperationParameterP"
           },
           {
             "kind": "Conformance",
@@ -263695,6 +266791,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Strideable",
             "printedName": "Strideable",
             "children": [
@@ -263923,6 +267026,28 @@
             ],
             "usr": "s:7SwiftUI10AnimatableP",
             "mangledName": "$s7SwiftUI10AnimatableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "AtomicRepresentable",
+            "printedName": "AtomicRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AtomicRepresentation",
+                "printedName": "AtomicRepresentation",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "_Atomic64BitStorage",
+                    "printedName": "Synchronization._Atomic64BitStorage",
+                    "usr": "s:15Synchronization19_Atomic64BitStorageV"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:15Synchronization19AtomicRepresentableP",
+            "mangledName": "$s15Synchronization19AtomicRepresentableP"
           },
           {
             "kind": "Conformance",
@@ -265401,14 +268526,14 @@
       "kind": "IntegerLiteral",
       "offset": 3081,
       "length": 8,
-      "value": "2500000"
+      "value": "2200000"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/CustomTrackConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 3138,
       "length": 8,
-      "value": "3500000"
+      "value": "2700000"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/CustomTrackConfig.swift",
@@ -265884,21 +269009,21 @@
       "kind": "IntegerLiteral",
       "offset": 5693,
       "length": 8,
-      "value": "1800000"
+      "value": "1500000"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/CustomTrackConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 5746,
       "length": 8,
-      "value": "2200000"
+      "value": "2000000"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/CustomTrackConfig.swift",
       "kind": "IntegerLiteral",
       "offset": 5803,
       "length": 8,
-      "value": "3000000"
+      "value": "2700000"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/CustomTrackConfig.swift",
@@ -274595,6 +277720,132 @@
       "value": "3"
     },
     {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "StringLiteral",
+      "offset": 4438,
+      "length": 17,
+      "value": "\"FREEZE_DETECTED\""
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "StringLiteral",
+      "offset": 4593,
+      "length": 5,
+      "value": "\"CPU\""
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "StringLiteral",
+      "offset": 4690,
+      "length": 10,
+      "value": "\"DETECTED\""
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4898,
+      "length": 4,
+      "value": "1001"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4951,
+      "length": 4,
+      "value": "1002"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5004,
+      "length": 4,
+      "value": "1003"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5057,
+      "length": 4,
+      "value": "1004"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5110,
+      "length": 4,
+      "value": "1005"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5163,
+      "length": 4,
+      "value": "1006"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5216,
+      "length": 4,
+      "value": "1007"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5269,
+      "length": 4,
+      "value": "1008"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5334,
+      "length": 4,
+      "value": "1009"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5387,
+      "length": 4,
+      "value": "1010"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5440,
+      "length": 4,
+      "value": "1011"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5505,
+      "length": 4,
+      "value": "1101"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5558,
+      "length": 4,
+      "value": "1102"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5635,
+      "length": 4,
+      "value": "1103"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/MeetingStateEnum.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5688,
+      "length": 4,
+      "value": "1104"
+    },
+    {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/OpenTelemetrySwift\/SwiftProtobuf\/Message+BinaryAdditions.swift",
       "kind": "BooleanLiteral",
       "offset": 1359,
@@ -276347,21 +279598,21 @@
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/Classes\/Participant.swift",
       "kind": "Dictionary",
-      "offset": 1374,
+      "offset": 1365,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/Classes\/Participant.swift",
       "kind": "StringLiteral",
-      "offset": 7514,
+      "offset": 7421,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Public\/Classes\/Participant.swift",
       "kind": "StringLiteral",
-      "offset": 9139,
+      "offset": 9046,
       "length": 2,
       "value": "\"\""
     },
@@ -277684,9 +280935,16 @@
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 1065,
+      "offset": 1053,
       "length": 5,
       "value": "false"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
+      "kind": "Dictionary",
+      "offset": 2005,
+      "length": 3,
+      "value": "[]"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
@@ -277697,92 +280955,148 @@
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
-      "kind": "Dictionary",
-      "offset": 2093,
-      "length": 3,
-      "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 2612,
+      "offset": 2540,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 2650,
+      "offset": 2578,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
       "kind": "Dictionary",
-      "offset": 2734,
+      "offset": 2658,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
       "kind": "Dictionary",
-      "offset": 2775,
+      "offset": 2699,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
       "kind": "IntegerLiteral",
-      "offset": 2807,
+      "offset": 2731,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
       "kind": "IntegerLiteral",
-      "offset": 2840,
+      "offset": 2764,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
-      "kind": "BooleanLiteral",
-      "offset": 14825,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
-      "kind": "BooleanLiteral",
-      "offset": 20444,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
-      "kind": "BooleanLiteral",
-      "offset": 22621,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
-      "kind": "BooleanLiteral",
-      "offset": 22647,
-      "length": 5,
-      "value": "false"
+      "kind": "Dictionary",
+      "offset": 2881,
+      "length": 3,
+      "value": "[]"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
       "kind": "Dictionary",
-      "offset": 36861,
+      "offset": 2923,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
+      "kind": "Dictionary",
+      "offset": 2978,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
+      "kind": "Array",
+      "offset": 3020,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
+      "kind": "Dictionary",
+      "offset": 3130,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
+      "kind": "Dictionary",
+      "offset": 3188,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 69855,
+      "offset": 3247,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3280,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3307,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 14634,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 35173,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 37394,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 37428,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
+      "kind": "Dictionary",
+      "offset": 54652,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/RoomClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 94111,
       "length": 5,
       "value": "false"
     },
@@ -277959,7 +281273,7 @@
       "kind": "StringLiteral",
       "offset": 297,
       "length": 7,
-      "value": "\"2.3.0\""
+      "value": "\"2.4.0\""
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/SDKConfig.swift",
@@ -280750,28 +284064,28 @@
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/SocketRequestHandler.swift",
       "kind": "BooleanLiteral",
-      "offset": 3353,
+      "offset": 3355,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/SocketRequestHandler.swift",
       "kind": "Dictionary",
-      "offset": 9629,
+      "offset": 9973,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/SocketRequestHandler.swift",
       "kind": "StringLiteral",
-      "offset": 12041,
+      "offset": 12390,
       "length": 4,
       "value": "\"v2\""
     },
     {
       "filePath": "\/Users\/parthasodariya\/Documents\/Development\/videosdk-rtc-ios-sdk-private\/VideoSDKRTC\/Internal\/Client\/SocketRequestHandler.swift",
       "kind": "Dictionary",
-      "offset": 18576,
+      "offset": 18961,
       "length": 3,
       "value": "[]"
     },
