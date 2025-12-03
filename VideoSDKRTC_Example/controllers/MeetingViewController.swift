@@ -311,6 +311,11 @@ extension MeetingViewController: MeetingEventListener {
         }
     }
     
+    func onMeetingLeft(reason: LeaveReason) {
+        print("Meeting left with reason: \(reason.message)")
+        self.onMeetingLeft()
+    }
+    
     /// A new participant joined
     func onParticipantJoined(_ participant: Participant) {
 
@@ -353,6 +358,11 @@ extension MeetingViewController: MeetingEventListener {
         
         //notification to participants via sharing participants
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:  "shareParticipants"), object: nil, userInfo: ["participants": participants])
+    }
+    
+    func onParticipantLeft(_ participant: Participant, reason: LeaveReason) {
+       print("Participant \(participant.displayName) left with reason: \(reason.message)")
+       self.onParticipantLeft(participant)
     }
     
     /// Called after recording starts
@@ -443,6 +453,10 @@ extension MeetingViewController: MeetingEventListener {
         // border
         view.layer.borderWidth = 4.0
         view.layer.borderColor = show ? UIColor.blue.cgColor : UIColor.clear.cgColor
+    }
+    
+    func onQualityLimitation(type: QualityLimitationType, state: QualityLimitationState, timestamp: String) {
+        print("type: \(type.rawValue) || state: \(state.rawValue) || timestamp: \(timestamp)")
     }
 }
 
@@ -626,7 +640,6 @@ private extension MeetingViewController {
 //                    self.stopLivestream()
                     
                 case .switchAudioOutput:
-//                    AVAudioSession.sharedInstance().changeAudioOutput(presenterViewController: self)
                     self.changeAudioOutput(presenterViewController: self)
                     
                 case .showParticipantList:
@@ -637,18 +650,19 @@ private extension MeetingViewController {
                     
                 case .raiseHand:
                     Task {
-                        try await self.meeting?.pubsub.publish(topic: RAISE_HAND_TOPIC, message: "Raise Hand by Me", options: [:], payload: ["generated_by", "Application"].toJSONString())
+                        try await self.meeting?.pubsub.publish(topic: RAISE_HAND_TOPIC, message: "Raise Hand by Me", options: [:], payload: ["generated_by": "Application"])
                     }
-                    
                     
                 case .startScreenShare:
                     Task {
                         await self.meeting?.enableScreenShare()
                     }
+                    
                 case .stopScreenShare:
                     Task {
                         await self.meeting?.disableScreenShare()
                     }
+                    
                 default:
                     break
                 }
