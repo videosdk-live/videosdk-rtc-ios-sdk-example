@@ -34,14 +34,14 @@ class ButtonControlsView: UIView {
     var onChatButtonTapped: (() -> Void)?
     
     // handling for mic
-    var micEnabled = true {
+    var micEnabled = false {
         didSet {
             updateMicButton()
         }
     }
     
     // handling for video
-    var videoEnabled = true {
+    var videoEnabled = false {
         didSet {
             updateVideoButton()
         }

@@ -34,6 +34,9 @@ enum MenuOption: String {
     case pin = "Pin"
     case unpin = "Unpin"
     case stats = "Get Stats"
+    case SIGNALLING_ONLY = "SIGNALLING_ONLY Mode"
+    case RECV_ONLY = "RECV_ONLY Mode"
+    case SEND_AND_RECV = "SEND_AND_RECV Mode"
     
     var style: UIAlertAction.Style {
         switch self {
@@ -169,12 +172,7 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
     private func initializeMeeting() {
         
         // MARK :- With CustomVideoTrack with multiStream `true`
-        guard let customVideoStream = try? VideoSDK.createCameraVideoTrack(encoderConfig: .h1080p_w1440p,
-                                                                           facingMode: .front,
-                                                                           multiStream: true,
-                                                                           bitrateMode: .HIGH_QUALITY,
-                                                                           maxLayer: .MAX_LAYER_2
-        ) else { return }
+//        guard let customVideoStream = try? VideoSDK.createCameraVideoTrack(encoderConfig: .h1080p_w1440p, facingMode: .front, multiStream: true, bitrateMode: .HIGH_QUALITY, maxLayer: .MAX_LAYER_2) else { return }
         
         // initialize
         meeting = VideoSDK.initMeeting(
@@ -182,8 +180,7 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
             participantName: meetingData.name,
             micEnabled: meetingData.micEnabled,
             webcamEnabled: meetingData.cameraEnabled,
-            customCameraVideoStream: customVideoStream,
-            mode: .SEND_AND_RECV
+            mode: meetingData.mode
         )
         
         // MARK :- Without CustomVideoTrack
@@ -335,14 +332,13 @@ extension MeetingViewController: MeetingEventListener {
         // show in ui
         addParticipantToGridView()
         
-        // listen/subscribe for chat topic
-        Task {
-            await meeting?.pubsub.subscribe(topic: CHAT_TOPIC, forListener: self)
-        }
-        
-        // listen/subscribe for raise-hand topic
-        Task {
-            await meeting?.pubsub.subscribe(topic: RAISE_HAND_TOPIC, forListener: self)
+        DispatchQueue.main.async {
+            Task {
+                // listen/subscribe for chat topic
+                await self.meeting?.pubsub.subscribe(topic: CHAT_TOPIC, forListener: self)
+                // listen/subscribe for raise-hand topic
+                await self.meeting?.pubsub.subscribe(topic: RAISE_HAND_TOPIC, forListener: self)
+            }
         }
         
         Utils.loaderDismiss(viewControler: self)
@@ -490,98 +486,37 @@ extension MeetingViewController: MeetingEventListener {
     
     func onMeetingStateChanged(meetingState: MeetingState) {
         switch meetingState {
-            case .CONNECTING:
-                print("Meeting is connecting")
-                
-            case .CONNECTED:
-                print("Meeting connected")
-                
-            case .DISCONNECTED:
-                print("Meeting is disconnected")
-                
-            case .RECONNECTING:
-                print("Meeting is reconnecting")
+        case .CONNECTING:
+            print("Meeting is connecting")
+            
+        case .CONNECTED:
+            print("Meeting connected")
+            
+        case .RECONNECTING:
+            print("Meeting is reconnecting")
+            showReconnectAlert(from: self)
+         
+        case .FAILED:
+            print("Meeting is failed")
+            // dismiss controller
+            let confirmAction = UIAlertAction(title: "OK", style: .default) { _ in
+                self.dismiss(animated: true, completion: nil)
+            }
+            
+            self.showAlert(
+                title: "Meeting is failed!",
+                message: "Please try again with different meetingId",
+                actions: [confirmAction]
+            )
+            
+        case .DISCONNECTED:
+            print("Meeting is disconnected")
+            
         }
     }
     
     func onError(error: VideoSDKError) {
-        switch error {
-            case .INVALID_TOKEN: print("Invalid Token")
-
-            case .INVALID_MEETING_ID: print("Invalid Meeting Id")
-            
-            case .INVALID_API_KEY: print("Invalid API Key")
-            
-            case .INVALID_PERMISSIONS: print("Invalid Permissions")
-            
-            case .INVALID_PARTICIPANT_ID: print("Invalid Participant ID")
-            
-            case .INVALID_LIVESTREAM_CONFIG: print("Invalid LiveStream Config")
-            
-            case .ACCOUNT_DEACTIVATED: print("Account Deactivated")
-            
-            case .ACCOUNT_DISCONTINUED: print("Account Discontinued")
-            
-            case .DUPLICATE_PARTICIPANT: print("Duplicate Participant")
-            
-            case .HLS_FAILED: print("HLS failed")
-            
-            case .START_HLS_FAILED: print("Start HLS failed")
-            
-            case .STOP_HLS_FAILED: print("Stop HLS failed")
-            
-            case .START_RECORDING_FAILED: print("Start recording failed")
-            
-            case .START_LIVESTREAM_FAILED: print("Start liveStream failed")
-            
-            case .STOP_RECORDING_FAILED: print("Stop recording failed")
-            
-            case .STOP_LIVESTREAM_FAILED: print("Stop liveStream failed")
-            
-            case .RECORDING_FAILED: print("Recording failed")
-            
-            case .MAX_SPEAKER_REACHED: print("Max speaker reached")
-             
-            case .MAX_PARTCIPANT_REACHED: print("Maximum participant limit reached")
-             
-            case .LIVESTREAM_FAILED: print("Error while getting display media")
-             
-            case .ERROR_GET_VIDEO_MEDIA: print("Error while getting video media")
-            
-            case .ERROR_GET_AUDIO_MEDIA: print("Error while getting audio media")
-            
-            case .ERROR_GET_DISPLAY_MEDIA: print("Error while getting display media")
-            
-            case .ERROR_GET_VIDEO_MEDIA_PERMISSION_DENIED: print("Permission denied while getting video camera permission")
-            
-            case .ERROR_GET_AUDIO_MEDIA_PERMISSION_DENIED: print("Permission denied while getting audio speaker permission")
-            
-            case .ERROR_GET_DISPLAY_MEDIA_PERMISSION_DENIED: print("Permission denied while getting display media permission")
-            
-            case .UNKNOWN_ERROR: print("Unknown Error")
-        case .PREV_RECORDING_PROCESSING:
-            print("Prev recording processing")
-        case .PREV_RTMP_RECORDING_PROCESSING:
-            print("Prev RTMP recording processing")
-        case .PREV_HLS_STREAMING_PROCESSING:
-            print("Prev HLS streaming processing")
-        case .MAX_SPEAKER_LIMIT_REACHED_ON_ORGANIZATION:
-            print("Max Speaker limit reached")
-        case .MAX_VIEWER_LIMIT_REACHED_ON_ORGANIZATION:
-            print("Max viewer limit reached")
-        case .MAX_RECORDING_LIMIT_REACHED_ON_ORGANIZATION:
-            print("Max recording limit reached")
-        case .MAX_HLS_LIMIT_REACHED_ON_ORGANIZATION:
-            print("Max HLS limit reached")
-        case .MAX_LIVESTREAM_LIMIT_REACHED_ON_ORGANIZATION:
-            print("Max LiveStream limit reached")
-        case .START_TRANSCRIPTION_FAILED:
-            print("Start transcription failed")
-        case .STOP_TRANSCRIPTION_FAILED:
-            print("Stop transcription failed")
-        case .TRANSCRIPTION_FAILED:
-            print("transcription failed")
-        }
+        print("Error Code: \(error.rawValue) || Error Message: \(error.message)")
     }
     
     func onHlsStateChanged(state: HLSState, hlsUrl: HLSUrl?) {
@@ -647,10 +582,15 @@ extension MeetingViewController: MeetingEventListener {
     
     func onParticipantModeChanged(participantId: String, mode: Mode) {
         print("Participant \(self.participants.first(where: { $0.id == participantId })?.displayName ?? "") mode changed to \(mode.rawValue)")
+        let participant = self.participants.first { $0.id == participantId }
+        if (mode == .SEND_AND_RECV && !(participant?.isLocal ?? false)) {
+            participant?.addEventListener(self)
+        }
+        self.showAlert(title: "Mode changed to \(mode.rawValue)", message: "Mode changed by \(self.participants.first(where: { $0.id == participantId })?.displayName ?? "")")
     }
     
     func onQualityLimitation(type: QualityLimitationType, state: QualityLimitationState, timestamp: String) {
-        print("type: \(type.rawValue) || state: \(state.rawValue) || timestamp: \(timestamp)")
+//        print("type: \(type.rawValue) || state: \(state.rawValue) || timestamp: \(timestamp)")
     }
 }
 
@@ -737,6 +677,21 @@ extension MeetingViewController: ParticipantEventListener {
 // MARK: - Chat
 
 extension MeetingViewController {
+    
+    private func showReconnectAlert(from viewController: UIViewController) {
+        let alert = UIAlertController(
+            title: "Reconnecting...",
+            message: "The meeting is trying to reconnect. Please wait.",
+            preferredStyle: .alert
+        )
+        
+        viewController.present(alert, animated: true)
+        
+        // Auto-dismiss after 3 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            alert.dismiss(animated: true)
+        }
+    }
     
     func openChat() {
         let chatViewController = ChatViewController(meeting: meeting!, topic: CHAT_TOPIC)
@@ -831,6 +786,9 @@ private extension MeetingViewController {
             menuOptions.append(!self.recordingStarted ? .startRecording : .stopRecording)
             menuOptions.append(!self.liveStreamStarted ? .startLivestream : .stopLivestream)
             menuOptions.append(.changeMode)
+            menuOptions.append(.SEND_AND_RECV)
+            menuOptions.append(.SIGNALLING_ONLY)
+            menuOptions.append(.RECV_ONLY)
             
             self.showActionsheet(options: menuOptions, fromView: self.buttonControlsView.menuButton) { option in
                 switch option {
@@ -880,6 +838,21 @@ private extension MeetingViewController {
                         }
                     }
                     isConference = !isConference
+                    
+                case .SEND_AND_RECV:
+                    Task {
+                        _ = await self.meeting?.changeMode(.SEND_AND_RECV)
+                    }
+                    
+                case .SIGNALLING_ONLY:
+                    Task {
+                        await self.meeting?.changeMode(.SIGNALLING_ONLY)
+                    }
+                    
+                case .RECV_ONLY:
+                    Task {
+                        await self.meeting?.changeMode(.RECV_ONLY)
+                    }
                     
                 default:
                     break

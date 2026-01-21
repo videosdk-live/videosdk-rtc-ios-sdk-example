@@ -22,9 +22,9 @@ enum EndPoint {
         case .getToken:
             return "get-token"
         case .createMeeting:
-            return "create-meeting"
+            return "/v2/rooms"
         case .validateMeeting(let meetingId, _):
-            return "validate-meeting/\(meetingId)"
+            return "/v2/rooms/validate/\(meetingId)"
         }
     }
     
@@ -55,6 +55,7 @@ enum EndPoint {
     var request: URLRequest {
         var request = URLRequest(url: baseURL.appendingPathComponent(value))
         request.httpMethod = method
+        request.addValue(AUTH_TOKEN, forHTTPHeaderField: "Authorization")
         request.httpBody = body
         return request
     }
@@ -80,10 +81,14 @@ class APIService {
         let request = EndPoint.createMeeting(token).request
         
         URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data, let meetingId = data.toJSON()["meetingId"] as? String {
-                completion(.success(meetingId))
-            } else if let err = error {
-                completion(.failure(err))
+            DispatchQueue.main.async {
+                if let data = data, let meetingId = data.toJSON()["roomId"] as? String {
+                    completion(.success(meetingId))
+                } else if let err = error {
+                    completion(.failure(err))
+                } else {
+                    print("Error while create meeting")
+                }
             }
         }
         .resume()

@@ -106,16 +106,22 @@ extension ChatViewController {
 // MARK: - MessagesDataSource
 
 extension ChatViewController: MessagesDataSource {
-    
-    func currentSender() -> SenderType {
-        ChatUser(senderId: meeting.localParticipant.id, displayName: meeting.localParticipant.displayName)
+
+    var currentSender: SenderType {
+        ChatUser(
+            senderId: meeting.localParticipant.id,
+            displayName: meeting.localParticipant.displayName
+        )
     }
-    
+
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         messages.count
     }
-    
-    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
+
+    func messageForItem(
+        at indexPath: IndexPath,
+        in messagesCollectionView: MessagesCollectionView
+    ) -> MessageType {
         messages[indexPath.section]
     }
 }
@@ -214,7 +220,7 @@ extension ChatViewController {
         layout.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: outgoingInsets))
         
         scrollsToLastItemOnKeyboardBeginsEditing = true
-        maintainPositionOnKeyboardFrameChanged = true
+        maintainPositionOnInputBarHeightChanged = true
     }
     
     func configureMessageInputBar() {
