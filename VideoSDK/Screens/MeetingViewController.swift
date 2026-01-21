@@ -180,7 +180,8 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
             participantName: meetingData.name,
             micEnabled: meetingData.micEnabled,
             webcamEnabled: meetingData.cameraEnabled,
-            mode: meetingData.mode
+            mode: meetingData.mode,
+            signalingBaseUrl: "api.classplus-prod.videosdk.live"
         )
         
         // MARK :- Without CustomVideoTrack
@@ -498,6 +499,7 @@ extension MeetingViewController: MeetingEventListener {
          
         case .FAILED:
             print("Meeting is failed")
+            Utils.loaderDismiss(viewControler: self)
             // dismiss controller
             let confirmAction = UIAlertAction(title: "OK", style: .default) { _ in
                 self.dismiss(animated: true, completion: nil)
