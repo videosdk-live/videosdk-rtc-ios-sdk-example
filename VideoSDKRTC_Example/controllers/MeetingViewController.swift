@@ -98,6 +98,9 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate 
         setupActions()
 //        addAudioChangeObserver()
         
+        // Log verbosity level
+        VideoSDK.setLogLevel(level: .all) // Default: .info
+        
         // config
         VideoSDK.config(token: meetingData.token)
         
@@ -258,6 +261,9 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate 
 // MARK: - MeetingEventListener
 
 extension MeetingViewController: MeetingEventListener {
+    func onQualityLimitation(type: VideoSDKRTC.QualityLimitationType, state: VideoSDKRTC.QualityLimitationState, timestamp: Int) {
+        
+    }
     
     /// Meeting started
     func onMeetingJoined()  {
@@ -272,8 +278,11 @@ extension MeetingViewController: MeetingEventListener {
             // add event listener
             localParticipant.addEventListener(self)
             
-            localParticipant.setQuality(.high)
-
+            do {
+                try localParticipant.setQuality(.high)
+            } catch {
+                print("Error: \(error)")
+            }
             
             Task{// listen/subscribe for chat topic
                 await meeting?.pubsub.subscribe(topic: CHAT_TOPIC, forListener: self)
@@ -327,7 +336,11 @@ extension MeetingViewController: MeetingEventListener {
             // add listener
             participant.addEventListener(self)
             
-            participant.setQuality(.high)
+            do {
+                try participant.setQuality(.high)
+            } catch {
+                print("Error: \(error)")
+            }
             
             self.setNameToView(participant)
         } else {
@@ -374,26 +387,26 @@ extension MeetingViewController: MeetingEventListener {
     }
     
     /// Caled after recording stops
-    func onRecordingStoppped() {
+    func onRecordingStopped() {
         self.ivIsRecording.isHidden = true
         recordingStarted = false
         updateMenuButton()
     }
     
-//    /// Called after livestream starts
-//    func onLivestreamStarted() {
-//        liveStreamStarted = true
-//        updateMenuButton()
-//        showAlert(title: "Livestream Started", message: nil, autoDismiss: true)
-//    }
-//    
-//    /// Called after livestream stops
-//    func onLivestreamStopped() {
-//        print("livestream stopped")
-//        liveStreamStarted = false
-//        updateMenuButton()
-//    }
-//    
+    /// Called after livestream starts
+    func onLivestreamStarted() {
+        liveStreamStarted = true
+        updateMenuButton()
+        showAlert(title: "Livestream Started", message: nil, autoDismiss: true)
+    }
+    
+    /// Called after livestream stops
+    func onLivestreamStopped() {
+        print("livestream stopped")
+        liveStreamStarted = false
+        updateMenuButton()
+    }
+    
     /// Called when speaker is changed
     /// - Parameter participantId: participant id of the speaker, nil when no one is speaking.
     func onSpeakerChanged(participantId: String?) {

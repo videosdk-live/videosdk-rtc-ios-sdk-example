@@ -9,6 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+__attribute__((availability(swift, unavailable)))
 @interface iOSSocketConnection : NSObject
 
 - (instancetype)initWithFilePath:(nonnull NSString*)filePath;

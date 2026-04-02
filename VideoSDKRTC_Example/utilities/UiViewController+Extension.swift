@@ -154,7 +154,7 @@ extension UIViewController {
 
 extension String {
     func toDate() -> Date? {
-        var dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.date(from: self)
     }

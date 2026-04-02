@@ -21,9 +21,9 @@ enum EndPoint {
         case .getToken:
             return "get-token"
         case .createMeeting:
-            return "create-meeting"
+            return "/v2/rooms"
         case .validateMeeting(let meetingId, _):
-            return "validate-meeting/\(meetingId)"
+            return "/v2/rooms/validate/\(meetingId)"
         }
     }
     

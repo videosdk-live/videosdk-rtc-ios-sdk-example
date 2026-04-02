@@ -66,7 +66,12 @@ class StartMeetingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareUI()
-        VideoSDK.getAudioPermission()
+        if micEnabled {
+            VideoSDK.getAudioPermission()
+        }
+        if webCamEnabled {
+            VideoSDK.getVideoPermission()
+        }
         self.requestNotificationAuthorization()
         self.serverToken = AUTH_TOKEN
         previewLayer.isHidden = !self.webCamEnabled
@@ -358,8 +363,8 @@ class StartMeetingViewController: UIViewController {
             token: serverToken,
             name: txtEnterNameField.text ?? "Guest",
             meetingId: txtMeetingCodeField.text ?? "",
-            micEnabled: true,
-            cameraEnabled: true,
+            micEnabled: micEnabled,
+            cameraEnabled: webCamEnabled,
             videoDevice: valueOfVideoDevice,     // Pass the selected video device
             audioDevice: valueOfAudioDevice      // Pass the selected audio device
 
@@ -403,7 +408,6 @@ extension StartMeetingViewController: AVCaptureVideoDataOutputSampleBufferDelega
         captureDevice = device
         beginSession()
     }
-
 
     func beginSession(){
         var deviceInput: AVCaptureDeviceInput!
@@ -452,7 +456,7 @@ extension StartMeetingViewController: AVCaptureVideoDataOutputSampleBufferDelega
     }
 
     // clean up AVCapture
-    func stopCamera(){
+    func stopCamera() {
         if session.isRunning {
                session.stopRunning()
             previewLayer.isHidden = true

@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class iOSSocketConnection;
 
+__attribute__((availability(swift, unavailable)))
 @interface iOSSocketConnectionFrameReader : RTCVideoCapturer
 
 - (instancetype)initWithDelegate:(__weak id<RTCVideoCapturerDelegate>)delegate;
