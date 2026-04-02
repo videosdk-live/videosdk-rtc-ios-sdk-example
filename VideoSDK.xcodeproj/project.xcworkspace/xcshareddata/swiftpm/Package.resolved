@@ -1,5 +1,5 @@
 {
-  "originHash" : "3a4913494deea1b11ed18ef00993d2de86c7e21e7e9b3933df81ea3ab7a0989f",
+  "originHash" : "34c2a23ab041335a973e6cc243c0174413ed49c3582fcb828ec5e07f813ec6a5",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -142,7 +142,7 @@
       "location" : "https://github.com/videosdk-live/videosdk-rtc-ios-spm",
       "state" : {
         "branch" : "main",
-        "revision" : "720cb25306b54b3fb646ac38fa2354d5d42065ed"
+        "revision" : "743e384cacc2b6d91f2b7d471fc06a1f4fac3db0"
       }
     }
   ],

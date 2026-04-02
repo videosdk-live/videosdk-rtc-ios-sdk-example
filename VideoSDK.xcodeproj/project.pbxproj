@@ -14,10 +14,10 @@
 		623A5F1E2892FD1B0051F40C /* joinRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A5F1D2892FD1B0051F40C /* joinRoom.swift */; };
 		623A5F202892FD350051F40C /* ParticipantCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A5F1F2892FD350051F40C /* ParticipantCellView.swift */; };
 		623A5F22289393470051F40C /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A5F21289393470051F40C /* Loader.swift */; };
+		844FA4872F7EBE500080BBE7 /* VideoSDKRTCSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 844FA4862F7EBE500080BBE7 /* VideoSDKRTCSwift */; };
 		848628602F20E40000E8071C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8486285F2F20E40000E8071C /* GoogleService-Info.plist */; };
 		848628632F20E59F00E8071C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 848628622F20E59F00E8071C /* FirebaseAnalytics */; };
 		848628652F20E59F00E8071C /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 848628642F20E59F00E8071C /* FirebaseCrashlytics */; };
-		848628682F20E78600E8071C /* VideoSDKRTCSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 848628672F20E78600E8071C /* VideoSDKRTCSwift */; };
 		8486286B2F20E81000E8071C /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8486286A2F20E81000E8071C /* MessageKit */; };
 		A23250C9271F2F4F00A23CCB /* AddStreamOutputiewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23250C8271F2F4F00A23CCB /* AddStreamOutputiewController.swift */; };
 		A23250CB271F2FAE00A23CCB /* AddStreamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23250CA271F2FAE00A23CCB /* AddStreamTableViewCell.swift */; };
@@ -89,8 +89,8 @@
 			files = (
 				848628652F20E59F00E8071C /* FirebaseCrashlytics in Frameworks */,
 				848628632F20E59F00E8071C /* FirebaseAnalytics in Frameworks */,
-				848628682F20E78600E8071C /* VideoSDKRTCSwift in Frameworks */,
 				8486286B2F20E81000E8071C /* MessageKit in Frameworks */,
+				844FA4872F7EBE500080BBE7 /* VideoSDKRTCSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,8 +253,8 @@
 			mainGroup = 607FACC71AFB9204008FA782;
 			packageReferences = (
 				848628612F20E59F00E8071C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				848628662F20E78600E8071C /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */,
 				848628692F20E81000E8071C /* XCRemoteSwiftPackageReference "MessageKit" */,
+				844FA4852F7EBE500080BBE7 /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */,
 			);
 			productRefGroup = 607FACD11AFB9204008FA782 /* Products */;
 			projectDirPath = "";
@@ -474,7 +474,7 @@
 				CODE_SIGN_ENTITLEMENTS = VideoSDK_Example.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 8GZ776NSU2;
 				INFOPLIST_FILE = VideoSDK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -482,7 +482,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.4;
+				MARKETING_VERSION = 2.5.2;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zujo.videosdk.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -501,7 +501,7 @@
 				CODE_SIGN_ENTITLEMENTS = VideoSDK_ExampleRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 8GZ776NSU2;
 				INFOPLIST_FILE = VideoSDK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -509,7 +509,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.4;
+				MARKETING_VERSION = 2.5.2;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zujo.videosdk.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -545,20 +545,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		844FA4852F7EBE500080BBE7 /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/videosdk-live/videosdk-rtc-ios-spm";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		848628612F20E59F00E8071C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 12.8.0;
-			};
-		};
-		848628662F20E78600E8071C /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/videosdk-live/videosdk-rtc-ios-spm";
-			requirement = {
-				branch = main;
-				kind = branch;
 			};
 		};
 		848628692F20E81000E8071C /* XCRemoteSwiftPackageReference "MessageKit" */ = {
@@ -572,6 +572,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		844FA4862F7EBE500080BBE7 /* VideoSDKRTCSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 844FA4852F7EBE500080BBE7 /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */;
+			productName = VideoSDKRTCSwift;
+		};
 		848628622F20E59F00E8071C /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 848628612F20E59F00E8071C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -581,11 +586,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 848628612F20E59F00E8071C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
-		};
-		848628672F20E78600E8071C /* VideoSDKRTCSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 848628662F20E78600E8071C /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */;
-			productName = VideoSDKRTCSwift;
 		};
 		8486286A2F20E81000E8071C /* MessageKit */ = {
 			isa = XCSwiftPackageProductDependency;

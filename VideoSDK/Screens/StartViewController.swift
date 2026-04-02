@@ -410,7 +410,7 @@ extension StartViewController: AVCaptureVideoDataOutputSampleBufferDelegate{
             try audioSession.setCategory(
                 .record,
                 mode: .default,
-                options: .allowBluetooth
+                options: .allowBluetoothHFP
             )
             try audioSession.setActive(true)
         } catch {

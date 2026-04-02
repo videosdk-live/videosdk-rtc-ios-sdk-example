@@ -313,6 +313,9 @@ extension MeetingViewController {
 // MARK: - MeetingEventListener
 
 extension MeetingViewController: MeetingEventListener {
+    func onQualityLimitation(type: VideoSDKRTC.QualityLimitationType, state: VideoSDKRTC.QualityLimitationState, timestamp: Int) {
+        
+    }
     
     /// Meeting started
     func onMeetingJoined() {
@@ -897,16 +900,33 @@ private extension MeetingViewController {
             switch option {
             case .toggleMic:
                 if !cell.micEnabled {
-                    participant.enableMic()
+                    do {
+                        try participant.enableMic()
+                    } catch {
+                        print("Error in enableMic: \(error.localizedDescription)")
+                    }
                 } else {
-                    participant.disableMic()
+                    do {
+                        try participant.disableMic()
+                    } catch {
+                        print("Error in disableMic: \(error.localizedDescription)")
+                    }
                 }
                 
             case .toggleWebcam:
                 if !cell.videoEnabled {
-                    participant.enableWebcam()
+                    do {
+                        try participant.enableWebcam()
+                    } catch {
+                        print("Error in enableWebcam: \(error.localizedDescription)")
+                    }
                 } else {
-                    participant.disableWebcam()
+                    do {
+                        try participant.disableWebcam()
+                    } catch {
+                        print("Error in disableWebcam: \(error.localizedDescription)")
+                    }
+                    
                 }
                 
             case .remove:
@@ -916,7 +936,11 @@ private extension MeetingViewController {
                 self.showQualitySelectionsheet(options: [.high, .medium, .low], fromView: cell.menuButton, currentQuality: participant.videoQuality) { quality in
                     
                     // set quality
-                    participant.setQuality(quality)
+                    do {
+                        try participant.setQuality(quality)
+                    } catch {
+                        print("Error in setQuality: \(error.localizedDescription)")
+                    }
                 }
                 
             case .pin:
