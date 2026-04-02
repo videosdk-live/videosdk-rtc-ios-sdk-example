@@ -300,7 +300,7 @@ class StartMeetingViewController: UIViewController {
             session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
                 DispatchQueue.main.async {
                     Utils.loaderDismiss(viewControler: self)
-                    if let data = data, let utf8Text = String(data: data, encoding: .utf8)
+                    if let data = data, let _ = String(data: data, encoding: .utf8)
                     {
                         do{
                             let dataArray = try JSONDecoder().decode(RoomsStruct.self,from: data)
