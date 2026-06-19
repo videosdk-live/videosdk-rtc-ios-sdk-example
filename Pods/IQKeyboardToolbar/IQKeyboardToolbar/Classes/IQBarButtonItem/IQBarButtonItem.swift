@@ -31,7 +31,8 @@ import UIKit
         let barButton = IQBarButtonItem(barButtonSystemItem: .flexibleSpace,
                                      target: nil, action: nil)
 #if compiler(>=6.2) // Xcode 26
-        if #available(iOS 26.0, *) {
+        let requiresCompatibility: Bool = Bundle.main.object(forInfoDictionaryKey: "UIDesignRequiresCompatibility") as? Bool ?? false
+        if #available(iOS 26.0, *), !requiresCompatibility {
             barButton.hidesSharedBackground = false
         }
 #endif
@@ -46,7 +47,8 @@ import UIKit
                                         target: nil, action: nil)
         barButton.isSystemItem = true
 #if compiler(>=6.2) // Xcode 26
-        if #available(iOS 26.0, *) {
+        let requiresCompatibility: Bool = Bundle.main.object(forInfoDictionaryKey: "UIDesignRequiresCompatibility") as? Bool ?? false
+        if #available(iOS 26.0, *), !requiresCompatibility {
             barButton.hidesSharedBackground = false
         } else {
             barButton.width = 6

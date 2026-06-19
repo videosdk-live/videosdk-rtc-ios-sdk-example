@@ -59,7 +59,9 @@ import Combine
         for event in IQKeyboardInfo.Event.allCases {
             NotificationCenter.default.publisher(for: event.notification)
                 .map({ IQKeyboardInfo(notification: $0, event: event) })
-                .assign(to: \.keyboardInfo, on: self)
+                .sink(receiveValue: { [weak self] keyboardInfo in
+                    self?.keyboardInfo = keyboardInfo
+                })
                 .store(in: &storage)
         }
     }

@@ -78,7 +78,8 @@ import UIKit
                 newBarButtonItem = IQBarButtonItem(barButtonSystemItem: systemItem, target: target, action: action)
                 newBarButtonItem.isSystemItem = true
 #if compiler(>=6.2) // Xcode 26
-                if #available(iOS 26.0, *) {
+                let requiresCompatibility: Bool = Bundle.main.object(forInfoDictionaryKey: "UIDesignRequiresCompatibility") as? Bool ?? false
+                if #available(iOS 26.0, *), !requiresCompatibility {
                     newBarButtonItem.style = .plain
                 }
 #endif

@@ -114,19 +114,31 @@ public extension IQKeyboardExtension where Base: UIView {
      */
     func textFieldSearchBar() -> UISearchBar? {
 
-        var responder: UIResponder? = base?.next
-
-        while let bar: UIResponder = responder {
-
-            if let searchBar: UISearchBar = bar as? UISearchBar {
-                return searchBar
-            } else if bar is UIViewController {
-                break
+        if base is UISearchTextField,
+            var textInputViewController = base?.iq.viewContainingController() {
+            if let navController: UINavigationController = textInputViewController as? UINavigationController,
+               let topController: UIViewController = navController.topViewController {
+                textInputViewController = topController
             }
 
-            responder = bar.next
-        }
+            // Not adjusting for searchTextField inside searchController.
+            if textInputViewController.navigationItem.searchController?.searchBar.searchTextField == base {
+                return textInputViewController.navigationItem.searchController?.searchBar
+            }
+        } else {
+            var responder: UIResponder? = base?.next
 
+            while let bar: UIResponder = responder {
+
+                if let searchBar: UISearchBar = bar as? UISearchBar {
+                    return searchBar
+                } else if bar is UIViewController {
+                    break
+                }
+
+                responder = bar.next
+            }
+        }
         return nil
     }
 

@@ -22,8 +22,8 @@
 //  THE SOFTWARE.
 
 import UIKit
-import IQKeyboardCore
 import IQTextInputViewNotification
+import IQKeyboardCore
 
 @available(iOSApplicationExtension, unavailable)
 @MainActor
@@ -86,7 +86,7 @@ import IQTextInputViewNotification
 
         // Resigning first responder
         guard textInputView.resignFirstResponder() else {
-//            showLog("Refuses to resign first responder: \(textInputView)")
+            IQKeyboardManager.shared.showLog("Warning: Refuses to resign first responder: \(textInputView)")
             //  If it refuses then becoming it as first responder again.    (Bug ID: #96)
             // If it refuses to resign then becoming it first responder again for getting notifications callback.
             textInputView.becomeFirstResponder()
@@ -141,6 +141,11 @@ import IQTextInputViewNotification
         // Should not recognize gesture if the clicked view is either UIControl or UINavigationBar(<Back button etc...)
 
         for ignoreClass in touchResignedGestureIgnoreClasses where touch.view?.isKind(of: ignoreClass) ?? false {
+            return false
+        }
+
+        // (Issue #2109) Ignore Apple Pencil touches to prevent conflicts with floating keyboard on iPad
+        if touch.type == .pencil {
             return false
         }
 
