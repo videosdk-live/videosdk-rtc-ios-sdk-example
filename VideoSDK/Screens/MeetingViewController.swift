@@ -180,8 +180,7 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource, UIScr
             participantName: meetingData.name,
             micEnabled: meetingData.micEnabled,
             webcamEnabled: meetingData.cameraEnabled,
-            mode: meetingData.mode,
-            signalingBaseUrl: "api.classplus-prod.videosdk.live"
+            mode: meetingData.mode
         )
         
         // MARK :- Without CustomVideoTrack
