@@ -37,9 +37,6 @@ class ChatViewController: MessagesViewController {
         self.meeting = meeting
         self.topic = topic
         
-        let pubsubMessages = meeting.pubsub.getMessagesForTopic(topic)
-        messages = pubsubMessages.map({ Message(pubsubMessage: $0) })
-        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -64,6 +61,13 @@ class ChatViewController: MessagesViewController {
     }
     
     // MARK: - Public
+    
+    func addMessages(_ pubsubMessages: [PubSubMessage]) {
+        pubsubMessages.forEach { message in
+            let msg = Message(pubsubMessage: message)
+            messages.append(msg)
+        }
+    }
     
     func showNewMessage(_ pubsubMessage: PubSubMessage) {
         let message = Message(pubsubMessage: pubsubMessage)

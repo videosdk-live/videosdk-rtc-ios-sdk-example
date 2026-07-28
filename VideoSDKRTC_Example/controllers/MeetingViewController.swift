@@ -261,10 +261,7 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate 
 // MARK: - MeetingEventListener
 
 extension MeetingViewController: MeetingEventListener {
-    func onQualityLimitation(type: VideoSDKRTC.QualityLimitationType, state: VideoSDKRTC.QualityLimitationState, timestamp: Int) {
-        
-    }
-    
+
     /// Meeting started
     func onMeetingJoined()  {
 
@@ -284,9 +281,19 @@ extension MeetingViewController: MeetingEventListener {
                 print("Error: \(error)")
             }
             
-            Task{// listen/subscribe for chat topic
-                await meeting?.pubsub.subscribe(topic: CHAT_TOPIC, forListener: self)
-                await meeting?.pubsub.subscribe(topic: RAISE_HAND_TOPIC, forListener: self)
+            Task {
+                var subscribeOptions = PubSubSubscribeOptions()
+                subscribeOptions.maxQueue = 100
+                subscribeOptions.realtimeOverflow = .queue
+                subscribeOptions.oldMessageLimit = 100
+                
+                do {
+                    // listen/subscribe for chat topic
+                    try await meeting?.pubsub.subscribe(topic: CHAT_TOPIC, forListener: self, options: subscribeOptions)
+                    try await meeting?.pubsub.subscribe(topic: RAISE_HAND_TOPIC, forListener: self)
+                } catch {
+                    print("Error while subscribing to pubsub: \(error.localizedDescription)")
+                }
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -303,6 +310,14 @@ extension MeetingViewController: MeetingEventListener {
 
     /// Meeting ended
     func onMeetingLeft() {
+        Task {
+            do {
+                try await meeting?.pubsub.unsubscribe(topic: CHAT_TOPIC, forListener: self)
+            } catch {
+                print("Erorr while unsubscribing from pubsub: \(error.localizedDescription)")
+            }
+        }
+        
         // remove listeners
         meeting?.localParticipant.removeEventListener(self)
         meeting?.removeEventListener(self)
@@ -537,10 +552,15 @@ extension MeetingViewController: ParticipantEventListener {
 
 extension MeetingViewController: PubSubMessageListener {
     
+    func onOldMessagesReceived(_ messages: [PubSubMessage], info: PubSubHistoryInfo) {
+        if let chatViewController = navigationController?.topViewController as? ChatViewController {
+            chatViewController.addMessages(messages)
+        }
+    }
+    
     func onMessageReceived(_ message: PubSubMessage) {
         let localParticipantID = participants.first(where: { $0.isLocal == true })?.id
         if(message.topic == RAISE_HAND_TOPIC){
-            
             self.showToast(message: "\(message.senderId == localParticipantID ? "You" : "\(message.senderName)") raised hand 🖐🏼", font: .systemFont(ofSize: 18))
         } else {
             if let chatViewController = navigationController?.topViewController as? ChatViewController {
@@ -553,8 +573,6 @@ extension MeetingViewController: PubSubMessageListener {
                 }
             }
         }
-        
-        
     }
 }
 
