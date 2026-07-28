@@ -16,6 +16,7 @@
 		623A5F22289393470051F40C /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A5F21289393470051F40C /* Loader.swift */; };
 		844FA4872F7EBE500080BBE7 /* VideoSDKRTCSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 844FA4862F7EBE500080BBE7 /* VideoSDKRTCSwift */; };
 		84809A622FE5578F00356103 /* VideoSDKRTCSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 84809A612FE5578F00356103 /* VideoSDKRTCSwift */; };
+		848289352FF7DA450028F054 /* BackgroundKeepAlive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848289342FF7DA450028F054 /* BackgroundKeepAlive.swift */; };
 		848628602F20E40000E8071C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8486285F2F20E40000E8071C /* GoogleService-Info.plist */; };
 		848628632F20E59F00E8071C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 848628622F20E59F00E8071C /* FirebaseAnalytics */; };
 		848628652F20E59F00E8071C /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 848628642F20E59F00E8071C /* FirebaseCrashlytics */; };
@@ -57,6 +58,7 @@
 		623A5F1F2892FD350051F40C /* ParticipantCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantCellView.swift; sourceTree = "<group>"; };
 		623A5F21289393470051F40C /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		623A5F23289399840051F40C /* VideoSDK_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VideoSDK_Example.entitlements; sourceTree = "<group>"; };
+		848289342FF7DA450028F054 /* BackgroundKeepAlive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundKeepAlive.swift; sourceTree = "<group>"; };
 		8486285F2F20E40000E8071C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A23250C8271F2F4F00A23CCB /* AddStreamOutputiewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStreamOutputiewController.swift; sourceTree = "<group>"; };
 		A23250CA271F2FAE00A23CCB /* AddStreamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStreamTableViewCell.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		A2573BEE26F120960087AB36 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				848289342FF7DA450028F054 /* BackgroundKeepAlive.swift */,
 				A2573BEF26F120960087AB36 /* View+Extension.swift */,
 				A23250CC271F37A900A23CCB /* UIViewController+Extension.swift */,
 				A2D244AD276E14FA002FD101 /* UIColor+Extension.swift */,
@@ -321,6 +324,7 @@
 				B2DC7CF32A37817F00AF018F /* ParticipantStatsCellView.swift in Sources */,
 				A2BF00B327A28C8100772DEA /* Date+Extension.swift in Sources */,
 				623A5F202892FD350051F40C /* ParticipantCellView.swift in Sources */,
+				848289352FF7DA450028F054 /* BackgroundKeepAlive.swift in Sources */,
 				B2DC7CF12A37811B00AF018F /* StatsViewController.swift in Sources */,
 				A23250D32722D42100A23CCB /* ScreenSharingView.swift in Sources */,
 				A2A1D38A27266BAB00082CD8 /* APIService.swift in Sources */,
@@ -559,8 +563,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/videosdk-live/videosdk-rtc-ios-spm";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = exactVersion;
+				version = 3.0.0;
 			};
 		};
 		848628612F20E59F00E8071C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
