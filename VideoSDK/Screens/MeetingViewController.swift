@@ -220,7 +220,12 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource,
     private func initializeMeeting() {
 
         // MARK :- With CustomVideoTrack with multiStream `true`
-        //        guard let customVideoStream = try? VideoSDK.createCameraVideoTrack(encoderConfig: .h1080p_w1440p, facingMode: .front, multiStream: true, bitrateMode: .HIGH_QUALITY, maxLayer: .MAX_LAYER_2) else { return }
+        guard
+            let customVideoStream = try? VideoSDK.createCameraVideoTrack(
+                encoderConfig: .h540p_w960p,
+                bitrateMode: .HIGH_QUALITY
+            )
+        else { return }
 
         // initialize
         meeting = VideoSDK.initMeeting(
@@ -228,7 +233,8 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource,
             participantName: meetingData.name,
             micEnabled: meetingData.micEnabled,
             webcamEnabled: meetingData.cameraEnabled,
-            mode: meetingData.mode
+            customCameraVideoStream: customVideoStream,
+            mode: meetingData.mode,
         )
 
         // MARK :- Without CustomVideoTrack
