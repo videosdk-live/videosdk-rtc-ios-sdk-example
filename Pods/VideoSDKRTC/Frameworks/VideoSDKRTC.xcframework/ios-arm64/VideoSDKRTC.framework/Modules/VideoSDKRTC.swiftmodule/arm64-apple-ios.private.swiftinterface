@@ -914,7 +914,19 @@ extension VideoSDKRTC.Opentelemetry_Proto_Common_V1_InstrumentationScope : Video
     get
     set
   }
-  @_documentation(visibility: internal) public init(videoTrack: WebRTC.RTCVideoTrack? = nil, multiStream: Swift.Bool? = nil, audioTrack: WebRTC.RTCAudioTrack? = nil, videoCodec: VideoSDKRTC.VideoCodec? = .VP8, bitrateMode: VideoSDKRTC.BitrateMode? = BitrateMode.BALANCED, maxLayer: VideoSDKRTC.EncodingLayer? = EncodingLayer.MAX_LAYER_3, audioEncoderConfig: VideoSDKRTC.CustomAudioTrackConfig? = nil)
+  @_documentation(visibility: internal) public var encoderConfig: VideoSDKRTC.CustomVideoTrackConfig? {
+    get
+    set
+  }
+  @_documentation(visibility: internal) public var facingMode: AVFoundation.AVCaptureDevice.Position? {
+    get
+    set
+  }
+  @_documentation(visibility: internal) public var noiseConfig: VideoSDKRTC.NoiseConfig? {
+    get
+    set
+  }
+  @_documentation(visibility: internal) public init(videoTrack: WebRTC.RTCVideoTrack? = nil, multiStream: Swift.Bool? = nil, audioTrack: WebRTC.RTCAudioTrack? = nil, videoCodec: VideoSDKRTC.VideoCodec? = .VP8, bitrateMode: VideoSDKRTC.BitrateMode? = BitrateMode.BALANCED, maxLayer: VideoSDKRTC.EncodingLayer? = EncodingLayer.MAX_LAYER_3, audioEncoderConfig: VideoSDKRTC.CustomAudioTrackConfig? = nil, encoderConfig: VideoSDKRTC.CustomVideoTrackConfig? = nil, facingMode: AVFoundation.AVCaptureDevice.Position? = nil, noiseConfig: VideoSDKRTC.NoiseConfig? = nil)
   @_documentation(visibility: internal) public func toJson() -> [Swift.String : Any]
   @_documentation(visibility: internal) public func toJsonString(forAudio: Swift.Bool = false) -> Swift.String
   @objc deinit
@@ -953,13 +965,14 @@ public enum CustomAudioTrackConfig {
   }
 }
 public let customAudioTrackConfigMap: [VideoSDKRTC.CustomAudioTrackConfig : [Swift.String : Any]]
-public struct NoiseConfig {
+public struct NoiseConfig : Swift.Equatable {
   public var noiseSupression: Swift.Bool?
   public var echoCancellation: Swift.Bool?
   public var autoGainControl: Swift.Bool?
   public var highPassFilter: Swift.Bool?
   @_documentation(visibility: internal) public init(noiseSupression: Swift.Bool?, echoCancellation: Swift.Bool?, autoGainControl: Swift.Bool?, highPassFilter: Swift.Bool?)
   @_documentation(visibility: internal) public func toJsonString() -> Swift.String
+  public static func == (a: VideoSDKRTC.NoiseConfig, b: VideoSDKRTC.NoiseConfig) -> Swift.Bool
 }
 @_hasMissingDesignatedInitializers @_documentation(visibility: internal) public class DefaultAggregation : VideoSDKRTC.Aggregation {
   public static var instance: VideoSDKRTC.DefaultAggregation {
@@ -4829,7 +4842,7 @@ public enum MediaType : Swift.Equatable {
   public var realtimeStore: VideoSDKRTC.RealtimeStore {
     get
   }
-  public var customVideoMediaStream: VideoSDKRTC.CustomRTCMediaStream? {
+  @_documentation(visibility: internal) public var customVideoMediaStream: VideoSDKRTC.CustomRTCMediaStream? {
     get
   }
   @_documentation(visibility: internal) public var customAudioMediaStream: VideoSDKRTC.CustomRTCMediaStream? {

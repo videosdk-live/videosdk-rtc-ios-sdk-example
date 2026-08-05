@@ -1,2 +1,5 @@
 
 .DS_Store
+Podfile.lock
+Pods/Manifest.lock
+Pods/Local Podspecs/VideoSDKRTC.podspec.json
