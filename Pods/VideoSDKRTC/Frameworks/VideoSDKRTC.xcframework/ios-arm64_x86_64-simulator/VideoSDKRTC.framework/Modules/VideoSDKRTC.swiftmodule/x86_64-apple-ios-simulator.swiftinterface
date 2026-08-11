@@ -25,6 +25,48 @@ import _SwiftConcurrencyShims
 import os.activity
 import os.log
 import os
+@_hasMissingDesignatedInitializers public class AgentParticipant : VideoSDKRTC.Participant {
+  override public var isAgent: Swift.Bool {
+    get
+  }
+  final public let agentId: Swift.String?
+  public var agentState: VideoSDKRTC.AgentState {
+    get
+  }
+  override public func pin(_ pinType: VideoSDKRTC.PinType = .SHARE_AND_CAM)
+  override public func unpin(_ pinType: VideoSDKRTC.PinType = .SHARE_AND_CAM)
+  override public func remove()
+  override public func getAudioStats() -> Any?
+  override public func getVideoStats() -> Any?
+  override public func addEventListener(_ listener: any VideoSDKRTC.ParticipantEventListener)
+  override public func removeEventListener(_ listener: any VideoSDKRTC.ParticipantEventListener)
+  override public func removeAllEventListeners()
+  @_documentation(visibility: internal) override public func enableMic() throws
+  @_documentation(visibility: internal) override public func disableMic() throws
+  @_documentation(visibility: internal) override public func enableWebcam() throws
+  @_documentation(visibility: internal) override public func disableWebcam() throws
+  @_documentation(visibility: internal) override public func setQuality(_ quality: VideoSDKRTC.VideoQuality) throws
+  @_documentation(visibility: internal) override public func captureImage(height: CoreFoundation.CGFloat? = nil, width: CoreFoundation.CGFloat? = nil, completion: @escaping (Swift.String?) -> Swift.Void) throws
+  @_documentation(visibility: internal) override public func getShareStats() throws -> Any?
+  @objc deinit
+}
+public enum AgentParticipantError : Swift.Error, Foundation.LocalizedError {
+  case unsupportedMethod(Swift.String)
+  @_documentation(visibility: internal) public var errorDescription: Swift.String? {
+    get
+  }
+}
+public enum AgentState : Swift.String {
+  case IDLE
+  case LISTENING
+  case THINKING
+  case SPEAKING
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
 @_documentation(visibility: internal) public enum Aggregations {
   public static func drop() -> any VideoSDKRTC.Aggregation
   public static func defaultAggregation() -> any VideoSDKRTC.Aggregation
@@ -61,37 +103,6 @@ import os
   public static func == (a: VideoSDKRTC.AggregationTemporality, b: VideoSDKRTC.AggregationTemporality) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
-    get
-  }
-}
-@_hasMissingDesignatedInitializers public class AgentParticipant : VideoSDKRTC.Participant {
-  override public var isAgent: Swift.Bool {
-    get
-  }
-  final public let agentId: Swift.String?
-  public var agentState: VideoSDKRTC.AgentState {
-    get
-  }
-  override public func pin(_ pinType: VideoSDKRTC.PinType = .SHARE_AND_CAM)
-  override public func unpin(_ pinType: VideoSDKRTC.PinType = .SHARE_AND_CAM)
-  override public func remove()
-  override public func getAudioStats() -> Any?
-  override public func getVideoStats() -> Any?
-  override public func addEventListener(_ listener: any VideoSDKRTC.ParticipantEventListener)
-  override public func removeEventListener(_ listener: any VideoSDKRTC.ParticipantEventListener)
-  override public func removeAllEventListeners()
-  @_documentation(visibility: internal) override public func enableMic() throws
-  @_documentation(visibility: internal) override public func disableMic() throws
-  @_documentation(visibility: internal) override public func enableWebcam() throws
-  @_documentation(visibility: internal) override public func disableWebcam() throws
-  @_documentation(visibility: internal) override public func setQuality(_ quality: VideoSDKRTC.VideoQuality) throws
-  @_documentation(visibility: internal) override public func captureImage(height: CoreFoundation.CGFloat? = nil, width: CoreFoundation.CGFloat? = nil, completion: @escaping (Swift.String?) -> Swift.Void) throws
-  @_documentation(visibility: internal) override public func getShareStats() throws -> Any?
-  @objc deinit
-}
-public enum AgentParticipantError : Swift.Error, Foundation.LocalizedError {
-  case unsupportedMethod(Swift.String)
-  @_documentation(visibility: internal) public var errorDescription: Swift.String? {
     get
   }
 }
@@ -510,14 +521,6 @@ extension VideoSDKRTC.AttributeValue : Swift.Codable {
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
-@_hasMissingDesignatedInitializers public class CodecChangeInfo {
-  final public let unsupportedCodec: VideoSDKRTC.VideoCodec
-  final public let currentCodec: VideoSDKRTC.VideoCodec
-  final public let previousCodec: VideoSDKRTC.VideoCodec
-  final public let kind: Swift.String
-  final public let causedBy: VideoSDKRTC.Participant?
-  @objc deinit
-}
 @_documentation(visibility: internal) public protocol Baggage : AnyObject {
   static func baggageBuilder() -> any VideoSDKRTC.BaggageBuilder
   func getEntries() -> [VideoSDKRTC.Entry]
@@ -706,6 +709,14 @@ extension VideoSDKRTC.Clock {
   }
 }
 @_documentation(visibility: internal) public func == (lhs: any VideoSDKRTC.Clock, rhs: any VideoSDKRTC.Clock) -> Swift.Bool
+@_hasMissingDesignatedInitializers public class CodecChangeInfo {
+  final public let unsupportedCodec: VideoSDKRTC.VideoCodec
+  final public let currentCodec: VideoSDKRTC.VideoCodec
+  final public let previousCodec: VideoSDKRTC.VideoCodec
+  final public let kind: Swift.String
+  final public let causedBy: VideoSDKRTC.Participant?
+  @objc deinit
+}
 @_documentation(visibility: internal) public protocol CollectionRegistration {
 }
 @_documentation(visibility: internal) public struct Opentelemetry_Proto_Common_V1_AnyValue {
@@ -2960,29 +2971,9 @@ extension VideoSDKRTC.Google_Protobuf_GeneratedCodeInfo.Annotation.Semantic : Vi
   public func toMetricData(resource: VideoSDKRTC.Resource, scope: VideoSDKRTC.InstrumentationScopeInfo, descriptor: VideoSDKRTC.MetricDescriptor, points: [VideoSDKRTC.PointData], temporality: VideoSDKRTC.AggregationTemporality) -> VideoSDKRTC.StableMetricData
   @objc deinit
 }
-public enum LogLevel {
-  case none
-  case error
-  case warn
-  case info
-  case debug
-  case all
-  public static func == (a: VideoSDKRTC.LogLevel, b: VideoSDKRTC.LogLevel) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
-    get
-  }
-}
 @_documentation(visibility: internal) public protocol DoubleGaugeBuilder : AnyObject {
   func ofLongs() -> any VideoSDKRTC.LongGaugeBuilder
   func buildWithCallback(_ callback: @escaping (any VideoSDKRTC.ObservableDoubleMeasurement) -> Swift.Void) -> any VideoSDKRTC.ObservableDoubleGauge
-}
-public class TranscriptionSegment {
-  final public let text: Swift.String
-  final public let timestamp: Swift.Int
-  @_documentation(visibility: internal) public init(text: Swift.String, timestamp: Swift.Int)
-  @_documentation(visibility: internal) public init(dictionary: [Swift.String : Any])
-  @objc deinit
 }
 @_hasMissingDesignatedInitializers @_documentation(visibility: internal) public class DoubleGaugeBuilderSdk : VideoSDKRTC.DoubleGaugeBuilder {
   public func ofLongs() -> any VideoSDKRTC.LongGaugeBuilder
@@ -3131,17 +3122,6 @@ extension VideoSDKRTC.Google_Protobuf_Empty : VideoSDKRTC.Message, VideoSDKRTC._
   public init(key: VideoSDKRTC.EntryKey, value: VideoSDKRTC.EntryValue, metadata: VideoSDKRTC.EntryMetadata?)
   public static func < (lhs: VideoSDKRTC.Entry, rhs: VideoSDKRTC.Entry) -> Swift.Bool
   public static func == (a: VideoSDKRTC.Entry, b: VideoSDKRTC.Entry) -> Swift.Bool
-}
-public enum AgentState : Swift.String {
-  case IDLE
-  case LISTENING
-  case THINKING
-  case SPEAKING
-  public init?(rawValue: Swift.String)
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
-    get
-  }
 }
 @_documentation(visibility: internal) public struct EntryKey : Swift.Equatable, Swift.Comparable, Swift.Hashable {
   public var name: Swift.String {
@@ -4334,6 +4314,19 @@ final public class BaseKeyProvider {
   public func logRecordBuilder() -> any VideoSDKRTC.LogRecordBuilder
   @objc deinit
 }
+public enum LogLevel {
+  case none
+  case error
+  case warn
+  case info
+  case debug
+  case all
+  public static func == (a: VideoSDKRTC.LogLevel, b: VideoSDKRTC.LogLevel) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
 @_documentation(visibility: internal) public struct LogLimits {
   public static let defaultMaxAttributeCount: Swift.Int
   public static let defaultMaxAtributeLength: Swift.Int
@@ -5050,163 +5043,166 @@ public enum Mode : Swift.String {
     get
   }
 }
-public enum VideoSDKError : Swift.Int {
-  case UNKNOWN_ERROR
-  case INVALID_API_KEY
-  case INVALID_TOKEN
-  case INVALID_MEETING_ID
-  case INVALID_PARTICIPANT_ID
-  case DUPLICATE_PARTICIPANT
-  case ACCOUNT_DEACTIVATED
-  case ACCOUNT_DISCONTINUED
-  case INVALID_PERMISSIONS
-  case MAX_PARTCIPANT_REACHED
-  case MAX_SPEAKER_REACHED
-  case START_RECORDING_FAILED
-  case STOP_RECORDING_FAILED
-  case START_LIVESTREAM_FAILED
-  case STOP_LIVESTREAM_FAILED
-  case INVALID_LIVESTREAM_CONFIG
-  case START_HLS_FAILED
-  case STOP_HLS_FAILED
-  case PREV_RECORDING_PROCESSING
-  case PREV_RTMP_RECORDING_PROCESSING
-  case PREV_HLS_STREAMING_PROCESSING
-  case ADD_ON_SERVICES_DISABLED
-  case UNAUTHORIZED_MEETING_ID
-  case UNAUTHORIZED_PARTCIPANT_ID
-  case UNAUTHORIZED_ROLE
-  case UNAUTHORIZED_REQUEST
-  case MAX_SPEAKER_LIMIT_REACHED_ON_ORGANIZATION
-  case MAX_VIEWER_LIMIT_REACHED_ON_ORGANIZATION
-  case MAX_RECORDING_LIMIT_REACHED_ON_ORGANIZATION
-  case MAX_HLS_LIMIT_REACHED_ON_ORGANIZATION
-  case MAX_LIVESTREAM_LIMIT_REACHED_ON_ORGANIZATION
-  case START_TRANSCRIPTION_FAILED
-  case STOP_TRANSCRIPTION_FAILED
-  case CHARACTER_JOIN_FAILED
-  case CHARACTER_LEAVE_FAILED
-  case START_PARTICIPANT_RECORDING_FAILED
-  case STOP_PARTICIPANT_RECORDING_FAILED
-  case START_TRACK_RECORDING_FAILED
-  case STOP_TRACK_RECORDING_FAILED
-  case START_COMPOSITE_RECORDING_FAILED
-  case STOP_COMPPOSITE_RECORDING_FAILED
-  case MAX_RECV_ONLY_LIMIT_REACHED_ON_ORGANIZATION
-  case START_TRANSLATION_FAILED
-  case STOP_TRANSLATION_FAILED
-  case CHANGE_TRANSLATION_LANGUAGE_FAILED
-  case FAILED_TO_SET_VALUE
-  case FAILED_TO_GET_VALUE
-  case ADAPTIVE_SUBSCRIPTION_NOT_ENABLED_BY_SDK
-  case ADAPTIVE_SUBSCRIPTION_ENABLE_FAILED
-  case ADAPTIVE_SUBSCRIPTION_DISABLE_FAILED
-  case CREATE_CONSUMER_FAILED
-  case CODEC_NOT_SUPPORTED
-  case MEETING_ID_DISABLED
-  case APIKEY_DEACTIVATED
-  case START_WHITEBOARD_FAILED
-  case STOP_WHITEBOARD_FAILED
-  case WHITEBOARD_OPERATION_IN_PROGRESS
-  case PAUSE_ALL_STREAMS_FAILED
-  case RESUME_ALL_STREAMS_FAILED
-  case RESPOND_ENTRY_FAILED
-  case CHANGE_MODE_FAILED
-  case REMOVE_PARTICIPANT_FAILED
-  case ENABLE_PARTICIPANT_MIC_FAILED
-  case DISABLE_PARTICIPANT_MIC_FAILED
-  case ENABLE_PARTICIPANT_WEBCAM_FAILED
-  case DISABLE_PARTICIPANT_WEBCAM_FAILED
-  case PIN_FAILED
-  case UNPIN_FAILED
-  case SET_QUALITY_FAILED
-  case PAUSE_STREAM_FAILED
-  case RESUME_STREAM_FAILED
-  case SWITCH_MEETING_FAILED
-  case SWITCH_PARTICIPANT_ROOM_FAILED
-  case REQUEST_MEDIA_RELAY_FAILED
-  case STOP_MEDIA_RELAY_FAILED
-  case CONSUME_MIC_STREAMS_FAILED
-  case CONSUME_WEBCAM_STREAMS_FAILED
-  case STOP_CONSUMING_MIC_STREAMS_FAILED
-  case STOP_CONSUMING_WEBCAM_STREAMS_FAILED
-  case RESPOND_MEDIA_RELAY_REQUEST_FAILED
-  case FAILED_TO_OBSERVE_VALUE
-  case FAILED_TO_STOP_OBSERVING_VALUE
-  case PUBSUB_PUBLISH_FAILED
-  case PUBSUB_SUBSCRIBE_FAILED
-  case PUBSUB_UNSUBSCRIBE_FAILED
-  case SOMETHING_WENT_WRONG
-  case RECORDING_FAILED
-  case LIVESTREAM_FAILED
-  case HLS_FAILED
-  case RECORDING_DURATION_LIMIT_REACHED
-  case LIVESTREAM_DURATION_LIMIT_REACHED
-  case HLS_DURATION_LIMIT_REACHED
-  case TRANSCRIPTION_FAILED
-  case TRANSLATION_FAILED
-  case ERROR_VIDEO_PRODUCE_CODEC_NOT_SUPPORTED
-  case ERROR_MULTISTREAM_NOT_SUPPORTED
-  case ERROR_GET_VIDEO_MEDIA
-  case ERROR_GET_AUDIO_MEDIA
-  case ERROR_GET_DISPLAY_MEDIA
-  case ERROR_GET_VIDEO_MEDIA_PERMISSION_DENIED
-  case ERROR_GET_AUDIO_MEDIA_PERMISSION_DENIED
-  case ERROR_GET_DISPLAY_MEDIA_PERMISSION_DENIED
-  case ERROR_CAMERA_ACCESS_DENIED_OR_DISMISSED
-  case ERROR_MICROPHONE_ACCESS_DENIED_OR_DISMISSED
-  case ERROR_CAMERA_PERMISSION_DENIED_BY_OS
-  case ERROR_MICROPHONE_PERMISSION_DENIED_BY_OS
-  case ERROR_CAMERA_NOT_FOUND
-  case ERROR_MICROPHONE_NOT_FOUND
-  case ERROR_CAMERA_IN_USE
-  case ERROR_MICROPHONE_IN_USE
-  case ERROR_CAMERA_PERMISSION_OR_AUTOPLAY_ISSUE
-  case ERROR_VIDEO_SOURCE_INITIATION_FAILED
-  case ERROR_WEBCAM_TRACK_ENDED
-  case ERROR_MICROPHONE_TRACK_ENDED
-  case ERROR_INVALID_CUSTOM_VIDEO_TRACK
-  case ERROR_INVALID_CUSTOM_AUDIO_TRACK
-  case ERROR_CUSTOM_VIDEO_TRACK_ENDED
-  case ERROR_CUSTOM_AUDIO_TRACK_ENDED
-  case ERROR_CAMERA_ACCESS_UNAVAILABLE
-  case ERROR_MICROPHONE_ACCESS_UNAVAILABLE
-  case ERROR_ACTION_PERFORMED_BEFORE_MEETING_JOINED
-  case ERROR_MEETING_MEDIA_CONNECTION_FAILED
-  case ERROR_UNABLE_TO_JOIN_MEETING
-  case ERROR_MEDIA_NOT_READY
-  case ERROR_WEBCAM_PRODUCE_FAILED
-  case ERROR_MEDIA_DEVICE_NOT_INITIALIZED
-  case ERROR_NO_WEBCAM_DEVICE_FOUND
-  case ERROR_NO_SUPPORTED_VIDEO_CODEC
-  case ERROR_VIDEO_TRACK_CREATION_FAILED
-  case ERROR_ALREADY_IN_REQUESTED_STATE
-  case ERROR_OPERATION_IN_PROGRESS
-  case ERROR_OPERATION_ABORTED
-  case ERROR_END_MEETING_FAILED
-  case ERROR_MICROPHONE_PRODUCE_FAILED
-  case ERROR_NO_MICROPHONE_DEVICE_FOUND
-  case ERROR_AUDIO_TRACK_CREATION_FAILED
-  case ERROR_SCREENSHARE_PRODUCE_FAILED
-  case ERROR_WEBCAM_NOT_ENABLED
-  case ERROR_SET_WEBCAM_QUALITY_FAILED
-  case ERROR_MEDIA_DEVICE_NOT_LOADED
-  case ERROR_MEETING_RECONNECTING
-  case ERROR_ACTION_NOT_SUPPORTED_IN_MODE
-  case ERROR_INVALID_MODE
-  case ERROR_ACTION_NOT_SUPPORTED
-  case ERROR_CAPTURE_IMAGE_FAILED
-  case ERROR_SEND_FAILED
-  case ERROR_INVALID_CUSTOM_TRACK_CONFIG
-  case ERROR_PAYLOAD_TOO_LARGE
-  case ERROR_INVALID_PARAMETER
-  case ERROR_FILE_UPLOAD_FAILED
-  case ERROR_FILE_FETCH_FAILED
+public struct VideoSDKError : Swift.RawRepresentable, Swift.Hashable, Swift.Sendable, Swift.CustomStringConvertible {
+  public let rawValue: Swift.Int
   public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
+  @_documentation(visibility: internal) public static func == (lhs: VideoSDKRTC.VideoSDKError, rhs: VideoSDKRTC.VideoSDKError) -> Swift.Bool
+  @_documentation(visibility: internal) public func hash(into hasher: inout Swift.Hasher)
+  @_documentation(visibility: internal) public var description: Swift.String {
     get
   }
+  public static let UNKNOWN_ERROR: VideoSDKRTC.VideoSDKError
+  public static let INVALID_API_KEY: VideoSDKRTC.VideoSDKError
+  public static let INVALID_TOKEN: VideoSDKRTC.VideoSDKError
+  public static let INVALID_MEETING_ID: VideoSDKRTC.VideoSDKError
+  public static let INVALID_PARTICIPANT_ID: VideoSDKRTC.VideoSDKError
+  public static let DUPLICATE_PARTICIPANT: VideoSDKRTC.VideoSDKError
+  public static let ACCOUNT_DEACTIVATED: VideoSDKRTC.VideoSDKError
+  public static let ACCOUNT_DISCONTINUED: VideoSDKRTC.VideoSDKError
+  public static let INVALID_PERMISSIONS: VideoSDKRTC.VideoSDKError
+  public static let MAX_PARTCIPANT_REACHED: VideoSDKRTC.VideoSDKError
+  public static let MAX_SPEAKER_REACHED: VideoSDKRTC.VideoSDKError
+  public static let START_RECORDING_FAILED: VideoSDKRTC.VideoSDKError
+  public static let STOP_RECORDING_FAILED: VideoSDKRTC.VideoSDKError
+  public static let START_LIVESTREAM_FAILED: VideoSDKRTC.VideoSDKError
+  public static let STOP_LIVESTREAM_FAILED: VideoSDKRTC.VideoSDKError
+  public static let INVALID_LIVESTREAM_CONFIG: VideoSDKRTC.VideoSDKError
+  public static let START_HLS_FAILED: VideoSDKRTC.VideoSDKError
+  public static let STOP_HLS_FAILED: VideoSDKRTC.VideoSDKError
+  public static let PREV_RECORDING_PROCESSING: VideoSDKRTC.VideoSDKError
+  public static let PREV_RTMP_RECORDING_PROCESSING: VideoSDKRTC.VideoSDKError
+  public static let PREV_HLS_STREAMING_PROCESSING: VideoSDKRTC.VideoSDKError
+  public static let ADD_ON_SERVICES_DISABLED: VideoSDKRTC.VideoSDKError
+  public static let UNAUTHORIZED_MEETING_ID: VideoSDKRTC.VideoSDKError
+  public static let UNAUTHORIZED_PARTCIPANT_ID: VideoSDKRTC.VideoSDKError
+  public static let UNAUTHORIZED_ROLE: VideoSDKRTC.VideoSDKError
+  public static let UNAUTHORIZED_REQUEST: VideoSDKRTC.VideoSDKError
+  public static let MAX_SPEAKER_LIMIT_REACHED_ON_ORGANIZATION: VideoSDKRTC.VideoSDKError
+  public static let MAX_VIEWER_LIMIT_REACHED_ON_ORGANIZATION: VideoSDKRTC.VideoSDKError
+  public static let MAX_RECORDING_LIMIT_REACHED_ON_ORGANIZATION: VideoSDKRTC.VideoSDKError
+  public static let MAX_HLS_LIMIT_REACHED_ON_ORGANIZATION: VideoSDKRTC.VideoSDKError
+  public static let MAX_LIVESTREAM_LIMIT_REACHED_ON_ORGANIZATION: VideoSDKRTC.VideoSDKError
+  public static let START_TRANSCRIPTION_FAILED: VideoSDKRTC.VideoSDKError
+  public static let STOP_TRANSCRIPTION_FAILED: VideoSDKRTC.VideoSDKError
+  public static let CHARACTER_JOIN_FAILED: VideoSDKRTC.VideoSDKError
+  public static let CHARACTER_LEAVE_FAILED: VideoSDKRTC.VideoSDKError
+  public static let START_PARTICIPANT_RECORDING_FAILED: VideoSDKRTC.VideoSDKError
+  public static let STOP_PARTICIPANT_RECORDING_FAILED: VideoSDKRTC.VideoSDKError
+  public static let START_TRACK_RECORDING_FAILED: VideoSDKRTC.VideoSDKError
+  public static let STOP_TRACK_RECORDING_FAILED: VideoSDKRTC.VideoSDKError
+  public static let START_COMPOSITE_RECORDING_FAILED: VideoSDKRTC.VideoSDKError
+  public static let STOP_COMPPOSITE_RECORDING_FAILED: VideoSDKRTC.VideoSDKError
+  public static let MAX_RECV_ONLY_LIMIT_REACHED_ON_ORGANIZATION: VideoSDKRTC.VideoSDKError
+  public static let START_TRANSLATION_FAILED: VideoSDKRTC.VideoSDKError
+  public static let STOP_TRANSLATION_FAILED: VideoSDKRTC.VideoSDKError
+  public static let CHANGE_TRANSLATION_LANGUAGE_FAILED: VideoSDKRTC.VideoSDKError
+  public static let FAILED_TO_SET_VALUE: VideoSDKRTC.VideoSDKError
+  public static let FAILED_TO_GET_VALUE: VideoSDKRTC.VideoSDKError
+  public static let ADAPTIVE_SUBSCRIPTION_NOT_ENABLED_BY_SDK: VideoSDKRTC.VideoSDKError
+  public static let ADAPTIVE_SUBSCRIPTION_ENABLE_FAILED: VideoSDKRTC.VideoSDKError
+  public static let ADAPTIVE_SUBSCRIPTION_DISABLE_FAILED: VideoSDKRTC.VideoSDKError
+  public static let CREATE_CONSUMER_FAILED: VideoSDKRTC.VideoSDKError
+  public static let CODEC_NOT_SUPPORTED: VideoSDKRTC.VideoSDKError
+  public static let MEETING_ID_DISABLED: VideoSDKRTC.VideoSDKError
+  public static let APIKEY_DEACTIVATED: VideoSDKRTC.VideoSDKError
+  public static let START_WHITEBOARD_FAILED: VideoSDKRTC.VideoSDKError
+  public static let STOP_WHITEBOARD_FAILED: VideoSDKRTC.VideoSDKError
+  public static let WHITEBOARD_OPERATION_IN_PROGRESS: VideoSDKRTC.VideoSDKError
+  public static let PAUSE_ALL_STREAMS_FAILED: VideoSDKRTC.VideoSDKError
+  public static let RESUME_ALL_STREAMS_FAILED: VideoSDKRTC.VideoSDKError
+  public static let RESPOND_ENTRY_FAILED: VideoSDKRTC.VideoSDKError
+  public static let CHANGE_MODE_FAILED: VideoSDKRTC.VideoSDKError
+  public static let REMOVE_PARTICIPANT_FAILED: VideoSDKRTC.VideoSDKError
+  public static let ENABLE_PARTICIPANT_MIC_FAILED: VideoSDKRTC.VideoSDKError
+  public static let DISABLE_PARTICIPANT_MIC_FAILED: VideoSDKRTC.VideoSDKError
+  public static let ENABLE_PARTICIPANT_WEBCAM_FAILED: VideoSDKRTC.VideoSDKError
+  public static let DISABLE_PARTICIPANT_WEBCAM_FAILED: VideoSDKRTC.VideoSDKError
+  public static let PIN_FAILED: VideoSDKRTC.VideoSDKError
+  public static let UNPIN_FAILED: VideoSDKRTC.VideoSDKError
+  public static let SET_QUALITY_FAILED: VideoSDKRTC.VideoSDKError
+  public static let PAUSE_STREAM_FAILED: VideoSDKRTC.VideoSDKError
+  public static let RESUME_STREAM_FAILED: VideoSDKRTC.VideoSDKError
+  public static let SWITCH_MEETING_FAILED: VideoSDKRTC.VideoSDKError
+  public static let SWITCH_PARTICIPANT_ROOM_FAILED: VideoSDKRTC.VideoSDKError
+  public static let REQUEST_MEDIA_RELAY_FAILED: VideoSDKRTC.VideoSDKError
+  public static let STOP_MEDIA_RELAY_FAILED: VideoSDKRTC.VideoSDKError
+  public static let CONSUME_MIC_STREAMS_FAILED: VideoSDKRTC.VideoSDKError
+  public static let CONSUME_WEBCAM_STREAMS_FAILED: VideoSDKRTC.VideoSDKError
+  public static let STOP_CONSUMING_MIC_STREAMS_FAILED: VideoSDKRTC.VideoSDKError
+  public static let STOP_CONSUMING_WEBCAM_STREAMS_FAILED: VideoSDKRTC.VideoSDKError
+  public static let RESPOND_MEDIA_RELAY_REQUEST_FAILED: VideoSDKRTC.VideoSDKError
+  public static let FAILED_TO_OBSERVE_VALUE: VideoSDKRTC.VideoSDKError
+  public static let FAILED_TO_STOP_OBSERVING_VALUE: VideoSDKRTC.VideoSDKError
+  public static let PUBSUB_PUBLISH_FAILED: VideoSDKRTC.VideoSDKError
+  public static let PUBSUB_SUBSCRIBE_FAILED: VideoSDKRTC.VideoSDKError
+  public static let PUBSUB_UNSUBSCRIBE_FAILED: VideoSDKRTC.VideoSDKError
+  public static let SOMETHING_WENT_WRONG: VideoSDKRTC.VideoSDKError
+  public static let RECORDING_FAILED: VideoSDKRTC.VideoSDKError
+  public static let LIVESTREAM_FAILED: VideoSDKRTC.VideoSDKError
+  public static let HLS_FAILED: VideoSDKRTC.VideoSDKError
+  public static let RECORDING_DURATION_LIMIT_REACHED: VideoSDKRTC.VideoSDKError
+  public static let LIVESTREAM_DURATION_LIMIT_REACHED: VideoSDKRTC.VideoSDKError
+  public static let HLS_DURATION_LIMIT_REACHED: VideoSDKRTC.VideoSDKError
+  public static let TRANSCRIPTION_FAILED: VideoSDKRTC.VideoSDKError
+  public static let TRANSLATION_FAILED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_VIDEO_PRODUCE_CODEC_NOT_SUPPORTED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_MULTISTREAM_NOT_SUPPORTED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_GET_VIDEO_MEDIA: VideoSDKRTC.VideoSDKError
+  public static let ERROR_GET_AUDIO_MEDIA: VideoSDKRTC.VideoSDKError
+  public static let ERROR_GET_DISPLAY_MEDIA: VideoSDKRTC.VideoSDKError
+  public static let ERROR_GET_VIDEO_MEDIA_PERMISSION_DENIED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_GET_AUDIO_MEDIA_PERMISSION_DENIED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_GET_DISPLAY_MEDIA_PERMISSION_DENIED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_CAMERA_ACCESS_DENIED_OR_DISMISSED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_MICROPHONE_ACCESS_DENIED_OR_DISMISSED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_CAMERA_PERMISSION_DENIED_BY_OS: VideoSDKRTC.VideoSDKError
+  public static let ERROR_MICROPHONE_PERMISSION_DENIED_BY_OS: VideoSDKRTC.VideoSDKError
+  public static let ERROR_CAMERA_NOT_FOUND: VideoSDKRTC.VideoSDKError
+  public static let ERROR_MICROPHONE_NOT_FOUND: VideoSDKRTC.VideoSDKError
+  public static let ERROR_CAMERA_IN_USE: VideoSDKRTC.VideoSDKError
+  public static let ERROR_MICROPHONE_IN_USE: VideoSDKRTC.VideoSDKError
+  public static let ERROR_CAMERA_PERMISSION_OR_AUTOPLAY_ISSUE: VideoSDKRTC.VideoSDKError
+  public static let ERROR_VIDEO_SOURCE_INITIATION_FAILED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_WEBCAM_TRACK_ENDED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_MICROPHONE_TRACK_ENDED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_INVALID_CUSTOM_VIDEO_TRACK: VideoSDKRTC.VideoSDKError
+  public static let ERROR_INVALID_CUSTOM_AUDIO_TRACK: VideoSDKRTC.VideoSDKError
+  public static let ERROR_CUSTOM_VIDEO_TRACK_ENDED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_CUSTOM_AUDIO_TRACK_ENDED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_CAMERA_ACCESS_UNAVAILABLE: VideoSDKRTC.VideoSDKError
+  public static let ERROR_MICROPHONE_ACCESS_UNAVAILABLE: VideoSDKRTC.VideoSDKError
+  public static let ERROR_ACTION_PERFORMED_BEFORE_MEETING_JOINED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_MEETING_MEDIA_CONNECTION_FAILED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_UNABLE_TO_JOIN_MEETING: VideoSDKRTC.VideoSDKError
+  public static let ERROR_MEDIA_NOT_READY: VideoSDKRTC.VideoSDKError
+  public static let ERROR_WEBCAM_PRODUCE_FAILED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_MEDIA_DEVICE_NOT_INITIALIZED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_NO_WEBCAM_DEVICE_FOUND: VideoSDKRTC.VideoSDKError
+  public static let ERROR_NO_SUPPORTED_VIDEO_CODEC: VideoSDKRTC.VideoSDKError
+  public static let ERROR_VIDEO_TRACK_CREATION_FAILED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_ALREADY_IN_REQUESTED_STATE: VideoSDKRTC.VideoSDKError
+  public static let ERROR_OPERATION_IN_PROGRESS: VideoSDKRTC.VideoSDKError
+  public static let ERROR_OPERATION_ABORTED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_END_MEETING_FAILED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_MICROPHONE_PRODUCE_FAILED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_NO_MICROPHONE_DEVICE_FOUND: VideoSDKRTC.VideoSDKError
+  public static let ERROR_AUDIO_TRACK_CREATION_FAILED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_SCREENSHARE_PRODUCE_FAILED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_WEBCAM_NOT_ENABLED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_SET_WEBCAM_QUALITY_FAILED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_MEDIA_DEVICE_NOT_LOADED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_MEETING_RECONNECTING: VideoSDKRTC.VideoSDKError
+  public static let ERROR_ACTION_NOT_SUPPORTED_IN_MODE: VideoSDKRTC.VideoSDKError
+  public static let ERROR_INVALID_MODE: VideoSDKRTC.VideoSDKError
+  public static let ERROR_ACTION_NOT_SUPPORTED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_CAPTURE_IMAGE_FAILED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_SEND_FAILED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_INVALID_CUSTOM_TRACK_CONFIG: VideoSDKRTC.VideoSDKError
+  public static let ERROR_PAYLOAD_TOO_LARGE: VideoSDKRTC.VideoSDKError
+  public static let ERROR_INVALID_PARAMETER: VideoSDKRTC.VideoSDKError
+  public static let ERROR_FILE_UPLOAD_FAILED: VideoSDKRTC.VideoSDKError
+  public static let ERROR_FILE_FETCH_FAILED: VideoSDKRTC.VideoSDKError
+  public typealias RawValue = Swift.Int
 }
 extension VideoSDKRTC.VideoSDKError {
   public var message: Swift.String {
@@ -6497,13 +6493,10 @@ public struct _NameMap : Swift.ExpressibleByDictionaryLiteral {
   @objc deinit
 }
 extension VideoSDKRTC.Participant {
-  @_documentation(visibility: internal) public func participantPinStateChanged(pinState: VideoSDKRTC.ParticipantPinState, isPin: Swift.Bool = false) async
-  @_documentation(visibility: internal) public func participantModeChanged(mode: VideoSDKRTC.Mode)
   @_documentation(visibility: internal) public func addStream(_ stream: VideoSDKRTC.MediaStream)
   @discardableResult
   @_documentation(visibility: internal) public func removeStream(_ streamId: Swift.String) -> VideoSDKRTC.MediaStream?
   @_documentation(visibility: internal) public func removeAllStreams()
-  @_documentation(visibility: internal) public func setPinState(pinState: VideoSDKRTC.ParticipantPinState, isPin: Swift.Bool = false)
   @_documentation(visibility: internal) public func e2eeStateChanged(forParticipant: VideoSDKRTC.Participant, state: VideoSDKRTC.E2EEState, streamID: Swift.String)
   @_documentation(visibility: internal) public func handleParticipantPause(data: [Swift.String : Any])
   @_documentation(visibility: internal) public func handleParticipantResume(data: [Swift.String : Any])
@@ -6638,6 +6631,39 @@ extension VideoSDKRTC.PubSubMessageListener {
   public func onBatchReceived(_ messages: [VideoSDKRTC.PubSubMessage])
   public func onMessageDrop(_ info: VideoSDKRTC.PubSubMessageDropInfo)
 }
+public enum RealtimeOverflow : Swift.String, Swift.Sendable {
+  case queue
+  case drop
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct PubSubSubscribeOptions {
+  public var oldMessageLimit: Swift.Int?
+  public var realtimeOverflow: VideoSDKRTC.RealtimeOverflow
+  public var maxQueue: Swift.Int?
+  public var newMessageLimit: Swift.Int
+  public init()
+}
+public enum PubSubError : Foundation.LocalizedError {
+  case invalidOldMessageLimit(Swift.Int)
+  case invalidMaxQueue(Swift.Int)
+  case invalidNewMessageLimit(Swift.Int)
+  case maxQueueNotAllowedWithDrop
+  case operationTimeout
+  case noSubscribedListener
+  case alreadySubscribed
+  case meetingNotJoined
+  case meetingReconnecting
+  case publishFailed(Swift.String)
+  case subscribeFailed(Swift.String)
+  case unsubscribeFailed(Swift.String)
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
 @_documentation(visibility: internal) public struct RandomIdGenerator : VideoSDKRTC.IdGenerator {
   public init()
   public func generateSpanId() -> VideoSDKRTC.SpanId
@@ -6730,6 +6756,8 @@ extension VideoSDKRTC.RealtimeStore {
   public func stopObserving(key: Swift.String, forListener listener: any VideoSDKRTC.RealtimeStoreEventListener) async throws
 }
 public enum RealtimeStoreError : Swift.Error, Foundation.LocalizedError {
+  @_documentation(visibility: internal) case meetingNotJoined
+  @_documentation(visibility: internal) case meetingReconnecting
   case operationFailed(Swift.String)
   case keyNotFound
   case invalidKey
@@ -8894,19 +8922,6 @@ extension VideoSDKRTC.Opentelemetry_Proto_Collector_Trace_V1_ExportTracePartialS
 @_documentation(visibility: internal) public protocol TracerProvider {
   func get(instrumentationName: Swift.String, instrumentationVersion: Swift.String?) -> any VideoSDKRTC.Tracer
 }
-@available(*, deprecated, renamed: "VideoCodec", message: "PreferredCodec was renamed to VideoCodec in 2.8.0. Use VideoCodec instead.")
-public typealias PreferredCodec = VideoSDKRTC.VideoCodec
-public enum VideoCodec : Swift.String, Swift.Sendable {
-  case VP8
-  case VP9
-  case H264
-  case AV1
-  public init?(rawValue: Swift.String)
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
-    get
-  }
-}
 @_documentation(visibility: internal) public class TracerProviderBuilder {
   public var clock: any VideoSDKRTC.Clock {
     get
@@ -8986,6 +9001,13 @@ public enum VideoCodec : Swift.String, Swift.Sendable {
   public static func == (a: VideoSDKRTC.TraceState, b: VideoSDKRTC.TraceState) -> Swift.Bool
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
+}
+public class TranscriptionSegment {
+  final public let text: Swift.String
+  final public let timestamp: Swift.Int
+  @_documentation(visibility: internal) public init(text: Swift.String, timestamp: Swift.Int)
+  @_documentation(visibility: internal) public init(dictionary: [Swift.String : Any])
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers public class TranscriptionText {
   public var participantId: Swift.String
@@ -9216,6 +9238,19 @@ extension VideoSDKRTC.Google_Protobuf_Option : VideoSDKRTC.Message, VideoSDKRTC.
   public static let minor: Swift.Int
   public static let revision: Swift.Int
   public static let versionString: Swift.String
+}
+@available(*, deprecated, renamed: "VideoCodec", message: "PreferredCodec was renamed to VideoCodec in 2.8.0. Use VideoCodec instead.")
+public typealias PreferredCodec = VideoSDKRTC.VideoCodec
+public enum VideoCodec : Swift.String, Swift.Sendable {
+  case VP8
+  case VP9
+  case H264
+  case AV1
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
 }
 public enum VideoQuality : Swift.String, Swift.CaseIterable {
   case high
@@ -9539,39 +9574,9 @@ extension VideoSDKRTC.Google_Protobuf_BytesValue : VideoSDKRTC.Message, VideoSDK
     get
   }
 }
-public enum RealtimeOverflow : Swift.String, Swift.Sendable {
-  case queue
-  case drop
-  public init?(rawValue: Swift.String)
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
-    get
-  }
-}
-public struct PubSubSubscribeOptions {
-  public var oldMessageLimit: Swift.Int?
-  public var realtimeOverflow: VideoSDKRTC.RealtimeOverflow
-  public var maxQueue: Swift.Int?
-  public var newMessageLimit: Swift.Int
-  public init()
-}
-public enum PubSubError : Foundation.LocalizedError {
-  case invalidOldMessageLimit(Swift.Int)
-  case invalidMaxQueue(Swift.Int)
-  case invalidNewMessageLimit(Swift.Int)
-  case maxQueueNotAllowedWithDrop
-  case operationTimeout
-  case noSubscribedListener
-  case alreadySubscribed
-  case meetingNotJoined
-  case meetingReconnecting
-  case publishFailed(Swift.String)
-  case subscribeFailed(Swift.String)
-  case unsubscribeFailed(Swift.String)
-  public var errorDescription: Swift.String? {
-    get
-  }
-}
+extension VideoSDKRTC.AgentState : Swift.Equatable {}
+extension VideoSDKRTC.AgentState : Swift.Hashable {}
+extension VideoSDKRTC.AgentState : Swift.RawRepresentable {}
 extension VideoSDKRTC.AggregationTemporality : Swift.Equatable {}
 extension VideoSDKRTC.AggregationTemporality : Swift.Hashable {}
 extension VideoSDKRTC.AggregationType : Swift.Equatable {}
@@ -9598,13 +9603,8 @@ extension VideoSDKRTC.CustomVideoTrackConfig : Swift.Equatable {}
 extension VideoSDKRTC.CustomVideoTrackConfig : Swift.Hashable {}
 extension VideoSDKRTC.CustomAudioTrackConfig : Swift.Equatable {}
 extension VideoSDKRTC.CustomAudioTrackConfig : Swift.Hashable {}
-extension VideoSDKRTC.LogLevel : Swift.Equatable {}
-extension VideoSDKRTC.LogLevel : Swift.Hashable {}
 extension VideoSDKRTC.EmptyMetricStorage : VideoSDKRTC.MetricStorage {}
 extension VideoSDKRTC.EmptyMetricStorage : VideoSDKRTC.WritableMetricStorage {}
-extension VideoSDKRTC.AgentState : Swift.Equatable {}
-extension VideoSDKRTC.AgentState : Swift.Hashable {}
-extension VideoSDKRTC.AgentState : Swift.RawRepresentable {}
 extension VideoSDKRTC.ExportResult : Swift.Equatable {}
 extension VideoSDKRTC.ExportResult : Swift.Hashable {}
 extension VideoSDKRTC.ConfigLayoutPriority : Swift.Equatable {}
@@ -9631,6 +9631,8 @@ extension VideoSDKRTC.InstrumentValueType : Swift.Equatable {}
 extension VideoSDKRTC.InstrumentValueType : Swift.Hashable {}
 extension VideoSDKRTC.JSONEncodingError : Swift.Equatable {}
 extension VideoSDKRTC.JSONEncodingError : Swift.Hashable {}
+extension VideoSDKRTC.LogLevel : Swift.Equatable {}
+extension VideoSDKRTC.LogLevel : Swift.Hashable {}
 extension VideoSDKRTC.AuthorisationStatus : Swift.Equatable {}
 extension VideoSDKRTC.AuthorisationStatus : Swift.Hashable {}
 extension VideoSDKRTC.MediaStreamEventType : Swift.Equatable {}
@@ -9641,9 +9643,6 @@ extension VideoSDKRTC.MeetingState : Swift.RawRepresentable {}
 extension VideoSDKRTC.Mode : Swift.Equatable {}
 extension VideoSDKRTC.Mode : Swift.Hashable {}
 extension VideoSDKRTC.Mode : Swift.RawRepresentable {}
-extension VideoSDKRTC.VideoSDKError : Swift.Equatable {}
-extension VideoSDKRTC.VideoSDKError : Swift.Hashable {}
-extension VideoSDKRTC.VideoSDKError : Swift.RawRepresentable {}
 extension VideoSDKRTC.HLSState : Swift.Equatable {}
 extension VideoSDKRTC.HLSState : Swift.Hashable {}
 extension VideoSDKRTC.HLSState : Swift.RawRepresentable {}
@@ -9688,6 +9687,9 @@ extension VideoSDKRTC.OpenTelemetryContextKeys : Swift.RawRepresentable {}
 extension VideoSDKRTC.PinType : Swift.Equatable {}
 extension VideoSDKRTC.PinType : Swift.Hashable {}
 extension VideoSDKRTC.PinType : Swift.RawRepresentable {}
+extension VideoSDKRTC.RealtimeOverflow : Swift.Equatable {}
+extension VideoSDKRTC.RealtimeOverflow : Swift.Hashable {}
+extension VideoSDKRTC.RealtimeOverflow : Swift.RawRepresentable {}
 extension VideoSDKRTC.ResourceAttributes : Swift.Equatable {}
 extension VideoSDKRTC.ResourceAttributes : Swift.Hashable {}
 extension VideoSDKRTC.ResourceAttributes : Swift.RawRepresentable {}
@@ -9748,6 +9750,3 @@ extension VideoSDKRTC.VideoCodec : Swift.RawRepresentable {}
 extension VideoSDKRTC.VideoQuality : Swift.Equatable {}
 extension VideoSDKRTC.VideoQuality : Swift.Hashable {}
 extension VideoSDKRTC.VideoQuality : Swift.RawRepresentable {}
-extension VideoSDKRTC.RealtimeOverflow : Swift.Equatable {}
-extension VideoSDKRTC.RealtimeOverflow : Swift.Hashable {}
-extension VideoSDKRTC.RealtimeOverflow : Swift.RawRepresentable {}

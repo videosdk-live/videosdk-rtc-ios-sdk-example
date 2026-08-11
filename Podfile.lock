@@ -47,7 +47,7 @@ PODS:
   - Socket.IO-Client-Swift (16.1.1):
     - Starscream (~> 4.0.8)
   - Starscream (4.0.8)
-  - VideoSDKRTC (3.0.0):
+  - VideoSDKRTC (3.1.1):
     - Socket.IO-Client-Swift (= 16.1.1)
 
 DEPENDENCIES:
@@ -76,7 +76,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   VideoSDKRTC:
-    :commit: 5b68f6a0d82783000b81ade87cfe180d6c6bbedd
+    :commit: c78743e6a2ed94a6f15e4ac97ae35ab831b9f3af
     :git: https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git
 
 SPEC CHECKSUMS:
@@ -92,7 +92,7 @@ SPEC CHECKSUMS:
   MessageKit: a1ba0c69ebead94029867853eb44dd05b9b3f453
   Socket.IO-Client-Swift: 3614bea82ba005df1c2ff01154f4004993e05ad7
   Starscream: 19b5533ddb925208db698f0ac508a100b884a1b9
-  VideoSDKRTC: a4cca3d985ca10bf230bc611151508884c862132
+  VideoSDKRTC: 50b44dde5124ad43a8be41a66c5c112af5abced5
 
 PODFILE CHECKSUM: afd46cb3098da313e082851c9d6fef1e5f9315fa
 

@@ -267,7 +267,47 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate
 
         // Add event listeners and join the meeting
         meeting?.addEventListener(self)
+        
         meeting?.join()
+        
+//        runPreJoinActionErrorDemo()
+    }
+    
+    func runPreJoinActionErrorDemo() {
+        guard let meeting else { return }
+
+        print(
+            "\n########## PRE-JOIN ERROR DEMO — expecting 3035 for each call below ##########\n"
+        )
+
+        meeting.enableWebcam()
+        meeting.unmuteMic()
+        meeting.switchWebcam()
+
+        meeting.startRecording(webhookUrl: "")
+        meeting.startHLS()
+
+        meeting.startWhiteboard()
+        meeting.enableAdaptiveSubscription()
+
+        meeting.localParticipant.pin()
+
+        Task {
+            do {
+                try await meeting.pubsub.publish(
+                    topic: "CHAT",
+                    message: "sent before join"
+                )
+            } catch {
+                print("PubSub also threw (as documented): \(error)")
+            }
+
+            do {
+                try await meeting.realtimeStore.set(key: "demo", value: "1")
+            } catch {
+                print("RealtimeStore also threw (as documented): \(error)")
+            }
+        }
     }
 
     private func getSelectedCameraPosition(for device: String)
@@ -318,6 +358,10 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate
 // MARK: - MeetingEventListener
 
 extension MeetingViewController: MeetingEventListener {
+    
+    func onError(error: VideoSDKError) {
+        print("OnError : \(error.name) | \(error.message) | \(error.rawValue)")
+    }
 
     /// Meeting started
     func onMeetingJoined() {
