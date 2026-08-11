@@ -250,6 +250,51 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource,
 
         // join
         meeting?.join()
+        
+//        runPreJoinActionErrorDemo()
+    }
+    
+    func runPreJoinActionErrorDemo() {
+        guard let meeting else { return }
+
+        print(
+            "\n########## PRE-JOIN ERROR DEMO — expecting 3035 for each call below ##########\n"
+        )
+
+        // 1. Local media — the most common real-world case.
+        meeting.enableWebcam()          // -> "...before calling the enableWebcam() method."
+        meeting.unmuteMic()             // -> "...before calling the unmuteMic() method."
+        meeting.switchWebcam()          // -> "...before calling the switchWebcam() method."
+
+        // 2. Cloud features.
+        meeting.startRecording(webhookUrl: "")        // -> "...before calling the startRecording() method."
+        meeting.startHLS()              // -> "...before calling the startHLS() method."
+
+        // 3. Collaboration / subscription.
+        meeting.startWhiteboard()       // -> "...before calling the startWhiteboard() method."
+        meeting.enableAdaptiveSubscription()
+
+        // 4. An action on a meeting-owned object (validated through the meeting).
+        meeting.localParticipant.pin()  // -> "...before calling the pin() method."
+
+        // 5. Throwing APIs report **both** ways: the onError event *and* a thrown
+        //    error, so `catch` still works exactly as before.
+        Task {
+            do {
+                try await meeting.pubsub.publish(
+                    topic: "CHAT",
+                    message: "sent before join"
+                )
+            } catch {
+                print("PubSub also threw (as documented): \(error)")
+            }
+
+            do {
+                try await meeting.realtimeStore.set(key: "demo", value: "1")
+            } catch {
+                print("RealtimeStore also threw (as documented): \(error)")
+            }
+        }
     }
 
     // MARK: UICollectionViewDataSource
