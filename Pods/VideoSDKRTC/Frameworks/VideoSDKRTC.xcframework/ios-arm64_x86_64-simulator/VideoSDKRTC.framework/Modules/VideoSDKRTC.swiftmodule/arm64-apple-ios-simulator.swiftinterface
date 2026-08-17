@@ -162,7 +162,10 @@ public enum AgentState : Swift.String {
   public var metaData: [Swift.String]? {
     get
   }
-  public var mode: VideoSDKRTC.Mode?
+  public var mode: VideoSDKRTC.Mode? {
+    get
+    set
+  }
   public var streams: [Swift.String : VideoSDKRTC.MediaStream] {
     get
   }
@@ -4820,15 +4823,30 @@ public enum MediaType : Swift.Equatable {
     get
     set
   }
-  public var hlsUrls: VideoSDKRTC.HLSUrl?
-  public var hlsState: VideoSDKRTC.HLSState
-  public var liveStreamState: VideoSDKRTC.LiveStreamState
+  public var hlsUrls: VideoSDKRTC.HLSUrl? {
+    get
+    set
+  }
+  public var hlsState: VideoSDKRTC.HLSState {
+    get
+    set
+  }
+  public var liveStreamState: VideoSDKRTC.LiveStreamState {
+    get
+    set
+  }
   public var activePresenterId: Swift.String? {
     get
     set
   }
-  public var recordingState: VideoSDKRTC.RecordingState
-  public var transcriptionState: VideoSDKRTC.TranscriptionState
+  public var recordingState: VideoSDKRTC.RecordingState {
+    get
+    set
+  }
+  public var transcriptionState: VideoSDKRTC.TranscriptionState {
+    get
+    set
+  }
   public var pubsub: VideoSDKRTC.PubSub {
     get
   }
@@ -4851,7 +4869,10 @@ public enum MediaType : Swift.Equatable {
     get
   }
   @_documentation(visibility: internal) public var capturedImage: CoreImage.CIImage?
-  public var e2eeEnabled: Swift.Bool
+  public var e2eeEnabled: Swift.Bool {
+    get
+    set
+  }
   @objc deinit
 }
 extension VideoSDKRTC.Meeting {
@@ -5342,6 +5363,7 @@ public enum LeaveReason : Swift.Int, Swift.CaseIterable {
   case removePeerApi
   case duplicateParticipant
   case manualLeaveCalled
+  case websocketConnectionAttemptsExhausted
   case joinRoomFailed
   case switchRoomFailed
   public var message: Swift.String {
@@ -6514,6 +6536,7 @@ public protocol ParticipantEventListener {
   func onMediaStatusChanged(peerId: Swift.String, kind: VideoSDKRTC.MediaType, newStatus: Swift.Bool)
   func onAgentStateChanged(_ state: VideoSDKRTC.AgentState, forParticipant participant: VideoSDKRTC.Participant)
   func onAgentTranscriptionReceived(_ segment: VideoSDKRTC.TranscriptionSegment, forParticipant participant: VideoSDKRTC.Participant?)
+  func onAgentMetrics(_ metrics: [Swift.String : Any], forParticipant participant: VideoSDKRTC.Participant)
 }
 extension VideoSDKRTC.ParticipantEventListener {
   public func onStreamEnabled(_ stream: VideoSDKRTC.MediaStream, forParticipant participant: VideoSDKRTC.Participant)
@@ -6524,6 +6547,7 @@ extension VideoSDKRTC.ParticipantEventListener {
   public func onMediaStatusChanged(peerId: Swift.String, kind: VideoSDKRTC.MediaType, newStatus: Swift.Bool)
   public func onAgentStateChanged(_ state: VideoSDKRTC.AgentState, forParticipant participant: VideoSDKRTC.Participant)
   public func onAgentTranscriptionReceived(_ segment: VideoSDKRTC.TranscriptionSegment, forParticipant participant: VideoSDKRTC.Participant?)
+  public func onAgentMetrics(_ metrics: [Swift.String : Any], forParticipant participant: VideoSDKRTC.Participant)
 }
 public enum PinType : Swift.String {
   case SHARE_AND_CAM
@@ -6657,6 +6681,7 @@ public enum PubSubError : Foundation.LocalizedError {
   case alreadySubscribed
   case meetingNotJoined
   case meetingReconnecting
+  case meetingAlreadyLeft
   case publishFailed(Swift.String)
   case subscribeFailed(Swift.String)
   case unsubscribeFailed(Swift.String)
@@ -6758,6 +6783,7 @@ extension VideoSDKRTC.RealtimeStore {
 public enum RealtimeStoreError : Swift.Error, Foundation.LocalizedError {
   @_documentation(visibility: internal) case meetingNotJoined
   @_documentation(visibility: internal) case meetingReconnecting
+  @_documentation(visibility: internal) case meetingAlreadyLeft
   case operationFailed(Swift.String)
   case keyNotFound
   case invalidKey

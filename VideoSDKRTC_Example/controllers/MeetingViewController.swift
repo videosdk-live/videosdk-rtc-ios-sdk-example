@@ -653,6 +653,10 @@ extension MeetingViewController: MeetingEventListener {
 // MARK: - ParticipantEventListener
 
 extension MeetingViewController: ParticipantEventListener {
+    
+    func onAgentMetrics(_ metrics: [String : Any], forParticipant participant: Participant) {
+        print("Agent Participant Metrics: \(metrics)")
+    }
 
     /// Participant has enabled mic, video or screenshare
     /// - Parameters:
