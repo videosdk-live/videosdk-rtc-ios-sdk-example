@@ -141,8 +141,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/videosdk-live/videosdk-rtc-ios-spm",
       "state" : {
-        "revision" : "4798d9951be76cfc5c39716a2d2ce36580891ba9",
-        "version" : "3.1.1"
+        "revision" : "4f5339ed45296192f948ddebaca7eeca5dcccdf4",
+        "version" : "3.2.0"
       }
     }
   ],
