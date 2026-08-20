@@ -8,7 +8,6 @@
 
 import UIKit
 import VideoSDKRTC
-import WebRTC
 
 class ParticipantViewCell: UICollectionViewCell {
     
@@ -168,8 +167,6 @@ extension ParticipantViewCell {
 extension ParticipantViewCell {
     
     func setupVideoView() {
-        videoView.videoContentMode = .scaleAspectFill
-        
         [videoView, videoContainerView].forEach {
             $0?.layer.cornerRadius = 5
         }

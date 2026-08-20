@@ -9,6 +9,9 @@
 import AVFoundation
 import UIKit
 import VideoSDKRTC
+#if DEBUG
+    import VideoSDKInspectoriOS
+#endif
 
 enum MenuOption: String {
     case switchCamera = "Switch Camera"
@@ -125,6 +128,12 @@ class MeetingViewController: UIViewController, UICollectionViewDataSource,
         setupUI()
         setupActions()
         addAudioChangeObserver()
+
+        #if DEBUG
+            // Before config(): the core buffers from the moment it is enabled,
+            // so starting here captures init and join, not just what follows.
+            InspectorBubble.show()
+        #endif
 
         // config
         VideoSDK.config(token: meetingData.token)
@@ -510,6 +519,10 @@ extension MeetingViewController: MeetingEventListener {
 
     /// Meeting ended
     func onMeetingLeft() {
+        #if DEBUG
+            InspectorBubble.hide()
+        #endif
+
         BackgroundKeepAlive.shared.stop()
 
         Task {

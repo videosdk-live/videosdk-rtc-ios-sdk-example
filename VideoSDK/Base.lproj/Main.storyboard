@@ -326,7 +326,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x7l-NT-hB7">
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="500"/>
                                                             <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FS5-1p-Lwv" customClass="RTCMTLVideoView">
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FS5-1p-Lwv" customClass="VideoSDKRTC.RTCMTLVideoView">
                                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="500"/>
                                                                     <color key="backgroundColor" red="0.20000001789999999" green="0.19607841970000001" blue="0.26274511220000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 </view>
@@ -930,7 +930,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DXC-9n-BcM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2874" y="875"/>
+            <point key="canvasLocation" x="6249" y="134"/>
         </scene>
         <!--Stats View Controller-->
         <scene sceneID="b8b-YE-o1D">
@@ -1144,7 +1144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDv-05-Zem" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5507.6923076923076" y="133.64928909952607"/>
+            <point key="canvasLocation" x="5458" y="134"/>
         </scene>
     </scenes>
     <resources>

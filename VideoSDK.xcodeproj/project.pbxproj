@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		294F5F0E8F492B333E52B314 /* VideoSDKInspectoriOS in Frameworks */ = {isa = PBXBuildFile; productRef = AD510C6805B61B79E9D1B616 /* VideoSDKInspectoriOS */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
@@ -14,7 +15,6 @@
 		623A5F1E2892FD1B0051F40C /* joinRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A5F1D2892FD1B0051F40C /* joinRoom.swift */; };
 		623A5F202892FD350051F40C /* ParticipantCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A5F1F2892FD350051F40C /* ParticipantCellView.swift */; };
 		623A5F22289393470051F40C /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623A5F21289393470051F40C /* Loader.swift */; };
-		844FA4872F7EBE500080BBE7 /* VideoSDKRTCSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 844FA4862F7EBE500080BBE7 /* VideoSDKRTCSwift */; };
 		84809A622FE5578F00356103 /* VideoSDKRTCSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 84809A612FE5578F00356103 /* VideoSDKRTCSwift */; };
 		848289352FF7DA450028F054 /* BackgroundKeepAlive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848289342FF7DA450028F054 /* BackgroundKeepAlive.swift */; };
 		848628602F20E40000E8071C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8486285F2F20E40000E8071C /* GoogleService-Info.plist */; };
@@ -94,7 +94,7 @@
 				848628632F20E59F00E8071C /* FirebaseAnalytics in Frameworks */,
 				8486286B2F20E81000E8071C /* MessageKit in Frameworks */,
 				84809A622FE5578F00356103 /* VideoSDKRTCSwift in Frameworks */,
-				844FA4872F7EBE500080BBE7 /* VideoSDKRTCSwift in Frameworks */,
+				294F5F0E8F492B333E52B314 /* VideoSDKInspectoriOS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +241,6 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 8GZ776NSU2;
 						LastSwiftMigration = 1250;
 						ProvisioningStyle = Automatic;
 					};
@@ -260,6 +259,7 @@
 				848628612F20E59F00E8071C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				848628692F20E81000E8071C /* XCRemoteSwiftPackageReference "MessageKit" */,
 				84809A602FE5578F00356103 /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */,
+				B5FFF71443CFCF8CBEBFCF78 /* XCRemoteSwiftPackageReference "videosdk-inspector-ios" */,
 			);
 			productRefGroup = 607FACD11AFB9204008FA782 /* Products */;
 			projectDirPath = "";
@@ -417,6 +417,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 			};
@@ -551,20 +552,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		844FA4852F7EBE500080BBE7 /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/videosdk-live/videosdk-rtc-ios-spm";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		84809A602FE5578F00356103 /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/videosdk-live/videosdk-rtc-ios-spm";
 			requirement = {
-				kind = exactVersion;
-				version = 3.2.0;
+				branch = "4.0.0-beta.1";
+				kind = branch;
 			};
 		};
 		848628612F20E59F00E8071C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -583,14 +576,17 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		B5FFF71443CFCF8CBEBFCF78 /* XCRemoteSwiftPackageReference "videosdk-inspector-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/videosdk-live/videosdk-inspector-ios.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		844FA4862F7EBE500080BBE7 /* VideoSDKRTCSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 844FA4852F7EBE500080BBE7 /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */;
-			productName = VideoSDKRTCSwift;
-		};
 		84809A612FE5578F00356103 /* VideoSDKRTCSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 84809A602FE5578F00356103 /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */;
@@ -610,6 +606,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 848628692F20E81000E8071C /* XCRemoteSwiftPackageReference "MessageKit" */;
 			productName = MessageKit;
+		};
+		AD510C6805B61B79E9D1B616 /* VideoSDKInspectoriOS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5FFF71443CFCF8CBEBFCF78 /* XCRemoteSwiftPackageReference "videosdk-inspector-ios" */;
+			productName = VideoSDKInspectoriOS;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

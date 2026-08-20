@@ -8,7 +8,6 @@
 
 import UIKit
 import VideoSDKRTC
-import WebRTC
 
 class ScreenSharingView: UIView {
 
@@ -45,8 +44,6 @@ class ScreenSharingView: UIView {
 private extension ScreenSharingView {
     
     func setupViews() {
-        videoView.videoContentMode = .scaleAspectFit
-        
         [containerView, videoView].forEach {
             $0?.layer.cornerRadius = 5
         }
