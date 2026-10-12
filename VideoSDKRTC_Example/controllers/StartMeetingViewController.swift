@@ -93,7 +93,7 @@ class StartMeetingViewController: UIViewController {
         txtMeetingCodeField.attributedPlaceholder = NSAttributedString(string: "Enter meeting code", attributes: attributes)
         txtEnterNameField.delegate = self
         txtMeetingCodeField.delegate = self
-        txtMeetingCodeField.text = ""
+        txtMeetingCodeField.text = "qg94-mkbo-5l88"
         
         [viewCameraViewContainer, viewCreateAMeetingButton, viewJoinAMeetingButton, viewTestAudioVideoContainer].forEach {
             $0?.roundCorners(corners: [.allCorners], radius: 12.0)
@@ -204,7 +204,7 @@ class StartMeetingViewController: UIViewController {
 
         // MARK: - Get Audio Device List
         func getAudioDeviceList() {
-            let audioDevices = VideoSDK.getAudioDevices()
+            let audioDevices = VideoSDK.getMics().map(\.label)
             showDeviceSelectionAlert(devices: audioDevices,
                                     deviceType: "Audio Device",
                                     selectedDevice: valueOfAudioDevice) { selectedAudioDevice in

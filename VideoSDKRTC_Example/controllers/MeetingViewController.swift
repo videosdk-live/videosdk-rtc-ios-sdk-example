@@ -8,7 +8,6 @@
 import AVFoundation
 import UIKit
 import VideoSDKRTC
-import WebRTC
 
 private let reuseIdentifier = "ParticipantViewCell"
 private let addStreamOutputSegueIdentifier = "Add Livestream Outputs"
@@ -40,8 +39,8 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate
     @IBOutlet weak var lblMeetingId: UILabel!
 
     @IBAction func StopPresentingTapped(_ sender: Any) {
-        Task {
-            await self.meeting?.disableScreenShare()
+        runAction("Stop screen share") {
+            try await self.room?.disableScreenShare()
         }
     }
     // MARK: - Properties
@@ -57,8 +56,8 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate
     /// Meeting data - required to start
     var meetingData: MeetingData!
 
-    /// current meeting reference
-    private var meeting: Meeting?
+    /// current room reference
+    private var room: Room?
 
     /// keep track of participant indexPath for reference
     private var indexPaths: [String: IndexPath] = [:]
@@ -71,11 +70,6 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate
 
     /// keep track of livestream
     private var liveStreamStarted = false
-
-    /// Camera position
-    private var cameraPosition = CameraPosition.front
-
-    private var isCameraOn = true
 
     private var isMicToggling = false
 
@@ -102,10 +96,7 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate
         //        addAudioChangeObserver()
 
         // Log verbosity level
-        VideoSDK.setLogLevel(level: .all)  // Default: .info
-
-        // config
-        VideoSDK.config(token: meetingData.token)
+        VideoSDK.setLogLevel(level: .ALL)  // Default: .INFO
 
         // init meeting
         initializeMeeting()
@@ -156,7 +147,9 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate
 
         addStreamsController.onStart = { streamOutputs in
             if !streamOutputs.isEmpty {
-                self.meeting?.startLivestream(outputs: streamOutputs)
+                self.runAction("Start livestream") {
+                    try await self.room?.startLivestream(outputs: streamOutputs)
+                }
             } else {
                 self.showAlert(
                     title: "Error",
@@ -237,85 +230,117 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate
     // MARK: - Meeting
 
     func initializeMeeting() {
-        guard let videoDevice = meetingData?.videoDevice else { return }
+        let facingMode = getSelectedCameraPosition(for: meetingData.videoDevice ?? "")
 
-        let facingMode = getSelectedCameraPosition(for: videoDevice)
+        Task {
+            // Create the custom video track using the selected camera.
+            // createCameraVideoTrack never shows the permission prompt and throws until
+            // camera access is granted, so ask first. It opens the camera right away,
+            // so only create it when the camera starts on.
+            var customCameraTrack: CustomStreamTrack?
+            if meetingData.cameraEnabled,
+                await AVCaptureDevice.requestAccess(for: .video)
+            {
+                do {
+                    customCameraTrack = try await VideoSDK.createCameraVideoTrack(
+                        encoderConfig: .h360p_w640p,
+                        facingMode: facingMode,
+                        multiStream: true,
+                        maxLayer: .MAX_LAYER_2,
+                        bitrateMode: .BANDWIDTH_OPTIMIZED,
+                        codec: .AV1
+                    )
+                } catch {
+                    print("Failed to create custom video track, using the default camera: \(error)")
+                }
+            }
 
-        // Create the custom video track using the selected camera
-        guard
-            let customVideoStream = try? VideoSDK.createCameraVideoTrack(
-                encoderConfig: .h360p_w640p,
-                facingMode: facingMode,
-                multiStream: true,
-                codec: .AV1,
-                bitrateMode: .BANDWIDTH_OPTIMIZED,
-                maxLayer: .MAX_LAYER_2
-            )
-        else {
-            print("Failed to create custom video stream")
-            return
+            // Create the room with the custom video track
+            do {
+                room = try VideoSDK.createRoom(
+                    roomId: meetingData.meetingId,
+                    token: meetingData.token,
+                    participantName: meetingData.name,
+                    micEnabled: meetingData.micEnabled,
+                    camEnabled: meetingData.cameraEnabled,
+                    customCameraTrack: customCameraTrack
+                )
+            } catch {
+                // ERROR_INVALID_PARAMETER for an empty token or room ID
+                showJoinFailure(error)
+                return
+            }
+
+            // Add event listeners and join the room
+            room?.addEventListener(self)
+
+            //            await runPreJoinActionErrorDemo()
+
+            do {
+                try await room?.join()
+            } catch {
+                // The join failed and roomState is now FAILED
+                showJoinFailure(error)
+            }
         }
-
-        // Initialize the meeting with the custom video stream
-        meeting = VideoSDK.initMeeting(
-            meetingId: meetingData.meetingId,
-            participantName: meetingData.name,
-            micEnabled: meetingData.micEnabled,
-            webcamEnabled: meetingData.cameraEnabled,
-            customCameraVideoStream: customVideoStream
-        )
-
-        // Add event listeners and join the meeting
-        meeting?.addEventListener(self)
-        
-        meeting?.join()
-        
-//        runPreJoinActionErrorDemo()
     }
-    
-    func runPreJoinActionErrorDemo() {
-        guard let meeting else { return }
+
+    private func showJoinFailure(_ error: Error) {
+        let message = (error as? VideoSDKError)?.message ?? "\(error)"
+        let showFailure = {
+            self.showAlert(
+                title: "Could not join",
+                message: message,
+                actions: [
+                    UIAlertAction(title: "Ok", style: .default) { _ in
+                        self.dismiss(animated: true)
+                    }
+                ]
+            )
+        }
+        // The loader is an alert too, so it has to go before the next one is presented
+        DispatchQueue.main.async {
+            if let loader = self.presentedViewController {
+                loader.dismiss(animated: true, completion: showFailure)
+            } else {
+                showFailure()
+            }
+        }
+    }
+
+    /// Calls actions before joining. They throw ERROR_ACTION_PERFORMED_BEFORE_ROOM_JOINED (3035);
+    /// Room methods no longer report it to onError(error:), Participant methods report it there too.
+    func runPreJoinActionErrorDemo() async {
+        guard let room else { return }
 
         print(
             "\n########## PRE-JOIN ERROR DEMO — expecting 3035 for each call below ##########\n"
         )
 
-        meeting.enableWebcam()
-        meeting.unmuteMic()
-        meeting.switchWebcam()
-
-        meeting.startRecording(webhookUrl: "")
-        meeting.startHLS()
-
-        meeting.startWhiteboard()
-        meeting.enableAdaptiveSubscription()
-
-        meeting.localParticipant.pin()
-
-        Task {
+        let actions: [(String, () async throws -> Void)] = [
+            ("enableCam", { try await room.enableCam() }),
+            ("unmuteMic", { try await room.unmuteMic() }),
+            ("changeCam", { try await room.changeCam() }),
+            ("startRecording", { try await room.startRecording() }),
+            ("startHLS", { try await room.startHLS() }),
+            ("startWhiteboard", { try await room.startWhiteboard() }),
+            ("enableAdaptiveSubscription", { try await room.enableAdaptiveSubscription() }),
+            ("localParticipant.pin", { try await room.localParticipant.pin() }),
+            ("pubSub.publish", { try await room.pubSub.publish(topic: CHAT_TOPIC, message: "sent before join") }),
+            ("realtimeStore.setValue", { try await room.realtimeStore.setValue(key: "demo", value: "1") }),
+        ]
+        for (name, action) in actions {
             do {
-                try await meeting.pubsub.publish(
-                    topic: "CHAT",
-                    message: "sent before join"
-                )
+                try await action()
+                print("\(name): did not throw")
             } catch {
-                print("PubSub also threw (as documented): \(error)")
-            }
-
-            do {
-                try await meeting.realtimeStore.set(key: "demo", value: "1")
-            } catch {
-                print("RealtimeStore also threw (as documented): \(error)")
+                print("\(name) threw: \(error)")
             }
         }
     }
 
-    private func getSelectedCameraPosition(for device: String)
-        -> AVCaptureDevice.Position
-    {
+    private func getSelectedCameraPosition(for device: String) -> FacingMode {
         switch device {
-        case "Front Camera":
-            return .front
         case "Back Camera":
             return .back
         default:
@@ -324,8 +349,11 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate
     }
 
     @IBAction func btnRotateCameraTapped(_ sender: Any) {
-        if isCameraOn {
-            self.meeting?.switchWebcam()
+        if room?.isCamEnabled == true {
+            // switchWebcam() was removed; changeCam() with no argument moves to the next camera
+            runAction("Switch camera") {
+                try await self.room?.changeCam()
+            }
         } else {
             self.showToast(
                 message: "Camera is off",
@@ -349,24 +377,30 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate
     }
 
     func audioSetupForPrecall() {
-        if let audio = meetingData?.audioDevice {
-            meeting?.changeMic(selectedDevice: audio)
+        // The start screen stores the label of a device from VideoSDK.getMics()
+        guard let audio = meetingData?.audioDevice,
+            let device = VideoSDK.getMics().first(where: { $0.label == audio })
+        else { return }
+        do {
+            try room?.setAudioDevice(device)
+        } catch {
+            print("Error while selecting audio device: \(error)")
         }
     }
 }
 
-// MARK: - MeetingEventListener
+// MARK: - RoomEventListener
 
-extension MeetingViewController: MeetingEventListener {
-    
+extension MeetingViewController: RoomEventListener {
+
     func onError(error: VideoSDKError) {
-        print("OnError : \(error.name) | \(error.message) | \(error.rawValue)")
+        print("OnError : \(error.name) | \(error.message) | \(error.code)")
     }
 
     /// Meeting started
-    func onMeetingJoined() {
+    func onRoomJoined() {
 
-        guard let localParticipant = self.meeting?.localParticipant else {
+        guard let localParticipant = self.room?.localParticipant else {
             return
         }
         if participants.count < 2 {
@@ -378,33 +412,34 @@ extension MeetingViewController: MeetingEventListener {
             // add event listener
             localParticipant.addEventListener(self)
 
-            do {
-                try localParticipant.setQuality(.high)
-            } catch {
-                print("Error: \(error)")
+            Task {
+                do {
+                    try await localParticipant.setQuality(.high)
+                } catch {
+                    print("Error: \(error)")
+                }
             }
 
             Task {
-                var subscribeOptions = PubSubSubscribeOptions()
-                subscribeOptions.maxQueue = 100
-                subscribeOptions.realtimeOverflow = .queue
-                subscribeOptions.oldMessageLimit = 100
+                let subscribeOptions = PubSubSubscribeOptions(
+                    oldMessageLimit: 100,
+                    realtimeOverflow: .QUEUE,
+                    maxQueue: 100
+                )
 
                 do {
                     // listen/subscribe for chat topic
-                    try await meeting?.pubsub.subscribe(
+                    try await room?.pubSub.subscribe(
                         topic: CHAT_TOPIC,
-                        forListener: self,
+                        listener: self,
                         options: subscribeOptions
                     )
-                    try await meeting?.pubsub.subscribe(
+                    try await room?.pubSub.subscribe(
                         topic: RAISE_HAND_TOPIC,
-                        forListener: self
+                        listener: self
                     )
                 } catch {
-                    print(
-                        "Error while subscribing to pubsub: \(error.localizedDescription)"
-                    )
+                    print("Error while subscribing to pubsub: \(error)")
                 }
             }
 
@@ -421,23 +456,23 @@ extension MeetingViewController: MeetingEventListener {
     }
 
     /// Meeting ended
-    func onMeetingLeft() {
+    func onRoomLeft(reason: LeaveReason) {
+        print("Meeting left with reason: \(reason.message)")
+
         Task {
             do {
-                try await meeting?.pubsub.unsubscribe(
+                try await room?.pubSub.unsubscribe(
                     topic: CHAT_TOPIC,
-                    forListener: self
+                    listener: self
                 )
             } catch {
-                print(
-                    "Erorr while unsubscribing from pubsub: \(error.localizedDescription)"
-                )
+                print("Erorr while unsubscribing from pubsub: \(error)")
             }
         }
 
         // remove listeners
-        meeting?.localParticipant.removeEventListener(self)
-        meeting?.removeEventListener(self)
+        room?.localParticipant.removeEventListener(self)
+        room?.removeEventListener(self)
         participants.removeAll()
 
         // dismiss controller
@@ -452,11 +487,6 @@ extension MeetingViewController: MeetingEventListener {
         }
     }
 
-    func onMeetingLeft(reason: LeaveReason) {
-        print("Meeting left with reason: \(reason.message)")
-        self.onMeetingLeft()
-    }
-
     /// A new participant joined
     func onParticipantJoined(_ participant: Participant) {
 
@@ -468,10 +498,12 @@ extension MeetingViewController: MeetingEventListener {
             // add listener
             participant.addEventListener(self)
 
-            do {
-                try participant.setQuality(.high)
-            } catch {
-                print("Error: \(error)")
+            Task {
+                do {
+                    try await participant.setQuality(.high)
+                } catch {
+                    print("Error: \(error)")
+                }
             }
 
             self.setNameToView(participant)
@@ -489,7 +521,10 @@ extension MeetingViewController: MeetingEventListener {
 
     /// A participant left from the meeting
     /// - Parameter participant: participant object
-    func onParticipantLeft(_ participant: Participant) {
+    func onParticipantLeft(_ participant: Participant, reason: LeaveReason) {
+        print(
+            "Participant \(participant.displayName) left with reason: \(reason.message)"
+        )
 
         // remove listener
         participant.removeEventListener(self)
@@ -515,13 +550,6 @@ extension MeetingViewController: MeetingEventListener {
             object: nil,
             userInfo: ["participants": participants]
         )
-    }
-
-    func onParticipantLeft(_ participant: Participant, reason: LeaveReason) {
-        print(
-            "Participant \(participant.displayName) left with reason: \(reason.message)"
-        )
-        self.onParticipantLeft(participant)
     }
 
     /// Called after recording starts
@@ -554,12 +582,12 @@ extension MeetingViewController: MeetingEventListener {
     }
 
     /// Called when speaker is changed
-    /// - Parameter participantId: participant id of the speaker, nil when no one is speaking.
-    func onSpeakerChanged(participantId: String?) {
+    /// - Parameter activeSpeakerId: participant id of the speaker, nil when no one is speaking.
+    func onSpeakerChanged(activeSpeakerId: String?) {
 
         // show indication for active speaker
         if let participant = participants.first(where: {
-            $0.id == participantId
+            $0.id == activeSpeakerId
         }), participants.count > 1 {
             showActiveSpeakerIndicator(
                 participant.isLocal
@@ -567,13 +595,13 @@ extension MeetingViewController: MeetingEventListener {
                 true
             )
         } else if let participant = participants.first(where: {
-            $0.id == participantId
+            $0.id == activeSpeakerId
         }), participant.isLocal {
             showActiveSpeakerIndicator(participantViewsContainer, true)
         }
 
         // hide indication for others participants
-        let otherParticipants = participants.filter { $0.id != participantId }
+        let otherParticipants = participants.filter { $0.id != activeSpeakerId }
         for participant in otherParticipants {
             if participants.count > 1 && participant.isLocal {
                 showActiveSpeakerIndicator(localParticipantViewContainer, false)
@@ -642,7 +670,7 @@ extension MeetingViewController: MeetingEventListener {
     func onQualityLimitation(
         type: QualityLimitationType,
         state: QualityLimitationState,
-        timestamp: String
+        timestamp: Int
     ) {
         print(
             "type: \(type.rawValue) || state: \(state.rawValue) || timestamp: \(timestamp)"
@@ -663,7 +691,7 @@ extension MeetingViewController: ParticipantEventListener {
     ///   - stream: enabled stream object
     ///   - participant: participant object
     func onStreamEnabled(
-        _ stream: MediaStream,
+        _ stream: RTCStream,
         forParticipant participant: Participant
     ) {
 
@@ -702,7 +730,7 @@ extension MeetingViewController: ParticipantEventListener {
     ///   - stream: disabled stream object
     ///   - participant: participant object
     func onStreamDisabled(
-        _ stream: MediaStream,
+        _ stream: RTCStream,
         forParticipant participant: Participant
     ) {
 
@@ -798,11 +826,11 @@ extension MeetingViewController {
             guard !self.isMicToggling else { return }
             self.isMicToggling = true
 
-            Task {
+            self.runAction("Toggle mic") {
                 if !on {
-                    self.meeting?.unmuteMic()
+                    try await self.room?.unmuteMic()
                 } else {
-                    self.meeting?.muteMic()
+                    try await self.room?.muteMic()
                 }
             }
 
@@ -817,24 +845,20 @@ extension MeetingViewController {
             guard !self.isVideoToggling else { return }
             self.isVideoToggling = true
 
-            Task {
+            self.runAction("Toggle camera") {
                 if !on {
-//                    guard
-//                        let customVideoStream =
-//                            try? VideoSDK.createCameraVideoTrack(
-//                                encoderConfig: .h720p_w1280p,
-//                                facingMode: .front,
-//                                multiStream: true
-//                            )
-//                    else { return }
-//                    self.meeting?.enableWebcam(
-//                        customVideoStream: customVideoStream
+//                    let customCameraTrack =
+//                        try await VideoSDK.createCameraVideoTrack(
+//                            encoderConfig: .h720p_w1280p,
+//                            facingMode: .front,
+//                            multiStream: true
+//                        )
+//                    try await self.room?.enableCam(
+//                        customCameraTrack: customCameraTrack
 //                    )
-                    self.meeting?.enableWebcam()
-                    self.isCameraOn = true
+                    try await self.room?.enableCam()
                 } else {
-                    self.meeting?.disableWebcam()
-                    self.isCameraOn = false
+                    try await self.room?.disableCam()
                 }
             }
 
@@ -853,9 +877,9 @@ extension MeetingViewController {
             ) { option in
                 switch option {
                 case .leaveMeeting:
-                    self.meeting?.leave()
+                    self.runAction("Leave") { try await self.room?.leave() }
                 case .endMeeting:
-                    self.meeting?.end()
+                    self.runAction("End meeting") { try await self.room?.end() }
                 default:
                     break
                 }
@@ -887,10 +911,12 @@ extension MeetingViewController {
                 switch option {
 
                 case .startRecording:
-                    self.meeting?.startRecording(webhookUrl: "")
+                    self.runAction("Start recording") {
+                        try await self.room?.startRecording()
+                    }
 
                 case .stopRecording:
-                    self.meeting?.stopRecording()
+                    self.stopRecording()
 
                 //                case .startLivestream:
                 //                    self.performSegue(withIdentifier: addStreamOutputSegueIdentifier, sender: nil)
@@ -918,23 +944,24 @@ extension MeetingViewController {
                     )
 
                 case .raiseHand:
-                    Task {
-                        try await self.meeting?.pubsub.publish(
+                    self.runAction("Raise hand") {
+                        try await self.room?.pubSub.publish(
                             topic: RAISE_HAND_TOPIC,
                             message: "Raise Hand by Me",
-                            options: [:],
                             payload: ["generated_by": "Application"]
                         )
                     }
 
                 case .startScreenShare:
-                    Task {
-                        await self.meeting?.enableScreenShare()
+                    // ERROR_GET_DISPLAY_MEDIA: check RTCScreenSharingExtension,
+                    // RTCAppGroupIdentifier and the App Group entitlement
+                    self.runAction("Start screen share") {
+                        try await self.room?.enableScreenShare()
                     }
 
                 case .stopScreenShare:
-                    Task {
-                        await self.meeting?.disableScreenShare()
+                    self.runAction("Stop screen share") {
+                        try await self.room?.disableScreenShare()
                     }
 
                 default:
@@ -945,11 +972,34 @@ extension MeetingViewController {
     }
 
     fileprivate func stopRecording() {
-        meeting?.stopRecording()
+        runAction("Stop recording") { try await self.room?.stopRecording() }
     }
 
     fileprivate func stopLivestream() {
-        meeting?.stopLivestream()
+        runAction("Stop livestream") { try await self.room?.stopLivestream() }
+    }
+
+    /// Room actions are `async throws` and report failures by throwing instead of
+    /// through onError(error:), so run them here and show what went wrong.
+    fileprivate func runAction(
+        _ name: String,
+        _ action: @escaping () async throws -> Void
+    ) {
+        Task {
+            do {
+                try await action()
+            } catch let error as VideoSDKError
+                where error == .ERROR_ALREADY_IN_REQUESTED_STATE
+                || error == .ERROR_OPERATION_IN_PROGRESS
+            {
+                // Already in that state, or an earlier call is still running: not a failure
+            } catch let error as VideoSDKError {
+                print("\(name) failed: \(error.name) (\(error.code)): \(error.message)")
+                showAlert(title: "\(name) failed", message: error.message, autoDismiss: true)
+            } catch {
+                print("\(name) failed: \(error)")
+            }
+        }
     }
 }
 
@@ -959,7 +1009,7 @@ extension MeetingViewController {
 
     func openChat() {
         let chatViewController = ChatViewController(
-            meeting: meeting!,
+            room: room!,
             topic: CHAT_TOPIC
         )
         navigationController?.pushViewController(
@@ -1019,11 +1069,11 @@ extension MeetingViewController {
 
     fileprivate func updateView(
         participant: Participant,
-        forStream stream: MediaStream,
+        forStream stream: RTCStream,
         enabled: Bool
     ) {  // true
         switch stream.kind {
-        case .state(value: .video):
+        case .video:
             if let videotrack = stream.track as? RTCVideoTrack {
                 if enabled {
                     showVideoView(participant: participant, stream: videotrack)  // show video
@@ -1032,7 +1082,7 @@ extension MeetingViewController {
                 }
             }
 
-        case .state(value: .audio):
+        case .audio:
             updateMic(participant: participant, enabled)
 
         case .share:
@@ -1046,7 +1096,7 @@ extension MeetingViewController {
                             if let videoStream = self.participants.first(
                                 where: { $0.id == participant.id })?.streams
                                 .first(where: {
-                                    $1.kind == .state(value: .video)
+                                    $1.kind == .video
                                 })?.value.track as? RTCVideoTrack
                             {
                                 videoStream.remove(
@@ -1070,7 +1120,7 @@ extension MeetingViewController {
                                 if let localVideoStream = self.participants
                                     .first(where: { $0.isLocal })?.streams
                                     .first(where: {
-                                        $1.kind == .state(value: .video)
+                                        $1.kind == .video
                                     })?.value.track as? RTCVideoTrack
                                 {
                                     localVideoStream.remove(
@@ -1105,7 +1155,7 @@ extension MeetingViewController {
                                 if let localVideoStream = self.participants
                                     .first(where: { $0.isLocal })?.streams
                                     .first(where: {
-                                        $1.kind == .state(value: .video)
+                                        $1.kind == .video
                                     })?.value.track as? RTCVideoTrack
                                 {
                                     localVideoStream.remove(
@@ -1130,7 +1180,7 @@ extension MeetingViewController {
                                 if let videoStream = self.participants.first(
                                     where: { !$0.isLocal })?.streams.first(
                                         where: {
-                                            $1.kind == .state(value: .video)
+                                            $1.kind == .video
                                         })?.value.track as? RTCVideoTrack
                                 {
                                     //                                videoStream.remove(self.localParticipantViewVideoContainer)
@@ -1152,7 +1202,7 @@ extension MeetingViewController {
                                 if let localVideoStream = self.participants
                                     .first(where: { $0.isLocal })?.streams
                                     .first(where: {
-                                        $1.kind == .state(value: .video)
+                                        $1.kind == .video
                                     })?.value.track as? RTCVideoTrack
                                 {
                                     localVideoStream.add(
@@ -1169,7 +1219,7 @@ extension MeetingViewController {
                                 if let localVideoStream = self.participants
                                     .first(where: { $0.isLocal })?.streams
                                     .first(where: {
-                                        $1.kind == .state(value: .video)
+                                        $1.kind == .video
                                     })?.value.track as? RTCVideoTrack
                                 {
                                     localVideoStream.add(
@@ -1207,7 +1257,7 @@ extension MeetingViewController {
                     if let currentVideoTrack = self.participants.first(where: {
                         $0.isLocal
                     })?.streams.first(where: {
-                        $1.kind == .state(value: .video)
+                        $1.kind == .video
                     })?.value.track as? RTCVideoTrack {
                         currentVideoTrack.remove(
                             self.remoteParticipantVideoContainer
@@ -1222,7 +1272,7 @@ extension MeetingViewController {
                     if hasShareStream ?? false {
                         if let currentVideoTrack = self.participants.first(
                             where: { !$0.isLocal })?.streams.first(where: {
-                                $1.kind == .state(value: .video)
+                                $1.kind == .video
                             })?.value.track as? RTCVideoTrack
                         {
                             currentVideoTrack.add(
@@ -1261,7 +1311,7 @@ extension MeetingViewController {
                         }
                         if let localParticipantVideoStream = self.participants
                             .first(where: { $0.isLocal })?.streams.first(
-                                where: { $1.kind == .state(value: .video) })?
+                                where: { $1.kind == .video })?
                             .value.track as? RTCVideoTrack
                         {
                             localParticipantVideoStream.add(
@@ -1311,7 +1361,7 @@ extension MeetingViewController {
                     if !participant.isLocal {
                         if let currentVideoTrack = self.participants.first(
                             where: { !$0.isLocal })?.streams.first(where: {
-                                $1.kind == .state(value: .video)
+                                $1.kind == .video
                             })?.value.track as? RTCVideoTrack
                         {
                             currentVideoTrack.remove(
@@ -1380,7 +1430,7 @@ extension MeetingViewController {
                 }) {
                     // find videostream of remote participant
                     if let videoStream = remoteParticipant.streams.first(
-                        where: { $1.kind == .state(value: .video) })?.value
+                        where: { $1.kind == .video })?.value
                         .track as? RTCVideoTrack
                     {
                         // added remote video stream to remote participant video container
@@ -1455,7 +1505,8 @@ extension MeetingViewController {
     func changeAudioOutput(presenterViewController: UIViewController) {
 
         let CHECKED_KEY = "checked"
-        let Mics = self.meeting?.getMics() ?? []
+        let Mics = VideoSDK.getMics()
+        let selectedMic = VideoSDK.getSelectedAudioDevice()
         let optionMenu = UIAlertController(
             title: nil,
             message: nil,
@@ -1464,16 +1515,18 @@ extension MeetingViewController {
 
         for mic in Mics {
 
-            let action = UIAlertAction(title: mic.deviceName, style: .default) {
+            let action = UIAlertAction(title: mic.label, style: .default) {
                 UIAlertAction in
-                self.meeting?.changeMic(selectedDevice: mic.deviceName)
+                do {
+                    try self.room?.setAudioDevice(mic)
+                } catch {
+                    print("Error while switching audio output: \(error)")
+                }
 
                 optionMenu.dismiss(animated: true, completion: nil)
             }
 
-            if AVAudioSession.sharedInstance().currentRoute.outputs.contains(
-                where: { $0.portType.rawValue == mic.deviceType })
-            {
+            if mic.deviceId == selectedMic?.deviceId {
                 action.setValue(true, forKey: CHECKED_KEY)
             }
 

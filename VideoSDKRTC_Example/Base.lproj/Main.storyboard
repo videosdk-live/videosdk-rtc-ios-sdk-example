@@ -553,14 +553,14 @@
                                                     <constraint firstItem="4Xt-kE-fX9" firstAttribute="centerY" secondItem="0SG-es-CWr" secondAttribute="centerY" id="G8L-wZ-qdL"/>
                                                 </constraints>
                                             </view>
-                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MiP-Dk-OYS" userLabel="participantVideoView" customClass="RTCMTLVideoView">
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MiP-Dk-OYS" userLabel="participantVideoView" customClass="RTCMTLVideoView" customModule="VideoSDKRTC">
                                                 <rect key="frame" x="0.0" y="0.0" width="358" height="658"/>
                                                 <color key="backgroundColor" name="videoBackgroundColor"/>
                                             </view>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IQD-Ca-fbm" userLabel="smallParticipantContainer">
                                                 <rect key="frame" x="226" y="486" width="120" height="160"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Abt-jG-LsV" userLabel="videoSmallParticipantView" customClass="RTCMTLVideoView">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Abt-jG-LsV" userLabel="videoSmallParticipantView" customClass="RTCMTLVideoView" customModule="VideoSDKRTC">
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="160"/>
                                                         <color key="backgroundColor" name="videoBackgroundColor"/>
                                                     </view>

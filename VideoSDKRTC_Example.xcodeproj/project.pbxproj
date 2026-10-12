@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2A0000100000000000000A1 /* VideoSDKRTCSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B2A0000100000000000000A3 /* VideoSDKRTCSwift */; };
 		427CD7ED3BAA6B389113FF47 /* Pods_VideoSDKRTC_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19DB87EFEBAFFED77599D31 /* Pods_VideoSDKRTC_Example.framework */; };
 		6BA151E32BC902BB00D9FC4B /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA151E22BC902BB00D9FC4B /* ReplayKit.framework */; };
 		6BA151EA2BC902BB00D9FC4B /* VideoSDKScreenShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6BA151E12BC902BB00D9FC4B /* VideoSDKScreenShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -131,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				427CD7ED3BAA6B389113FF47 /* Pods_VideoSDKRTC_Example.framework in Frameworks */,
+				B2A0000100000000000000A1 /* VideoSDKRTCSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +314,9 @@
 				6BA151E92BC902BB00D9FC4B /* PBXTargetDependency */,
 			);
 			name = VideoSDKRTC_Example;
+			packageProductDependencies = (
+				B2A0000100000000000000A3 /* VideoSDKRTCSwift */,
+			);
 			productName = VideoSDKRTC_Example;
 			productReference = B21ECEB9296EEF6000A48C5B /* VideoSDKRTC_Example.app */;
 			productType = "com.apple.product-type.application";
@@ -344,6 +349,9 @@
 				Base,
 			);
 			mainGroup = B21ECEB0296EEF6000A48C5B;
+			packageReferences = (
+				B2A0000100000000000000A2 /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */,
+			);
 			productRefGroup = B21ECEBA296EEF6000A48C5B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -508,7 +516,7 @@
 				INFOPLIST_FILE = VideoSDKScreenShare/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = VideoSDKScreenShare;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -544,7 +552,7 @@
 				INFOPLIST_FILE = VideoSDKScreenShare/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = VideoSDKScreenShare;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -700,7 +708,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -738,7 +746,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -784,6 +792,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B2A0000100000000000000A2 /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/videosdk-live/videosdk-rtc-ios-spm.git";
+			requirement = {
+				kind = exactVersion;
+				version = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B2A0000100000000000000A3 /* VideoSDKRTCSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B2A0000100000000000000A2 /* XCRemoteSwiftPackageReference "videosdk-rtc-ios-spm" */;
+			productName = VideoSDKRTCSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B21ECEB1296EEF6000A48C5B /* Project object */;
 }

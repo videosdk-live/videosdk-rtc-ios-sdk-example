@@ -14,8 +14,8 @@ class ChatViewController: MessagesViewController {
     
     // MARK: - Properties
     
-    /// Meeting Reference
-    public var meeting: Meeting
+    /// Room Reference
+    public var room: Room
     
     /// Chat Topic
     public var topic: String
@@ -33,8 +33,8 @@ class ChatViewController: MessagesViewController {
     
     // MARK: - Init
     
-    init(meeting: Meeting, topic: String) {
-        self.meeting = meeting
+    init(room: Room, topic: String) {
+        self.room = room
         self.topic = topic
         
         super.init(nibName: nil, bundle: nil)
@@ -111,7 +111,7 @@ extension ChatViewController {
 extension ChatViewController: MessagesDataSource {
     
     func currentSender() -> SenderType {
-        ChatUser(senderId: meeting.localParticipant.id, displayName: meeting.localParticipant.displayName)
+        ChatUser(senderId: room.localParticipant.id, displayName: room.localParticipant.displayName)
     }
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
@@ -128,7 +128,7 @@ extension ChatViewController: MessagesDataSource {
 extension ChatViewController: MessagesDisplayDelegate, MessagesLayoutDelegate {
     
     func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-        let name = message.sender.senderId == meeting.localParticipant.id ? "You" : message.sender.displayName
+        let name = message.sender.senderId == room.localParticipant.id ? "You" : message.sender.displayName
         return NSAttributedString(
             string: name,
             attributes: [.foregroundColor: UIColor.lightGray, .font: UIFont.systemFont(ofSize: 15)])
@@ -169,7 +169,9 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         // send (publish) message
         Task {
             do {
-                try await meeting.pubsub.publish(topic: topic, message: text, options: ["persist": true])
+                try await room.pubSub.publish(topic: topic, message: text, options: PubSubPublishOptions(persist: true))
+            } catch let error as VideoSDKError {
+                print("Error while sending message: \(error.name) (\(error.code)): \(error.message)")
             } catch {
                 print("Error while sending message: \(error)")
             }

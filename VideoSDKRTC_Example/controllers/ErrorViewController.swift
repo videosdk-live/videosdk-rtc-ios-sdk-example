@@ -13,9 +13,7 @@ class ErrorViewController: UIViewController {
     
     @IBOutlet weak var viewOkButton: UIView!
     @IBOutlet weak var btnOK: UIButton!
-    
-    var meeting: Meeting?
-    
+
     override func viewDidLoad() {
         viewOkButton.roundCorners(corners: [.allCorners], radius: 12.0)
     }

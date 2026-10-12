@@ -44,16 +44,10 @@ PODS:
     - IQKeyboardToolbar/Placeholderable
   - MessageKit (3.8.0):
     - InputBarAccessoryView (~> 5.5.0)
-  - Socket.IO-Client-Swift (16.1.1):
-    - Starscream (~> 4.0.8)
-  - Starscream (4.0.8)
-  - VideoSDKRTC (3.1.1):
-    - Socket.IO-Client-Swift (= 16.1.1)
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift
   - MessageKit
-  - VideoSDKRTC (from `https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git`)
 
 SPEC REPOS:
   trunk:
@@ -67,17 +61,6 @@ SPEC REPOS:
     - IQTextInputViewNotification
     - IQTextView
     - MessageKit
-    - Socket.IO-Client-Swift
-    - Starscream
-
-EXTERNAL SOURCES:
-  VideoSDKRTC:
-    :git: https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git
-
-CHECKOUT OPTIONS:
-  VideoSDKRTC:
-    :commit: c78743e6a2ed94a6f15e4ac97ae35ab831b9f3af
-    :git: https://github.com/videosdk-live/videosdk-rtc-ios-sdk.git
 
 SPEC CHECKSUMS:
   InputBarAccessoryView: 1d7b0a672b36e370f01f264b3907ef39d03328e3
@@ -90,10 +73,7 @@ SPEC CHECKSUMS:
   IQTextInputViewNotification: 3b9fb27a16e7ee8958cc9092cfb07a1a9e1fd559
   IQTextView: ae13b4922f22e6f027f62c557d9f4f236b19d5c7
   MessageKit: a1ba0c69ebead94029867853eb44dd05b9b3f453
-  Socket.IO-Client-Swift: 3614bea82ba005df1c2ff01154f4004993e05ad7
-  Starscream: 19b5533ddb925208db698f0ac508a100b884a1b9
-  VideoSDKRTC: 50b44dde5124ad43a8be41a66c5c112af5abced5
 
-PODFILE CHECKSUM: afd46cb3098da313e082851c9d6fef1e5f9315fa
+PODFILE CHECKSUM: 9116314a1675e2c54dc14cf0e6fd83eb033c6a7d
 
 COCOAPODS: 1.16.2

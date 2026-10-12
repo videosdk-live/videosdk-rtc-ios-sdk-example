@@ -35,8 +35,8 @@ At Video SDK, we’re building tools to help companies create world-class collab
 
 ## 🛠 Prerequisites
 
-- iOS 13.0+
-- Xcode 13.0+
+- iOS 18.0+
+- Xcode with the iOS 18 SDK or later (this example is built with Xcode 27.0)
 - Swift 5.0+
 - Valid [Video SDK Account](https://app.videosdk.live/signup)
 
@@ -50,9 +50,11 @@ Clone the repository to your local environment.
 ```js
   git clone https://github.com/videosdk-live/videosdk-rtc-ios-sdk-example.git
 ```
-### Step 2. Install Pods
+### Step 2. Install Dependencies
 
-Run `pod install` in terminal from the Example project directory.
+The VideoSDK iOS SDK (4.0.0) is added with Swift Package Manager from [videosdk-rtc-ios-spm](https://github.com/videosdk-live/videosdk-rtc-ios-spm) (product `VideoSDKRTCSwift`, Exact Version `4.0.0`). Xcode resolves it when you open the workspace.
+
+The other dependencies (MessageKit, IQKeyboardManagerSwift) use CocoaPods, so run `pod install` in terminal from the Example project directory, then open `VideoSDKRTC_Example.xcworkspace`.
 
 ### Step 3. update `AUTH_TOKEN` in the `Constants.swift` file.
 
