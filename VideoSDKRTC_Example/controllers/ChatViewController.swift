@@ -22,6 +22,9 @@ class ChatViewController: MessagesViewController {
     
     /// Message List
     private var messages: [Message] = []
+
+    /// Texts shown locally when sent, waiting for the server echo to be dropped
+    private var pendingLocalTexts: [String] = []
     
     // Time Formatter
     private let timeFormatter: DateFormatter = {
@@ -69,8 +72,19 @@ class ChatViewController: MessagesViewController {
         }
     }
     
+    // Shows a received message, dropping the echo of one already shown locally
     func showNewMessage(_ pubsubMessage: PubSubMessage) {
-        let message = Message(pubsubMessage: pubsubMessage)
+        if pubsubMessage.senderId == room.localParticipant.id,
+            let pendingIndex = pendingLocalTexts.firstIndex(of: pubsubMessage.message)
+        {
+            pendingLocalTexts.remove(at: pendingIndex)
+            return
+        }
+        appendAndShow(Message(pubsubMessage: pubsubMessage))
+    }
+
+    // Appends a message and inserts its section at the end of the list
+    private func appendAndShow(_ message: Message) {
         messages.append(message)
         
         // Reload last section to update header/footer labels and insert a new one
@@ -166,7 +180,8 @@ extension ChatViewController: MessagesDisplayDelegate, MessagesLayoutDelegate {
 extension ChatViewController: InputBarAccessoryViewDelegate {
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
-        // send (publish) message
+        pendingLocalTexts.append(text)
+        appendAndShow(Message(localText: text, sender: currentSender()))
         Task {
             do {
                 try await room.pubSub.publish(topic: topic, message: text, options: PubSubPublishOptions(persist: true))

@@ -24,4 +24,12 @@ struct Message: MessageType {
         sentDate = pubsubMessage.timestamp.toDate() ?? Date()
         sender = ChatUser(senderId: pubsubMessage.senderId, displayName: pubsubMessage.senderName)
     }
+
+    // Builds the local copy of a message this app just sent
+    init(localText: String, sender: SenderType) {
+        messageId = UUID().uuidString
+        kind = .text(localText)
+        sentDate = Date()
+        self.sender = sender
+    }
 }

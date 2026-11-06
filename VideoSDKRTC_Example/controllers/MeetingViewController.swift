@@ -271,6 +271,9 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate
                 return
             }
 
+            buttonControlsView.micEnabled = meetingData.micEnabled
+            buttonControlsView.videoEnabled = meetingData.cameraEnabled
+
             // Add event listeners and join the room
             room?.addEventListener(self)
 
@@ -352,7 +355,14 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate
         if room?.isCamEnabled == true {
             // switchWebcam() was removed; changeCam() with no argument moves to the next camera
             runAction("Switch camera") {
-                try await self.room?.changeCam()
+                let cameras = VideoSDK.getCameras()
+                let currentId = VideoSDK.getSelectedVideoDevice()?.deviceId
+                guard cameras.count > 1,
+                    let currentIndex = cameras.firstIndex(where: { $0.deviceId == currentId })
+                else { return }
+                try await self.room?.changeCam(
+                    deviceId: cameras[(currentIndex + 1) % cameras.count].deviceId
+                )
             }
         } else {
             self.showToast(
@@ -381,10 +391,12 @@ class MeetingViewController: UIViewController, UNUserNotificationCenterDelegate
         guard let audio = meetingData?.audioDevice,
             let device = VideoSDK.getMics().first(where: { $0.label == audio })
         else { return }
-        do {
-            try room?.setAudioDevice(device)
-        } catch {
-            print("Error while selecting audio device: \(error)")
+        Task {
+            do {
+                try await room?.changeMic(deviceId: device.deviceId)
+            } catch {
+                print("Error while selecting audio device: \(error)")
+            }
         }
     }
 }
@@ -1517,10 +1529,12 @@ extension MeetingViewController {
 
             let action = UIAlertAction(title: mic.label, style: .default) {
                 UIAlertAction in
-                do {
-                    try self.room?.setAudioDevice(mic)
-                } catch {
-                    print("Error while switching audio output: \(error)")
+                Task {
+                    do {
+                        try await self.room?.changeMic(deviceId: mic.deviceId)
+                    } catch {
+                        print("Error while switching audio output: \(error)")
+                    }
                 }
 
                 optionMenu.dismiss(animated: true, completion: nil)
